@@ -4740,7 +4740,7 @@ void configure_pins(void);
 
 
 
-void __interrupt TC0INT(void)
+void __attribute__((picinterrupt(("")))) TC0INT(void)
 {
     if(INTCONbits.TMR0IF == 0x01)
     {
