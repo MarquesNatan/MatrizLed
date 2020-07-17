@@ -3,16 +3,17 @@ Microchip MPLAB XC8 Compiler V2.10 ()
 Linker command line:
 
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v2.10\pic\dat\en_msgs.txt \
-  -cs -h+dist/default/production\MatrixControl.X.production.sym \
-  --cmf=dist/default/production\MatrixControl.X.production.cmf -z -Q18F4520 \
-  -oC:\Users\Natan\AppData\Local\Temp\sd6k.2 --defsym=__MPLAB_BUILD=1 \
-  -Mdist/default/production/MatrixControl.X.production.map -E1 -ver=XC8 \
-  --acfsm=1493 -ASTACK=080h-05FFh -pstack=STACK -ACODE=00h-07FFFh \
-  -ACONST=00h-07FFFh -ASMALLCONST=0600h-06FFhx122 \
-  -AMEDIUMCONST=0600h-07FFFh -ACOMRAM=01h-07Fh -AABS1=00h-05FFh \
-  -ABIGRAM=01h-05FFh -ARAM=080h-0FFh,0100h-01FFhx5 -ABANK0=080h-0FFh \
+  -cs -h+dist/default/debug\MatrixControl.X.debug.sym \
+  --cmf=dist/default/debug\MatrixControl.X.debug.cmf -z -Q18F4520 \
+  -oC:\Users\Natan\AppData\Local\Temp\s960.2 --defsym=__MPLAB_BUILD=1 \
+  -Mdist/default/debug/MatrixControl.X.debug.map -E1 -ver=XC8 --acfsm=1493 \
+  -ASTACK=080h-05F3h -pstack=STACK -ACODE=00h-07DBFh -ACONST=00h-07DBFh \
+  -ASMALLCONST=0600h-06FFhx119,07D00h-07DBFh -AMEDIUMCONST=0600h-07DBFh \
+  -ACOMRAM=01h-07Fh -AABS1=00h-05F3h -ABIGRAM=01h-05F3h \
+  -ARAM=080h-0FFh,0100h-01FFhx4,0500h-05F3h -ABANK0=080h-0FFh \
   -ABANK1=0100h-01FFh -ABANK2=0200h-02FFh -ABANK3=0300h-03FFh \
-  -ABANK4=0400h-04FFh -ABANK5=0500h-05FFh -ASFR=0F80h-0FFFh \
+  -ABANK4=0400h-04FFh -ABANK5=0500h-05F3h \
+  -ASFR=0F80h-0F9Bh,0F9Dh-0FD3h,0FD5h-0FDAh,0FE0h-0FE2h,0FE8h-0FEAh,0FF0h-0FFCh \
   -preset_vec=00h,intcode=08h,intcodelo,powerup,init -pramtop=0600h \
   -psmallconst=SMALLCONST -pmediumconst=MEDIUMCONST -pconst=CONST \
   -AFARRAM=00h-00h -ACONFIG=0300000h-030000Dh -pconfig=CONFIG \
@@ -22,8 +23,8 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\Natan\AppData\Local\Temp\sd6k.o \
-  dist/default/production\MatrixControl.X.production.o 
+  C:\Users\Natan\AppData\Local\Temp\s960.o \
+  dist/default/debug\MatrixControl.X.debug.o 
 
 Object code version is 3.11
 
@@ -35,12 +36,12 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\Natan\AppData\Local\Temp\sd6k.o
+C:\Users\Natan\AppData\Local\Temp\s960.o
                 init                                  E        E        4        4       0
                 reset_vec                             0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
                 config                           300000   300000        E   300000       0
-dist/default/production\MatrixControl.X.production.o
+dist/default/debug\MatrixControl.X.debug.o
                 intcode                               8        8        6        4       0
                 temp                                 21       21        1        1       1
                 text8                               1D6      1D6      138        4       0
@@ -139,21 +140,26 @@ UNUSED ADDRESS RANGES
         BANK2            000200-0002FF              100
         BANK3            000300-0003FF              100
         BANK4            000400-0004FF              100
-        BANK5            000500-0005FF              100
-        BIGRAM           000022-0005FF              5DE
+        BANK5            000500-0005F3               F4
+        BIGRAM           000022-0005F3              5D2
         CODE             000004-000007                4
                          000449-000449                1
-                         000458-007FFF             7BA8
+                         000458-007DBF             7968
         COMRAM           000022-00007F               5E
         CONST            000004-000007                4
                          000449-000449                1
-                         000458-007FFF             7BA8
+                         000458-007DBF             7968
         EEDATA           F00000-F000FF              100
-        MEDIUMCONST      000600-007FFF             7A00
-        RAM              000080-0005FF              100
-        SFR              000F80-000FFF               80
-        SMALLCONST       000600-007FFF              100
-        STACK            000080-0005FF              580
+        MEDIUMCONST      000600-007DBF             77C0
+        RAM              000080-0005F3              100
+        SFR              000F80-000F9B               1C
+                         000F9D-000FD3               37
+                         000FD5-000FDA                6
+                         000FE0-000FE2                3
+                         000FE8-000FEA                3
+                         000FF0-000FFC                D
+        SMALLCONST       000600-007DBF              100
+        STACK            000080-0005F3              574
 
                                   Symbol Table
 
@@ -421,7 +427,7 @@ intlevel0                      text         000000
 intlevel1                      text         000000
 intlevel2                      text         000000
 intlevel3                      text         000000
-stackhi                        (abs)        0005FF
+stackhi                        (abs)        0005F3
 stacklo                        (abs)        000080
 start                          init         00000E
 start_initialization           cinit        0003A2
@@ -528,7 +534,7 @@ Total ram usage:        0 bytes
 
  *************** function _SPI_OnOff *****************
  Defined at:
-		line 172 in file "CREATE_FILES/SPI/spi.c"
+		line 176 in file "CREATE_FILES/SPI/spi.c"
  Parameters:    Size  Location     Type
   OnOff           1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -650,7 +656,7 @@ Total ram usage:        2 bytes
 
  *************** function _SPI_Write *****************
  Defined at:
-		line 178 in file "CREATE_FILES/SPI/spi.c"
+		line 182 in file "CREATE_FILES/SPI/spi.c"
  Parameters:    Size  Location     Type
   transBuffer     2    0[COMRAM] PTR unsigned char 
 		 -> dataTrans(8), 

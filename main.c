@@ -81,6 +81,7 @@
 uint8_t currRow = 0;
 uint8_t row = 0x00;
 uint16_t i = 0;
+/*
 uint8_t dataTrans[8] =
 {
     0b11111111, 0b10000001, 
@@ -88,7 +89,13 @@ uint8_t dataTrans[8] =
     0b10000001, 0b10111101, 
     0b10000001, 0b11111111
 };
+*/
 
+uint8_t dataTrans[8] =
+{
+    
+    0x55, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
+};
 spi_config spiConfig = 
 {
     .masterMode = MASTER_MODE,
@@ -104,14 +111,16 @@ void __interrupt()  TC0INT(void)
 {
     if(INTCONbits.TMR0IF == 0x01)
     {
+        INTCONbits.GIE = 0x00;
         T0CONbits.TMR0ON = 0x00;
-        LATBbits.LATB0 = ~ LATBbits.LATB0;
-        
+        // Call functions to att lines
+        RowControl(&currRow);
+        SPI_Write(dataTrans, currRow);
+        // __delay_ms(50);
         /* Clear interrupt flag*/
-        TMR0H = 0x00;
-        TMR0L = 0x00;
-        TMR0 = 0x00;
+        TMR0 = 0x6D84; //  0x3CB0 -> 20 ms 0x6D84 -> 15 ms 0x9E58 -> 10 ms 0xF63C -> 1 ms
         INTCONbits.T0IF = 0x00;
+        INTCONbits.GIE = 0x01;
         T0CONbits.TMR0ON = 0x01;
     }
     
@@ -141,7 +150,8 @@ void main(void) {
     INTCON3 = 0x00; // Disable all external interrupts
     
     configure_pins();
-    
+    SPI_Init(&spiConfig);
+    SPI_OnOff(1);
     Timer_Init();
     Interrupts_Configure();
     

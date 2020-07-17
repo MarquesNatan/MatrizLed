@@ -13,7 +13,6 @@
 void RowControl(uint8_t* currRow)
 {
     uint8_t row = *currRow;
-    /*x
     switch(row)
     {
         case 0x00:
@@ -73,20 +72,6 @@ void RowControl(uint8_t* currRow)
             break;
         default:
             for(;;);
-    }*/
-    
-    
-    if(row < 8)
-    {
-        row++;
-        *currRow = row;
-        LATB = row;
     }
-    else
-    {
-        *currRow = 0x00;
-        LATB = 0x00;
-    }
-    
-    
+   
 }

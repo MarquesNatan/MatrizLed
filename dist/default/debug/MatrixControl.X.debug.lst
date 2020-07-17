@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.10 build 88905656 
-                                                                                               Thu Jul 16 11:53:54 2020
+                                                                                               Thu Jul 16 11:41:48 2020
 
 Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1 
      1                           	processor	18F4520
@@ -90,26 +90,26 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
     76  000444  01                 	db	1
     77  000445  0002               	dw	2
     78  000447  0000               	dw	0
-    79  0000                     _TMR0	set	4054
-    80  0000                     _TRISB	set	3987
-    81  0000                     _INTCON3	set	4080
-    82  0000                     _INTCON2	set	4081
-    83  0000                     _INTCON	set	4082
-    84  0000                     _CMCON	set	4020
-    85  0000                     _ADCON1	set	4033
-    86  0000                     _OSCCONbits	set	4051
-    87  0000                     _T0CONbits	set	4053
-    88  0000                     _SSPBUF	set	4041
-    89  0000                     _PORTA	set	3968
-    90  0000                     _LATA	set	3977
-    91  0000                     _SSPSTATbits	set	4039
-    92  0000                     _SSPCON1bits	set	4038
-    93  0000                     _TRISA	set	3986
-    94  0000                     _TRISC	set	3988
-    95  0000                     _PORTB	set	3969
-    96  0000                     _LATB	set	3978
-    97  0000                     _INTCON2bits	set	4081
-    98  0000                     _RCONbits	set	4048
+    79  0000                     _TRISB	set	3987
+    80  0000                     _PORTA	set	3968
+    81  0000                     _LATA	set	3977
+    82  0000                     _TRISA	set	3986
+    83  0000                     _TRISC	set	3988
+    84  0000                     _PORTB	set	3969
+    85  0000                     _LATB	set	3978
+    86  0000                     _CMCON	set	4020
+    87  0000                     _ADCON1	set	4033
+    88  0000                     _OSCCONbits	set	4051
+    89  0000                     _SSPBUF	set	4041
+    90  0000                     _SSPSTATbits	set	4039
+    91  0000                     _SSPCON1bits	set	4038
+    92  0000                     _RCONbits	set	4048
+    93  0000                     _TMR0	set	4054
+    94  0000                     _T0CONbits	set	4053
+    95  0000                     _INTCON3	set	4080
+    96  0000                     _INTCON2	set	4081
+    97  0000                     _INTCON	set	4082
+    98  0000                     _INTCON2bits	set	4081
     99  0000                     _INTCONbits	set	4082
    100                           
    101                           ; #config settings
@@ -442,7 +442,7 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    428                           
    429 ;; *************** function _SPI_OnOff *****************
    430 ;; Defined at:
-   431 ;;		line 172 in file "CREATE_FILES/SPI/spi.c"
+   431 ;;		line 176 in file "CREATE_FILES/SPI/spi.c"
    432 ;; Parameters:    Size  Location     Type
    433 ;;  OnOff           1    wreg     unsigned char 
    434 ;; Auto vars:     Size  Location     Type
@@ -480,8 +480,8 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    466                           ;SPI_OnOff@OnOff stored from wreg
    467  00044A  6E17               	movwf	SPI_OnOff@OnOff^0,c
    468  00044C                     
-   469                           ;CREATE_FILES/SPI/spi.c: 172: void SPI_OnOff(uint8_t OnOff);CREATE_FILES/SPI/spi.c: 173:
-      +                           {;CREATE_FILES/SPI/spi.c: 174:     SSPCON1bits.SSPEN = OnOff;
+   469                           ;CREATE_FILES/SPI/spi.c: 176: void SPI_OnOff(uint8_t OnOff);CREATE_FILES/SPI/spi.c: 177:
+      +                           {;CREATE_FILES/SPI/spi.c: 178:     SSPCON1bits.SSPEN = OnOff;
    470  00044C  B017               	btfsc	SPI_OnOff@OnOff^0,0,c
    471  00044E  D002               	bra	u25
    472  000450  9AC6               	bcf	198,5,c	;volatile
@@ -553,78 +553,78 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    537  000038  0BDF               	andlw	223
    538  00003A  6E92               	movwf	146,c	;volatile
    539  00003C                     
-   540                           ;CREATE_FILES/SPI/spi.c: 25:         SSPCON1bits.SSPEN = 0x00;
+   540                           ;CREATE_FILES/SPI/spi.c: 29:         SSPCON1bits.SSPEN = 0x00;
    541  00003C  9AC6               	bcf	198,5,c	;volatile
    542                           
-   543                           ;CREATE_FILES/SPI/spi.c: 28:         switch(spiConfig->masterMode)
+   543                           ;CREATE_FILES/SPI/spi.c: 32:         switch(spiConfig->masterMode)
    544  00003E  EF98  F000         	goto	l1258
    545  000042                     l106:
    546                           
-   547                           ;CREATE_FILES/SPI/spi.c: 35:                     {;CREATE_FILES/SPI/spi.c: 37:          
+   547                           ;CREATE_FILES/SPI/spi.c: 39:                     {;CREATE_FILES/SPI/spi.c: 41:          
       +                                         SSPCON1bits.SSPM2 = 0x00;
    548  000042  94C6               	bcf	198,2,c	;volatile
    549                           
-   550                           ;CREATE_FILES/SPI/spi.c: 38:                         SSPCON1bits.SSPM2 = 0x00;
+   550                           ;CREATE_FILES/SPI/spi.c: 42:                         SSPCON1bits.SSPM2 = 0x00;
    551  000044  94C6               	bcf	198,2,c	;volatile
    552                           
-   553                           ;CREATE_FILES/SPI/spi.c: 39:                         SSPCON1bits.SSPM1 = 0x00;
+   553                           ;CREATE_FILES/SPI/spi.c: 43:                         SSPCON1bits.SSPM1 = 0x00;
    554  000046  92C6               	bcf	198,1,c	;volatile
    555                           
-   556                           ;CREATE_FILES/SPI/spi.c: 40:                         SSPCON1bits.SSPM0 = 0x00;
+   556                           ;CREATE_FILES/SPI/spi.c: 44:                         SSPCON1bits.SSPM0 = 0x00;
    557  000048  90C6               	bcf	198,0,c	;volatile
    558                           
-   559                           ;CREATE_FILES/SPI/spi.c: 41:                         break;
+   559                           ;CREATE_FILES/SPI/spi.c: 45:                         break;
    560  00004A  EFC5  F000         	goto	l1262
    561  00004E                     l108:
    562                           
-   563                           ;CREATE_FILES/SPI/spi.c: 44:                     {;CREATE_FILES/SPI/spi.c: 46:          
+   563                           ;CREATE_FILES/SPI/spi.c: 48:                     {;CREATE_FILES/SPI/spi.c: 50:          
       +                                         SSPCON1bits.SSPM2 = 0x00;
    564  00004E  94C6               	bcf	198,2,c	;volatile
    565                           
-   566                           ;CREATE_FILES/SPI/spi.c: 47:                         SSPCON1bits.SSPM2 = 0x00;
+   566                           ;CREATE_FILES/SPI/spi.c: 51:                         SSPCON1bits.SSPM2 = 0x00;
    567  000050  94C6               	bcf	198,2,c	;volatile
    568                           
-   569                           ;CREATE_FILES/SPI/spi.c: 48:                         SSPCON1bits.SSPM1 = 0x00;
+   569                           ;CREATE_FILES/SPI/spi.c: 52:                         SSPCON1bits.SSPM1 = 0x00;
    570  000052  92C6               	bcf	198,1,c	;volatile
    571                           
-   572                           ;CREATE_FILES/SPI/spi.c: 49:                         SSPCON1bits.SSPM0 = 0x01;
+   572                           ;CREATE_FILES/SPI/spi.c: 53:                         SSPCON1bits.SSPM0 = 0x01;
    573  000054  80C6               	bsf	198,0,c	;volatile
    574                           
-   575                           ;CREATE_FILES/SPI/spi.c: 50:                         break;
+   575                           ;CREATE_FILES/SPI/spi.c: 54:                         break;
    576  000056  EFC5  F000         	goto	l1262
    577  00005A                     l109:
    578                           
-   579                           ;CREATE_FILES/SPI/spi.c: 53:                     {;CREATE_FILES/SPI/spi.c: 55:          
+   579                           ;CREATE_FILES/SPI/spi.c: 57:                     {;CREATE_FILES/SPI/spi.c: 59:          
       +                                         SSPCON1bits.SSPM2 = 0x00;
    580  00005A  94C6               	bcf	198,2,c	;volatile
    581                           
-   582                           ;CREATE_FILES/SPI/spi.c: 56:                         SSPCON1bits.SSPM2 = 0x00;
+   582                           ;CREATE_FILES/SPI/spi.c: 60:                         SSPCON1bits.SSPM2 = 0x00;
    583  00005C  94C6               	bcf	198,2,c	;volatile
    584                           
-   585                           ;CREATE_FILES/SPI/spi.c: 57:                         SSPCON1bits.SSPM1 = 0x01;
+   585                           ;CREATE_FILES/SPI/spi.c: 61:                         SSPCON1bits.SSPM1 = 0x01;
    586  00005E  82C6               	bsf	198,1,c	;volatile
    587                           
-   588                           ;CREATE_FILES/SPI/spi.c: 58:                         SSPCON1bits.SSPM0 = 0x00;
+   588                           ;CREATE_FILES/SPI/spi.c: 62:                         SSPCON1bits.SSPM0 = 0x00;
    589  000060  90C6               	bcf	198,0,c	;volatile
    590                           
-   591                           ;CREATE_FILES/SPI/spi.c: 59:                         break;
+   591                           ;CREATE_FILES/SPI/spi.c: 63:                         break;
    592  000062  EFC5  F000         	goto	l1262
    593  000066                     l110:
    594                           
-   595                           ;CREATE_FILES/SPI/spi.c: 62:                     {;CREATE_FILES/SPI/spi.c: 64:          
+   595                           ;CREATE_FILES/SPI/spi.c: 66:                     {;CREATE_FILES/SPI/spi.c: 68:          
       +                                         SSPCON1bits.SSPM2 = 0x00;
    596  000066  94C6               	bcf	198,2,c	;volatile
    597                           
-   598                           ;CREATE_FILES/SPI/spi.c: 65:                         SSPCON1bits.SSPM2 = 0x00;
+   598                           ;CREATE_FILES/SPI/spi.c: 69:                         SSPCON1bits.SSPM2 = 0x00;
    599  000068  94C6               	bcf	198,2,c	;volatile
    600                           
-   601                           ;CREATE_FILES/SPI/spi.c: 66:                         SSPCON1bits.SSPM1 = 0x01;
+   601                           ;CREATE_FILES/SPI/spi.c: 70:                         SSPCON1bits.SSPM1 = 0x01;
    602  00006A  82C6               	bsf	198,1,c	;volatile
    603                           
-   604                           ;CREATE_FILES/SPI/spi.c: 67:                         SSPCON1bits.SSPM0 = 0x01;
+   604                           ;CREATE_FILES/SPI/spi.c: 71:                         SSPCON1bits.SSPM0 = 0x01;
    605  00006C  80C6               	bsf	198,0,c	;volatile
    606                           
-   607                           ;CREATE_FILES/SPI/spi.c: 68:                         break;
+   607                           ;CREATE_FILES/SPI/spi.c: 72:                         break;
    608  00006E  EFC5  F000         	goto	l1262
    609  000072                     l1252:
    610  000072  EE20 F003          	lfsr	2,3
@@ -702,37 +702,37 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    680  0000DA  EFC5  F000         	goto	l1262
    681  0000DE                     l114:
    682                           
-   683                           ;CREATE_FILES/SPI/spi.c: 79:                     {;CREATE_FILES/SPI/spi.c: 81:          
+   683                           ;CREATE_FILES/SPI/spi.c: 83:                     {;CREATE_FILES/SPI/spi.c: 85:          
       +                                         SSPCON1bits.SSPM2 = 0x00;
    684  0000DE  94C6               	bcf	198,2,c	;volatile
    685                           
-   686                           ;CREATE_FILES/SPI/spi.c: 82:                         SSPCON1bits.SSPM2 = 0x01;
+   686                           ;CREATE_FILES/SPI/spi.c: 86:                         SSPCON1bits.SSPM2 = 0x01;
    687  0000E0  84C6               	bsf	198,2,c	;volatile
    688                           
-   689                           ;CREATE_FILES/SPI/spi.c: 83:                         SSPCON1bits.SSPM1 = 0x00;
+   689                           ;CREATE_FILES/SPI/spi.c: 87:                         SSPCON1bits.SSPM1 = 0x00;
    690  0000E2  92C6               	bcf	198,1,c	;volatile
    691                           
-   692                           ;CREATE_FILES/SPI/spi.c: 84:                         SSPCON1bits.SSPM0 = 0x00;
+   692                           ;CREATE_FILES/SPI/spi.c: 88:                         SSPCON1bits.SSPM0 = 0x00;
    693  0000E4  90C6               	bcf	198,0,c	;volatile
    694                           
-   695                           ;CREATE_FILES/SPI/spi.c: 85:                         break;
+   695                           ;CREATE_FILES/SPI/spi.c: 89:                         break;
    696  0000E6  EFC5  F000         	goto	l1262
    697  0000EA                     l116:
    698                           
-   699                           ;CREATE_FILES/SPI/spi.c: 88:                     {;CREATE_FILES/SPI/spi.c: 91:          
+   699                           ;CREATE_FILES/SPI/spi.c: 92:                     {;CREATE_FILES/SPI/spi.c: 95:          
       +                                         SSPCON1bits.SSPM2 = 0x00;
    700  0000EA  94C6               	bcf	198,2,c	;volatile
    701                           
-   702                           ;CREATE_FILES/SPI/spi.c: 92:                         SSPCON1bits.SSPM2 = 0x01;
+   702                           ;CREATE_FILES/SPI/spi.c: 96:                         SSPCON1bits.SSPM2 = 0x01;
    703  0000EC  84C6               	bsf	198,2,c	;volatile
    704                           
-   705                           ;CREATE_FILES/SPI/spi.c: 93:                         SSPCON1bits.SSPM1 = 0x00;
+   705                           ;CREATE_FILES/SPI/spi.c: 97:                         SSPCON1bits.SSPM1 = 0x00;
    706  0000EE  92C6               	bcf	198,1,c	;volatile
    707                           
-   708                           ;CREATE_FILES/SPI/spi.c: 94:                         SSPCON1bits.SSPM0 = 0x01;
+   708                           ;CREATE_FILES/SPI/spi.c: 98:                         SSPCON1bits.SSPM0 = 0x01;
    709  0000F0  80C6               	bsf	198,0,c	;volatile
    710                           
-   711                           ;CREATE_FILES/SPI/spi.c: 95:                         break;
+   711                           ;CREATE_FILES/SPI/spi.c: 99:                         break;
    712  0000F2  EFC5  F000         	goto	l1262
    713  0000F6                     l1256:
    714  0000F6  EE20 F002          	lfsr	2,2
@@ -813,59 +813,59 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    787  00015E  EF96  F000         	goto	l117
    788  000162                     l121:
    789                           
-   790                           ;CREATE_FILES/SPI/spi.c: 116:             {;CREATE_FILES/SPI/spi.c: 117:                
+   790                           ;CREATE_FILES/SPI/spi.c: 120:             {;CREATE_FILES/SPI/spi.c: 121:                
       +                           SSPCON1bits.CKP = 0x00;
    791  000162  98C6               	bcf	198,4,c	;volatile
    792                           
-   793                           ;CREATE_FILES/SPI/spi.c: 118:                 SSPSTATbits.CKE = 0x01;
+   793                           ;CREATE_FILES/SPI/spi.c: 122:                 SSPSTATbits.CKE = 0x01;
    794  000164  8CC7               	bsf	199,6,c	;volatile
    795                           
-   796                           ;CREATE_FILES/SPI/spi.c: 119:                 SSPSTATbits.SMP = 0x00;
+   796                           ;CREATE_FILES/SPI/spi.c: 123:                 SSPSTATbits.SMP = 0x00;
    797  000166  9EC7               	bcf	199,7,c	;volatile
    798                           
-   799                           ;CREATE_FILES/SPI/spi.c: 120:                 break;
+   799                           ;CREATE_FILES/SPI/spi.c: 124:                 break;
    800  000168  EFEA  F000         	goto	l129
    801  00016C                     l123:
    802                           
-   803                           ;CREATE_FILES/SPI/spi.c: 129:             {;CREATE_FILES/SPI/spi.c: 130:                
+   803                           ;CREATE_FILES/SPI/spi.c: 133:             {;CREATE_FILES/SPI/spi.c: 134:                
       +                           SSPCON1bits.CKP = 0x00;
    804  00016C  98C6               	bcf	198,4,c	;volatile
    805                           
-   806                           ;CREATE_FILES/SPI/spi.c: 131:                 SSPSTATbits.CKE = 0x00;
+   806                           ;CREATE_FILES/SPI/spi.c: 135:                 SSPSTATbits.CKE = 0x00;
    807  00016E  9CC7               	bcf	199,6,c	;volatile
    808                           
-   809                           ;CREATE_FILES/SPI/spi.c: 132:                 SSPSTATbits.SMP = 0x01;
+   809                           ;CREATE_FILES/SPI/spi.c: 136:                 SSPSTATbits.SMP = 0x01;
    810  000170  8EC7               	bsf	199,7,c	;volatile
    811                           
-   812                           ;CREATE_FILES/SPI/spi.c: 134:                 break;
+   812                           ;CREATE_FILES/SPI/spi.c: 138:                 break;
    813  000172  EFEA  F000         	goto	l129
    814  000176                     l124:
    815                           
-   816                           ;CREATE_FILES/SPI/spi.c: 144:             {;CREATE_FILES/SPI/spi.c: 145:                
+   816                           ;CREATE_FILES/SPI/spi.c: 148:             {;CREATE_FILES/SPI/spi.c: 149:                
       +                           SSPCON1bits.CKP = 0x01;
    817  000176  88C6               	bsf	198,4,c	;volatile
    818                           
-   819                           ;CREATE_FILES/SPI/spi.c: 146:                 SSPSTATbits.CKE = 0x01;
+   819                           ;CREATE_FILES/SPI/spi.c: 150:                 SSPSTATbits.CKE = 0x01;
    820  000178  8CC7               	bsf	199,6,c	;volatile
    821                           
-   822                           ;CREATE_FILES/SPI/spi.c: 147:                 SSPSTATbits.SMP = 0x00;
+   822                           ;CREATE_FILES/SPI/spi.c: 151:                 SSPSTATbits.SMP = 0x00;
    823  00017A  9EC7               	bcf	199,7,c	;volatile
    824                           
-   825                           ;CREATE_FILES/SPI/spi.c: 148:                 break;
+   825                           ;CREATE_FILES/SPI/spi.c: 152:                 break;
    826  00017C  EFEA  F000         	goto	l129
    827  000180                     l125:
    828                           
-   829                           ;CREATE_FILES/SPI/spi.c: 158:             {;CREATE_FILES/SPI/spi.c: 159:                
+   829                           ;CREATE_FILES/SPI/spi.c: 162:             {;CREATE_FILES/SPI/spi.c: 163:                
       +                           SSPCON1bits.CKP = 0x01;
    830  000180  88C6               	bsf	198,4,c	;volatile
    831                           
-   832                           ;CREATE_FILES/SPI/spi.c: 160:                 SSPSTATbits.CKE = 0x00;
+   832                           ;CREATE_FILES/SPI/spi.c: 164:                 SSPSTATbits.CKE = 0x00;
    833  000182  9CC7               	bcf	199,6,c	;volatile
    834                           
-   835                           ;CREATE_FILES/SPI/spi.c: 161:                 SSPSTATbits.SMP = 0x01;
+   835                           ;CREATE_FILES/SPI/spi.c: 165:                 SSPSTATbits.SMP = 0x01;
    836  000184  8EC7               	bsf	199,7,c	;volatile
    837                           
-   838                           ;CREATE_FILES/SPI/spi.c: 162:                 break;
+   838                           ;CREATE_FILES/SPI/spi.c: 166:                 break;
    839  000186  EFEA  F000         	goto	l129
    840  00018A                     l1262:
    841  00018A  EE20 F001          	lfsr	2,1
@@ -1082,7 +1082,7 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
   1051                           
   1052 ;; *************** function _SPI_Write *****************
   1053 ;; Defined at:
-  1054 ;;		line 178 in file "CREATE_FILES/SPI/spi.c"
+  1054 ;;		line 182 in file "CREATE_FILES/SPI/spi.c"
   1055 ;; Parameters:    Size  Location     Type
   1056 ;;  transBuffer     2    0[COMRAM] PTR unsigned char 
   1057 ;;		 -> dataTrans(8), 
@@ -1120,7 +1120,7 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
   1089  0003FA  0BDF               	andlw	223
   1090  0003FC  6E89               	movwf	137,c	;volatile
   1091  0003FE                     
-  1092                           ;CREATE_FILES/SPI/spi.c: 186:     SSPBUF = transBuffer[currCol];
+  1092                           ;CREATE_FILES/SPI/spi.c: 190:     SSPBUF = transBuffer[currCol];
   1093  0003FE  5012               	movf	SPI_Write@currCol^0,w,c
   1094  000400  2410               	addwf	SPI_Write@transBuffer^0,w,c
   1095  000402  6ED9               	movwf	fsr2l,c
@@ -1416,7 +1416,7 @@ Auto Spaces:
     BANK2           256      0       0
     BANK3           256      0       0
     BANK4           256      0       0
-    BANK5           256      0       0
+    BANK5           244      0       0
 
 Pointer List with Targets:
 
@@ -1544,33 +1544,43 @@ Call Graph Tables:
 
  Address spaces:
 Name               Size   Autos  Total    Cost      Usage
-BIGRAM             5FF      0       0      17        0.0%
+BIGRAM             5F3      0       0      16        0.0%
 EEDATA             100      0       0       0        0.0%
-BITBANK5           100      0       0      16        0.0%
-BANK5              100      0       0      14        0.0%
-BITBANK4           100      0       0      12        0.0%
-BANK4              100      0       0      13        0.0%
-BITBANK3           100      0       0      10        0.0%
-BANK3              100      0       0      11        0.0%
-BITBANK2           100      0       0       8        0.0%
-BANK2              100      0       0       9        0.0%
-BITBANK1           100      0       0       6        0.0%
-BANK1              100      0       0       7        0.0%
-BITBANK0            80      0       0       4        0.0%
-BANK0               80      0       0       5        0.0%
+BITBANK4           100      0       0      11        0.0%
+BANK4              100      0       0      12        0.0%
+BITBANK3           100      0       0       9        0.0%
+BANK3              100      0       0      10        0.0%
+BITBANK2           100      0       0       7        0.0%
+BANK2              100      0       0       8        0.0%
+BITBANK1           100      0       0       5        0.0%
+BANK1              100      0       0       6        0.0%
+BITBANK5            F4      0       0      15        0.0%
+BANK5               F4      0       0      13        0.0%
+BITBANK0            80      0       0       3        0.0%
+BANK0               80      0       0       4        0.0%
 BITCOMRAM           7E      0       0       0        0.0%
 COMRAM              7E      E      21       1       26.2%
+BITSFR_5             0      0       0     200        0.0%
+SFR_5                0      0       0     200        0.0%
+BITSFR_4             0      0       0     200        0.0%
+SFR_4                0      0       0     200        0.0%
+BITSFR_3             0      0       0     200        0.0%
+SFR_3                0      0       0     200        0.0%
+BITSFR_2             0      0       0     200        0.0%
+SFR_2                0      0       0     200        0.0%
+BITSFR_1             0      0       0     200        0.0%
+SFR_1                0      0       0     200        0.0%
 BITSFR               0      0       0     200        0.0%
 SFR                  0      0       0     200        0.0%
 STACK                0      0       0       2        0.0%
 NULL                 0      0       0       0        0.0%
-ABS                  0      0      21      15        0.0%
-DATA                 0      0      21       3        0.0%
+ABS                  0      0      21      14        0.0%
+DATA                 0      0      21      17        0.0%
 CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.10 build 88905656 
-Symbol Table                                                                                   Thu Jul 16 11:53:54 2020
+Symbol Table                                                                                   Thu Jul 16 11:41:48 2020
 
                             l9 0438                              _i 001D                    _SSPSTATbits 000FC7  
                            l94 01D0                             l97 002A                             l98 0030  

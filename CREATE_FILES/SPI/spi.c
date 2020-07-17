@@ -15,15 +15,11 @@ void SPI_Init(spi_config* spiConfig)
     {
         /* Defines directions of pins used in spi communication */
         // CONFIGURE_PIN_DIGITAL(type, port, mask)
-        /**/
+        
         CONFIGURE_PIN_DIGITAL(OUTPUT_PIN, SPI_MOSI_PORT, SPI_MOSI_MASK);
         CONFIGURE_PIN_DIGITAL(INPUT_PIN, SPI_MISO_PORT, SPI_MISO_MASK);
         CONFIGURE_PIN_DIGITAL(OUTPUT_PIN, SPI_CLOCK_PORT, SPI_CLOCK_MASK);
         CONFIGURE_PIN_DIGITAL(OUTPUT_PIN, SPI_SS_PORT, SPI_SS_MASK);
-
-        /*
-        
-        */
         
         /*Disables serial port and configures these pins as I/O pins*/
         SSPCON1bits.SSPEN = 0x00;
@@ -186,9 +182,9 @@ void SPI_Write(uint8_t* transBuffer,  uint8_t currCol)
     
     /* Configure chip select as low (active)*/
     DIGITAL_PIN_WRITE(PIN_LOW, SPI_SS_PORT, SPI_SS_MASK);
-    receive = SSPBUF; // -> Clear the buffer
+   //  receive = SSPBUF; // -> Clear the buffer
     SSPBUF = transBuffer[currCol];
-    while(!SSPSTATbits.BF);
+   //  while(!SSPSTATbits.BF);
     DIGITAL_PIN_WRITE(PIN_HIGH, SPI_SS_PORT, SPI_SS_MASK);
 }
 

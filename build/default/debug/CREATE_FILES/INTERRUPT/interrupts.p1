@@ -1,93 +1,77 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"27 CREATE_FILES/SPI/spi.h
-[; ;CREATE_FILES/SPI/spi.h: 27: {
-[s S281 `uc 1 `uc 1 `uc 1 `ul 1 ]
-[n S281 . masterMode clockMode controlSSPin baudRate ]
-"1921 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 1921: extern volatile unsigned char TRISC __attribute__((address(0xF94)));
-[v _TRISC `Vuc ~T0 @X0 0 e@3988 ]
-"1477
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 1477: extern volatile unsigned char TRISA __attribute__((address(0xF92)));
-[v _TRISA `Vuc ~T0 @X0 0 e@3986 ]
-"5016
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 5016:     struct {
-[s S201 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S201 . SSPM CKP SSPEN SSPOV WCOL ]
-"5023
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 5023:     struct {
-[s S202 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S202 . SSPM0 SSPM1 SSPM2 SSPM3 ]
-"5015
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 5015: typedef union {
-[u S200 `S201 1 `S202 1 ]
-[n S200 . . . ]
-"5030
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 5030: extern volatile SSPCON1bits_t SSPCON1bits __attribute__((address(0xFC6)));
-[v _SSPCON1bits `VS200 ~T0 @X0 0 e@4038 ]
-"5086
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 5086:     struct {
-[s S204 :2 `uc 1 :1 `uc 1 ]
-[n S204 . . R_NOT_W ]
-"5090
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 5090:     struct {
-[s S205 :5 `uc 1 :1 `uc 1 ]
-[n S205 . . D_NOT_A ]
-"5094
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 5094:     struct {
-[s S206 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S206 . BF UA R_nW S P D_nA CKE SMP ]
-"5104
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 5104:     struct {
-[s S207 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S207 . . R . D ]
-"5110
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 5110:     struct {
-[s S208 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S208 . . W . A ]
-"5116
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 5116:     struct {
-[s S209 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S209 . . nW . nA ]
-"5122
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 5122:     struct {
-[s S210 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S210 . . R_W . D_A ]
-"5128
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 5128:     struct {
-[s S211 :2 `uc 1 :1 `uc 1 ]
-[n S211 . . NOT_WRITE ]
-"5132
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 5132:     struct {
-[s S212 :5 `uc 1 :1 `uc 1 ]
-[n S212 . . NOT_ADDRESS ]
-"5136
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 5136:     struct {
-[s S213 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S213 . . nWRITE . nADDRESS ]
-"5142
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 5142:     struct {
-[s S214 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S214 . . RW START STOP DA ]
-"5149
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 5149:     struct {
-[s S215 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S215 . . NOT_W . NOT_A ]
-"5085
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 5085: typedef union {
-[u S203 `S204 1 `S205 1 `S206 1 `S207 1 `S208 1 `S209 1 `S210 1 `S211 1 `S212 1 `S213 1 `S214 1 `S215 1 ]
-[n S203 . . . . . . . . . . . . . ]
-"5156
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 5156: extern volatile SSPSTATbits_t SSPSTATbits __attribute__((address(0xFC7)));
-[v _SSPSTATbits `VS203 ~T0 @X0 0 e@4039 ]
-"977
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 977: extern volatile unsigned char LATA __attribute__((address(0xF89)));
-[v _LATA `Vuc ~T0 @X0 0 e@3977 ]
-"52
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 52: extern volatile unsigned char PORTA __attribute__((address(0xF80)));
-[v _PORTA `Vuc ~T0 @X0 0 e@3968 ]
-"5308
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 5308: extern volatile unsigned char SSPBUF __attribute__((address(0xFC9)));
-[v _SSPBUF `Vuc ~T0 @X0 0 e@4041 ]
+"6698 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 6698:     struct {
+[s S275 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S275 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+"6708
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 6708:     struct {
+[s S276 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S276 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+"6718
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 6718:     struct {
+[s S277 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S277 . . GIEL GIEH ]
+"6697
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 6697: typedef union {
+[u S274 `S275 1 `S276 1 `S277 1 ]
+[n S274 . . . . ]
+"6724
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 6724: extern volatile INTCONbits_t INTCONbits __attribute__((address(0xFF2)));
+[v _INTCONbits `VS274 ~T0 @X0 0 e@4082 ]
+"5660
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 5660:     struct {
+[s S238 :1 `uc 1 ]
+[n S238 . NOT_BOR ]
+"5663
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 5663:     struct {
+[s S239 :1 `uc 1 :1 `uc 1 ]
+[n S239 . . NOT_POR ]
+"5667
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 5667:     struct {
+[s S240 :2 `uc 1 :1 `uc 1 ]
+[n S240 . . NOT_PD ]
+"5671
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 5671:     struct {
+[s S241 :3 `uc 1 :1 `uc 1 ]
+[n S241 . . NOT_TO ]
+"5675
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 5675:     struct {
+[s S242 :4 `uc 1 :1 `uc 1 ]
+[n S242 . . NOT_RI ]
+"5679
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 5679:     struct {
+[s S243 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S243 . nBOR nPOR nPD nTO nRI . SBOREN IPEN ]
+"5689
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 5689:     struct {
+[s S244 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S244 . BOR POR PD TO RI ]
+"5659
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 5659: typedef union {
+[u S237 `S238 1 `S239 1 `S240 1 `S241 1 `S242 1 `S243 1 `S244 1 ]
+[n S237 . . . . . . . . ]
+"5697
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 5697: extern volatile RCONbits_t RCONbits __attribute__((address(0xFD0)));
+[v _RCONbits `VS237 ~T0 @X0 0 e@4048 ]
+"6628
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 6628:     struct {
+[s S271 :7 `uc 1 :1 `uc 1 ]
+[n S271 . . NOT_RBPU ]
+"6632
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 6632:     struct {
+[s S272 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S272 . RBIP . TMR0IP . INTEDG2 INTEDG1 INTEDG0 nRBPU ]
+"6642
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 6642:     struct {
+[s S273 :7 `uc 1 :1 `uc 1 ]
+[n S273 . . RBPU ]
+"6627
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 6627: typedef union {
+[u S270 `S271 1 `S272 1 `S273 1 ]
+[n S270 . . . . ]
+"6647
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 6647: extern volatile INTCON2bits_t INTCON2bits __attribute__((address(0xFF1)));
+[v _INTCON2bits `VS270 ~T0 @X0 0 e@4081 ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -502,474 +486,36 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7001
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 7001: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"12 CREATE_FILES/SPI/spi.c
-[; ;CREATE_FILES/SPI/spi.c: 12: void SPI_Init(spi_config* spiConfig)
-[v _SPI_Init `(v ~T0 @X0 1 ef1`*S281 ]
-"13
-[; ;CREATE_FILES/SPI/spi.c: 13: {
+"4 CREATE_FILES/INTERRUPT/interrupts.c
+[; ;CREATE_FILES/INTERRUPT/interrupts.c: 4: void Interrupts_Configure(void)
+[v _Interrupts_Configure `(v ~T0 @X0 1 ef ]
+"5
+[; ;CREATE_FILES/INTERRUPT/interrupts.c: 5: {
 {
-[e :U _SPI_Init ]
-"12
-[; ;CREATE_FILES/SPI/spi.c: 12: void SPI_Init(spi_config* spiConfig)
-[v _spiConfig `*S281 ~T0 @X0 1 r1 ]
-"13
-[; ;CREATE_FILES/SPI/spi.c: 13: {
+[e :U _Interrupts_Configure ]
 [f ]
-"14
-[; ;CREATE_FILES/SPI/spi.c: 14:     if(spiConfig != ((void*)0))
-[e $ ! != _spiConfig -> -> -> 0 `i `*v `*S281 283  ]
-"15
-[; ;CREATE_FILES/SPI/spi.c: 15:     {
-{
-"19
-[; ;CREATE_FILES/SPI/spi.c: 19:         if(0x00 == 0x00) TRISC = (TRISC & (~(1 << 5))); if(0x01 == 0x00) TRISC = (TRISC | (1 << 5));;
-[e $ ! == -> 0 `i -> 0 `i 284  ]
-[e = _TRISC -> & -> _TRISC `i ~ << -> 1 `i -> 5 `i `uc ]
-[e :U 284 ]
-[e $ ! == -> 1 `i -> 0 `i 285  ]
-[e = _TRISC -> | -> _TRISC `i << -> 1 `i -> 5 `i `uc ]
-[e :U 285 ]
-"20
-[; ;CREATE_FILES/SPI/spi.c: 20:         if(0x00 == 0x01) TRISC = (TRISC & (~(1 << 4))); if(0x01 == 0x01) TRISC = (TRISC | (1 << 4));;
-[e $ ! == -> 0 `i -> 1 `i 286  ]
-[e = _TRISC -> & -> _TRISC `i ~ << -> 1 `i -> 4 `i `uc ]
-[e :U 286 ]
-[e $ ! == -> 1 `i -> 1 `i 287  ]
-[e = _TRISC -> | -> _TRISC `i << -> 1 `i -> 4 `i `uc ]
-[e :U 287 ]
-"21
-[; ;CREATE_FILES/SPI/spi.c: 21:         if(0x00 == 0x00) TRISC = (TRISC & (~(1 << 3))); if(0x01 == 0x00) TRISC = (TRISC | (1 << 3));;
-[e $ ! == -> 0 `i -> 0 `i 288  ]
-[e = _TRISC -> & -> _TRISC `i ~ << -> 1 `i -> 3 `i `uc ]
-[e :U 288 ]
-[e $ ! == -> 1 `i -> 0 `i 289  ]
-[e = _TRISC -> | -> _TRISC `i << -> 1 `i -> 3 `i `uc ]
-[e :U 289 ]
-"22
-[; ;CREATE_FILES/SPI/spi.c: 22:         if(0x00 == 0x00) TRISA = (TRISA & (~(1 << 5))); if(0x01 == 0x00) TRISA = (TRISA | (1 << 5));;
-[e $ ! == -> 0 `i -> 0 `i 290  ]
-[e = _TRISA -> & -> _TRISA `i ~ << -> 1 `i -> 5 `i `uc ]
-[e :U 290 ]
-[e $ ! == -> 1 `i -> 0 `i 291  ]
-[e = _TRISA -> | -> _TRISA `i << -> 1 `i -> 5 `i `uc ]
-[e :U 291 ]
+"9
+[; ;CREATE_FILES/INTERRUPT/interrupts.c: 9:     INTCONbits.GIE = 0x01;
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+"10
+[; ;CREATE_FILES/INTERRUPT/interrupts.c: 10:     INTCONbits.GIEH = 0x01;
+[e = . . _INTCONbits 2 2 -> -> 1 `i `uc ]
+"13
+[; ;CREATE_FILES/INTERRUPT/interrupts.c: 13:     RCONbits.IPEN = 0x01;
+[e = . . _RCONbits 5 7 -> -> 1 `i `uc ]
+"16
+[; ;CREATE_FILES/INTERRUPT/interrupts.c: 16:     INTCONbits.PEIE = 0x01;
+[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
+"17
+[; ;CREATE_FILES/INTERRUPT/interrupts.c: 17:     INTCONbits.GIEL = 0x01;
+[e = . . _INTCONbits 2 1 -> -> 1 `i `uc ]
 "25
-[; ;CREATE_FILES/SPI/spi.c: 25:         SSPCON1bits.SSPEN = 0x00;
-[e = . . _SSPCON1bits 0 2 -> -> 0 `i `uc ]
-"28
-[; ;CREATE_FILES/SPI/spi.c: 28:         switch(spiConfig->masterMode)
-[e $U 293  ]
-"29
-[; ;CREATE_FILES/SPI/spi.c: 29:         {
-{
-"30
-[; ;CREATE_FILES/SPI/spi.c: 30:             case 1:
-[e :U 294 ]
-"31
-[; ;CREATE_FILES/SPI/spi.c: 31:             {
-{
-"32
-[; ;CREATE_FILES/SPI/spi.c: 32:                 switch(spiConfig->baudRate)
-[e $U 296  ]
-"33
-[; ;CREATE_FILES/SPI/spi.c: 33:                 {
-{
-"34
-[; ;CREATE_FILES/SPI/spi.c: 34:                     case 3:
-[e :U 297 ]
-"35
-[; ;CREATE_FILES/SPI/spi.c: 35:                     {
-{
-"37
-[; ;CREATE_FILES/SPI/spi.c: 37:                         SSPCON1bits.SSPM2 = 0x00;
-[e = . . _SSPCON1bits 1 2 -> -> 0 `i `uc ]
-"38
-[; ;CREATE_FILES/SPI/spi.c: 38:                         SSPCON1bits.SSPM2 = 0x00;
-[e = . . _SSPCON1bits 1 2 -> -> 0 `i `uc ]
-"39
-[; ;CREATE_FILES/SPI/spi.c: 39:                         SSPCON1bits.SSPM1 = 0x00;
-[e = . . _SSPCON1bits 1 1 -> -> 0 `i `uc ]
-"40
-[; ;CREATE_FILES/SPI/spi.c: 40:                         SSPCON1bits.SSPM0 = 0x00;
-[e = . . _SSPCON1bits 1 0 -> -> 0 `i `uc ]
-"41
-[; ;CREATE_FILES/SPI/spi.c: 41:                         break;
-[e $U 295  ]
-"42
-[; ;CREATE_FILES/SPI/spi.c: 42:                     }
-}
-"43
-[; ;CREATE_FILES/SPI/spi.c: 43:                     case 2:
-[e :U 298 ]
-"44
-[; ;CREATE_FILES/SPI/spi.c: 44:                     {
-{
-"46
-[; ;CREATE_FILES/SPI/spi.c: 46:                         SSPCON1bits.SSPM2 = 0x00;
-[e = . . _SSPCON1bits 1 2 -> -> 0 `i `uc ]
-"47
-[; ;CREATE_FILES/SPI/spi.c: 47:                         SSPCON1bits.SSPM2 = 0x00;
-[e = . . _SSPCON1bits 1 2 -> -> 0 `i `uc ]
-"48
-[; ;CREATE_FILES/SPI/spi.c: 48:                         SSPCON1bits.SSPM1 = 0x00;
-[e = . . _SSPCON1bits 1 1 -> -> 0 `i `uc ]
-"49
-[; ;CREATE_FILES/SPI/spi.c: 49:                         SSPCON1bits.SSPM0 = 0x01;
-[e = . . _SSPCON1bits 1 0 -> -> 1 `i `uc ]
-"50
-[; ;CREATE_FILES/SPI/spi.c: 50:                         break;
-[e $U 295  ]
-"51
-[; ;CREATE_FILES/SPI/spi.c: 51:                     }
-}
-"52
-[; ;CREATE_FILES/SPI/spi.c: 52:                     case 1:
-[e :U 299 ]
-"53
-[; ;CREATE_FILES/SPI/spi.c: 53:                     {
-{
-"55
-[; ;CREATE_FILES/SPI/spi.c: 55:                         SSPCON1bits.SSPM2 = 0x00;
-[e = . . _SSPCON1bits 1 2 -> -> 0 `i `uc ]
-"56
-[; ;CREATE_FILES/SPI/spi.c: 56:                         SSPCON1bits.SSPM2 = 0x00;
-[e = . . _SSPCON1bits 1 2 -> -> 0 `i `uc ]
-"57
-[; ;CREATE_FILES/SPI/spi.c: 57:                         SSPCON1bits.SSPM1 = 0x01;
-[e = . . _SSPCON1bits 1 1 -> -> 1 `i `uc ]
-"58
-[; ;CREATE_FILES/SPI/spi.c: 58:                         SSPCON1bits.SSPM0 = 0x00;
-[e = . . _SSPCON1bits 1 0 -> -> 0 `i `uc ]
-"59
-[; ;CREATE_FILES/SPI/spi.c: 59:                         break;
-[e $U 295  ]
-"60
-[; ;CREATE_FILES/SPI/spi.c: 60:                     }
-}
-"61
-[; ;CREATE_FILES/SPI/spi.c: 61:                     case 0:
-[e :U 300 ]
-"62
-[; ;CREATE_FILES/SPI/spi.c: 62:                     {
-{
-"64
-[; ;CREATE_FILES/SPI/spi.c: 64:                         SSPCON1bits.SSPM2 = 0x00;
-[e = . . _SSPCON1bits 1 2 -> -> 0 `i `uc ]
-"65
-[; ;CREATE_FILES/SPI/spi.c: 65:                         SSPCON1bits.SSPM2 = 0x00;
-[e = . . _SSPCON1bits 1 2 -> -> 0 `i `uc ]
-"66
-[; ;CREATE_FILES/SPI/spi.c: 66:                         SSPCON1bits.SSPM1 = 0x01;
-[e = . . _SSPCON1bits 1 1 -> -> 1 `i `uc ]
-"67
-[; ;CREATE_FILES/SPI/spi.c: 67:                         SSPCON1bits.SSPM0 = 0x01;
-[e = . . _SSPCON1bits 1 0 -> -> 1 `i `uc ]
-"68
-[; ;CREATE_FILES/SPI/spi.c: 68:                         break;
-[e $U 295  ]
-"69
-[; ;CREATE_FILES/SPI/spi.c: 69:                     }
-}
-"70
-[; ;CREATE_FILES/SPI/spi.c: 70:                 }
-}
-[e $U 295  ]
-[e :U 296 ]
-[e [\ . *U _spiConfig 3 , $ -> -> -> 3 `i `l `ul 297
- , $ -> -> -> 2 `i `l `ul 298
- , $ -> -> -> 1 `i `l `ul 299
- , $ -> -> -> 0 `i `l `ul 300
- 295 ]
-[e :U 295 ]
-"71
-[; ;CREATE_FILES/SPI/spi.c: 71:                 break;
-[e $U 292  ]
-"72
-[; ;CREATE_FILES/SPI/spi.c: 72:             }
-}
-"74
-[; ;CREATE_FILES/SPI/spi.c: 74:             case 0:
-[e :U 301 ]
-"75
-[; ;CREATE_FILES/SPI/spi.c: 75:             {
-{
-"76
-[; ;CREATE_FILES/SPI/spi.c: 76:                 switch(spiConfig->controlSSPin)
-[e $U 303  ]
-"77
-[; ;CREATE_FILES/SPI/spi.c: 77:                 {
-{
-"78
-[; ;CREATE_FILES/SPI/spi.c: 78:                     case 0:
-[e :U 304 ]
-"79
-[; ;CREATE_FILES/SPI/spi.c: 79:                     {
-{
-"81
-[; ;CREATE_FILES/SPI/spi.c: 81:                         SSPCON1bits.SSPM2 = 0x00;
-[e = . . _SSPCON1bits 1 2 -> -> 0 `i `uc ]
-"82
-[; ;CREATE_FILES/SPI/spi.c: 82:                         SSPCON1bits.SSPM2 = 0x01;
-[e = . . _SSPCON1bits 1 2 -> -> 1 `i `uc ]
-"83
-[; ;CREATE_FILES/SPI/spi.c: 83:                         SSPCON1bits.SSPM1 = 0x00;
-[e = . . _SSPCON1bits 1 1 -> -> 0 `i `uc ]
-"84
-[; ;CREATE_FILES/SPI/spi.c: 84:                         SSPCON1bits.SSPM0 = 0x00;
-[e = . . _SSPCON1bits 1 0 -> -> 0 `i `uc ]
-"85
-[; ;CREATE_FILES/SPI/spi.c: 85:                         break;
-[e $U 302  ]
-"86
-[; ;CREATE_FILES/SPI/spi.c: 86:                     }
-}
-"87
-[; ;CREATE_FILES/SPI/spi.c: 87:                     case 1:
-[e :U 305 ]
-"88
-[; ;CREATE_FILES/SPI/spi.c: 88:                     {
-{
-"91
-[; ;CREATE_FILES/SPI/spi.c: 91:                         SSPCON1bits.SSPM2 = 0x00;
-[e = . . _SSPCON1bits 1 2 -> -> 0 `i `uc ]
-"92
-[; ;CREATE_FILES/SPI/spi.c: 92:                         SSPCON1bits.SSPM2 = 0x01;
-[e = . . _SSPCON1bits 1 2 -> -> 1 `i `uc ]
-"93
-[; ;CREATE_FILES/SPI/spi.c: 93:                         SSPCON1bits.SSPM1 = 0x00;
-[e = . . _SSPCON1bits 1 1 -> -> 0 `i `uc ]
-"94
-[; ;CREATE_FILES/SPI/spi.c: 94:                         SSPCON1bits.SSPM0 = 0x01;
-[e = . . _SSPCON1bits 1 0 -> -> 1 `i `uc ]
-"95
-[; ;CREATE_FILES/SPI/spi.c: 95:                         break;
-[e $U 302  ]
-"96
-[; ;CREATE_FILES/SPI/spi.c: 96:                     }
-}
-"98
-[; ;CREATE_FILES/SPI/spi.c: 98:                 }
-}
-[e $U 302  ]
-[e :U 303 ]
-[e [\ -> . *U _spiConfig 2 `i , $ -> 0 `i 304
- , $ -> 1 `i 305
- 302 ]
-[e :U 302 ]
-"99
-[; ;CREATE_FILES/SPI/spi.c: 99:                 break;
-[e $U 292  ]
-"100
-[; ;CREATE_FILES/SPI/spi.c: 100:             }
-}
-"101
-[; ;CREATE_FILES/SPI/spi.c: 101:             default:
-[e :U 306 ]
-"102
-[; ;CREATE_FILES/SPI/spi.c: 102:             {
-{
-"103
-[; ;CREATE_FILES/SPI/spi.c: 103:                 for(;;);
-{
-[e :U 307 ]
-[e $U 307  ]
-[e :U 308 ]
-}
-"104
-[; ;CREATE_FILES/SPI/spi.c: 104:             }
-}
-"105
-[; ;CREATE_FILES/SPI/spi.c: 105:         }
-}
-[e $U 292  ]
-[e :U 293 ]
-[e [\ -> . *U _spiConfig 0 `i , $ -> 1 `i 294
- , $ -> 0 `i 301
- 306 ]
-[e :U 292 ]
-"107
-[; ;CREATE_FILES/SPI/spi.c: 107:         switch(spiConfig->clockMode)
-[e $U 311  ]
-"108
-[; ;CREATE_FILES/SPI/spi.c: 108:         {
-{
-"115
-[; ;CREATE_FILES/SPI/spi.c: 115:             case 0:
-[e :U 312 ]
-"116
-[; ;CREATE_FILES/SPI/spi.c: 116:             {
-{
-"117
-[; ;CREATE_FILES/SPI/spi.c: 117:                 SSPCON1bits.CKP = 0x00;
-[e = . . _SSPCON1bits 0 1 -> -> 0 `i `uc ]
-"118
-[; ;CREATE_FILES/SPI/spi.c: 118:                 SSPSTATbits.CKE = 0x01;
-[e = . . _SSPSTATbits 2 6 -> -> 1 `i `uc ]
-"119
-[; ;CREATE_FILES/SPI/spi.c: 119:                 SSPSTATbits.SMP = 0x00;
-[e = . . _SSPSTATbits 2 7 -> -> 0 `i `uc ]
-"120
-[; ;CREATE_FILES/SPI/spi.c: 120:                 break;
-[e $U 310  ]
-"121
-[; ;CREATE_FILES/SPI/spi.c: 121:             }
-}
-"128
-[; ;CREATE_FILES/SPI/spi.c: 128:             case 1:
-[e :U 313 ]
-"129
-[; ;CREATE_FILES/SPI/spi.c: 129:             {
-{
-"130
-[; ;CREATE_FILES/SPI/spi.c: 130:                 SSPCON1bits.CKP = 0x00;
-[e = . . _SSPCON1bits 0 1 -> -> 0 `i `uc ]
-"131
-[; ;CREATE_FILES/SPI/spi.c: 131:                 SSPSTATbits.CKE = 0x00;
-[e = . . _SSPSTATbits 2 6 -> -> 0 `i `uc ]
-"132
-[; ;CREATE_FILES/SPI/spi.c: 132:                 SSPSTATbits.SMP = 0x01;
-[e = . . _SSPSTATbits 2 7 -> -> 1 `i `uc ]
-"134
-[; ;CREATE_FILES/SPI/spi.c: 134:                 break;
-[e $U 310  ]
-"135
-[; ;CREATE_FILES/SPI/spi.c: 135:             }
-}
-"143
-[; ;CREATE_FILES/SPI/spi.c: 143:             case 2:
-[e :U 314 ]
-"144
-[; ;CREATE_FILES/SPI/spi.c: 144:             {
-{
-"145
-[; ;CREATE_FILES/SPI/spi.c: 145:                 SSPCON1bits.CKP = 0x01;
-[e = . . _SSPCON1bits 0 1 -> -> 1 `i `uc ]
-"146
-[; ;CREATE_FILES/SPI/spi.c: 146:                 SSPSTATbits.CKE = 0x01;
-[e = . . _SSPSTATbits 2 6 -> -> 1 `i `uc ]
-"147
-[; ;CREATE_FILES/SPI/spi.c: 147:                 SSPSTATbits.SMP = 0x00;
-[e = . . _SSPSTATbits 2 7 -> -> 0 `i `uc ]
-"148
-[; ;CREATE_FILES/SPI/spi.c: 148:                 break;
-[e $U 310  ]
-"150
-[; ;CREATE_FILES/SPI/spi.c: 150:             }
-}
-"157
-[; ;CREATE_FILES/SPI/spi.c: 157:             case 3:
-[e :U 315 ]
-"158
-[; ;CREATE_FILES/SPI/spi.c: 158:             {
-{
-"159
-[; ;CREATE_FILES/SPI/spi.c: 159:                 SSPCON1bits.CKP = 0x01;
-[e = . . _SSPCON1bits 0 1 -> -> 1 `i `uc ]
-"160
-[; ;CREATE_FILES/SPI/spi.c: 160:                 SSPSTATbits.CKE = 0x00;
-[e = . . _SSPSTATbits 2 6 -> -> 0 `i `uc ]
-"161
-[; ;CREATE_FILES/SPI/spi.c: 161:                 SSPSTATbits.SMP = 0x01;
-[e = . . _SSPSTATbits 2 7 -> -> 1 `i `uc ]
-"162
-[; ;CREATE_FILES/SPI/spi.c: 162:                 break;
-[e $U 310  ]
-"163
-[; ;CREATE_FILES/SPI/spi.c: 163:             }
-}
-"164
-[; ;CREATE_FILES/SPI/spi.c: 164:         }
-}
-[e $U 310  ]
-[e :U 311 ]
-[e [\ -> . *U _spiConfig 1 `i , $ -> 0 `i 312
- , $ -> 1 `i 313
- , $ -> 2 `i 314
- , $ -> 3 `i 315
- 310 ]
-[e :U 310 ]
-"165
-[; ;CREATE_FILES/SPI/spi.c: 165:     }
-}
-[e $U 316  ]
-"166
-[; ;CREATE_FILES/SPI/spi.c: 166:     else
-[e :U 283 ]
-"167
-[; ;CREATE_FILES/SPI/spi.c: 167:     {
-{
-"168
-[; ;CREATE_FILES/SPI/spi.c: 168:         for(;;);
-{
-[e :U 317 ]
-[e $U 317  ]
-[e :U 318 ]
-}
-"169
-[; ;CREATE_FILES/SPI/spi.c: 169:     }
-}
-[e :U 316 ]
-"170
-[; ;CREATE_FILES/SPI/spi.c: 170: }
-[e :UE 282 ]
-}
-"172
-[; ;CREATE_FILES/SPI/spi.c: 172: void SPI_OnOff(uint8_t OnOff)
-[v _SPI_OnOff `(v ~T0 @X0 1 ef1`uc ]
-"173
-[; ;CREATE_FILES/SPI/spi.c: 173: {
-{
-[e :U _SPI_OnOff ]
-"172
-[; ;CREATE_FILES/SPI/spi.c: 172: void SPI_OnOff(uint8_t OnOff)
-[v _OnOff `uc ~T0 @X0 1 r1 ]
-"173
-[; ;CREATE_FILES/SPI/spi.c: 173: {
-[f ]
-"174
-[; ;CREATE_FILES/SPI/spi.c: 174:     SSPCON1bits.SSPEN = OnOff;
-[e = . . _SSPCON1bits 0 2 _OnOff ]
-"175
-[; ;CREATE_FILES/SPI/spi.c: 175: }
-[e :UE 320 ]
-}
-"178
-[; ;CREATE_FILES/SPI/spi.c: 178: void SPI_Write(uint8_t* transBuffer, uint8_t currCol)
-[v _SPI_Write `(v ~T0 @X0 1 ef2`*uc`uc ]
-"179
-[; ;CREATE_FILES/SPI/spi.c: 179: {
-{
-[e :U _SPI_Write ]
-"178
-[; ;CREATE_FILES/SPI/spi.c: 178: void SPI_Write(uint8_t* transBuffer, uint8_t currCol)
-[v _transBuffer `*uc ~T0 @X0 1 r1 ]
-[v _currCol `uc ~T0 @X0 1 r2 ]
-"179
-[; ;CREATE_FILES/SPI/spi.c: 179: {
-[f ]
-"181
-[; ;CREATE_FILES/SPI/spi.c: 181:     uint8_t receive;
-[v _receive `uc ~T0 @X0 1 a ]
-"184
-[; ;CREATE_FILES/SPI/spi.c: 184:     if(0x00 == 0x00) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x00) LATA = (PORTA | (1 << 5));;
-[e $ ! == -> 0 `i -> 0 `i 322  ]
-[e = _LATA -> & -> _PORTA `i ~ << -> 1 `i -> 5 `i `uc ]
-[e :U 322 ]
-[e $ ! == -> 1 `i -> 0 `i 323  ]
-[e = _LATA -> | -> _PORTA `i << -> 1 `i -> 5 `i `uc ]
-[e :U 323 ]
-"186
-[; ;CREATE_FILES/SPI/spi.c: 186:     SSPBUF = transBuffer[currCol];
-[e = _SSPBUF *U + _transBuffer * -> _currCol `ux -> -> # *U _transBuffer `ui `ux ]
-"188
-[; ;CREATE_FILES/SPI/spi.c: 188:     if(0x00 == 0x01) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x01) LATA = (PORTA | (1 << 5));;
-[e $ ! == -> 0 `i -> 1 `i 324  ]
-[e = _LATA -> & -> _PORTA `i ~ << -> 1 `i -> 5 `i `uc ]
-[e :U 324 ]
-[e $ ! == -> 1 `i -> 1 `i 325  ]
-[e = _LATA -> | -> _PORTA `i << -> 1 `i -> 5 `i `uc ]
-[e :U 325 ]
-"189
-[; ;CREATE_FILES/SPI/spi.c: 189: }
-[e :UE 321 ]
+[; ;CREATE_FILES/INTERRUPT/interrupts.c: 25:     INTCONbits.TMR0IE = 0x01;
+[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
+"26
+[; ;CREATE_FILES/INTERRUPT/interrupts.c: 26:     INTCON2bits.TMR0IP = 0x01;
+[e = . . _INTCON2bits 1 2 -> -> 1 `i `uc ]
+"27
+[; ;CREATE_FILES/INTERRUPT/interrupts.c: 27: }
+[e :UE 281 ]
 }

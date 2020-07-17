@@ -4632,10 +4632,6 @@ void SPI_Init(spi_config* spiConfig)
         if(0x00 == 0x00) TRISA = (TRISA & (~(1 << 5))); if(0x01 == 0x00) TRISA = (TRISA | (1 << 5));;
 
 
-
-
-
-
         SSPCON1bits.SSPEN = 0x00;
 
 
@@ -4796,8 +4792,8 @@ void SPI_Write(uint8_t* transBuffer, uint8_t currCol)
 
 
     if(0x00 == 0x00) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x00) LATA = (PORTA | (1 << 5));;
-    receive = SSPBUF;
+
     SSPBUF = transBuffer[currCol];
-    while(!SSPSTATbits.BF);
+
     if(0x00 == 0x01) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x01) LATA = (PORTA | (1 << 5));;
 }

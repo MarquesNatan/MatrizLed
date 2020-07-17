@@ -553,125 +553,125 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! == -> 1 `i -> 0 `i 291  ]
 [e = _TRISA -> | -> _TRISA `i << -> 1 `i -> 5 `i `uc ]
 [e :U 291 ]
-"25
-[; ;CREATE_FILES/SPI/spi.c: 25:         SSPCON1bits.SSPEN = 0x00;
-[e = . . _SSPCON1bits 0 2 -> -> 0 `i `uc ]
-"28
-[; ;CREATE_FILES/SPI/spi.c: 28:         switch(spiConfig->masterMode)
-[e $U 293  ]
 "29
-[; ;CREATE_FILES/SPI/spi.c: 29:         {
-{
-"30
-[; ;CREATE_FILES/SPI/spi.c: 30:             case 1:
-[e :U 294 ]
-"31
-[; ;CREATE_FILES/SPI/spi.c: 31:             {
-{
+[; ;CREATE_FILES/SPI/spi.c: 29:         SSPCON1bits.SSPEN = 0x00;
+[e = . . _SSPCON1bits 0 2 -> -> 0 `i `uc ]
 "32
-[; ;CREATE_FILES/SPI/spi.c: 32:                 switch(spiConfig->baudRate)
-[e $U 296  ]
+[; ;CREATE_FILES/SPI/spi.c: 32:         switch(spiConfig->masterMode)
+[e $U 293  ]
 "33
-[; ;CREATE_FILES/SPI/spi.c: 33:                 {
+[; ;CREATE_FILES/SPI/spi.c: 33:         {
 {
 "34
-[; ;CREATE_FILES/SPI/spi.c: 34:                     case 3:
-[e :U 297 ]
+[; ;CREATE_FILES/SPI/spi.c: 34:             case 1:
+[e :U 294 ]
 "35
-[; ;CREATE_FILES/SPI/spi.c: 35:                     {
+[; ;CREATE_FILES/SPI/spi.c: 35:             {
 {
+"36
+[; ;CREATE_FILES/SPI/spi.c: 36:                 switch(spiConfig->baudRate)
+[e $U 296  ]
 "37
-[; ;CREATE_FILES/SPI/spi.c: 37:                         SSPCON1bits.SSPM2 = 0x00;
-[e = . . _SSPCON1bits 1 2 -> -> 0 `i `uc ]
+[; ;CREATE_FILES/SPI/spi.c: 37:                 {
+{
 "38
-[; ;CREATE_FILES/SPI/spi.c: 38:                         SSPCON1bits.SSPM2 = 0x00;
-[e = . . _SSPCON1bits 1 2 -> -> 0 `i `uc ]
+[; ;CREATE_FILES/SPI/spi.c: 38:                     case 3:
+[e :U 297 ]
 "39
-[; ;CREATE_FILES/SPI/spi.c: 39:                         SSPCON1bits.SSPM1 = 0x00;
-[e = . . _SSPCON1bits 1 1 -> -> 0 `i `uc ]
-"40
-[; ;CREATE_FILES/SPI/spi.c: 40:                         SSPCON1bits.SSPM0 = 0x00;
-[e = . . _SSPCON1bits 1 0 -> -> 0 `i `uc ]
+[; ;CREATE_FILES/SPI/spi.c: 39:                     {
+{
 "41
-[; ;CREATE_FILES/SPI/spi.c: 41:                         break;
-[e $U 295  ]
+[; ;CREATE_FILES/SPI/spi.c: 41:                         SSPCON1bits.SSPM2 = 0x00;
+[e = . . _SSPCON1bits 1 2 -> -> 0 `i `uc ]
 "42
-[; ;CREATE_FILES/SPI/spi.c: 42:                     }
-}
+[; ;CREATE_FILES/SPI/spi.c: 42:                         SSPCON1bits.SSPM2 = 0x00;
+[e = . . _SSPCON1bits 1 2 -> -> 0 `i `uc ]
 "43
-[; ;CREATE_FILES/SPI/spi.c: 43:                     case 2:
-[e :U 298 ]
-"44
-[; ;CREATE_FILES/SPI/spi.c: 44:                     {
-{
-"46
-[; ;CREATE_FILES/SPI/spi.c: 46:                         SSPCON1bits.SSPM2 = 0x00;
-[e = . . _SSPCON1bits 1 2 -> -> 0 `i `uc ]
-"47
-[; ;CREATE_FILES/SPI/spi.c: 47:                         SSPCON1bits.SSPM2 = 0x00;
-[e = . . _SSPCON1bits 1 2 -> -> 0 `i `uc ]
-"48
-[; ;CREATE_FILES/SPI/spi.c: 48:                         SSPCON1bits.SSPM1 = 0x00;
+[; ;CREATE_FILES/SPI/spi.c: 43:                         SSPCON1bits.SSPM1 = 0x00;
 [e = . . _SSPCON1bits 1 1 -> -> 0 `i `uc ]
-"49
-[; ;CREATE_FILES/SPI/spi.c: 49:                         SSPCON1bits.SSPM0 = 0x01;
-[e = . . _SSPCON1bits 1 0 -> -> 1 `i `uc ]
-"50
-[; ;CREATE_FILES/SPI/spi.c: 50:                         break;
-[e $U 295  ]
-"51
-[; ;CREATE_FILES/SPI/spi.c: 51:                     }
-}
-"52
-[; ;CREATE_FILES/SPI/spi.c: 52:                     case 1:
-[e :U 299 ]
-"53
-[; ;CREATE_FILES/SPI/spi.c: 53:                     {
-{
-"55
-[; ;CREATE_FILES/SPI/spi.c: 55:                         SSPCON1bits.SSPM2 = 0x00;
-[e = . . _SSPCON1bits 1 2 -> -> 0 `i `uc ]
-"56
-[; ;CREATE_FILES/SPI/spi.c: 56:                         SSPCON1bits.SSPM2 = 0x00;
-[e = . . _SSPCON1bits 1 2 -> -> 0 `i `uc ]
-"57
-[; ;CREATE_FILES/SPI/spi.c: 57:                         SSPCON1bits.SSPM1 = 0x01;
-[e = . . _SSPCON1bits 1 1 -> -> 1 `i `uc ]
-"58
-[; ;CREATE_FILES/SPI/spi.c: 58:                         SSPCON1bits.SSPM0 = 0x00;
+"44
+[; ;CREATE_FILES/SPI/spi.c: 44:                         SSPCON1bits.SSPM0 = 0x00;
 [e = . . _SSPCON1bits 1 0 -> -> 0 `i `uc ]
-"59
-[; ;CREATE_FILES/SPI/spi.c: 59:                         break;
+"45
+[; ;CREATE_FILES/SPI/spi.c: 45:                         break;
 [e $U 295  ]
-"60
-[; ;CREATE_FILES/SPI/spi.c: 60:                     }
+"46
+[; ;CREATE_FILES/SPI/spi.c: 46:                     }
 }
-"61
-[; ;CREATE_FILES/SPI/spi.c: 61:                     case 0:
-[e :U 300 ]
-"62
-[; ;CREATE_FILES/SPI/spi.c: 62:                     {
+"47
+[; ;CREATE_FILES/SPI/spi.c: 47:                     case 2:
+[e :U 298 ]
+"48
+[; ;CREATE_FILES/SPI/spi.c: 48:                     {
 {
-"64
-[; ;CREATE_FILES/SPI/spi.c: 64:                         SSPCON1bits.SSPM2 = 0x00;
+"50
+[; ;CREATE_FILES/SPI/spi.c: 50:                         SSPCON1bits.SSPM2 = 0x00;
 [e = . . _SSPCON1bits 1 2 -> -> 0 `i `uc ]
-"65
-[; ;CREATE_FILES/SPI/spi.c: 65:                         SSPCON1bits.SSPM2 = 0x00;
+"51
+[; ;CREATE_FILES/SPI/spi.c: 51:                         SSPCON1bits.SSPM2 = 0x00;
 [e = . . _SSPCON1bits 1 2 -> -> 0 `i `uc ]
-"66
-[; ;CREATE_FILES/SPI/spi.c: 66:                         SSPCON1bits.SSPM1 = 0x01;
-[e = . . _SSPCON1bits 1 1 -> -> 1 `i `uc ]
-"67
-[; ;CREATE_FILES/SPI/spi.c: 67:                         SSPCON1bits.SSPM0 = 0x01;
+"52
+[; ;CREATE_FILES/SPI/spi.c: 52:                         SSPCON1bits.SSPM1 = 0x00;
+[e = . . _SSPCON1bits 1 1 -> -> 0 `i `uc ]
+"53
+[; ;CREATE_FILES/SPI/spi.c: 53:                         SSPCON1bits.SSPM0 = 0x01;
 [e = . . _SSPCON1bits 1 0 -> -> 1 `i `uc ]
-"68
-[; ;CREATE_FILES/SPI/spi.c: 68:                         break;
+"54
+[; ;CREATE_FILES/SPI/spi.c: 54:                         break;
 [e $U 295  ]
-"69
-[; ;CREATE_FILES/SPI/spi.c: 69:                     }
+"55
+[; ;CREATE_FILES/SPI/spi.c: 55:                     }
 }
+"56
+[; ;CREATE_FILES/SPI/spi.c: 56:                     case 1:
+[e :U 299 ]
+"57
+[; ;CREATE_FILES/SPI/spi.c: 57:                     {
+{
+"59
+[; ;CREATE_FILES/SPI/spi.c: 59:                         SSPCON1bits.SSPM2 = 0x00;
+[e = . . _SSPCON1bits 1 2 -> -> 0 `i `uc ]
+"60
+[; ;CREATE_FILES/SPI/spi.c: 60:                         SSPCON1bits.SSPM2 = 0x00;
+[e = . . _SSPCON1bits 1 2 -> -> 0 `i `uc ]
+"61
+[; ;CREATE_FILES/SPI/spi.c: 61:                         SSPCON1bits.SSPM1 = 0x01;
+[e = . . _SSPCON1bits 1 1 -> -> 1 `i `uc ]
+"62
+[; ;CREATE_FILES/SPI/spi.c: 62:                         SSPCON1bits.SSPM0 = 0x00;
+[e = . . _SSPCON1bits 1 0 -> -> 0 `i `uc ]
+"63
+[; ;CREATE_FILES/SPI/spi.c: 63:                         break;
+[e $U 295  ]
+"64
+[; ;CREATE_FILES/SPI/spi.c: 64:                     }
+}
+"65
+[; ;CREATE_FILES/SPI/spi.c: 65:                     case 0:
+[e :U 300 ]
+"66
+[; ;CREATE_FILES/SPI/spi.c: 66:                     {
+{
+"68
+[; ;CREATE_FILES/SPI/spi.c: 68:                         SSPCON1bits.SSPM2 = 0x00;
+[e = . . _SSPCON1bits 1 2 -> -> 0 `i `uc ]
+"69
+[; ;CREATE_FILES/SPI/spi.c: 69:                         SSPCON1bits.SSPM2 = 0x00;
+[e = . . _SSPCON1bits 1 2 -> -> 0 `i `uc ]
 "70
-[; ;CREATE_FILES/SPI/spi.c: 70:                 }
+[; ;CREATE_FILES/SPI/spi.c: 70:                         SSPCON1bits.SSPM1 = 0x01;
+[e = . . _SSPCON1bits 1 1 -> -> 1 `i `uc ]
+"71
+[; ;CREATE_FILES/SPI/spi.c: 71:                         SSPCON1bits.SSPM0 = 0x01;
+[e = . . _SSPCON1bits 1 0 -> -> 1 `i `uc ]
+"72
+[; ;CREATE_FILES/SPI/spi.c: 72:                         break;
+[e $U 295  ]
+"73
+[; ;CREATE_FILES/SPI/spi.c: 73:                     }
+}
+"74
+[; ;CREATE_FILES/SPI/spi.c: 74:                 }
 }
 [e $U 295  ]
 [e :U 296 ]
@@ -681,74 +681,74 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> -> -> 0 `i `l `ul 300
  295 ]
 [e :U 295 ]
-"71
-[; ;CREATE_FILES/SPI/spi.c: 71:                 break;
-[e $U 292  ]
-"72
-[; ;CREATE_FILES/SPI/spi.c: 72:             }
-}
-"74
-[; ;CREATE_FILES/SPI/spi.c: 74:             case 0:
-[e :U 301 ]
 "75
-[; ;CREATE_FILES/SPI/spi.c: 75:             {
-{
+[; ;CREATE_FILES/SPI/spi.c: 75:                 break;
+[e $U 292  ]
 "76
-[; ;CREATE_FILES/SPI/spi.c: 76:                 switch(spiConfig->controlSSPin)
-[e $U 303  ]
-"77
-[; ;CREATE_FILES/SPI/spi.c: 77:                 {
-{
+[; ;CREATE_FILES/SPI/spi.c: 76:             }
+}
 "78
-[; ;CREATE_FILES/SPI/spi.c: 78:                     case 0:
-[e :U 304 ]
+[; ;CREATE_FILES/SPI/spi.c: 78:             case 0:
+[e :U 301 ]
 "79
-[; ;CREATE_FILES/SPI/spi.c: 79:                     {
+[; ;CREATE_FILES/SPI/spi.c: 79:             {
 {
+"80
+[; ;CREATE_FILES/SPI/spi.c: 80:                 switch(spiConfig->controlSSPin)
+[e $U 303  ]
 "81
-[; ;CREATE_FILES/SPI/spi.c: 81:                         SSPCON1bits.SSPM2 = 0x00;
-[e = . . _SSPCON1bits 1 2 -> -> 0 `i `uc ]
-"82
-[; ;CREATE_FILES/SPI/spi.c: 82:                         SSPCON1bits.SSPM2 = 0x01;
-[e = . . _SSPCON1bits 1 2 -> -> 1 `i `uc ]
-"83
-[; ;CREATE_FILES/SPI/spi.c: 83:                         SSPCON1bits.SSPM1 = 0x00;
-[e = . . _SSPCON1bits 1 1 -> -> 0 `i `uc ]
-"84
-[; ;CREATE_FILES/SPI/spi.c: 84:                         SSPCON1bits.SSPM0 = 0x00;
-[e = . . _SSPCON1bits 1 0 -> -> 0 `i `uc ]
-"85
-[; ;CREATE_FILES/SPI/spi.c: 85:                         break;
-[e $U 302  ]
-"86
-[; ;CREATE_FILES/SPI/spi.c: 86:                     }
-}
-"87
-[; ;CREATE_FILES/SPI/spi.c: 87:                     case 1:
-[e :U 305 ]
-"88
-[; ;CREATE_FILES/SPI/spi.c: 88:                     {
+[; ;CREATE_FILES/SPI/spi.c: 81:                 {
 {
-"91
-[; ;CREATE_FILES/SPI/spi.c: 91:                         SSPCON1bits.SSPM2 = 0x00;
+"82
+[; ;CREATE_FILES/SPI/spi.c: 82:                     case 0:
+[e :U 304 ]
+"83
+[; ;CREATE_FILES/SPI/spi.c: 83:                     {
+{
+"85
+[; ;CREATE_FILES/SPI/spi.c: 85:                         SSPCON1bits.SSPM2 = 0x00;
 [e = . . _SSPCON1bits 1 2 -> -> 0 `i `uc ]
-"92
-[; ;CREATE_FILES/SPI/spi.c: 92:                         SSPCON1bits.SSPM2 = 0x01;
+"86
+[; ;CREATE_FILES/SPI/spi.c: 86:                         SSPCON1bits.SSPM2 = 0x01;
 [e = . . _SSPCON1bits 1 2 -> -> 1 `i `uc ]
-"93
-[; ;CREATE_FILES/SPI/spi.c: 93:                         SSPCON1bits.SSPM1 = 0x00;
+"87
+[; ;CREATE_FILES/SPI/spi.c: 87:                         SSPCON1bits.SSPM1 = 0x00;
 [e = . . _SSPCON1bits 1 1 -> -> 0 `i `uc ]
-"94
-[; ;CREATE_FILES/SPI/spi.c: 94:                         SSPCON1bits.SSPM0 = 0x01;
-[e = . . _SSPCON1bits 1 0 -> -> 1 `i `uc ]
-"95
-[; ;CREATE_FILES/SPI/spi.c: 95:                         break;
+"88
+[; ;CREATE_FILES/SPI/spi.c: 88:                         SSPCON1bits.SSPM0 = 0x00;
+[e = . . _SSPCON1bits 1 0 -> -> 0 `i `uc ]
+"89
+[; ;CREATE_FILES/SPI/spi.c: 89:                         break;
 [e $U 302  ]
-"96
-[; ;CREATE_FILES/SPI/spi.c: 96:                     }
+"90
+[; ;CREATE_FILES/SPI/spi.c: 90:                     }
 }
+"91
+[; ;CREATE_FILES/SPI/spi.c: 91:                     case 1:
+[e :U 305 ]
+"92
+[; ;CREATE_FILES/SPI/spi.c: 92:                     {
+{
+"95
+[; ;CREATE_FILES/SPI/spi.c: 95:                         SSPCON1bits.SSPM2 = 0x00;
+[e = . . _SSPCON1bits 1 2 -> -> 0 `i `uc ]
+"96
+[; ;CREATE_FILES/SPI/spi.c: 96:                         SSPCON1bits.SSPM2 = 0x01;
+[e = . . _SSPCON1bits 1 2 -> -> 1 `i `uc ]
+"97
+[; ;CREATE_FILES/SPI/spi.c: 97:                         SSPCON1bits.SSPM1 = 0x00;
+[e = . . _SSPCON1bits 1 1 -> -> 0 `i `uc ]
 "98
-[; ;CREATE_FILES/SPI/spi.c: 98:                 }
+[; ;CREATE_FILES/SPI/spi.c: 98:                         SSPCON1bits.SSPM0 = 0x01;
+[e = . . _SSPCON1bits 1 0 -> -> 1 `i `uc ]
+"99
+[; ;CREATE_FILES/SPI/spi.c: 99:                         break;
+[e $U 302  ]
+"100
+[; ;CREATE_FILES/SPI/spi.c: 100:                     }
+}
+"102
+[; ;CREATE_FILES/SPI/spi.c: 102:                 }
 }
 [e $U 302  ]
 [e :U 303 ]
@@ -756,30 +756,30 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> 1 `i 305
  302 ]
 [e :U 302 ]
-"99
-[; ;CREATE_FILES/SPI/spi.c: 99:                 break;
-[e $U 292  ]
-"100
-[; ;CREATE_FILES/SPI/spi.c: 100:             }
-}
-"101
-[; ;CREATE_FILES/SPI/spi.c: 101:             default:
-[e :U 306 ]
-"102
-[; ;CREATE_FILES/SPI/spi.c: 102:             {
-{
 "103
-[; ;CREATE_FILES/SPI/spi.c: 103:                 for(;;);
+[; ;CREATE_FILES/SPI/spi.c: 103:                 break;
+[e $U 292  ]
+"104
+[; ;CREATE_FILES/SPI/spi.c: 104:             }
+}
+"105
+[; ;CREATE_FILES/SPI/spi.c: 105:             default:
+[e :U 306 ]
+"106
+[; ;CREATE_FILES/SPI/spi.c: 106:             {
+{
+"107
+[; ;CREATE_FILES/SPI/spi.c: 107:                 for(;;);
 {
 [e :U 307 ]
 [e $U 307  ]
 [e :U 308 ]
 }
-"104
-[; ;CREATE_FILES/SPI/spi.c: 104:             }
+"108
+[; ;CREATE_FILES/SPI/spi.c: 108:             }
 }
-"105
-[; ;CREATE_FILES/SPI/spi.c: 105:         }
+"109
+[; ;CREATE_FILES/SPI/spi.c: 109:         }
 }
 [e $U 292  ]
 [e :U 293 ]
@@ -787,98 +787,98 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> 0 `i 301
  306 ]
 [e :U 292 ]
-"107
-[; ;CREATE_FILES/SPI/spi.c: 107:         switch(spiConfig->clockMode)
+"111
+[; ;CREATE_FILES/SPI/spi.c: 111:         switch(spiConfig->clockMode)
 [e $U 311  ]
-"108
-[; ;CREATE_FILES/SPI/spi.c: 108:         {
+"112
+[; ;CREATE_FILES/SPI/spi.c: 112:         {
 {
-"115
-[; ;CREATE_FILES/SPI/spi.c: 115:             case 0:
-[e :U 312 ]
-"116
-[; ;CREATE_FILES/SPI/spi.c: 116:             {
-{
-"117
-[; ;CREATE_FILES/SPI/spi.c: 117:                 SSPCON1bits.CKP = 0x00;
-[e = . . _SSPCON1bits 0 1 -> -> 0 `i `uc ]
-"118
-[; ;CREATE_FILES/SPI/spi.c: 118:                 SSPSTATbits.CKE = 0x01;
-[e = . . _SSPSTATbits 2 6 -> -> 1 `i `uc ]
 "119
-[; ;CREATE_FILES/SPI/spi.c: 119:                 SSPSTATbits.SMP = 0x00;
-[e = . . _SSPSTATbits 2 7 -> -> 0 `i `uc ]
+[; ;CREATE_FILES/SPI/spi.c: 119:             case 0:
+[e :U 312 ]
 "120
-[; ;CREATE_FILES/SPI/spi.c: 120:                 break;
-[e $U 310  ]
+[; ;CREATE_FILES/SPI/spi.c: 120:             {
+{
 "121
-[; ;CREATE_FILES/SPI/spi.c: 121:             }
-}
-"128
-[; ;CREATE_FILES/SPI/spi.c: 128:             case 1:
-[e :U 313 ]
-"129
-[; ;CREATE_FILES/SPI/spi.c: 129:             {
-{
-"130
-[; ;CREATE_FILES/SPI/spi.c: 130:                 SSPCON1bits.CKP = 0x00;
+[; ;CREATE_FILES/SPI/spi.c: 121:                 SSPCON1bits.CKP = 0x00;
 [e = . . _SSPCON1bits 0 1 -> -> 0 `i `uc ]
-"131
-[; ;CREATE_FILES/SPI/spi.c: 131:                 SSPSTATbits.CKE = 0x00;
-[e = . . _SSPSTATbits 2 6 -> -> 0 `i `uc ]
-"132
-[; ;CREATE_FILES/SPI/spi.c: 132:                 SSPSTATbits.SMP = 0x01;
-[e = . . _SSPSTATbits 2 7 -> -> 1 `i `uc ]
-"134
-[; ;CREATE_FILES/SPI/spi.c: 134:                 break;
-[e $U 310  ]
-"135
-[; ;CREATE_FILES/SPI/spi.c: 135:             }
-}
-"143
-[; ;CREATE_FILES/SPI/spi.c: 143:             case 2:
-[e :U 314 ]
-"144
-[; ;CREATE_FILES/SPI/spi.c: 144:             {
-{
-"145
-[; ;CREATE_FILES/SPI/spi.c: 145:                 SSPCON1bits.CKP = 0x01;
-[e = . . _SSPCON1bits 0 1 -> -> 1 `i `uc ]
-"146
-[; ;CREATE_FILES/SPI/spi.c: 146:                 SSPSTATbits.CKE = 0x01;
+"122
+[; ;CREATE_FILES/SPI/spi.c: 122:                 SSPSTATbits.CKE = 0x01;
 [e = . . _SSPSTATbits 2 6 -> -> 1 `i `uc ]
-"147
-[; ;CREATE_FILES/SPI/spi.c: 147:                 SSPSTATbits.SMP = 0x00;
+"123
+[; ;CREATE_FILES/SPI/spi.c: 123:                 SSPSTATbits.SMP = 0x00;
 [e = . . _SSPSTATbits 2 7 -> -> 0 `i `uc ]
-"148
-[; ;CREATE_FILES/SPI/spi.c: 148:                 break;
+"124
+[; ;CREATE_FILES/SPI/spi.c: 124:                 break;
 [e $U 310  ]
-"150
-[; ;CREATE_FILES/SPI/spi.c: 150:             }
+"125
+[; ;CREATE_FILES/SPI/spi.c: 125:             }
 }
-"157
-[; ;CREATE_FILES/SPI/spi.c: 157:             case 3:
-[e :U 315 ]
-"158
-[; ;CREATE_FILES/SPI/spi.c: 158:             {
+"132
+[; ;CREATE_FILES/SPI/spi.c: 132:             case 1:
+[e :U 313 ]
+"133
+[; ;CREATE_FILES/SPI/spi.c: 133:             {
 {
-"159
-[; ;CREATE_FILES/SPI/spi.c: 159:                 SSPCON1bits.CKP = 0x01;
-[e = . . _SSPCON1bits 0 1 -> -> 1 `i `uc ]
-"160
-[; ;CREATE_FILES/SPI/spi.c: 160:                 SSPSTATbits.CKE = 0x00;
+"134
+[; ;CREATE_FILES/SPI/spi.c: 134:                 SSPCON1bits.CKP = 0x00;
+[e = . . _SSPCON1bits 0 1 -> -> 0 `i `uc ]
+"135
+[; ;CREATE_FILES/SPI/spi.c: 135:                 SSPSTATbits.CKE = 0x00;
 [e = . . _SSPSTATbits 2 6 -> -> 0 `i `uc ]
-"161
-[; ;CREATE_FILES/SPI/spi.c: 161:                 SSPSTATbits.SMP = 0x01;
+"136
+[; ;CREATE_FILES/SPI/spi.c: 136:                 SSPSTATbits.SMP = 0x01;
 [e = . . _SSPSTATbits 2 7 -> -> 1 `i `uc ]
-"162
-[; ;CREATE_FILES/SPI/spi.c: 162:                 break;
+"138
+[; ;CREATE_FILES/SPI/spi.c: 138:                 break;
 [e $U 310  ]
-"163
-[; ;CREATE_FILES/SPI/spi.c: 163:             }
+"139
+[; ;CREATE_FILES/SPI/spi.c: 139:             }
 }
+"147
+[; ;CREATE_FILES/SPI/spi.c: 147:             case 2:
+[e :U 314 ]
+"148
+[; ;CREATE_FILES/SPI/spi.c: 148:             {
+{
+"149
+[; ;CREATE_FILES/SPI/spi.c: 149:                 SSPCON1bits.CKP = 0x01;
+[e = . . _SSPCON1bits 0 1 -> -> 1 `i `uc ]
+"150
+[; ;CREATE_FILES/SPI/spi.c: 150:                 SSPSTATbits.CKE = 0x01;
+[e = . . _SSPSTATbits 2 6 -> -> 1 `i `uc ]
+"151
+[; ;CREATE_FILES/SPI/spi.c: 151:                 SSPSTATbits.SMP = 0x00;
+[e = . . _SSPSTATbits 2 7 -> -> 0 `i `uc ]
+"152
+[; ;CREATE_FILES/SPI/spi.c: 152:                 break;
+[e $U 310  ]
+"154
+[; ;CREATE_FILES/SPI/spi.c: 154:             }
+}
+"161
+[; ;CREATE_FILES/SPI/spi.c: 161:             case 3:
+[e :U 315 ]
+"162
+[; ;CREATE_FILES/SPI/spi.c: 162:             {
+{
+"163
+[; ;CREATE_FILES/SPI/spi.c: 163:                 SSPCON1bits.CKP = 0x01;
+[e = . . _SSPCON1bits 0 1 -> -> 1 `i `uc ]
 "164
-[; ;CREATE_FILES/SPI/spi.c: 164:         }
+[; ;CREATE_FILES/SPI/spi.c: 164:                 SSPSTATbits.CKE = 0x00;
+[e = . . _SSPSTATbits 2 6 -> -> 0 `i `uc ]
+"165
+[; ;CREATE_FILES/SPI/spi.c: 165:                 SSPSTATbits.SMP = 0x01;
+[e = . . _SSPSTATbits 2 7 -> -> 1 `i `uc ]
+"166
+[; ;CREATE_FILES/SPI/spi.c: 166:                 break;
+[e $U 310  ]
+"167
+[; ;CREATE_FILES/SPI/spi.c: 167:             }
+}
+"168
+[; ;CREATE_FILES/SPI/spi.c: 168:         }
 }
 [e $U 310  ]
 [e :U 311 ]
@@ -888,88 +888,88 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> 3 `i 315
  310 ]
 [e :U 310 ]
-"165
-[; ;CREATE_FILES/SPI/spi.c: 165:     }
+"169
+[; ;CREATE_FILES/SPI/spi.c: 169:     }
 }
 [e $U 316  ]
-"166
-[; ;CREATE_FILES/SPI/spi.c: 166:     else
+"170
+[; ;CREATE_FILES/SPI/spi.c: 170:     else
 [e :U 283 ]
-"167
-[; ;CREATE_FILES/SPI/spi.c: 167:     {
+"171
+[; ;CREATE_FILES/SPI/spi.c: 171:     {
 {
-"168
-[; ;CREATE_FILES/SPI/spi.c: 168:         for(;;);
+"172
+[; ;CREATE_FILES/SPI/spi.c: 172:         for(;;);
 {
 [e :U 317 ]
 [e $U 317  ]
 [e :U 318 ]
 }
-"169
-[; ;CREATE_FILES/SPI/spi.c: 169:     }
+"173
+[; ;CREATE_FILES/SPI/spi.c: 173:     }
 }
 [e :U 316 ]
-"170
-[; ;CREATE_FILES/SPI/spi.c: 170: }
+"174
+[; ;CREATE_FILES/SPI/spi.c: 174: }
 [e :UE 282 ]
 }
-"172
-[; ;CREATE_FILES/SPI/spi.c: 172: void SPI_OnOff(uint8_t OnOff)
+"176
+[; ;CREATE_FILES/SPI/spi.c: 176: void SPI_OnOff(uint8_t OnOff)
 [v _SPI_OnOff `(v ~T0 @X0 1 ef1`uc ]
-"173
-[; ;CREATE_FILES/SPI/spi.c: 173: {
+"177
+[; ;CREATE_FILES/SPI/spi.c: 177: {
 {
 [e :U _SPI_OnOff ]
-"172
-[; ;CREATE_FILES/SPI/spi.c: 172: void SPI_OnOff(uint8_t OnOff)
+"176
+[; ;CREATE_FILES/SPI/spi.c: 176: void SPI_OnOff(uint8_t OnOff)
 [v _OnOff `uc ~T0 @X0 1 r1 ]
-"173
-[; ;CREATE_FILES/SPI/spi.c: 173: {
+"177
+[; ;CREATE_FILES/SPI/spi.c: 177: {
 [f ]
-"174
-[; ;CREATE_FILES/SPI/spi.c: 174:     SSPCON1bits.SSPEN = OnOff;
+"178
+[; ;CREATE_FILES/SPI/spi.c: 178:     SSPCON1bits.SSPEN = OnOff;
 [e = . . _SSPCON1bits 0 2 _OnOff ]
-"175
-[; ;CREATE_FILES/SPI/spi.c: 175: }
+"179
+[; ;CREATE_FILES/SPI/spi.c: 179: }
 [e :UE 320 ]
 }
-"178
-[; ;CREATE_FILES/SPI/spi.c: 178: void SPI_Write(uint8_t* transBuffer, uint8_t currCol)
+"182
+[; ;CREATE_FILES/SPI/spi.c: 182: void SPI_Write(uint8_t* transBuffer, uint8_t currCol)
 [v _SPI_Write `(v ~T0 @X0 1 ef2`*uc`uc ]
-"179
-[; ;CREATE_FILES/SPI/spi.c: 179: {
+"183
+[; ;CREATE_FILES/SPI/spi.c: 183: {
 {
 [e :U _SPI_Write ]
-"178
-[; ;CREATE_FILES/SPI/spi.c: 178: void SPI_Write(uint8_t* transBuffer, uint8_t currCol)
+"182
+[; ;CREATE_FILES/SPI/spi.c: 182: void SPI_Write(uint8_t* transBuffer, uint8_t currCol)
 [v _transBuffer `*uc ~T0 @X0 1 r1 ]
 [v _currCol `uc ~T0 @X0 1 r2 ]
-"179
-[; ;CREATE_FILES/SPI/spi.c: 179: {
+"183
+[; ;CREATE_FILES/SPI/spi.c: 183: {
 [f ]
-"181
-[; ;CREATE_FILES/SPI/spi.c: 181:     uint8_t receive;
+"185
+[; ;CREATE_FILES/SPI/spi.c: 185:     uint8_t receive;
 [v _receive `uc ~T0 @X0 1 a ]
-"184
-[; ;CREATE_FILES/SPI/spi.c: 184:     if(0x00 == 0x00) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x00) LATA = (PORTA | (1 << 5));;
+"188
+[; ;CREATE_FILES/SPI/spi.c: 188:     if(0x00 == 0x00) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x00) LATA = (PORTA | (1 << 5));;
 [e $ ! == -> 0 `i -> 0 `i 322  ]
 [e = _LATA -> & -> _PORTA `i ~ << -> 1 `i -> 5 `i `uc ]
 [e :U 322 ]
 [e $ ! == -> 1 `i -> 0 `i 323  ]
 [e = _LATA -> | -> _PORTA `i << -> 1 `i -> 5 `i `uc ]
 [e :U 323 ]
-"186
-[; ;CREATE_FILES/SPI/spi.c: 186:     SSPBUF = transBuffer[currCol];
+"190
+[; ;CREATE_FILES/SPI/spi.c: 190:     SSPBUF = transBuffer[currCol];
 [e = _SSPBUF *U + _transBuffer * -> _currCol `ux -> -> # *U _transBuffer `ui `ux ]
-"188
-[; ;CREATE_FILES/SPI/spi.c: 188:     if(0x00 == 0x01) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x01) LATA = (PORTA | (1 << 5));;
+"192
+[; ;CREATE_FILES/SPI/spi.c: 192:     if(0x00 == 0x01) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x01) LATA = (PORTA | (1 << 5));;
 [e $ ! == -> 0 `i -> 1 `i 324  ]
 [e = _LATA -> & -> _PORTA `i ~ << -> 1 `i -> 5 `i `uc ]
 [e :U 324 ]
 [e $ ! == -> 1 `i -> 1 `i 325  ]
 [e = _LATA -> | -> _PORTA `i << -> 1 `i -> 5 `i `uc ]
 [e :U 325 ]
-"189
-[; ;CREATE_FILES/SPI/spi.c: 189: }
+"193
+[; ;CREATE_FILES/SPI/spi.c: 193: }
 [e :UE 321 ]
 }

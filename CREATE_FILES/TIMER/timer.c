@@ -6,7 +6,7 @@
 void Timer_Init(void)
 {
     /* Timer 0 configured as Timer of 16 bits*/
-    T0CONbits.T08BIT = 0x01;
+    T0CONbits.T08BIT = 0x00;
     T0CONbits.T016BIT = 0x00;
     
     
@@ -18,9 +18,9 @@ void Timer_Init(void)
     T0CONbits.PSA = 0x01;
     
     /* dont use prescaler */
-    T0CONbits.T0PS0 = 0x00;
-    T0CONbits.T0PS1 = 0x00;
-    T0CONbits.T0PS2 = 0x00;
+    T0CONbits.T0PS0 = 0x01;
+    T0CONbits.T0PS1 = 0x01;
+    T0CONbits.T0PS2 = 0x01;
     
     T0CONbits.TMR0ON = 0x01;
 }
