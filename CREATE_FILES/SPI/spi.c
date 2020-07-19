@@ -181,11 +181,13 @@ void SPI_Write(uint8_t* transBuffer,  uint8_t currCol)
     uint8_t receive;
     
     /* Configure chip select as low (active)*/
-    DIGITAL_PIN_WRITE(PIN_LOW, SPI_SS_PORT, SPI_SS_MASK);
-   //  receive = SSPBUF; // -> Clear the buffer
-    SSPBUF = transBuffer[currCol];
-   //  while(!SSPSTATbits.BF);
-    DIGITAL_PIN_WRITE(PIN_HIGH, SPI_SS_PORT, SPI_SS_MASK);
+   //DIGITAL_PIN_WRITE(PIN_HIGH, SPI_SS_PORT, SPI_SS_MASK);
+   DIGITAL_PIN_WRITE(PIN_LOW, SPI_SS_PORT, SPI_SS_MASK);
+   receive = SSPBUF; // -> Clear the buffer
+   SSPBUF = transBuffer[currCol];
+   while(!SSPSTATbits.BF);
+   DIGITAL_PIN_WRITE(PIN_HIGH, SPI_SS_PORT, SPI_SS_MASK);
+   
 }
 
 

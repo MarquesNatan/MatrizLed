@@ -4791,9 +4791,11 @@ void SPI_Write(uint8_t* transBuffer, uint8_t currCol)
     uint8_t receive;
 
 
-    if(0x00 == 0x00) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x00) LATA = (PORTA | (1 << 5));;
 
-    SSPBUF = transBuffer[currCol];
+   if(0x00 == 0x00) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x00) LATA = (PORTA | (1 << 5));;
+   receive = SSPBUF;
+   SSPBUF = transBuffer[currCol];
+   while(!SSPSTATbits.BF);
+   if(0x00 == 0x01) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x01) LATA = (PORTA | (1 << 5));;
 
-    if(0x00 == 0x01) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x01) LATA = (PORTA | (1 << 5));;
 }

@@ -656,89 +656,92 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;CREATE_FILES/CONTROL_LINES/line_control.c: 58:             *currRow = row;
 [e = *U _currRow _row ]
 "59
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 59:         case 0x06:
-[e :U 326 ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 59:             break;
+[e $U 282  ]
 "60
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 60:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 0))); if(0x01 == 0x01) LATB = (PORTB | (1 << 0));;
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 60:         case 0x06:
+[e :U 326 ]
+"61
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 61:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 0))); if(0x01 == 0x01) LATB = (PORTB | (1 << 0));;
 [e $ ! == -> 0 `i -> 1 `i 327  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 0 `i `uc ]
 [e :U 327 ]
 [e $ ! == -> 1 `i -> 1 `i 328  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 0 `i `uc ]
 [e :U 328 ]
-"61
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 61:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 1))); if(0x01 == 0x01) LATB = (PORTB | (1 << 1));;
+"62
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 62:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 1))); if(0x01 == 0x01) LATB = (PORTB | (1 << 1));;
 [e $ ! == -> 0 `i -> 1 `i 329  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 1 `i `uc ]
 [e :U 329 ]
 [e $ ! == -> 1 `i -> 1 `i 330  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 1 `i `uc ]
 [e :U 330 ]
-"62
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 62:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 2))); if(0x01 == 0x01) LATB = (PORTB | (1 << 2));;
+"63
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 63:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 2))); if(0x01 == 0x01) LATB = (PORTB | (1 << 2));;
 [e $ ! == -> 0 `i -> 1 `i 331  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 2 `i `uc ]
 [e :U 331 ]
 [e $ ! == -> 1 `i -> 1 `i 332  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 2 `i `uc ]
 [e :U 332 ]
-"63
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 63:             row++;
-[e ++ _row -> -> 1 `i `uc ]
 "64
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 64:             *currRow = row;
-[e = *U _currRow _row ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 64:             row++;
+[e ++ _row -> -> 1 `i `uc ]
 "65
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 65:             break;
-[e $U 282  ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 65:             *currRow = row;
+[e = *U _currRow _row ]
 "66
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 66:         case 0x07:
-[e :U 333 ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 66:             break;
+[e $U 282  ]
 "67
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 67:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 0))); if(0x01 == 0x00) LATB = (PORTB | (1 << 0));;
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 67:         case 0x07:
+[e :U 333 ]
+"68
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 68:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 0))); if(0x01 == 0x00) LATB = (PORTB | (1 << 0));;
 [e $ ! == -> 0 `i -> 0 `i 334  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 0 `i `uc ]
 [e :U 334 ]
 [e $ ! == -> 1 `i -> 0 `i 335  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 0 `i `uc ]
 [e :U 335 ]
-"68
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 68:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 1))); if(0x01 == 0x00) LATB = (PORTB | (1 << 1));;
+"69
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 69:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 1))); if(0x01 == 0x00) LATB = (PORTB | (1 << 1));;
 [e $ ! == -> 0 `i -> 0 `i 336  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 1 `i `uc ]
 [e :U 336 ]
 [e $ ! == -> 1 `i -> 0 `i 337  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 1 `i `uc ]
 [e :U 337 ]
-"69
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 69:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 2))); if(0x01 == 0x00) LATB = (PORTB | (1 << 2));;
+"70
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 70:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 2))); if(0x01 == 0x00) LATB = (PORTB | (1 << 2));;
 [e $ ! == -> 0 `i -> 0 `i 338  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 2 `i `uc ]
 [e :U 338 ]
 [e $ ! == -> 1 `i -> 0 `i 339  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 2 `i `uc ]
 [e :U 339 ]
-"70
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 70:             row = 0x00;
-[e = _row -> -> 0 `i `uc ]
 "71
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 71:             *currRow = row;
-[e = *U _currRow _row ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 71:             row = 0x00;
+[e = _row -> -> 0 `i `uc ]
 "72
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 72:             break;
-[e $U 282  ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 72:             *currRow = row;
+[e = *U _currRow _row ]
 "73
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 73:         default:
-[e :U 340 ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 73:             break;
+[e $U 282  ]
 "74
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 74:             for(;;);
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 74:         default:
+[e :U 340 ]
+"75
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 75:             for(;;);
 {
 [e :U 341 ]
 [e $U 341  ]
 [e :U 342 ]
 }
-"75
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 75:     }
+"76
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 76:     }
 }
 [e $U 282  ]
 [e :U 283 ]
@@ -752,7 +755,7 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> 7 `i 333
  340 ]
 [e :U 282 ]
-"77
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 77: }
+"78
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 78: }
 [e :UE 281 ]
 }

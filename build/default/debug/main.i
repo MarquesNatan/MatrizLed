@@ -4721,11 +4721,15 @@ void Timer_OnOff(uint8_t OnOff);
 uint8_t currRow = 0;
 uint8_t row = 0x00;
 uint16_t i = 0;
-# 94 "main.c"
+# 93 "main.c"
 uint8_t dataTrans[8] =
 {
+  0b00011000, 0xb0111100, 0b011100110, 0b11111111, 0b11111111, 0b11000011, 0b11000011
 
-    0x55, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
+};
+# 113 "main.c"
+uint8_t secondDataTrans[8] =
+{
 };
 spi_config spiConfig =
 {
@@ -4749,7 +4753,8 @@ void __attribute__((picinterrupt(("")))) TC0INT(void)
         SPI_Write(dataTrans, currRow);
 
 
-        TMR0 = 0x6D84;
+
+        TMR0 = 0xF63C;
         INTCONbits.T0IF = 0x00;
         INTCONbits.GIE = 0x01;
         T0CONbits.TMR0ON = 0x01;

@@ -950,8 +950,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "181
 [; ;CREATE_FILES/SPI/spi.c: 181:     uint8_t receive;
 [v _receive `uc ~T0 @X0 1 a ]
-"184
-[; ;CREATE_FILES/SPI/spi.c: 184:     if(0x00 == 0x00) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x00) LATA = (PORTA | (1 << 5));;
+"185
+[; ;CREATE_FILES/SPI/spi.c: 185:    if(0x00 == 0x00) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x00) LATA = (PORTA | (1 << 5));;
 [e $ ! == -> 0 `i -> 0 `i 322  ]
 [e = _LATA -> & -> _PORTA `i ~ << -> 1 `i -> 5 `i `uc ]
 [e :U 322 ]
@@ -959,17 +959,27 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _LATA -> | -> _PORTA `i << -> 1 `i -> 5 `i `uc ]
 [e :U 323 ]
 "186
-[; ;CREATE_FILES/SPI/spi.c: 186:     SSPBUF = transBuffer[currCol];
+[; ;CREATE_FILES/SPI/spi.c: 186:    receive = SSPBUF;
+[e = _receive _SSPBUF ]
+"187
+[; ;CREATE_FILES/SPI/spi.c: 187:    SSPBUF = transBuffer[currCol];
 [e = _SSPBUF *U + _transBuffer * -> _currCol `ux -> -> # *U _transBuffer `ui `ux ]
 "188
-[; ;CREATE_FILES/SPI/spi.c: 188:     if(0x00 == 0x01) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x01) LATA = (PORTA | (1 << 5));;
-[e $ ! == -> 0 `i -> 1 `i 324  ]
-[e = _LATA -> & -> _PORTA `i ~ << -> 1 `i -> 5 `i `uc ]
-[e :U 324 ]
-[e $ ! == -> 1 `i -> 1 `i 325  ]
-[e = _LATA -> | -> _PORTA `i << -> 1 `i -> 5 `i `uc ]
+[; ;CREATE_FILES/SPI/spi.c: 188:    while(!SSPSTATbits.BF);
+[e $U 324  ]
 [e :U 325 ]
+[e :U 324 ]
+[e $ ! != -> . . _SSPSTATbits 2 0 `i -> 0 `i 325  ]
+[e :U 326 ]
 "189
-[; ;CREATE_FILES/SPI/spi.c: 189: }
+[; ;CREATE_FILES/SPI/spi.c: 189:    if(0x00 == 0x01) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x01) LATA = (PORTA | (1 << 5));;
+[e $ ! == -> 0 `i -> 1 `i 327  ]
+[e = _LATA -> & -> _PORTA `i ~ << -> 1 `i -> 5 `i `uc ]
+[e :U 327 ]
+[e $ ! == -> 1 `i -> 1 `i 328  ]
+[e = _LATA -> | -> _PORTA `i << -> 1 `i -> 5 `i `uc ]
+[e :U 328 ]
+"191
+[; ;CREATE_FILES/SPI/spi.c: 191: }
 [e :UE 321 ]
 }

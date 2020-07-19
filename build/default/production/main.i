@@ -4725,7 +4725,12 @@ uint16_t i = 0;
 uint8_t dataTrans[8] =
 {
 
-    0x55, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
+    0b11110000, 0b00001111, 0b11110000, 0b00001111, 0b11110000, 0b00001111, 0b11110000,
+    0b00001111
+};
+
+uint8_t secondDataTrans[8] =
+{
 };
 spi_config spiConfig =
 {
@@ -4749,7 +4754,7 @@ void __attribute__((picinterrupt(("")))) TC0INT(void)
         SPI_Write(dataTrans, currRow);
 
 
-        TMR0 = 0x6D84;
+        TMR0 = 0xF63C;
         INTCONbits.T0IF = 0x00;
         INTCONbits.GIE = 0x01;
         T0CONbits.TMR0ON = 0x01;

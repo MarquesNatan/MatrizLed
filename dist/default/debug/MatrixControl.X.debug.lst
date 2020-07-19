@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.10 build 88905656 
-                                                                                               Thu Jul 16 11:41:48 2020
+                                                                                               Sun Jul 19 19:00:19 2020
 
 Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1 
      1                           	processor	18F4520
@@ -71,25 +71,25 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
     57                           ; SFR Addresses
     58  0000                     
     59                           	psect	idataCOMRAM
-    60  00043A                     __pidataCOMRAM:
+    60  000444                     __pidataCOMRAM:
     61                           	opt callstack 0
     62                           
     63                           ;initializer for _dataTrans
-    64  00043A  55                 	db	85
-    65  00043B  FF                 	db	255
-    66  00043C  FF                 	db	255
-    67  00043D  FF                 	db	255
-    68  00043E  FF                 	db	255
-    69  00043F  FF                 	db	255
-    70  000440  FF                 	db	255
-    71  000441  FF                 	db	255
+    64  000444  18                 	db	24
+    65  000445  00                 	db	0
+    66  000446  E6                 	db	230
+    67  000447  FF                 	db	255
+    68  000448  FF                 	db	255
+    69  000449  C3                 	db	195
+    70  00044A  C3                 	db	195
+    71  00044B  00                 	db	0
     72                           
     73                           ;initializer for _spiConfig
-    74  000442  01                 	db	1
-    75  000443  00                 	db	0
-    76  000444  01                 	db	1
-    77  000445  0002               	dw	2
-    78  000447  0000               	dw	0
+    74  00044C  01                 	db	1
+    75  00044D  00                 	db	0
+    76  00044E  01                 	db	1
+    77  00044F  0002               	dw	2
+    78  000451  0000               	dw	0
     79  0000                     _TRISB	set	3987
     80  0000                     _PORTA	set	3968
     81  0000                     _LATA	set	3977
@@ -115,1302 +115,1308 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    101                           ; #config settings
    102  0000                     
    103                           	psect	cinit
-   104  0003A2                     __pcinit:
+   104  000398                     __pcinit:
    105                           	opt callstack 0
-   106  0003A2                     start_initialization:
+   106  000398                     start_initialization:
    107                           	opt callstack 0
-   108  0003A2                     __initialization:
+   108  000398                     __initialization:
    109                           	opt callstack 0
    110                           
    111                           ; Initialize objects allocated to COMRAM (15 bytes)
    112                           ; load TBLPTR registers with __pidataCOMRAM
-   113  0003A2  0E3A               	movlw	low __pidataCOMRAM
-   114  0003A4  6EF6               	movwf	tblptrl,c
-   115  0003A6  0E04               	movlw	high __pidataCOMRAM
-   116  0003A8  6EF7               	movwf	tblptrh,c
-   117  0003AA  0E00               	movlw	low (__pidataCOMRAM shr (0+16))
-   118  0003AC  6EF8               	movwf	tblptru,c
-   119  0003AE  EE00  F001         	lfsr	0,__pdataCOMRAM
-   120  0003B2  EE10 F00F          	lfsr	1,15
-   121  0003B6                     copy_data0:
-   122  0003B6  0009               	tblrd		*+
-   123  0003B8  CFF5 FFEE          	movff	tablat,postinc0
-   124  0003BC  50E5               	movf	postdec1,w,c
-   125  0003BE  50E1               	movf	fsr1l,w,c
-   126  0003C0  E1FA               	bnz	copy_data0
+   113  000398  0E44               	movlw	low __pidataCOMRAM
+   114  00039A  6EF6               	movwf	tblptrl,c
+   115  00039C  0E04               	movlw	high __pidataCOMRAM
+   116  00039E  6EF7               	movwf	tblptrh,c
+   117  0003A0  0E00               	movlw	low (__pidataCOMRAM shr (0+16))
+   118  0003A2  6EF8               	movwf	tblptru,c
+   119  0003A4  EE00  F001         	lfsr	0,__pdataCOMRAM
+   120  0003A8  EE10 F00F          	lfsr	1,15
+   121  0003AC                     copy_data0:
+   122  0003AC  0009               	tblrd		*+
+   123  0003AE  CFF5 FFEE          	movff	tablat,postinc0
+   124  0003B2  50E5               	movf	postdec1,w,c
+   125  0003B4  50E1               	movf	fsr1l,w,c
+   126  0003B6  E1FA               	bnz	copy_data0
    127                           
-   128                           ; Clear objects allocated to COMRAM (4 bytes)
-   129  0003C2  6A20               	clrf	(__pbssCOMRAM+3)& (0+255),c
-   130  0003C4  6A1F               	clrf	(__pbssCOMRAM+2)& (0+255),c
-   131  0003C6  6A1E               	clrf	(__pbssCOMRAM+1)& (0+255),c
-   132  0003C8  6A1D               	clrf	__pbssCOMRAM& (0+255),c
-   133  0003CA                     end_of_initialization:
-   134                           	opt callstack 0
-   135  0003CA                     __end_of__initialization:
+   128                           ; Clear objects allocated to COMRAM (12 bytes)
+   129  0003B8  EE00  F01D         	lfsr	0,__pbssCOMRAM
+   130  0003BC  0E0C               	movlw	12
+   131  0003BE                     clear_0:
+   132  0003BE  6AEE               	clrf	postinc0,c
+   133  0003C0  06E8               	decf	wreg,f,c
+   134  0003C2  E1FD               	bnz	clear_0
+   135  0003C4                     end_of_initialization:
    136                           	opt callstack 0
-   137  0003CA  9021               	bcf	int$flags,0,c	;clear compiler interrupt flag (level 1)
-   138  0003CC  9221               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
-   139  0003CE  0E00               	movlw	low (__Lmediumconst shr (0+16))
-   140  0003D0  6EF8               	movwf	tblptru,c
-   141  0003D2  0100               	movlb	0
-   142  0003D4  EFB0  F001         	goto	_main	;jump to C main() function
-   143                           
-   144                           	psect	bssCOMRAM
-   145  00001D                     __pbssCOMRAM:
-   146                           	opt callstack 0
-   147  00001D                     _i:
+   137  0003C4                     __end_of__initialization:
+   138                           	opt callstack 0
+   139  0003C4  9029               	bcf	int$flags,0,c	;clear compiler interrupt flag (level 1)
+   140  0003C6  9229               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
+   141  0003C8  0E00               	movlw	low (__Lmediumconst shr (0+16))
+   142  0003CA  6EF8               	movwf	tblptru,c
+   143  0003CC  0100               	movlb	0
+   144  0003CE  EFAB  F001         	goto	_main	;jump to C main() function
+   145                           
+   146                           	psect	bssCOMRAM
+   147  00001D                     __pbssCOMRAM:
    148                           	opt callstack 0
-   149  00001D                     	ds	2
-   150  00001F                     _row:
-   151                           	opt callstack 0
-   152  00001F                     	ds	1
-   153  000020                     _currRow:
-   154                           	opt callstack 0
-   155  000020                     	ds	1
-   156                           
-   157                           	psect	dataCOMRAM
-   158  000001                     __pdataCOMRAM:
+   149  00001D                     _secondDataTrans:
+   150                           	opt callstack 0
+   151  00001D                     	ds	8
+   152  000025                     _i:
+   153                           	opt callstack 0
+   154  000025                     	ds	2
+   155  000027                     _row:
+   156                           	opt callstack 0
+   157  000027                     	ds	1
+   158  000028                     _currRow:
    159                           	opt callstack 0
-   160  000001                     _dataTrans:
-   161                           	opt callstack 0
-   162  000001                     	ds	8
-   163  000009                     _spiConfig:
+   160  000028                     	ds	1
+   161                           
+   162                           	psect	dataCOMRAM
+   163  000001                     __pdataCOMRAM:
    164                           	opt callstack 0
-   165  000009                     	ds	7
-   166                           
-   167                           	psect	cstackCOMRAM
-   168  000010                     __pcstackCOMRAM:
+   165  000001                     _dataTrans:
+   166                           	opt callstack 0
+   167  000001                     	ds	8
+   168  000009                     _spiConfig:
    169                           	opt callstack 0
-   170  000010                     RowControl@currRow:
-   171                           	opt callstack 0
-   172  000010                     SPI_Write@transBuffer:
-   173                           	opt callstack 0
-   174                           
-   175                           ; 2 bytes @ 0x0
-   176  000010                     	ds	2
-   177  000012                     ??_RowControl:
-   178  000012                     SPI_Write@currCol:
-   179                           	opt callstack 0
-   180                           
-   181                           ; 1 bytes @ 0x2
-   182  000012                     	ds	1
-   183  000013                     
-   184                           ; 1 bytes @ 0x3
-   185  000013                     	ds	1
-   186  000014                     RowControl@row:
-   187                           	opt callstack 0
-   188                           
-   189                           ; 1 bytes @ 0x4
-   190  000014                     	ds	1
-   191  000015                     ??_TC0INT:
-   192                           
-   193                           ; 1 bytes @ 0x5
-   194  000015                     	ds	2
-   195  000017                     SPI_OnOff@OnOff:
-   196                           	opt callstack 0
-   197  000017                     SPI_Init@spiConfig:
-   198                           	opt callstack 0
-   199                           
-   200                           ; 2 bytes @ 0x7
-   201  000017                     	ds	2
-   202  000019                     ??_SPI_Init:
-   203                           
-   204                           ; 1 bytes @ 0x9
-   205  000019                     	ds	4
-   206  00001D                     
-   207                           ; 1 bytes @ 0xD
-   208 ;;
-   209 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
-   210 ;;
-   211 ;; *************** function _main *****************
-   212 ;; Defined at:
-   213 ;;		line 132 in file "main.c"
-   214 ;; Parameters:    Size  Location     Type
-   215 ;;		None
-   216 ;; Auto vars:     Size  Location     Type
-   217 ;;  OnOff           1    0        unsigned char 
-   218 ;; Return value:  Size  Location     Type
-   219 ;;                  1    wreg      void 
-   220 ;; Registers used:
-   221 ;;		wreg, fsr2l, fsr2h, status,2, status,0, cstack
-   222 ;; Tracked objects:
-   223 ;;		On entry : 0/0
-   224 ;;		On exit  : 0/0
-   225 ;;		Unchanged: 0/0
-   226 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-   227 ;;      Params:         0       0       0       0       0       0       0
-   228 ;;      Locals:         1       0       0       0       0       0       0
-   229 ;;      Temps:          0       0       0       0       0       0       0
-   230 ;;      Totals:         1       0       0       0       0       0       0
-   231 ;;Total ram usage:        1 bytes
-   232 ;; Hardware stack levels required when called:    3
-   233 ;; This function calls:
-   234 ;;		_Interrupts_Configure
-   235 ;;		_SPI_Init
-   236 ;;		_SPI_OnOff
-   237 ;;		_Timer_Init
-   238 ;;		_configure_pins
-   239 ;; This function is called by:
-   240 ;;		Startup code after reset
-   241 ;; This function uses a non-reentrant model
-   242 ;;
-   243                           
-   244                           	psect	text0
-   245  000360                     __ptext0:
-   246                           	opt callstack 0
-   247  000360                     _main:
-   248                           	opt callstack 28
-   249  000360                     
-   250                           ;main.c: 137:     OSCCONbits.IRCF0 = 0x00;
-   251  000360  98D3               	bcf	211,4,c	;volatile
-   252  000362                     
-   253                           ;main.c: 138:     OSCCONbits.IRCF1 = 0x01;
-   254  000362  8AD3               	bsf	211,5,c	;volatile
-   255  000364                     
-   256                           ;main.c: 139:     OSCCONbits.IRCF2 = 0x01;
-   257  000364  8CD3               	bsf	211,6,c	;volatile
-   258  000366                     
-   259                           ;main.c: 141:     OSCCONbits.SCS0 = 0x00;
-   260  000366  90D3               	bcf	211,0,c	;volatile
-   261  000368                     
-   262                           ;main.c: 142:     OSCCONbits.SCS1 = 0x00;
-   263  000368  92D3               	bcf	211,1,c	;volatile
-   264  00036A                     
-   265                           ;main.c: 145:     ADCON1 = 0xFF;
-   266  00036A  68C1               	setf	193,c	;volatile
-   267                           
-   268                           ;main.c: 146:     CMCON = 0x07;
-   269  00036C  0E07               	movlw	7
-   270  00036E  6EB4               	movwf	180,c	;volatile
-   271                           
-   272                           ;main.c: 148:     INTCON = 0x00;
-   273  000370  0E00               	movlw	0
-   274  000372  6EF2               	movwf	242,c	;volatile
-   275                           
-   276                           ;main.c: 149:     INTCON2 = 0x00;
-   277  000374  0E00               	movlw	0
-   278  000376  6EF1               	movwf	241,c	;volatile
-   279                           
-   280                           ;main.c: 150:     INTCON3 = 0x00;
-   281  000378  0E00               	movlw	0
-   282  00037A  6EF0               	movwf	240,c	;volatile
-   283  00037C                     
-   284                           ;main.c: 152:     configure_pins();
-   285  00037C  ECEC  F001         	call	_configure_pins	;wreg free
-   286  000380                     
-   287                           ;main.c: 153:     SPI_Init(&spiConfig);
-   288  000380  0E09               	movlw	low _spiConfig
-   289  000382  6E17               	movwf	SPI_Init@spiConfig^0,c
-   290  000384  0E00               	movlw	high _spiConfig
-   291  000386  6E18               	movwf	(SPI_Init@spiConfig+1)^0,c
-   292  000388  EC09  F000         	call	_SPI_Init	;wreg free
-   293  00038C                     
-   294                           ;main.c: 154:     SPI_OnOff(1);
-   295  00038C  0E01               	movlw	1
-   296  00038E  EC25  F002         	call	_SPI_OnOff
-   297  000392                     
-   298                           ;main.c: 155:     Timer_Init();
-   299  000392  EC0B  F002         	call	_Timer_Init	;wreg free
-   300  000396                     
-   301                           ;main.c: 156:     Interrupts_Configure();
-   302  000396  EC15  F002         	call	_Interrupts_Configure	;wreg free
-   303  00039A                     l206:
-   304  00039A  EFCD  F001         	goto	l206
-   305  00039E  EF07  F000         	goto	start
-   306  0003A2                     __end_of_main:
-   307                           	opt callstack 0
-   308                           
-   309 ;; *************** function _configure_pins *****************
-   310 ;; Defined at:
-   311 ;;		line 170 in file "main.c"
-   312 ;; Parameters:    Size  Location     Type
-   313 ;;		None
-   314 ;; Auto vars:     Size  Location     Type
-   315 ;;		None
-   316 ;; Return value:  Size  Location     Type
-   317 ;;                  1    wreg      void 
-   318 ;; Registers used:
-   319 ;;		wreg, status,2, status,0
-   320 ;; Tracked objects:
-   321 ;;		On entry : 0/0
-   322 ;;		On exit  : 0/0
-   323 ;;		Unchanged: 0/0
-   324 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-   325 ;;      Params:         0       0       0       0       0       0       0
-   326 ;;      Locals:         0       0       0       0       0       0       0
-   327 ;;      Temps:          0       0       0       0       0       0       0
-   328 ;;      Totals:         0       0       0       0       0       0       0
-   329 ;;Total ram usage:        0 bytes
-   330 ;; Hardware stack levels used:    1
-   331 ;; Hardware stack levels required when called:    2
-   332 ;; This function calls:
-   333 ;;		Nothing
-   334 ;; This function is called by:
-   335 ;;		_main
-   336 ;; This function uses a non-reentrant model
-   337 ;;
-   338                           
-   339                           	psect	text1
-   340  0003D8                     __ptext1:
-   341                           	opt callstack 0
-   342  0003D8                     _configure_pins:
-   343                           	opt callstack 28
-   344  0003D8  5093               	movf	147,w,c	;volatile
-   345  0003DA  0BFE               	andlw	254
-   346  0003DC  6E93               	movwf	147,c	;volatile
-   347  0003DE  5093               	movf	147,w,c	;volatile
-   348  0003E0  0BFD               	andlw	253
-   349  0003E2  6E93               	movwf	147,c	;volatile
-   350  0003E4  5093               	movf	147,w,c	;volatile
-   351  0003E6  0BFB               	andlw	251
-   352  0003E8  6E93               	movwf	147,c	;volatile
-   353  0003EA  5093               	movf	147,w,c	;volatile
-   354  0003EC  0BF7               	andlw	247
-   355  0003EE  6E93               	movwf	147,c	;volatile
-   356  0003F0  5081               	movf	129,w,c	;volatile
-   357  0003F2  0908               	iorlw	8
-   358  0003F4  6E8A               	movwf	138,c	;volatile
-   359  0003F6  0012               	return		;funcret
-   360  0003F8                     __end_of_configure_pins:
-   361                           	opt callstack 0
-   362                           
-   363 ;; *************** function _Timer_Init *****************
-   364 ;; Defined at:
-   365 ;;		line 6 in file "CREATE_FILES/TIMER/timer.c"
-   366 ;; Parameters:    Size  Location     Type
-   367 ;;		None
-   368 ;; Auto vars:     Size  Location     Type
-   369 ;;		None
-   370 ;; Return value:  Size  Location     Type
-   371 ;;                  1    wreg      void 
-   372 ;; Registers used:
-   373 ;;		None
-   374 ;; Tracked objects:
-   375 ;;		On entry : 0/0
-   376 ;;		On exit  : 0/0
-   377 ;;		Unchanged: 0/0
-   378 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-   379 ;;      Params:         0       0       0       0       0       0       0
-   380 ;;      Locals:         0       0       0       0       0       0       0
-   381 ;;      Temps:          0       0       0       0       0       0       0
-   382 ;;      Totals:         0       0       0       0       0       0       0
-   383 ;;Total ram usage:        0 bytes
-   384 ;; Hardware stack levels used:    1
-   385 ;; Hardware stack levels required when called:    2
-   386 ;; This function calls:
-   387 ;;		Nothing
-   388 ;; This function is called by:
-   389 ;;		_main
-   390 ;; This function uses a non-reentrant model
-   391 ;;
-   392                           
-   393                           	psect	text2
-   394  000416                     __ptext2:
-   395                           	opt callstack 0
-   396  000416                     _Timer_Init:
-   397                           	opt callstack 28
-   398  000416                     
-   399                           ;CREATE_FILES/TIMER/timer.c: 9:     T0CONbits.T08BIT = 0x00;
-   400  000416  9CD5               	bcf	213,6,c	;volatile
-   401                           
-   402                           ;CREATE_FILES/TIMER/timer.c: 10:     T0CONbits.T016BIT = 0x00;
-   403  000418  9CD5               	bcf	213,6,c	;volatile
-   404                           
-   405                           ;CREATE_FILES/TIMER/timer.c: 14:     T0CONbits.T0CS = 0x00;
-   406  00041A  9AD5               	bcf	213,5,c	;volatile
-   407                           
-   408                           ;CREATE_FILES/TIMER/timer.c: 17:     T0CONbits.T0SE = 0x00;
-   409  00041C  98D5               	bcf	213,4,c	;volatile
-   410                           
-   411                           ;CREATE_FILES/TIMER/timer.c: 18:     T0CONbits.PSA = 0x01;
-   412  00041E  86D5               	bsf	213,3,c	;volatile
-   413                           
-   414                           ;CREATE_FILES/TIMER/timer.c: 21:     T0CONbits.T0PS0 = 0x01;
-   415  000420  80D5               	bsf	213,0,c	;volatile
-   416                           
-   417                           ;CREATE_FILES/TIMER/timer.c: 22:     T0CONbits.T0PS1 = 0x01;
-   418  000422  82D5               	bsf	213,1,c	;volatile
-   419                           
-   420                           ;CREATE_FILES/TIMER/timer.c: 23:     T0CONbits.T0PS2 = 0x01;
-   421  000424  84D5               	bsf	213,2,c	;volatile
-   422                           
-   423                           ;CREATE_FILES/TIMER/timer.c: 25:     T0CONbits.TMR0ON = 0x01;
-   424  000426  8ED5               	bsf	213,7,c	;volatile
-   425  000428  0012               	return		;funcret
-   426  00042A                     __end_of_Timer_Init:
-   427                           	opt callstack 0
-   428                           
-   429 ;; *************** function _SPI_OnOff *****************
-   430 ;; Defined at:
-   431 ;;		line 176 in file "CREATE_FILES/SPI/spi.c"
-   432 ;; Parameters:    Size  Location     Type
-   433 ;;  OnOff           1    wreg     unsigned char 
-   434 ;; Auto vars:     Size  Location     Type
-   435 ;;  OnOff           1    7[COMRAM] unsigned char 
-   436 ;; Return value:  Size  Location     Type
-   437 ;;                  1    wreg      void 
-   438 ;; Registers used:
-   439 ;;		wreg
-   440 ;; Tracked objects:
-   441 ;;		On entry : 0/0
-   442 ;;		On exit  : 0/0
-   443 ;;		Unchanged: 0/0
-   444 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-   445 ;;      Params:         0       0       0       0       0       0       0
-   446 ;;      Locals:         1       0       0       0       0       0       0
-   447 ;;      Temps:          0       0       0       0       0       0       0
-   448 ;;      Totals:         1       0       0       0       0       0       0
-   449 ;;Total ram usage:        1 bytes
-   450 ;; Hardware stack levels used:    1
-   451 ;; Hardware stack levels required when called:    2
-   452 ;; This function calls:
-   453 ;;		Nothing
-   454 ;; This function is called by:
-   455 ;;		_main
-   456 ;; This function uses a non-reentrant model
-   457 ;;
-   458                           
-   459                           	psect	text3
-   460  00044A                     __ptext3:
-   461                           	opt callstack 0
-   462  00044A                     _SPI_OnOff:
-   463                           	opt callstack 28
-   464                           
-   465                           ;incstack = 0
-   466                           ;SPI_OnOff@OnOff stored from wreg
-   467  00044A  6E17               	movwf	SPI_OnOff@OnOff^0,c
-   468  00044C                     
-   469                           ;CREATE_FILES/SPI/spi.c: 176: void SPI_OnOff(uint8_t OnOff);CREATE_FILES/SPI/spi.c: 177:
-      +                           {;CREATE_FILES/SPI/spi.c: 178:     SSPCON1bits.SSPEN = OnOff;
-   470  00044C  B017               	btfsc	SPI_OnOff@OnOff^0,0,c
-   471  00044E  D002               	bra	u25
-   472  000450  9AC6               	bcf	198,5,c	;volatile
-   473  000452  D001               	bra	u26
-   474  000454                     u25:
-   475  000454  8AC6               	bsf	198,5,c	;volatile
-   476  000456                     u26:
-   477  000456  0012               	return		;funcret
-   478  000458                     __end_of_SPI_OnOff:
-   479                           	opt callstack 0
-   480                           
-   481 ;; *************** function _SPI_Init *****************
-   482 ;; Defined at:
-   483 ;;		line 12 in file "CREATE_FILES/SPI/spi.c"
-   484 ;; Parameters:    Size  Location     Type
-   485 ;;  spiConfig       2    7[COMRAM] PTR struct .
-   486 ;;		 -> spiConfig(7), 
-   487 ;; Auto vars:     Size  Location     Type
-   488 ;;		None
-   489 ;; Return value:  Size  Location     Type
-   490 ;;                  1    wreg      void 
-   491 ;; Registers used:
-   492 ;;		wreg, fsr2l, fsr2h, status,2, status,0
-   493 ;; Tracked objects:
-   494 ;;		On entry : 0/0
-   495 ;;		On exit  : 0/0
-   496 ;;		Unchanged: 0/0
-   497 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-   498 ;;      Params:         2       0       0       0       0       0       0
-   499 ;;      Locals:         0       0       0       0       0       0       0
-   500 ;;      Temps:          4       0       0       0       0       0       0
-   501 ;;      Totals:         6       0       0       0       0       0       0
-   502 ;;Total ram usage:        6 bytes
-   503 ;; Hardware stack levels used:    1
-   504 ;; Hardware stack levels required when called:    2
-   505 ;; This function calls:
-   506 ;;		Nothing
-   507 ;; This function is called by:
-   508 ;;		_main
-   509 ;; This function uses a non-reentrant model
-   510 ;;
-   511                           
-   512                           	psect	text4
-   513  000012                     __ptext4:
-   514                           	opt callstack 0
-   515  000012                     _SPI_Init:
-   516                           	opt callstack 28
-   517  000012                     
-   518                           ;CREATE_FILES/SPI/spi.c: 15:     {;CREATE_FILES/SPI/spi.c: 19:         if(0x00 == 0x00) 
+   170  000009                     	ds	7
+   171                           
+   172                           	psect	cstackCOMRAM
+   173  000010                     __pcstackCOMRAM:
+   174                           	opt callstack 0
+   175  000010                     RowControl@currRow:
+   176                           	opt callstack 0
+   177  000010                     SPI_Write@transBuffer:
+   178                           	opt callstack 0
+   179                           
+   180                           ; 2 bytes @ 0x0
+   181  000010                     	ds	2
+   182  000012                     ??_RowControl:
+   183  000012                     SPI_Write@currCol:
+   184                           	opt callstack 0
+   185                           
+   186                           ; 1 bytes @ 0x2
+   187  000012                     	ds	1
+   188  000013                     
+   189                           ; 1 bytes @ 0x3
+   190  000013                     	ds	1
+   191  000014                     RowControl@row:
+   192                           	opt callstack 0
+   193                           
+   194                           ; 1 bytes @ 0x4
+   195  000014                     	ds	1
+   196  000015                     ??_TC0INT:
+   197                           
+   198                           ; 1 bytes @ 0x5
+   199  000015                     	ds	2
+   200  000017                     SPI_OnOff@OnOff:
+   201                           	opt callstack 0
+   202  000017                     SPI_Init@spiConfig:
+   203                           	opt callstack 0
+   204                           
+   205                           ; 2 bytes @ 0x7
+   206  000017                     	ds	2
+   207  000019                     ??_SPI_Init:
+   208                           
+   209                           ; 1 bytes @ 0x9
+   210  000019                     	ds	4
+   211  00001D                     
+   212                           ; 1 bytes @ 0xD
+   213 ;;
+   214 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   215 ;;
+   216 ;; *************** function _main *****************
+   217 ;; Defined at:
+   218 ;;		line 150 in file "main.c"
+   219 ;; Parameters:    Size  Location     Type
+   220 ;;		None
+   221 ;; Auto vars:     Size  Location     Type
+   222 ;;  OnOff           1    0        unsigned char 
+   223 ;; Return value:  Size  Location     Type
+   224 ;;                  1    wreg      void 
+   225 ;; Registers used:
+   226 ;;		wreg, fsr2l, fsr2h, status,2, status,0, cstack
+   227 ;; Tracked objects:
+   228 ;;		On entry : 0/0
+   229 ;;		On exit  : 0/0
+   230 ;;		Unchanged: 0/0
+   231 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   232 ;;      Params:         0       0       0       0       0       0       0
+   233 ;;      Locals:         1       0       0       0       0       0       0
+   234 ;;      Temps:          0       0       0       0       0       0       0
+   235 ;;      Totals:         1       0       0       0       0       0       0
+   236 ;;Total ram usage:        1 bytes
+   237 ;; Hardware stack levels required when called:    3
+   238 ;; This function calls:
+   239 ;;		_Interrupts_Configure
+   240 ;;		_SPI_Init
+   241 ;;		_SPI_OnOff
+   242 ;;		_Timer_Init
+   243 ;;		_configure_pins
+   244 ;; This function is called by:
+   245 ;;		Startup code after reset
+   246 ;; This function uses a non-reentrant model
+   247 ;;
+   248                           
+   249                           	psect	text0
+   250  000356                     __ptext0:
+   251                           	opt callstack 0
+   252  000356                     _main:
+   253                           	opt callstack 28
+   254  000356                     
+   255                           ;main.c: 155:     OSCCONbits.IRCF0 = 0x00;
+   256  000356  98D3               	bcf	211,4,c	;volatile
+   257  000358                     
+   258                           ;main.c: 156:     OSCCONbits.IRCF1 = 0x01;
+   259  000358  8AD3               	bsf	211,5,c	;volatile
+   260  00035A                     
+   261                           ;main.c: 157:     OSCCONbits.IRCF2 = 0x01;
+   262  00035A  8CD3               	bsf	211,6,c	;volatile
+   263  00035C                     
+   264                           ;main.c: 159:     OSCCONbits.SCS0 = 0x00;
+   265  00035C  90D3               	bcf	211,0,c	;volatile
+   266  00035E                     
+   267                           ;main.c: 160:     OSCCONbits.SCS1 = 0x00;
+   268  00035E  92D3               	bcf	211,1,c	;volatile
+   269  000360                     
+   270                           ;main.c: 163:     ADCON1 = 0xFF;
+   271  000360  68C1               	setf	193,c	;volatile
+   272                           
+   273                           ;main.c: 164:     CMCON = 0x07;
+   274  000362  0E07               	movlw	7
+   275  000364  6EB4               	movwf	180,c	;volatile
+   276                           
+   277                           ;main.c: 166:     INTCON = 0x00;
+   278  000366  0E00               	movlw	0
+   279  000368  6EF2               	movwf	242,c	;volatile
+   280                           
+   281                           ;main.c: 167:     INTCON2 = 0x00;
+   282  00036A  0E00               	movlw	0
+   283  00036C  6EF1               	movwf	241,c	;volatile
+   284                           
+   285                           ;main.c: 168:     INTCON3 = 0x00;
+   286  00036E  0E00               	movlw	0
+   287  000370  6EF0               	movwf	240,c	;volatile
+   288  000372                     
+   289                           ;main.c: 170:     configure_pins();
+   290  000372  EC00  F002         	call	_configure_pins	;wreg free
+   291  000376                     
+   292                           ;main.c: 171:     SPI_Init(&spiConfig);
+   293  000376  0E09               	movlw	low _spiConfig
+   294  000378  6E17               	movwf	SPI_Init@spiConfig^0,c
+   295  00037A  0E00               	movlw	high _spiConfig
+   296  00037C  6E18               	movwf	(SPI_Init@spiConfig+1)^0,c
+   297  00037E  EC09  F000         	call	_SPI_Init	;wreg free
+   298  000382                     
+   299                           ;main.c: 172:     SPI_OnOff(1);
+   300  000382  0E01               	movlw	1
+   301  000384  EC2A  F002         	call	_SPI_OnOff
+   302  000388                     
+   303                           ;main.c: 173:     Timer_Init();
+   304  000388  EC10  F002         	call	_Timer_Init	;wreg free
+   305  00038C                     
+   306                           ;main.c: 174:     Interrupts_Configure();
+   307  00038C  EC1A  F002         	call	_Interrupts_Configure	;wreg free
+   308  000390                     l211:
+   309  000390  EFC8  F001         	goto	l211
+   310  000394  EF07  F000         	goto	start
+   311  000398                     __end_of_main:
+   312                           	opt callstack 0
+   313                           
+   314 ;; *************** function _configure_pins *****************
+   315 ;; Defined at:
+   316 ;;		line 188 in file "main.c"
+   317 ;; Parameters:    Size  Location     Type
+   318 ;;		None
+   319 ;; Auto vars:     Size  Location     Type
+   320 ;;		None
+   321 ;; Return value:  Size  Location     Type
+   322 ;;                  1    wreg      void 
+   323 ;; Registers used:
+   324 ;;		wreg, status,2, status,0
+   325 ;; Tracked objects:
+   326 ;;		On entry : 0/0
+   327 ;;		On exit  : 0/0
+   328 ;;		Unchanged: 0/0
+   329 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   330 ;;      Params:         0       0       0       0       0       0       0
+   331 ;;      Locals:         0       0       0       0       0       0       0
+   332 ;;      Temps:          0       0       0       0       0       0       0
+   333 ;;      Totals:         0       0       0       0       0       0       0
+   334 ;;Total ram usage:        0 bytes
+   335 ;; Hardware stack levels used:    1
+   336 ;; Hardware stack levels required when called:    2
+   337 ;; This function calls:
+   338 ;;		Nothing
+   339 ;; This function is called by:
+   340 ;;		_main
+   341 ;; This function uses a non-reentrant model
+   342 ;;
+   343                           
+   344                           	psect	text1
+   345  000400                     __ptext1:
+   346                           	opt callstack 0
+   347  000400                     _configure_pins:
+   348                           	opt callstack 28
+   349  000400  5093               	movf	147,w,c	;volatile
+   350  000402  0BFE               	andlw	254
+   351  000404  6E93               	movwf	147,c	;volatile
+   352  000406  5093               	movf	147,w,c	;volatile
+   353  000408  0BFD               	andlw	253
+   354  00040A  6E93               	movwf	147,c	;volatile
+   355  00040C  5093               	movf	147,w,c	;volatile
+   356  00040E  0BFB               	andlw	251
+   357  000410  6E93               	movwf	147,c	;volatile
+   358  000412  5093               	movf	147,w,c	;volatile
+   359  000414  0BF7               	andlw	247
+   360  000416  6E93               	movwf	147,c	;volatile
+   361  000418  5081               	movf	129,w,c	;volatile
+   362  00041A  0908               	iorlw	8
+   363  00041C  6E8A               	movwf	138,c	;volatile
+   364  00041E  0012               	return		;funcret
+   365  000420                     __end_of_configure_pins:
+   366                           	opt callstack 0
+   367                           
+   368 ;; *************** function _Timer_Init *****************
+   369 ;; Defined at:
+   370 ;;		line 6 in file "CREATE_FILES/TIMER/timer.c"
+   371 ;; Parameters:    Size  Location     Type
+   372 ;;		None
+   373 ;; Auto vars:     Size  Location     Type
+   374 ;;		None
+   375 ;; Return value:  Size  Location     Type
+   376 ;;                  1    wreg      void 
+   377 ;; Registers used:
+   378 ;;		None
+   379 ;; Tracked objects:
+   380 ;;		On entry : 0/0
+   381 ;;		On exit  : 0/0
+   382 ;;		Unchanged: 0/0
+   383 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   384 ;;      Params:         0       0       0       0       0       0       0
+   385 ;;      Locals:         0       0       0       0       0       0       0
+   386 ;;      Temps:          0       0       0       0       0       0       0
+   387 ;;      Totals:         0       0       0       0       0       0       0
+   388 ;;Total ram usage:        0 bytes
+   389 ;; Hardware stack levels used:    1
+   390 ;; Hardware stack levels required when called:    2
+   391 ;; This function calls:
+   392 ;;		Nothing
+   393 ;; This function is called by:
+   394 ;;		_main
+   395 ;; This function uses a non-reentrant model
+   396 ;;
+   397                           
+   398                           	psect	text2
+   399  000420                     __ptext2:
+   400                           	opt callstack 0
+   401  000420                     _Timer_Init:
+   402                           	opt callstack 28
+   403  000420                     
+   404                           ;CREATE_FILES/TIMER/timer.c: 9:     T0CONbits.T08BIT = 0x00;
+   405  000420  9CD5               	bcf	213,6,c	;volatile
+   406                           
+   407                           ;CREATE_FILES/TIMER/timer.c: 10:     T0CONbits.T016BIT = 0x00;
+   408  000422  9CD5               	bcf	213,6,c	;volatile
+   409                           
+   410                           ;CREATE_FILES/TIMER/timer.c: 14:     T0CONbits.T0CS = 0x00;
+   411  000424  9AD5               	bcf	213,5,c	;volatile
+   412                           
+   413                           ;CREATE_FILES/TIMER/timer.c: 17:     T0CONbits.T0SE = 0x00;
+   414  000426  98D5               	bcf	213,4,c	;volatile
+   415                           
+   416                           ;CREATE_FILES/TIMER/timer.c: 18:     T0CONbits.PSA = 0x01;
+   417  000428  86D5               	bsf	213,3,c	;volatile
+   418                           
+   419                           ;CREATE_FILES/TIMER/timer.c: 21:     T0CONbits.T0PS0 = 0x01;
+   420  00042A  80D5               	bsf	213,0,c	;volatile
+   421                           
+   422                           ;CREATE_FILES/TIMER/timer.c: 22:     T0CONbits.T0PS1 = 0x01;
+   423  00042C  82D5               	bsf	213,1,c	;volatile
+   424                           
+   425                           ;CREATE_FILES/TIMER/timer.c: 23:     T0CONbits.T0PS2 = 0x01;
+   426  00042E  84D5               	bsf	213,2,c	;volatile
+   427                           
+   428                           ;CREATE_FILES/TIMER/timer.c: 25:     T0CONbits.TMR0ON = 0x01;
+   429  000430  8ED5               	bsf	213,7,c	;volatile
+   430  000432  0012               	return		;funcret
+   431  000434                     __end_of_Timer_Init:
+   432                           	opt callstack 0
+   433                           
+   434 ;; *************** function _SPI_OnOff *****************
+   435 ;; Defined at:
+   436 ;;		line 172 in file "CREATE_FILES/SPI/spi.c"
+   437 ;; Parameters:    Size  Location     Type
+   438 ;;  OnOff           1    wreg     unsigned char 
+   439 ;; Auto vars:     Size  Location     Type
+   440 ;;  OnOff           1    7[COMRAM] unsigned char 
+   441 ;; Return value:  Size  Location     Type
+   442 ;;                  1    wreg      void 
+   443 ;; Registers used:
+   444 ;;		wreg
+   445 ;; Tracked objects:
+   446 ;;		On entry : 0/0
+   447 ;;		On exit  : 0/0
+   448 ;;		Unchanged: 0/0
+   449 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   450 ;;      Params:         0       0       0       0       0       0       0
+   451 ;;      Locals:         1       0       0       0       0       0       0
+   452 ;;      Temps:          0       0       0       0       0       0       0
+   453 ;;      Totals:         1       0       0       0       0       0       0
+   454 ;;Total ram usage:        1 bytes
+   455 ;; Hardware stack levels used:    1
+   456 ;; Hardware stack levels required when called:    2
+   457 ;; This function calls:
+   458 ;;		Nothing
+   459 ;; This function is called by:
+   460 ;;		_main
+   461 ;; This function uses a non-reentrant model
+   462 ;;
+   463                           
+   464                           	psect	text3
+   465  000454                     __ptext3:
+   466                           	opt callstack 0
+   467  000454                     _SPI_OnOff:
+   468                           	opt callstack 28
+   469                           
+   470                           ;incstack = 0
+   471                           ;SPI_OnOff@OnOff stored from wreg
+   472  000454  6E17               	movwf	SPI_OnOff@OnOff^0,c
+   473  000456                     
+   474                           ;CREATE_FILES/SPI/spi.c: 172: void SPI_OnOff(uint8_t OnOff);CREATE_FILES/SPI/spi.c: 173:
+      +                           {;CREATE_FILES/SPI/spi.c: 174:     SSPCON1bits.SSPEN = OnOff;
+   475  000456  B017               	btfsc	SPI_OnOff@OnOff^0,0,c
+   476  000458  D002               	bra	u25
+   477  00045A  9AC6               	bcf	198,5,c	;volatile
+   478  00045C  D001               	bra	u26
+   479  00045E                     u25:
+   480  00045E  8AC6               	bsf	198,5,c	;volatile
+   481  000460                     u26:
+   482  000460  0012               	return		;funcret
+   483  000462                     __end_of_SPI_OnOff:
+   484                           	opt callstack 0
+   485                           
+   486 ;; *************** function _SPI_Init *****************
+   487 ;; Defined at:
+   488 ;;		line 12 in file "CREATE_FILES/SPI/spi.c"
+   489 ;; Parameters:    Size  Location     Type
+   490 ;;  spiConfig       2    7[COMRAM] PTR struct .
+   491 ;;		 -> spiConfig(7), 
+   492 ;; Auto vars:     Size  Location     Type
+   493 ;;		None
+   494 ;; Return value:  Size  Location     Type
+   495 ;;                  1    wreg      void 
+   496 ;; Registers used:
+   497 ;;		wreg, fsr2l, fsr2h, status,2, status,0
+   498 ;; Tracked objects:
+   499 ;;		On entry : 0/0
+   500 ;;		On exit  : 0/0
+   501 ;;		Unchanged: 0/0
+   502 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   503 ;;      Params:         2       0       0       0       0       0       0
+   504 ;;      Locals:         0       0       0       0       0       0       0
+   505 ;;      Temps:          4       0       0       0       0       0       0
+   506 ;;      Totals:         6       0       0       0       0       0       0
+   507 ;;Total ram usage:        6 bytes
+   508 ;; Hardware stack levels used:    1
+   509 ;; Hardware stack levels required when called:    2
+   510 ;; This function calls:
+   511 ;;		Nothing
+   512 ;; This function is called by:
+   513 ;;		_main
+   514 ;; This function uses a non-reentrant model
+   515 ;;
+   516                           
+   517                           	psect	text4
+   518  000012                     __ptext4:
+   519                           	opt callstack 0
+   520  000012                     _SPI_Init:
+   521                           	opt callstack 28
+   522  000012                     
+   523                           ;CREATE_FILES/SPI/spi.c: 15:     {;CREATE_FILES/SPI/spi.c: 19:         if(0x00 == 0x00) 
       +                          TRISC = (TRISC & (~(1 << 5))); if(0x01 == 0x00) TRISC = (TRISC | (1 << 5));;
-   519  000012  5017               	movf	SPI_Init@spiConfig^0,w,c
-   520  000014  1018               	iorwf	(SPI_Init@spiConfig+1)^0,w,c
-   521  000016  B4D8               	btfsc	status,2,c
-   522  000018  EF10  F000         	goto	u51
-   523  00001C  EF12  F000         	goto	u50
-   524  000020                     u51:
-   525  000020  EFE8  F000         	goto	l94
-   526  000024                     u50:
-   527  000024  5094               	movf	148,w,c	;volatile
-   528  000026  0BDF               	andlw	223
-   529  000028  6E94               	movwf	148,c	;volatile
-   530  00002A  5094               	movf	148,w,c	;volatile
-   531  00002C  0910               	iorlw	16
-   532  00002E  6E94               	movwf	148,c	;volatile
-   533  000030  5094               	movf	148,w,c	;volatile
-   534  000032  0BF7               	andlw	247
-   535  000034  6E94               	movwf	148,c	;volatile
-   536  000036  5092               	movf	146,w,c	;volatile
-   537  000038  0BDF               	andlw	223
-   538  00003A  6E92               	movwf	146,c	;volatile
-   539  00003C                     
-   540                           ;CREATE_FILES/SPI/spi.c: 29:         SSPCON1bits.SSPEN = 0x00;
-   541  00003C  9AC6               	bcf	198,5,c	;volatile
-   542                           
-   543                           ;CREATE_FILES/SPI/spi.c: 32:         switch(spiConfig->masterMode)
-   544  00003E  EF98  F000         	goto	l1258
-   545  000042                     l106:
-   546                           
-   547                           ;CREATE_FILES/SPI/spi.c: 39:                     {;CREATE_FILES/SPI/spi.c: 41:          
+   524  000012  5017               	movf	SPI_Init@spiConfig^0,w,c
+   525  000014  1018               	iorwf	(SPI_Init@spiConfig+1)^0,w,c
+   526  000016  B4D8               	btfsc	status,2,c
+   527  000018  EF10  F000         	goto	u61
+   528  00001C  EF12  F000         	goto	u60
+   529  000020                     u61:
+   530  000020  EFE8  F000         	goto	l94
+   531  000024                     u60:
+   532  000024  5094               	movf	148,w,c	;volatile
+   533  000026  0BDF               	andlw	223
+   534  000028  6E94               	movwf	148,c	;volatile
+   535  00002A  5094               	movf	148,w,c	;volatile
+   536  00002C  0910               	iorlw	16
+   537  00002E  6E94               	movwf	148,c	;volatile
+   538  000030  5094               	movf	148,w,c	;volatile
+   539  000032  0BF7               	andlw	247
+   540  000034  6E94               	movwf	148,c	;volatile
+   541  000036  5092               	movf	146,w,c	;volatile
+   542  000038  0BDF               	andlw	223
+   543  00003A  6E92               	movwf	146,c	;volatile
+   544  00003C                     
+   545                           ;CREATE_FILES/SPI/spi.c: 25:         SSPCON1bits.SSPEN = 0x00;
+   546  00003C  9AC6               	bcf	198,5,c	;volatile
+   547                           
+   548                           ;CREATE_FILES/SPI/spi.c: 28:         switch(spiConfig->masterMode)
+   549  00003E  EF98  F000         	goto	l1265
+   550  000042                     l106:
+   551                           
+   552                           ;CREATE_FILES/SPI/spi.c: 35:                     {;CREATE_FILES/SPI/spi.c: 37:          
       +                                         SSPCON1bits.SSPM2 = 0x00;
-   548  000042  94C6               	bcf	198,2,c	;volatile
-   549                           
-   550                           ;CREATE_FILES/SPI/spi.c: 42:                         SSPCON1bits.SSPM2 = 0x00;
-   551  000044  94C6               	bcf	198,2,c	;volatile
-   552                           
-   553                           ;CREATE_FILES/SPI/spi.c: 43:                         SSPCON1bits.SSPM1 = 0x00;
-   554  000046  92C6               	bcf	198,1,c	;volatile
-   555                           
-   556                           ;CREATE_FILES/SPI/spi.c: 44:                         SSPCON1bits.SSPM0 = 0x00;
-   557  000048  90C6               	bcf	198,0,c	;volatile
-   558                           
-   559                           ;CREATE_FILES/SPI/spi.c: 45:                         break;
-   560  00004A  EFC5  F000         	goto	l1262
-   561  00004E                     l108:
-   562                           
-   563                           ;CREATE_FILES/SPI/spi.c: 48:                     {;CREATE_FILES/SPI/spi.c: 50:          
+   553  000042  94C6               	bcf	198,2,c	;volatile
+   554                           
+   555                           ;CREATE_FILES/SPI/spi.c: 38:                         SSPCON1bits.SSPM2 = 0x00;
+   556  000044  94C6               	bcf	198,2,c	;volatile
+   557                           
+   558                           ;CREATE_FILES/SPI/spi.c: 39:                         SSPCON1bits.SSPM1 = 0x00;
+   559  000046  92C6               	bcf	198,1,c	;volatile
+   560                           
+   561                           ;CREATE_FILES/SPI/spi.c: 40:                         SSPCON1bits.SSPM0 = 0x00;
+   562  000048  90C6               	bcf	198,0,c	;volatile
+   563                           
+   564                           ;CREATE_FILES/SPI/spi.c: 41:                         break;
+   565  00004A  EFC5  F000         	goto	l1269
+   566  00004E                     l108:
+   567                           
+   568                           ;CREATE_FILES/SPI/spi.c: 44:                     {;CREATE_FILES/SPI/spi.c: 46:          
       +                                         SSPCON1bits.SSPM2 = 0x00;
-   564  00004E  94C6               	bcf	198,2,c	;volatile
-   565                           
-   566                           ;CREATE_FILES/SPI/spi.c: 51:                         SSPCON1bits.SSPM2 = 0x00;
-   567  000050  94C6               	bcf	198,2,c	;volatile
-   568                           
-   569                           ;CREATE_FILES/SPI/spi.c: 52:                         SSPCON1bits.SSPM1 = 0x00;
-   570  000052  92C6               	bcf	198,1,c	;volatile
-   571                           
-   572                           ;CREATE_FILES/SPI/spi.c: 53:                         SSPCON1bits.SSPM0 = 0x01;
-   573  000054  80C6               	bsf	198,0,c	;volatile
-   574                           
-   575                           ;CREATE_FILES/SPI/spi.c: 54:                         break;
-   576  000056  EFC5  F000         	goto	l1262
-   577  00005A                     l109:
-   578                           
-   579                           ;CREATE_FILES/SPI/spi.c: 57:                     {;CREATE_FILES/SPI/spi.c: 59:          
+   569  00004E  94C6               	bcf	198,2,c	;volatile
+   570                           
+   571                           ;CREATE_FILES/SPI/spi.c: 47:                         SSPCON1bits.SSPM2 = 0x00;
+   572  000050  94C6               	bcf	198,2,c	;volatile
+   573                           
+   574                           ;CREATE_FILES/SPI/spi.c: 48:                         SSPCON1bits.SSPM1 = 0x00;
+   575  000052  92C6               	bcf	198,1,c	;volatile
+   576                           
+   577                           ;CREATE_FILES/SPI/spi.c: 49:                         SSPCON1bits.SSPM0 = 0x01;
+   578  000054  80C6               	bsf	198,0,c	;volatile
+   579                           
+   580                           ;CREATE_FILES/SPI/spi.c: 50:                         break;
+   581  000056  EFC5  F000         	goto	l1269
+   582  00005A                     l109:
+   583                           
+   584                           ;CREATE_FILES/SPI/spi.c: 53:                     {;CREATE_FILES/SPI/spi.c: 55:          
       +                                         SSPCON1bits.SSPM2 = 0x00;
-   580  00005A  94C6               	bcf	198,2,c	;volatile
-   581                           
-   582                           ;CREATE_FILES/SPI/spi.c: 60:                         SSPCON1bits.SSPM2 = 0x00;
-   583  00005C  94C6               	bcf	198,2,c	;volatile
-   584                           
-   585                           ;CREATE_FILES/SPI/spi.c: 61:                         SSPCON1bits.SSPM1 = 0x01;
-   586  00005E  82C6               	bsf	198,1,c	;volatile
-   587                           
-   588                           ;CREATE_FILES/SPI/spi.c: 62:                         SSPCON1bits.SSPM0 = 0x00;
-   589  000060  90C6               	bcf	198,0,c	;volatile
-   590                           
-   591                           ;CREATE_FILES/SPI/spi.c: 63:                         break;
-   592  000062  EFC5  F000         	goto	l1262
-   593  000066                     l110:
-   594                           
-   595                           ;CREATE_FILES/SPI/spi.c: 66:                     {;CREATE_FILES/SPI/spi.c: 68:          
+   585  00005A  94C6               	bcf	198,2,c	;volatile
+   586                           
+   587                           ;CREATE_FILES/SPI/spi.c: 56:                         SSPCON1bits.SSPM2 = 0x00;
+   588  00005C  94C6               	bcf	198,2,c	;volatile
+   589                           
+   590                           ;CREATE_FILES/SPI/spi.c: 57:                         SSPCON1bits.SSPM1 = 0x01;
+   591  00005E  82C6               	bsf	198,1,c	;volatile
+   592                           
+   593                           ;CREATE_FILES/SPI/spi.c: 58:                         SSPCON1bits.SSPM0 = 0x00;
+   594  000060  90C6               	bcf	198,0,c	;volatile
+   595                           
+   596                           ;CREATE_FILES/SPI/spi.c: 59:                         break;
+   597  000062  EFC5  F000         	goto	l1269
+   598  000066                     l110:
+   599                           
+   600                           ;CREATE_FILES/SPI/spi.c: 62:                     {;CREATE_FILES/SPI/spi.c: 64:          
       +                                         SSPCON1bits.SSPM2 = 0x00;
-   596  000066  94C6               	bcf	198,2,c	;volatile
-   597                           
-   598                           ;CREATE_FILES/SPI/spi.c: 69:                         SSPCON1bits.SSPM2 = 0x00;
-   599  000068  94C6               	bcf	198,2,c	;volatile
-   600                           
-   601                           ;CREATE_FILES/SPI/spi.c: 70:                         SSPCON1bits.SSPM1 = 0x01;
-   602  00006A  82C6               	bsf	198,1,c	;volatile
-   603                           
-   604                           ;CREATE_FILES/SPI/spi.c: 71:                         SSPCON1bits.SSPM0 = 0x01;
-   605  00006C  80C6               	bsf	198,0,c	;volatile
-   606                           
-   607                           ;CREATE_FILES/SPI/spi.c: 72:                         break;
-   608  00006E  EFC5  F000         	goto	l1262
-   609  000072                     l1252:
-   610  000072  EE20 F003          	lfsr	2,3
-   611  000076  5017               	movf	SPI_Init@spiConfig^0,w,c
-   612  000078  26D9               	addwf	fsr2l,f,c
-   613  00007A  5018               	movf	(SPI_Init@spiConfig+1)^0,w,c
-   614  00007C  22DA               	addwfc	fsr2h,f,c
-   615  00007E  CFDE F019          	movff	postinc2,??_SPI_Init
-   616  000082  CFDE F01A          	movff	postinc2,??_SPI_Init+1
-   617  000086  CFDE F01B          	movff	postinc2,??_SPI_Init+2
-   618  00008A  CFDE F01C          	movff	postinc2,??_SPI_Init+3
-   619                           
-   620                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 2 sub-sw
+   601  000066  94C6               	bcf	198,2,c	;volatile
+   602                           
+   603                           ;CREATE_FILES/SPI/spi.c: 65:                         SSPCON1bits.SSPM2 = 0x00;
+   604  000068  94C6               	bcf	198,2,c	;volatile
+   605                           
+   606                           ;CREATE_FILES/SPI/spi.c: 66:                         SSPCON1bits.SSPM1 = 0x01;
+   607  00006A  82C6               	bsf	198,1,c	;volatile
+   608                           
+   609                           ;CREATE_FILES/SPI/spi.c: 67:                         SSPCON1bits.SSPM0 = 0x01;
+   610  00006C  80C6               	bsf	198,0,c	;volatile
+   611                           
+   612                           ;CREATE_FILES/SPI/spi.c: 68:                         break;
+   613  00006E  EFC5  F000         	goto	l1269
+   614  000072                     l1259:
+   615  000072  EE20 F003          	lfsr	2,3
+   616  000076  5017               	movf	SPI_Init@spiConfig^0,w,c
+   617  000078  26D9               	addwf	fsr2l,f,c
+   618  00007A  5018               	movf	(SPI_Init@spiConfig+1)^0,w,c
+   619  00007C  22DA               	addwfc	fsr2h,f,c
+   620  00007E  CFDE F019          	movff	postinc2,??_SPI_Init
+   621  000082  CFDE F01A          	movff	postinc2,??_SPI_Init+1
+   622  000086  CFDE F01B          	movff	postinc2,??_SPI_Init+2
+   623  00008A  CFDE F01C          	movff	postinc2,??_SPI_Init+3
+   624                           
+   625                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 2 sub-sw
       +                          itches
-   621                           ; Switch size 1, requested type "simple"
-   622                           ; Number of cases is 1, Range of values is 0 to 0
-   623                           ; switch strategies available:
-   624                           ; Name         Instructions Cycles
-   625                           ; simple_byte            4     3 (average)
-   626                           ;	Chosen strategy is simple_byte
-   627  00008E  501C               	movf	(??_SPI_Init+3)^0,w,c
-   628  000090  0A00               	xorlw	0	; case 0
-   629  000092  B4D8               	btfsc	status,2,c
-   630  000094  EF68  F000         	goto	l1364
-   631  000098  EFC5  F000         	goto	l1262
-   632  00009C                     l1362:
-   633                           
-   634                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
+   626                           ; Switch size 1, requested type "simple"
+   627                           ; Number of cases is 1, Range of values is 0 to 0
+   628                           ; switch strategies available:
+   629                           ; Name         Instructions Cycles
+   630                           ; simple_byte            4     3 (average)
+   631                           ;	Chosen strategy is simple_byte
+   632  00008E  501C               	movf	(??_SPI_Init+3)^0,w,c
+   633  000090  0A00               	xorlw	0	; case 0
+   634  000092  B4D8               	btfsc	status,2,c
+   635  000094  EF68  F000         	goto	l1373
+   636  000098  EFC5  F000         	goto	l1269
+   637  00009C                     l1371:
+   638                           
+   639                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
       +                          itches
-   635                           ; Switch size 1, requested type "simple"
-   636                           ; Number of cases is 1, Range of values is 0 to 0
-   637                           ; switch strategies available:
-   638                           ; Name         Instructions Cycles
-   639                           ; simple_byte            4     3 (average)
-   640                           ;	Chosen strategy is simple_byte
-   641  00009C  501A               	movf	(??_SPI_Init+1)^0,w,c
-   642  00009E  0A00               	xorlw	0	; case 0
-   643  0000A0  B4D8               	btfsc	status,2,c
-   644  0000A2  EF55  F000         	goto	l1366
-   645  0000A6  EFC5  F000         	goto	l1262
-   646  0000AA                     l1366:
-   647                           
-   648                           ; Switch size 1, requested type "simple"
-   649                           ; Number of cases is 4, Range of values is 0 to 3
-   650                           ; switch strategies available:
-   651                           ; Name         Instructions Cycles
-   652                           ; simple_byte           13     7 (average)
-   653                           ;	Chosen strategy is simple_byte
-   654  0000AA  5019               	movf	??_SPI_Init^0,w,c
-   655  0000AC  0A00               	xorlw	0	; case 0
-   656  0000AE  B4D8               	btfsc	status,2,c
-   657  0000B0  EF33  F000         	goto	l110
-   658  0000B4  0A01               	xorlw	1	; case 1
-   659  0000B6  B4D8               	btfsc	status,2,c
-   660  0000B8  EF2D  F000         	goto	l109
-   661  0000BC  0A03               	xorlw	3	; case 2
-   662  0000BE  B4D8               	btfsc	status,2,c
-   663  0000C0  EF27  F000         	goto	l108
-   664  0000C4  0A01               	xorlw	1	; case 3
-   665  0000C6  B4D8               	btfsc	status,2,c
-   666  0000C8  EF21  F000         	goto	l106
-   667  0000CC  EFC5  F000         	goto	l1262
-   668  0000D0                     l1364:
-   669                           
-   670                           ; Switch size 1, requested type "simple"
-   671                           ; Number of cases is 1, Range of values is 0 to 0
-   672                           ; switch strategies available:
-   673                           ; Name         Instructions Cycles
-   674                           ; simple_byte            4     3 (average)
-   675                           ;	Chosen strategy is simple_byte
-   676  0000D0  501B               	movf	(??_SPI_Init+2)^0,w,c
-   677  0000D2  0A00               	xorlw	0	; case 0
-   678  0000D4  B4D8               	btfsc	status,2,c
-   679  0000D6  EF4E  F000         	goto	l1362
-   680  0000DA  EFC5  F000         	goto	l1262
-   681  0000DE                     l114:
-   682                           
-   683                           ;CREATE_FILES/SPI/spi.c: 83:                     {;CREATE_FILES/SPI/spi.c: 85:          
+   640                           ; Switch size 1, requested type "simple"
+   641                           ; Number of cases is 1, Range of values is 0 to 0
+   642                           ; switch strategies available:
+   643                           ; Name         Instructions Cycles
+   644                           ; simple_byte            4     3 (average)
+   645                           ;	Chosen strategy is simple_byte
+   646  00009C  501A               	movf	(??_SPI_Init+1)^0,w,c
+   647  00009E  0A00               	xorlw	0	; case 0
+   648  0000A0  B4D8               	btfsc	status,2,c
+   649  0000A2  EF55  F000         	goto	l1375
+   650  0000A6  EFC5  F000         	goto	l1269
+   651  0000AA                     l1375:
+   652                           
+   653                           ; Switch size 1, requested type "simple"
+   654                           ; Number of cases is 4, Range of values is 0 to 3
+   655                           ; switch strategies available:
+   656                           ; Name         Instructions Cycles
+   657                           ; simple_byte           13     7 (average)
+   658                           ;	Chosen strategy is simple_byte
+   659  0000AA  5019               	movf	??_SPI_Init^0,w,c
+   660  0000AC  0A00               	xorlw	0	; case 0
+   661  0000AE  B4D8               	btfsc	status,2,c
+   662  0000B0  EF33  F000         	goto	l110
+   663  0000B4  0A01               	xorlw	1	; case 1
+   664  0000B6  B4D8               	btfsc	status,2,c
+   665  0000B8  EF2D  F000         	goto	l109
+   666  0000BC  0A03               	xorlw	3	; case 2
+   667  0000BE  B4D8               	btfsc	status,2,c
+   668  0000C0  EF27  F000         	goto	l108
+   669  0000C4  0A01               	xorlw	1	; case 3
+   670  0000C6  B4D8               	btfsc	status,2,c
+   671  0000C8  EF21  F000         	goto	l106
+   672  0000CC  EFC5  F000         	goto	l1269
+   673  0000D0                     l1373:
+   674                           
+   675                           ; Switch size 1, requested type "simple"
+   676                           ; Number of cases is 1, Range of values is 0 to 0
+   677                           ; switch strategies available:
+   678                           ; Name         Instructions Cycles
+   679                           ; simple_byte            4     3 (average)
+   680                           ;	Chosen strategy is simple_byte
+   681  0000D0  501B               	movf	(??_SPI_Init+2)^0,w,c
+   682  0000D2  0A00               	xorlw	0	; case 0
+   683  0000D4  B4D8               	btfsc	status,2,c
+   684  0000D6  EF4E  F000         	goto	l1371
+   685  0000DA  EFC5  F000         	goto	l1269
+   686  0000DE                     l114:
+   687                           
+   688                           ;CREATE_FILES/SPI/spi.c: 79:                     {;CREATE_FILES/SPI/spi.c: 81:          
       +                                         SSPCON1bits.SSPM2 = 0x00;
-   684  0000DE  94C6               	bcf	198,2,c	;volatile
-   685                           
-   686                           ;CREATE_FILES/SPI/spi.c: 86:                         SSPCON1bits.SSPM2 = 0x01;
-   687  0000E0  84C6               	bsf	198,2,c	;volatile
-   688                           
-   689                           ;CREATE_FILES/SPI/spi.c: 87:                         SSPCON1bits.SSPM1 = 0x00;
-   690  0000E2  92C6               	bcf	198,1,c	;volatile
-   691                           
-   692                           ;CREATE_FILES/SPI/spi.c: 88:                         SSPCON1bits.SSPM0 = 0x00;
-   693  0000E4  90C6               	bcf	198,0,c	;volatile
-   694                           
-   695                           ;CREATE_FILES/SPI/spi.c: 89:                         break;
-   696  0000E6  EFC5  F000         	goto	l1262
-   697  0000EA                     l116:
-   698                           
-   699                           ;CREATE_FILES/SPI/spi.c: 92:                     {;CREATE_FILES/SPI/spi.c: 95:          
+   689  0000DE  94C6               	bcf	198,2,c	;volatile
+   690                           
+   691                           ;CREATE_FILES/SPI/spi.c: 82:                         SSPCON1bits.SSPM2 = 0x01;
+   692  0000E0  84C6               	bsf	198,2,c	;volatile
+   693                           
+   694                           ;CREATE_FILES/SPI/spi.c: 83:                         SSPCON1bits.SSPM1 = 0x00;
+   695  0000E2  92C6               	bcf	198,1,c	;volatile
+   696                           
+   697                           ;CREATE_FILES/SPI/spi.c: 84:                         SSPCON1bits.SSPM0 = 0x00;
+   698  0000E4  90C6               	bcf	198,0,c	;volatile
+   699                           
+   700                           ;CREATE_FILES/SPI/spi.c: 85:                         break;
+   701  0000E6  EFC5  F000         	goto	l1269
+   702  0000EA                     l116:
+   703                           
+   704                           ;CREATE_FILES/SPI/spi.c: 88:                     {;CREATE_FILES/SPI/spi.c: 91:          
       +                                         SSPCON1bits.SSPM2 = 0x00;
-   700  0000EA  94C6               	bcf	198,2,c	;volatile
-   701                           
-   702                           ;CREATE_FILES/SPI/spi.c: 96:                         SSPCON1bits.SSPM2 = 0x01;
-   703  0000EC  84C6               	bsf	198,2,c	;volatile
-   704                           
-   705                           ;CREATE_FILES/SPI/spi.c: 97:                         SSPCON1bits.SSPM1 = 0x00;
-   706  0000EE  92C6               	bcf	198,1,c	;volatile
-   707                           
-   708                           ;CREATE_FILES/SPI/spi.c: 98:                         SSPCON1bits.SSPM0 = 0x01;
-   709  0000F0  80C6               	bsf	198,0,c	;volatile
-   710                           
-   711                           ;CREATE_FILES/SPI/spi.c: 99:                         break;
-   712  0000F2  EFC5  F000         	goto	l1262
-   713  0000F6                     l1256:
-   714  0000F6  EE20 F002          	lfsr	2,2
-   715  0000FA  5017               	movf	SPI_Init@spiConfig^0,w,c
-   716  0000FC  26D9               	addwf	fsr2l,f,c
-   717  0000FE  5018               	movf	(SPI_Init@spiConfig+1)^0,w,c
-   718  000100  22DA               	addwfc	fsr2h,f,c
-   719  000102  50DF               	movf	indf2,w,c
-   720  000104  6E19               	movwf	??_SPI_Init^0,c
-   721  000106  6A1A               	clrf	(??_SPI_Init+1)^0,c
-   722                           
-   723                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
+   705  0000EA  94C6               	bcf	198,2,c	;volatile
+   706                           
+   707                           ;CREATE_FILES/SPI/spi.c: 92:                         SSPCON1bits.SSPM2 = 0x01;
+   708  0000EC  84C6               	bsf	198,2,c	;volatile
+   709                           
+   710                           ;CREATE_FILES/SPI/spi.c: 93:                         SSPCON1bits.SSPM1 = 0x00;
+   711  0000EE  92C6               	bcf	198,1,c	;volatile
+   712                           
+   713                           ;CREATE_FILES/SPI/spi.c: 94:                         SSPCON1bits.SSPM0 = 0x01;
+   714  0000F0  80C6               	bsf	198,0,c	;volatile
+   715                           
+   716                           ;CREATE_FILES/SPI/spi.c: 95:                         break;
+   717  0000F2  EFC5  F000         	goto	l1269
+   718  0000F6                     l1263:
+   719  0000F6  EE20 F002          	lfsr	2,2
+   720  0000FA  5017               	movf	SPI_Init@spiConfig^0,w,c
+   721  0000FC  26D9               	addwf	fsr2l,f,c
+   722  0000FE  5018               	movf	(SPI_Init@spiConfig+1)^0,w,c
+   723  000100  22DA               	addwfc	fsr2h,f,c
+   724  000102  50DF               	movf	indf2,w,c
+   725  000104  6E19               	movwf	??_SPI_Init^0,c
+   726  000106  6A1A               	clrf	(??_SPI_Init+1)^0,c
+   727                           
+   728                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
       +                          itches
-   724                           ; Switch size 1, requested type "simple"
-   725                           ; Number of cases is 1, Range of values is 0 to 0
-   726                           ; switch strategies available:
-   727                           ; Name         Instructions Cycles
-   728                           ; simple_byte            4     3 (average)
-   729                           ;	Chosen strategy is simple_byte
-   730  000108  501A               	movf	(??_SPI_Init+1)^0,w,c
-   731  00010A  0A00               	xorlw	0	; case 0
-   732  00010C  B4D8               	btfsc	status,2,c
-   733  00010E  EF8B  F000         	goto	l1368
-   734  000112  EFC5  F000         	goto	l1262
-   735  000116                     l1368:
-   736                           
-   737                           ; Switch size 1, requested type "simple"
-   738                           ; Number of cases is 2, Range of values is 0 to 1
-   739                           ; switch strategies available:
-   740                           ; Name         Instructions Cycles
-   741                           ; simple_byte            7     4 (average)
-   742                           ;	Chosen strategy is simple_byte
-   743  000116  5019               	movf	??_SPI_Init^0,w,c
-   744  000118  0A00               	xorlw	0	; case 0
-   745  00011A  B4D8               	btfsc	status,2,c
-   746  00011C  EF6F  F000         	goto	l114
-   747  000120  0A01               	xorlw	1	; case 1
-   748  000122  B4D8               	btfsc	status,2,c
-   749  000124  EF75  F000         	goto	l116
-   750  000128  EFC5  F000         	goto	l1262
-   751  00012C                     l117:
-   752  00012C  EF96  F000         	goto	l117
-   753  000130                     l1258:
-   754  000130  C017  FFD9         	movff	SPI_Init@spiConfig,fsr2l
-   755  000134  C018  FFDA         	movff	SPI_Init@spiConfig+1,fsr2h
-   756  000138  50DF               	movf	indf2,w,c
-   757  00013A  6E19               	movwf	??_SPI_Init^0,c
-   758  00013C  6A1A               	clrf	(??_SPI_Init+1)^0,c
-   759                           
-   760                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
+   729                           ; Switch size 1, requested type "simple"
+   730                           ; Number of cases is 1, Range of values is 0 to 0
+   731                           ; switch strategies available:
+   732                           ; Name         Instructions Cycles
+   733                           ; simple_byte            4     3 (average)
+   734                           ;	Chosen strategy is simple_byte
+   735  000108  501A               	movf	(??_SPI_Init+1)^0,w,c
+   736  00010A  0A00               	xorlw	0	; case 0
+   737  00010C  B4D8               	btfsc	status,2,c
+   738  00010E  EF8B  F000         	goto	l1377
+   739  000112  EFC5  F000         	goto	l1269
+   740  000116                     l1377:
+   741                           
+   742                           ; Switch size 1, requested type "simple"
+   743                           ; Number of cases is 2, Range of values is 0 to 1
+   744                           ; switch strategies available:
+   745                           ; Name         Instructions Cycles
+   746                           ; simple_byte            7     4 (average)
+   747                           ;	Chosen strategy is simple_byte
+   748  000116  5019               	movf	??_SPI_Init^0,w,c
+   749  000118  0A00               	xorlw	0	; case 0
+   750  00011A  B4D8               	btfsc	status,2,c
+   751  00011C  EF6F  F000         	goto	l114
+   752  000120  0A01               	xorlw	1	; case 1
+   753  000122  B4D8               	btfsc	status,2,c
+   754  000124  EF75  F000         	goto	l116
+   755  000128  EFC5  F000         	goto	l1269
+   756  00012C                     l117:
+   757  00012C  EF96  F000         	goto	l117
+   758  000130                     l1265:
+   759  000130  C017  FFD9         	movff	SPI_Init@spiConfig,fsr2l
+   760  000134  C018  FFDA         	movff	SPI_Init@spiConfig+1,fsr2h
+   761  000138  50DF               	movf	indf2,w,c
+   762  00013A  6E19               	movwf	??_SPI_Init^0,c
+   763  00013C  6A1A               	clrf	(??_SPI_Init+1)^0,c
+   764                           
+   765                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
       +                          itches
-   761                           ; Switch size 1, requested type "simple"
-   762                           ; Number of cases is 1, Range of values is 0 to 0
-   763                           ; switch strategies available:
-   764                           ; Name         Instructions Cycles
-   765                           ; simple_byte            4     3 (average)
-   766                           ;	Chosen strategy is simple_byte
-   767  00013E  501A               	movf	(??_SPI_Init+1)^0,w,c
-   768  000140  0A00               	xorlw	0	; case 0
-   769  000142  B4D8               	btfsc	status,2,c
-   770  000144  EFA6  F000         	goto	l1370
-   771  000148  EF96  F000         	goto	l117
-   772  00014C                     l1370:
-   773                           
-   774                           ; Switch size 1, requested type "simple"
-   775                           ; Number of cases is 2, Range of values is 0 to 1
-   776                           ; switch strategies available:
-   777                           ; Name         Instructions Cycles
-   778                           ; simple_byte            7     4 (average)
-   779                           ;	Chosen strategy is simple_byte
-   780  00014C  5019               	movf	??_SPI_Init^0,w,c
-   781  00014E  0A00               	xorlw	0	; case 0
-   782  000150  B4D8               	btfsc	status,2,c
-   783  000152  EF7B  F000         	goto	l1256
-   784  000156  0A01               	xorlw	1	; case 1
-   785  000158  B4D8               	btfsc	status,2,c
-   786  00015A  EF39  F000         	goto	l1252
-   787  00015E  EF96  F000         	goto	l117
-   788  000162                     l121:
-   789                           
-   790                           ;CREATE_FILES/SPI/spi.c: 120:             {;CREATE_FILES/SPI/spi.c: 121:                
+   766                           ; Switch size 1, requested type "simple"
+   767                           ; Number of cases is 1, Range of values is 0 to 0
+   768                           ; switch strategies available:
+   769                           ; Name         Instructions Cycles
+   770                           ; simple_byte            4     3 (average)
+   771                           ;	Chosen strategy is simple_byte
+   772  00013E  501A               	movf	(??_SPI_Init+1)^0,w,c
+   773  000140  0A00               	xorlw	0	; case 0
+   774  000142  B4D8               	btfsc	status,2,c
+   775  000144  EFA6  F000         	goto	l1379
+   776  000148  EF96  F000         	goto	l117
+   777  00014C                     l1379:
+   778                           
+   779                           ; Switch size 1, requested type "simple"
+   780                           ; Number of cases is 2, Range of values is 0 to 1
+   781                           ; switch strategies available:
+   782                           ; Name         Instructions Cycles
+   783                           ; simple_byte            7     4 (average)
+   784                           ;	Chosen strategy is simple_byte
+   785  00014C  5019               	movf	??_SPI_Init^0,w,c
+   786  00014E  0A00               	xorlw	0	; case 0
+   787  000150  B4D8               	btfsc	status,2,c
+   788  000152  EF7B  F000         	goto	l1263
+   789  000156  0A01               	xorlw	1	; case 1
+   790  000158  B4D8               	btfsc	status,2,c
+   791  00015A  EF39  F000         	goto	l1259
+   792  00015E  EF96  F000         	goto	l117
+   793  000162                     l121:
+   794                           
+   795                           ;CREATE_FILES/SPI/spi.c: 116:             {;CREATE_FILES/SPI/spi.c: 117:                
       +                           SSPCON1bits.CKP = 0x00;
-   791  000162  98C6               	bcf	198,4,c	;volatile
-   792                           
-   793                           ;CREATE_FILES/SPI/spi.c: 122:                 SSPSTATbits.CKE = 0x01;
-   794  000164  8CC7               	bsf	199,6,c	;volatile
-   795                           
-   796                           ;CREATE_FILES/SPI/spi.c: 123:                 SSPSTATbits.SMP = 0x00;
-   797  000166  9EC7               	bcf	199,7,c	;volatile
-   798                           
-   799                           ;CREATE_FILES/SPI/spi.c: 124:                 break;
-   800  000168  EFEA  F000         	goto	l129
-   801  00016C                     l123:
-   802                           
-   803                           ;CREATE_FILES/SPI/spi.c: 133:             {;CREATE_FILES/SPI/spi.c: 134:                
+   796  000162  98C6               	bcf	198,4,c	;volatile
+   797                           
+   798                           ;CREATE_FILES/SPI/spi.c: 118:                 SSPSTATbits.CKE = 0x01;
+   799  000164  8CC7               	bsf	199,6,c	;volatile
+   800                           
+   801                           ;CREATE_FILES/SPI/spi.c: 119:                 SSPSTATbits.SMP = 0x00;
+   802  000166  9EC7               	bcf	199,7,c	;volatile
+   803                           
+   804                           ;CREATE_FILES/SPI/spi.c: 120:                 break;
+   805  000168  EFEA  F000         	goto	l129
+   806  00016C                     l123:
+   807                           
+   808                           ;CREATE_FILES/SPI/spi.c: 129:             {;CREATE_FILES/SPI/spi.c: 130:                
       +                           SSPCON1bits.CKP = 0x00;
-   804  00016C  98C6               	bcf	198,4,c	;volatile
-   805                           
-   806                           ;CREATE_FILES/SPI/spi.c: 135:                 SSPSTATbits.CKE = 0x00;
-   807  00016E  9CC7               	bcf	199,6,c	;volatile
-   808                           
-   809                           ;CREATE_FILES/SPI/spi.c: 136:                 SSPSTATbits.SMP = 0x01;
-   810  000170  8EC7               	bsf	199,7,c	;volatile
-   811                           
-   812                           ;CREATE_FILES/SPI/spi.c: 138:                 break;
-   813  000172  EFEA  F000         	goto	l129
-   814  000176                     l124:
-   815                           
-   816                           ;CREATE_FILES/SPI/spi.c: 148:             {;CREATE_FILES/SPI/spi.c: 149:                
+   809  00016C  98C6               	bcf	198,4,c	;volatile
+   810                           
+   811                           ;CREATE_FILES/SPI/spi.c: 131:                 SSPSTATbits.CKE = 0x00;
+   812  00016E  9CC7               	bcf	199,6,c	;volatile
+   813                           
+   814                           ;CREATE_FILES/SPI/spi.c: 132:                 SSPSTATbits.SMP = 0x01;
+   815  000170  8EC7               	bsf	199,7,c	;volatile
+   816                           
+   817                           ;CREATE_FILES/SPI/spi.c: 134:                 break;
+   818  000172  EFEA  F000         	goto	l129
+   819  000176                     l124:
+   820                           
+   821                           ;CREATE_FILES/SPI/spi.c: 144:             {;CREATE_FILES/SPI/spi.c: 145:                
       +                           SSPCON1bits.CKP = 0x01;
-   817  000176  88C6               	bsf	198,4,c	;volatile
-   818                           
-   819                           ;CREATE_FILES/SPI/spi.c: 150:                 SSPSTATbits.CKE = 0x01;
-   820  000178  8CC7               	bsf	199,6,c	;volatile
-   821                           
-   822                           ;CREATE_FILES/SPI/spi.c: 151:                 SSPSTATbits.SMP = 0x00;
-   823  00017A  9EC7               	bcf	199,7,c	;volatile
-   824                           
-   825                           ;CREATE_FILES/SPI/spi.c: 152:                 break;
-   826  00017C  EFEA  F000         	goto	l129
-   827  000180                     l125:
-   828                           
-   829                           ;CREATE_FILES/SPI/spi.c: 162:             {;CREATE_FILES/SPI/spi.c: 163:                
+   822  000176  88C6               	bsf	198,4,c	;volatile
+   823                           
+   824                           ;CREATE_FILES/SPI/spi.c: 146:                 SSPSTATbits.CKE = 0x01;
+   825  000178  8CC7               	bsf	199,6,c	;volatile
+   826                           
+   827                           ;CREATE_FILES/SPI/spi.c: 147:                 SSPSTATbits.SMP = 0x00;
+   828  00017A  9EC7               	bcf	199,7,c	;volatile
+   829                           
+   830                           ;CREATE_FILES/SPI/spi.c: 148:                 break;
+   831  00017C  EFEA  F000         	goto	l129
+   832  000180                     l125:
+   833                           
+   834                           ;CREATE_FILES/SPI/spi.c: 158:             {;CREATE_FILES/SPI/spi.c: 159:                
       +                           SSPCON1bits.CKP = 0x01;
-   830  000180  88C6               	bsf	198,4,c	;volatile
-   831                           
-   832                           ;CREATE_FILES/SPI/spi.c: 164:                 SSPSTATbits.CKE = 0x00;
-   833  000182  9CC7               	bcf	199,6,c	;volatile
-   834                           
-   835                           ;CREATE_FILES/SPI/spi.c: 165:                 SSPSTATbits.SMP = 0x01;
-   836  000184  8EC7               	bsf	199,7,c	;volatile
-   837                           
-   838                           ;CREATE_FILES/SPI/spi.c: 166:                 break;
-   839  000186  EFEA  F000         	goto	l129
-   840  00018A                     l1262:
-   841  00018A  EE20 F001          	lfsr	2,1
-   842  00018E  5017               	movf	SPI_Init@spiConfig^0,w,c
-   843  000190  26D9               	addwf	fsr2l,f,c
-   844  000192  5018               	movf	(SPI_Init@spiConfig+1)^0,w,c
-   845  000194  22DA               	addwfc	fsr2h,f,c
-   846  000196  50DF               	movf	indf2,w,c
-   847  000198  6E19               	movwf	??_SPI_Init^0,c
-   848  00019A  6A1A               	clrf	(??_SPI_Init+1)^0,c
-   849                           
-   850                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
+   835  000180  88C6               	bsf	198,4,c	;volatile
+   836                           
+   837                           ;CREATE_FILES/SPI/spi.c: 160:                 SSPSTATbits.CKE = 0x00;
+   838  000182  9CC7               	bcf	199,6,c	;volatile
+   839                           
+   840                           ;CREATE_FILES/SPI/spi.c: 161:                 SSPSTATbits.SMP = 0x01;
+   841  000184  8EC7               	bsf	199,7,c	;volatile
+   842                           
+   843                           ;CREATE_FILES/SPI/spi.c: 162:                 break;
+   844  000186  EFEA  F000         	goto	l129
+   845  00018A                     l1269:
+   846  00018A  EE20 F001          	lfsr	2,1
+   847  00018E  5017               	movf	SPI_Init@spiConfig^0,w,c
+   848  000190  26D9               	addwf	fsr2l,f,c
+   849  000192  5018               	movf	(SPI_Init@spiConfig+1)^0,w,c
+   850  000194  22DA               	addwfc	fsr2h,f,c
+   851  000196  50DF               	movf	indf2,w,c
+   852  000198  6E19               	movwf	??_SPI_Init^0,c
+   853  00019A  6A1A               	clrf	(??_SPI_Init+1)^0,c
+   854                           
+   855                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
       +                          itches
-   851                           ; Switch size 1, requested type "simple"
-   852                           ; Number of cases is 1, Range of values is 0 to 0
-   853                           ; switch strategies available:
-   854                           ; Name         Instructions Cycles
-   855                           ; simple_byte            4     3 (average)
-   856                           ;	Chosen strategy is simple_byte
-   857  00019C  501A               	movf	(??_SPI_Init+1)^0,w,c
-   858  00019E  0A00               	xorlw	0	; case 0
-   859  0001A0  B4D8               	btfsc	status,2,c
-   860  0001A2  EFD5  F000         	goto	l1372
-   861  0001A6  EFEA  F000         	goto	l129
-   862  0001AA                     l1372:
-   863                           
-   864                           ; Switch size 1, requested type "simple"
-   865                           ; Number of cases is 4, Range of values is 0 to 3
-   866                           ; switch strategies available:
-   867                           ; Name         Instructions Cycles
-   868                           ; simple_byte           13     7 (average)
-   869                           ;	Chosen strategy is simple_byte
-   870  0001AA  5019               	movf	??_SPI_Init^0,w,c
-   871  0001AC  0A00               	xorlw	0	; case 0
-   872  0001AE  B4D8               	btfsc	status,2,c
-   873  0001B0  EFB1  F000         	goto	l121
-   874  0001B4  0A01               	xorlw	1	; case 1
-   875  0001B6  B4D8               	btfsc	status,2,c
-   876  0001B8  EFB6  F000         	goto	l123
-   877  0001BC  0A03               	xorlw	3	; case 2
-   878  0001BE  B4D8               	btfsc	status,2,c
-   879  0001C0  EFBB  F000         	goto	l124
-   880  0001C4  0A01               	xorlw	1	; case 3
-   881  0001C6  B4D8               	btfsc	status,2,c
-   882  0001C8  EFC0  F000         	goto	l125
-   883  0001CC  EFEA  F000         	goto	l129
-   884  0001D0                     l94:
-   885  0001D0  EFE8  F000         	goto	l94
-   886  0001D4                     l129:
-   887  0001D4  0012               	return		;funcret
-   888  0001D6                     __end_of_SPI_Init:
-   889                           	opt callstack 0
-   890                           
-   891 ;; *************** function _Interrupts_Configure *****************
-   892 ;; Defined at:
-   893 ;;		line 4 in file "CREATE_FILES/INTERRUPT/interrupts.c"
-   894 ;; Parameters:    Size  Location     Type
-   895 ;;		None
-   896 ;; Auto vars:     Size  Location     Type
-   897 ;;		None
-   898 ;; Return value:  Size  Location     Type
-   899 ;;                  1    wreg      void 
-   900 ;; Registers used:
-   901 ;;		None
-   902 ;; Tracked objects:
-   903 ;;		On entry : 0/0
-   904 ;;		On exit  : 0/0
-   905 ;;		Unchanged: 0/0
-   906 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-   907 ;;      Params:         0       0       0       0       0       0       0
-   908 ;;      Locals:         0       0       0       0       0       0       0
-   909 ;;      Temps:          0       0       0       0       0       0       0
-   910 ;;      Totals:         0       0       0       0       0       0       0
-   911 ;;Total ram usage:        0 bytes
-   912 ;; Hardware stack levels used:    1
-   913 ;; Hardware stack levels required when called:    2
-   914 ;; This function calls:
-   915 ;;		Nothing
-   916 ;; This function is called by:
-   917 ;;		_main
-   918 ;; This function uses a non-reentrant model
-   919 ;;
-   920                           
-   921                           	psect	text5
-   922  00042A                     __ptext5:
-   923                           	opt callstack 0
-   924  00042A                     _Interrupts_Configure:
-   925                           	opt callstack 28
-   926  00042A                     
-   927                           ;CREATE_FILES/INTERRUPT/interrupts.c: 9:     INTCONbits.GIE = 0x01;
-   928  00042A  8EF2               	bsf	242,7,c	;volatile
-   929                           
-   930                           ;CREATE_FILES/INTERRUPT/interrupts.c: 10:     INTCONbits.GIEH = 0x01;
-   931  00042C  8EF2               	bsf	242,7,c	;volatile
-   932                           
-   933                           ;CREATE_FILES/INTERRUPT/interrupts.c: 13:     RCONbits.IPEN = 0x01;
-   934  00042E  8ED0               	bsf	208,7,c	;volatile
-   935                           
-   936                           ;CREATE_FILES/INTERRUPT/interrupts.c: 16:     INTCONbits.PEIE = 0x01;
-   937  000430  8CF2               	bsf	242,6,c	;volatile
-   938                           
-   939                           ;CREATE_FILES/INTERRUPT/interrupts.c: 17:     INTCONbits.GIEL = 0x01;
-   940  000432  8CF2               	bsf	242,6,c	;volatile
-   941                           
-   942                           ;CREATE_FILES/INTERRUPT/interrupts.c: 25:     INTCONbits.TMR0IE = 0x01;
-   943  000434  8AF2               	bsf	242,5,c	;volatile
-   944                           
-   945                           ;CREATE_FILES/INTERRUPT/interrupts.c: 26:     INTCON2bits.TMR0IP = 0x01;
-   946  000436  84F1               	bsf	241,2,c	;volatile
-   947  000438  0012               	return		;funcret
-   948  00043A                     __end_of_Interrupts_Configure:
-   949                           	opt callstack 0
-   950                           
-   951 ;; *************** function _TC0INT *****************
-   952 ;; Defined at:
-   953 ;;		line 110 in file "main.c"
-   954 ;; Parameters:    Size  Location     Type
-   955 ;;		None
-   956 ;; Auto vars:     Size  Location     Type
-   957 ;;		None
-   958 ;; Return value:  Size  Location     Type
-   959 ;;                  1    wreg      void 
-   960 ;; Registers used:
-   961 ;;		wreg, fsr2l, fsr2h, status,2, status,0, cstack
-   962 ;; Tracked objects:
-   963 ;;		On entry : 0/0
-   964 ;;		On exit  : 0/0
-   965 ;;		Unchanged: 0/0
-   966 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-   967 ;;      Params:         0       0       0       0       0       0       0
-   968 ;;      Locals:         0       0       0       0       0       0       0
-   969 ;;      Temps:          2       0       0       0       0       0       0
-   970 ;;      Totals:         2       0       0       0       0       0       0
-   971 ;;Total ram usage:        2 bytes
-   972 ;; Hardware stack levels used:    1
-   973 ;; Hardware stack levels required when called:    1
-   974 ;; This function calls:
-   975 ;;		_RowControl
-   976 ;;		_SPI_Write
-   977 ;; This function is called by:
-   978 ;;		Interrupt level 2
-   979 ;; This function uses a non-reentrant model
-   980 ;;
-   981                           
-   982                           	psect	intcode
-   983  000008                     __pintcode:
-   984                           	opt callstack 0
-   985  000008                     _TC0INT:
-   986                           	opt callstack 28
-   987                           
-   988                           ;incstack = 0
-   989  000008  8221               	bsf	int$flags,1,c	;set compiler interrupt flag (level 2)
-   990  00000A  ED87  F001         	call	int_func,f	;refresh shadow registers
-   991                           
-   992                           	psect	intcode_body
-   993  00030E                     __pintcode_body:
-   994                           	opt callstack 28
-   995  00030E                     int_func:
-   996                           	opt callstack 28
-   997  00030E  0006               	pop		; remove dummy address from shadow register refresh
-   998  000310  CFD9 F015          	movff	fsr2l,??_TC0INT
-   999  000314  CFDA F016          	movff	fsr2h,??_TC0INT+1
-  1000  000318                     
-  1001                           ;main.c: 112:     if(INTCONbits.TMR0IF == 0x01)
-  1002  000318  A4F2               	btfss	242,2,c	;volatile
-  1003  00031A  EF91  F001         	goto	i2u6_41
-  1004  00031E  EF93  F001         	goto	i2u6_40
-  1005  000322                     i2u6_41:
-  1006  000322  EFAA  F001         	goto	i2l201
-  1007  000326                     i2u6_40:
-  1008  000326                     
-  1009                           ;main.c: 113:     {;main.c: 114:         INTCONbits.GIE = 0x00;
-  1010  000326  9EF2               	bcf	242,7,c	;volatile
-  1011                           
-  1012                           ;main.c: 115:         T0CONbits.TMR0ON = 0x00;
-  1013  000328  9ED5               	bcf	213,7,c	;volatile
-  1014  00032A                     
-  1015                           ;main.c: 117:         RowControl(&currRow);
-  1016  00032A  0E20               	movlw	low _currRow
-  1017  00032C  6E10               	movwf	RowControl@currRow^0,c
-  1018  00032E  0E00               	movlw	high _currRow
-  1019  000330  6E11               	movwf	(RowControl@currRow+1)^0,c
-  1020  000332  ECEB  F000         	call	_RowControl	;wreg free
-  1021                           
-  1022                           ;main.c: 118:         SPI_Write(dataTrans, currRow);
-  1023  000336  0E01               	movlw	low _dataTrans
-  1024  000338  6E10               	movwf	SPI_Write@transBuffer^0,c
-  1025  00033A  0E00               	movlw	high _dataTrans
-  1026  00033C  6E11               	movwf	(SPI_Write@transBuffer+1)^0,c
-  1027  00033E  C020  F012         	movff	_currRow,SPI_Write@currCol
-  1028  000342  ECFC  F001         	call	_SPI_Write	;wreg free
-  1029  000346                     
-  1030                           ;main.c: 121:         TMR0 = 0x6D84;
-  1031  000346  0E6D               	movlw	109
-  1032  000348  6ED7               	movwf	215,c	;volatile
-  1033  00034A  0E84               	movlw	132
-  1034  00034C  6ED6               	movwf	214,c	;volatile
-  1035  00034E                     
-  1036                           ;main.c: 122:         INTCONbits.T0IF = 0x00;
-  1037  00034E  94F2               	bcf	242,2,c	;volatile
-  1038  000350                     
-  1039                           ;main.c: 123:         INTCONbits.GIE = 0x01;
-  1040  000350  8EF2               	bsf	242,7,c	;volatile
-  1041  000352                     
-  1042                           ;main.c: 124:         T0CONbits.TMR0ON = 0x01;
-  1043  000352  8ED5               	bsf	213,7,c	;volatile
-  1044  000354                     i2l201:
-  1045  000354  C016  FFDA         	movff	??_TC0INT+1,fsr2h
-  1046  000358  C015  FFD9         	movff	??_TC0INT,fsr2l
-  1047  00035C  9221               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
-  1048  00035E  0011               	retfie		f
-  1049  000360                     __end_of_TC0INT:
-  1050                           	opt callstack 0
-  1051                           
-  1052 ;; *************** function _SPI_Write *****************
-  1053 ;; Defined at:
-  1054 ;;		line 182 in file "CREATE_FILES/SPI/spi.c"
-  1055 ;; Parameters:    Size  Location     Type
-  1056 ;;  transBuffer     2    0[COMRAM] PTR unsigned char 
-  1057 ;;		 -> dataTrans(8), 
-  1058 ;;  currCol         1    2[COMRAM] unsigned char 
-  1059 ;; Auto vars:     Size  Location     Type
-  1060 ;;  receive         1    0        unsigned char 
-  1061 ;; Return value:  Size  Location     Type
-  1062 ;;                  1    wreg      void 
-  1063 ;; Registers used:
-  1064 ;;		wreg, fsr2l, fsr2h, status,2, status,0
-  1065 ;; Tracked objects:
-  1066 ;;		On entry : 0/0
-  1067 ;;		On exit  : 0/0
-  1068 ;;		Unchanged: 0/0
-  1069 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-  1070 ;;      Params:         3       0       0       0       0       0       0
-  1071 ;;      Locals:         0       0       0       0       0       0       0
-  1072 ;;      Temps:          0       0       0       0       0       0       0
-  1073 ;;      Totals:         3       0       0       0       0       0       0
-  1074 ;;Total ram usage:        3 bytes
-  1075 ;; Hardware stack levels used:    1
-  1076 ;; This function calls:
-  1077 ;;		Nothing
-  1078 ;; This function is called by:
-  1079 ;;		_TC0INT
-  1080 ;; This function uses a non-reentrant model
-  1081 ;;
-  1082                           
-  1083                           	psect	text7
-  1084  0003F8                     __ptext7:
-  1085                           	opt callstack 0
-  1086  0003F8                     _SPI_Write:
-  1087                           	opt callstack 28
-  1088  0003F8  5080               	movf	128,w,c	;volatile
-  1089  0003FA  0BDF               	andlw	223
-  1090  0003FC  6E89               	movwf	137,c	;volatile
-  1091  0003FE                     
-  1092                           ;CREATE_FILES/SPI/spi.c: 190:     SSPBUF = transBuffer[currCol];
-  1093  0003FE  5012               	movf	SPI_Write@currCol^0,w,c
-  1094  000400  2410               	addwf	SPI_Write@transBuffer^0,w,c
-  1095  000402  6ED9               	movwf	fsr2l,c
-  1096  000404  0E00               	movlw	0
-  1097  000406  2011               	addwfc	(SPI_Write@transBuffer+1)^0,w,c
-  1098  000408  6EDA               	movwf	fsr2h,c
-  1099  00040A  50DF               	movf	indf2,w,c
-  1100  00040C  6EC9               	movwf	201,c	;volatile
-  1101  00040E  5080               	movf	128,w,c	;volatile
-  1102  000410  0920               	iorlw	32
-  1103  000412  6E89               	movwf	137,c	;volatile
-  1104  000414  0012               	return		;funcret
-  1105  000416                     __end_of_SPI_Write:
-  1106                           	opt callstack 0
-  1107                           
-  1108 ;; *************** function _RowControl *****************
-  1109 ;; Defined at:
-  1110 ;;		line 13 in file "CREATE_FILES/CONTROL_LINES/line_control.c"
-  1111 ;; Parameters:    Size  Location     Type
-  1112 ;;  currRow         2    0[COMRAM] PTR unsigned char 
-  1113 ;;		 -> currRow(1), 
-  1114 ;; Auto vars:     Size  Location     Type
-  1115 ;;  row             1    4[COMRAM] unsigned char 
-  1116 ;; Return value:  Size  Location     Type
-  1117 ;;                  1    wreg      void 
-  1118 ;; Registers used:
-  1119 ;;		wreg, fsr2l, fsr2h, status,2, status,0
-  1120 ;; Tracked objects:
-  1121 ;;		On entry : 0/0
-  1122 ;;		On exit  : 0/0
-  1123 ;;		Unchanged: 0/0
-  1124 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-  1125 ;;      Params:         2       0       0       0       0       0       0
-  1126 ;;      Locals:         1       0       0       0       0       0       0
-  1127 ;;      Temps:          2       0       0       0       0       0       0
-  1128 ;;      Totals:         5       0       0       0       0       0       0
-  1129 ;;Total ram usage:        5 bytes
-  1130 ;; Hardware stack levels used:    1
-  1131 ;; This function calls:
-  1132 ;;		Nothing
-  1133 ;; This function is called by:
-  1134 ;;		_TC0INT
-  1135 ;; This function uses a non-reentrant model
-  1136 ;;
-  1137                           
-  1138                           	psect	text8
-  1139  0001D6                     __ptext8:
-  1140                           	opt callstack 0
-  1141  0001D6                     _RowControl:
-  1142                           	opt callstack 28
-  1143  0001D6                     
-  1144                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 13: void RowControl(uint8_t* currRow);CREATE
+   856                           ; Switch size 1, requested type "simple"
+   857                           ; Number of cases is 1, Range of values is 0 to 0
+   858                           ; switch strategies available:
+   859                           ; Name         Instructions Cycles
+   860                           ; simple_byte            4     3 (average)
+   861                           ;	Chosen strategy is simple_byte
+   862  00019C  501A               	movf	(??_SPI_Init+1)^0,w,c
+   863  00019E  0A00               	xorlw	0	; case 0
+   864  0001A0  B4D8               	btfsc	status,2,c
+   865  0001A2  EFD5  F000         	goto	l1381
+   866  0001A6  EFEA  F000         	goto	l129
+   867  0001AA                     l1381:
+   868                           
+   869                           ; Switch size 1, requested type "simple"
+   870                           ; Number of cases is 4, Range of values is 0 to 3
+   871                           ; switch strategies available:
+   872                           ; Name         Instructions Cycles
+   873                           ; simple_byte           13     7 (average)
+   874                           ;	Chosen strategy is simple_byte
+   875  0001AA  5019               	movf	??_SPI_Init^0,w,c
+   876  0001AC  0A00               	xorlw	0	; case 0
+   877  0001AE  B4D8               	btfsc	status,2,c
+   878  0001B0  EFB1  F000         	goto	l121
+   879  0001B4  0A01               	xorlw	1	; case 1
+   880  0001B6  B4D8               	btfsc	status,2,c
+   881  0001B8  EFB6  F000         	goto	l123
+   882  0001BC  0A03               	xorlw	3	; case 2
+   883  0001BE  B4D8               	btfsc	status,2,c
+   884  0001C0  EFBB  F000         	goto	l124
+   885  0001C4  0A01               	xorlw	1	; case 3
+   886  0001C6  B4D8               	btfsc	status,2,c
+   887  0001C8  EFC0  F000         	goto	l125
+   888  0001CC  EFEA  F000         	goto	l129
+   889  0001D0                     l94:
+   890  0001D0  EFE8  F000         	goto	l94
+   891  0001D4                     l129:
+   892  0001D4  0012               	return		;funcret
+   893  0001D6                     __end_of_SPI_Init:
+   894                           	opt callstack 0
+   895                           
+   896 ;; *************** function _Interrupts_Configure *****************
+   897 ;; Defined at:
+   898 ;;		line 4 in file "CREATE_FILES/INTERRUPT/interrupts.c"
+   899 ;; Parameters:    Size  Location     Type
+   900 ;;		None
+   901 ;; Auto vars:     Size  Location     Type
+   902 ;;		None
+   903 ;; Return value:  Size  Location     Type
+   904 ;;                  1    wreg      void 
+   905 ;; Registers used:
+   906 ;;		None
+   907 ;; Tracked objects:
+   908 ;;		On entry : 0/0
+   909 ;;		On exit  : 0/0
+   910 ;;		Unchanged: 0/0
+   911 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   912 ;;      Params:         0       0       0       0       0       0       0
+   913 ;;      Locals:         0       0       0       0       0       0       0
+   914 ;;      Temps:          0       0       0       0       0       0       0
+   915 ;;      Totals:         0       0       0       0       0       0       0
+   916 ;;Total ram usage:        0 bytes
+   917 ;; Hardware stack levels used:    1
+   918 ;; Hardware stack levels required when called:    2
+   919 ;; This function calls:
+   920 ;;		Nothing
+   921 ;; This function is called by:
+   922 ;;		_main
+   923 ;; This function uses a non-reentrant model
+   924 ;;
+   925                           
+   926                           	psect	text5
+   927  000434                     __ptext5:
+   928                           	opt callstack 0
+   929  000434                     _Interrupts_Configure:
+   930                           	opt callstack 28
+   931  000434                     
+   932                           ;CREATE_FILES/INTERRUPT/interrupts.c: 9:     INTCONbits.GIE = 0x01;
+   933  000434  8EF2               	bsf	242,7,c	;volatile
+   934                           
+   935                           ;CREATE_FILES/INTERRUPT/interrupts.c: 10:     INTCONbits.GIEH = 0x01;
+   936  000436  8EF2               	bsf	242,7,c	;volatile
+   937                           
+   938                           ;CREATE_FILES/INTERRUPT/interrupts.c: 13:     RCONbits.IPEN = 0x01;
+   939  000438  8ED0               	bsf	208,7,c	;volatile
+   940                           
+   941                           ;CREATE_FILES/INTERRUPT/interrupts.c: 16:     INTCONbits.PEIE = 0x01;
+   942  00043A  8CF2               	bsf	242,6,c	;volatile
+   943                           
+   944                           ;CREATE_FILES/INTERRUPT/interrupts.c: 17:     INTCONbits.GIEL = 0x01;
+   945  00043C  8CF2               	bsf	242,6,c	;volatile
+   946                           
+   947                           ;CREATE_FILES/INTERRUPT/interrupts.c: 25:     INTCONbits.TMR0IE = 0x01;
+   948  00043E  8AF2               	bsf	242,5,c	;volatile
+   949                           
+   950                           ;CREATE_FILES/INTERRUPT/interrupts.c: 26:     INTCON2bits.TMR0IP = 0x01;
+   951  000440  84F1               	bsf	241,2,c	;volatile
+   952  000442  0012               	return		;funcret
+   953  000444                     __end_of_Interrupts_Configure:
+   954                           	opt callstack 0
+   955                           
+   956 ;; *************** function _TC0INT *****************
+   957 ;; Defined at:
+   958 ;;		line 127 in file "main.c"
+   959 ;; Parameters:    Size  Location     Type
+   960 ;;		None
+   961 ;; Auto vars:     Size  Location     Type
+   962 ;;		None
+   963 ;; Return value:  Size  Location     Type
+   964 ;;                  1    wreg      void 
+   965 ;; Registers used:
+   966 ;;		wreg, fsr2l, fsr2h, status,2, status,0, cstack
+   967 ;; Tracked objects:
+   968 ;;		On entry : 0/0
+   969 ;;		On exit  : 0/0
+   970 ;;		Unchanged: 0/0
+   971 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   972 ;;      Params:         0       0       0       0       0       0       0
+   973 ;;      Locals:         0       0       0       0       0       0       0
+   974 ;;      Temps:          2       0       0       0       0       0       0
+   975 ;;      Totals:         2       0       0       0       0       0       0
+   976 ;;Total ram usage:        2 bytes
+   977 ;; Hardware stack levels used:    1
+   978 ;; Hardware stack levels required when called:    1
+   979 ;; This function calls:
+   980 ;;		_RowControl
+   981 ;;		_SPI_Write
+   982 ;; This function is called by:
+   983 ;;		Interrupt level 2
+   984 ;; This function uses a non-reentrant model
+   985 ;;
+   986                           
+   987                           	psect	intcode
+   988  000008                     __pintcode:
+   989                           	opt callstack 0
+   990  000008                     _TC0INT:
+   991                           	opt callstack 28
+   992                           
+   993                           ;incstack = 0
+   994  000008  8229               	bsf	int$flags,1,c	;set compiler interrupt flag (level 2)
+   995  00000A  ED82  F001         	call	int_func,f	;refresh shadow registers
+   996                           
+   997                           	psect	intcode_body
+   998  000304                     __pintcode_body:
+   999                           	opt callstack 28
+  1000  000304                     int_func:
+  1001                           	opt callstack 28
+  1002  000304  0006               	pop		; remove dummy address from shadow register refresh
+  1003  000306  CFD9 F015          	movff	fsr2l,??_TC0INT
+  1004  00030A  CFDA F016          	movff	fsr2h,??_TC0INT+1
+  1005  00030E                     
+  1006                           ;main.c: 129:     if(INTCONbits.TMR0IF == 0x01)
+  1007  00030E  A4F2               	btfss	242,2,c	;volatile
+  1008  000310  EF8C  F001         	goto	i2u8_41
+  1009  000314  EF8E  F001         	goto	i2u8_40
+  1010  000318                     i2u8_41:
+  1011  000318  EFA5  F001         	goto	i2l206
+  1012  00031C                     i2u8_40:
+  1013  00031C                     
+  1014                           ;main.c: 130:     {;main.c: 131:         INTCONbits.GIE = 0x00;
+  1015  00031C  9EF2               	bcf	242,7,c	;volatile
+  1016                           
+  1017                           ;main.c: 132:         T0CONbits.TMR0ON = 0x00;
+  1018  00031E  9ED5               	bcf	213,7,c	;volatile
+  1019  000320                     
+  1020                           ;main.c: 134:         RowControl(&currRow);
+  1021  000320  0E28               	movlw	low _currRow
+  1022  000322  6E10               	movwf	RowControl@currRow^0,c
+  1023  000324  0E00               	movlw	high _currRow
+  1024  000326  6E11               	movwf	(RowControl@currRow+1)^0,c
+  1025  000328  ECEB  F000         	call	_RowControl	;wreg free
+  1026                           
+  1027                           ;main.c: 135:         SPI_Write(dataTrans, currRow);
+  1028  00032C  0E01               	movlw	low _dataTrans
+  1029  00032E  6E10               	movwf	SPI_Write@transBuffer^0,c
+  1030  000330  0E00               	movlw	high _dataTrans
+  1031  000332  6E11               	movwf	(SPI_Write@transBuffer+1)^0,c
+  1032  000334  C028  F012         	movff	_currRow,SPI_Write@currCol
+  1033  000338  ECE9  F001         	call	_SPI_Write	;wreg free
+  1034  00033C                     
+  1035                           ;main.c: 139:         TMR0 = 0xF63C;
+  1036  00033C  0EF6               	movlw	246
+  1037  00033E  6ED7               	movwf	215,c	;volatile
+  1038  000340  0E3C               	movlw	60
+  1039  000342  6ED6               	movwf	214,c	;volatile
+  1040  000344                     
+  1041                           ;main.c: 140:         INTCONbits.T0IF = 0x00;
+  1042  000344  94F2               	bcf	242,2,c	;volatile
+  1043  000346                     
+  1044                           ;main.c: 141:         INTCONbits.GIE = 0x01;
+  1045  000346  8EF2               	bsf	242,7,c	;volatile
+  1046  000348                     
+  1047                           ;main.c: 142:         T0CONbits.TMR0ON = 0x01;
+  1048  000348  8ED5               	bsf	213,7,c	;volatile
+  1049  00034A                     i2l206:
+  1050  00034A  C016  FFDA         	movff	??_TC0INT+1,fsr2h
+  1051  00034E  C015  FFD9         	movff	??_TC0INT,fsr2l
+  1052  000352  9229               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
+  1053  000354  0011               	retfie		f
+  1054  000356                     __end_of_TC0INT:
+  1055                           	opt callstack 0
+  1056                           
+  1057 ;; *************** function _SPI_Write *****************
+  1058 ;; Defined at:
+  1059 ;;		line 178 in file "CREATE_FILES/SPI/spi.c"
+  1060 ;; Parameters:    Size  Location     Type
+  1061 ;;  transBuffer     2    0[COMRAM] PTR unsigned char 
+  1062 ;;		 -> dataTrans(8), 
+  1063 ;;  currCol         1    2[COMRAM] unsigned char 
+  1064 ;; Auto vars:     Size  Location     Type
+  1065 ;;  receive         1    0        unsigned char 
+  1066 ;; Return value:  Size  Location     Type
+  1067 ;;                  1    wreg      void 
+  1068 ;; Registers used:
+  1069 ;;		wreg, fsr2l, fsr2h, status,2, status,0
+  1070 ;; Tracked objects:
+  1071 ;;		On entry : 0/0
+  1072 ;;		On exit  : 0/0
+  1073 ;;		Unchanged: 0/0
+  1074 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1075 ;;      Params:         3       0       0       0       0       0       0
+  1076 ;;      Locals:         1       0       0       0       0       0       0
+  1077 ;;      Temps:          0       0       0       0       0       0       0
+  1078 ;;      Totals:         4       0       0       0       0       0       0
+  1079 ;;Total ram usage:        4 bytes
+  1080 ;; Hardware stack levels used:    1
+  1081 ;; This function calls:
+  1082 ;;		Nothing
+  1083 ;; This function is called by:
+  1084 ;;		_TC0INT
+  1085 ;; This function uses a non-reentrant model
+  1086 ;;
+  1087                           
+  1088                           	psect	text7
+  1089  0003D2                     __ptext7:
+  1090                           	opt callstack 0
+  1091  0003D2                     _SPI_Write:
+  1092                           	opt callstack 28
+  1093  0003D2  5080               	movf	128,w,c	;volatile
+  1094  0003D4  0BDF               	andlw	223
+  1095  0003D6  6E89               	movwf	137,c	;volatile
+  1096  0003D8  50C9               	movf	201,w,c	;volatile
+  1097  0003DA                     
+  1098                           ;CREATE_FILES/SPI/spi.c: 187:    SSPBUF = transBuffer[currCol];
+  1099  0003DA  5012               	movf	SPI_Write@currCol^0,w,c
+  1100  0003DC  2410               	addwf	SPI_Write@transBuffer^0,w,c
+  1101  0003DE  6ED9               	movwf	fsr2l,c
+  1102  0003E0  0E00               	movlw	0
+  1103  0003E2  2011               	addwfc	(SPI_Write@transBuffer+1)^0,w,c
+  1104  0003E4  6EDA               	movwf	fsr2h,c
+  1105  0003E6  50DF               	movf	indf2,w,c
+  1106  0003E8  6EC9               	movwf	201,c	;volatile
+  1107  0003EA                     i2l137:
+  1108  0003EA  A0C7               	btfss	199,0,c	;volatile
+  1109  0003EC  EFFA  F001         	goto	i2u7_41
+  1110  0003F0  EFFC  F001         	goto	i2u7_40
+  1111  0003F4                     i2u7_41:
+  1112  0003F4  EFF5  F001         	goto	i2l137
+  1113  0003F8                     i2u7_40:
+  1114  0003F8  5080               	movf	128,w,c	;volatile
+  1115  0003FA  0920               	iorlw	32
+  1116  0003FC  6E89               	movwf	137,c	;volatile
+  1117  0003FE  0012               	return		;funcret
+  1118  000400                     __end_of_SPI_Write:
+  1119                           	opt callstack 0
+  1120                           
+  1121 ;; *************** function _RowControl *****************
+  1122 ;; Defined at:
+  1123 ;;		line 13 in file "CREATE_FILES/CONTROL_LINES/line_control.c"
+  1124 ;; Parameters:    Size  Location     Type
+  1125 ;;  currRow         2    0[COMRAM] PTR unsigned char 
+  1126 ;;		 -> currRow(1), 
+  1127 ;; Auto vars:     Size  Location     Type
+  1128 ;;  row             1    4[COMRAM] unsigned char 
+  1129 ;; Return value:  Size  Location     Type
+  1130 ;;                  1    wreg      void 
+  1131 ;; Registers used:
+  1132 ;;		wreg, fsr2l, fsr2h, status,2, status,0
+  1133 ;; Tracked objects:
+  1134 ;;		On entry : 0/0
+  1135 ;;		On exit  : 0/0
+  1136 ;;		Unchanged: 0/0
+  1137 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1138 ;;      Params:         2       0       0       0       0       0       0
+  1139 ;;      Locals:         1       0       0       0       0       0       0
+  1140 ;;      Temps:          2       0       0       0       0       0       0
+  1141 ;;      Totals:         5       0       0       0       0       0       0
+  1142 ;;Total ram usage:        5 bytes
+  1143 ;; Hardware stack levels used:    1
+  1144 ;; This function calls:
+  1145 ;;		Nothing
+  1146 ;; This function is called by:
+  1147 ;;		_TC0INT
+  1148 ;; This function uses a non-reentrant model
+  1149 ;;
+  1150                           
+  1151                           	psect	text8
+  1152  0001D6                     __ptext8:
+  1153                           	opt callstack 0
+  1154  0001D6                     _RowControl:
+  1155                           	opt callstack 28
+  1156  0001D6                     
+  1157                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 13: void RowControl(uint8_t* currRow);CREATE
       +                          _FILES/CONTROL_LINES/line_control.c: 14: {;CREATE_FILES/CONTROL_LINES/line_control.c: 15
       +                          :     uint8_t row = *currRow;
-  1145  0001D6  C010  FFD9         	movff	RowControl@currRow,fsr2l
-  1146  0001DA  C011  FFDA         	movff	RowControl@currRow+1,fsr2h
-  1147  0001DE  50DF               	movf	indf2,w,c
-  1148  0001E0  6E14               	movwf	RowControl@row^0,c
-  1149                           
-  1150                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 16:     switch(row)
-  1151  0001E2  EF59  F001         	goto	i2l1230
-  1152  0001E6                     i2l18:
-  1153  0001E6  5081               	movf	129,w,c	;volatile
-  1154  0001E8  0901               	iorlw	1
-  1155  0001EA  6E8A               	movwf	138,c	;volatile
-  1156  0001EC  5081               	movf	129,w,c	;volatile
-  1157  0001EE  0BFD               	andlw	253
-  1158  0001F0  6E8A               	movwf	138,c	;volatile
-  1159  0001F2                     i2l21:
-  1160  0001F2  5081               	movf	129,w,c	;volatile
-  1161  0001F4  0BFB               	andlw	251
-  1162  0001F6  6E8A               	movwf	138,c	;volatile
-  1163  0001F8                     i2l1148:
-  1164                           
-  1165                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 22:             row++;
-  1166  0001F8  2A14               	incf	RowControl@row^0,f,c
-  1167  0001FA                     
-  1168                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 23:             *currRow = row;
-  1169  0001FA  C010  FFD9         	movff	RowControl@currRow,fsr2l
-  1170  0001FE  C011  FFDA         	movff	RowControl@currRow+1,fsr2h
-  1171  000202  C014  FFDF         	movff	RowControl@row,indf2
-  1172                           
-  1173                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 24:             break;
-  1174  000206  EF86  F001         	goto	i2l77
-  1175  00020A                     i2l1152:
-  1176  00020A  5081               	movf	129,w,c	;volatile
-  1177  00020C  0BFE               	andlw	254
-  1178  00020E  6E8A               	movwf	138,c	;volatile
-  1179  000210  5081               	movf	129,w,c	;volatile
-  1180  000212  0902               	iorlw	2
-  1181  000214  6E8A               	movwf	138,c	;volatile
-  1182  000216  EFF9  F000         	goto	i2l21
-  1183  00021A                     i2l33:
-  1184  00021A  5081               	movf	129,w,c	;volatile
-  1185  00021C  0901               	iorlw	1
-  1186  00021E  6E8A               	movwf	138,c	;volatile
-  1187  000220  5081               	movf	129,w,c	;volatile
-  1188  000222  0902               	iorlw	2
-  1189  000224  6E8A               	movwf	138,c	;volatile
-  1190  000226  EFF9  F000         	goto	i2l21
-  1191  00022A                     i2l1174:
-  1192  00022A  5081               	movf	129,w,c	;volatile
-  1193  00022C  0BFE               	andlw	254
-  1194  00022E  6E8A               	movwf	138,c	;volatile
-  1195  000230  5081               	movf	129,w,c	;volatile
-  1196  000232  0BFD               	andlw	253
-  1197  000234  6E8A               	movwf	138,c	;volatile
-  1198  000236  5081               	movf	129,w,c	;volatile
-  1199  000238  0904               	iorlw	4
-  1200  00023A  6E8A               	movwf	138,c	;volatile
-  1201  00023C  EFFC  F000         	goto	i2l1148
-  1202  000240                     i2l47:
-  1203  000240  5081               	movf	129,w,c	;volatile
-  1204  000242  0901               	iorlw	1
-  1205  000244  6E8A               	movwf	138,c	;volatile
-  1206  000246  5081               	movf	129,w,c	;volatile
-  1207  000248  0BFD               	andlw	253
-  1208  00024A  6E8A               	movwf	138,c	;volatile
-  1209  00024C  5081               	movf	129,w,c	;volatile
-  1210  00024E  0904               	iorlw	4
-  1211  000250  6E8A               	movwf	138,c	;volatile
-  1212  000252  EFFC  F000         	goto	i2l1148
-  1213  000256                     i2l1196:
-  1214  000256  5081               	movf	129,w,c	;volatile
-  1215  000258  0BFE               	andlw	254
-  1216  00025A  6E8A               	movwf	138,c	;volatile
-  1217  00025C  5081               	movf	129,w,c	;volatile
-  1218  00025E  0902               	iorlw	2
-  1219  000260  6E8A               	movwf	138,c	;volatile
-  1220  000262  5081               	movf	129,w,c	;volatile
-  1221  000264  0904               	iorlw	4
-  1222  000266  6E8A               	movwf	138,c	;volatile
-  1223  000268                     
-  1224                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 57:             row++;
-  1225  000268  2A14               	incf	RowControl@row^0,f,c
-  1226  00026A                     
-  1227                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 58:             *currRow = row;
-  1228  00026A  C010  FFD9         	movff	RowControl@currRow,fsr2l
-  1229  00026E  C011  FFDA         	movff	RowControl@currRow+1,fsr2h
-  1230  000272  C014  FFDF         	movff	RowControl@row,indf2
-  1231  000276                     i2l61:
-  1232  000276  5081               	movf	129,w,c	;volatile
-  1233  000278  0901               	iorlw	1
-  1234  00027A  6E8A               	movwf	138,c	;volatile
-  1235  00027C  5081               	movf	129,w,c	;volatile
-  1236  00027E  0902               	iorlw	2
-  1237  000280  6E8A               	movwf	138,c	;volatile
-  1238  000282  5081               	movf	129,w,c	;volatile
-  1239  000284  0904               	iorlw	4
-  1240  000286  6E8A               	movwf	138,c	;volatile
-  1241  000288  EFFC  F000         	goto	i2l1148
-  1242  00028C                     i2l1218:
-  1243  00028C  5081               	movf	129,w,c	;volatile
-  1244  00028E  0BFE               	andlw	254
-  1245  000290  6E8A               	movwf	138,c	;volatile
-  1246  000292  5081               	movf	129,w,c	;volatile
-  1247  000294  0BFD               	andlw	253
-  1248  000296  6E8A               	movwf	138,c	;volatile
-  1249  000298  5081               	movf	129,w,c	;volatile
-  1250  00029A  0BFB               	andlw	251
-  1251  00029C  6E8A               	movwf	138,c	;volatile
-  1252  00029E                     
-  1253                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 71:             *currRow = row;
-  1254  00029E  C010  FFD9         	movff	RowControl@currRow,fsr2l
-  1255  0002A2  C011  FFDA         	movff	RowControl@currRow+1,fsr2h
-  1256  0002A6  0E00               	movlw	0
-  1257  0002A8  6EDF               	movwf	indf2,c
-  1258                           
-  1259                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 72:             break;
-  1260  0002AA  EF86  F001         	goto	i2l77
-  1261  0002AE                     i2l74:
-  1262  0002AE  EF57  F001         	goto	i2l74
-  1263  0002B2                     i2l1230:
-  1264  0002B2  5014               	movf	RowControl@row^0,w,c
-  1265  0002B4  6E12               	movwf	??_RowControl^0,c
-  1266  0002B6  6A13               	clrf	(??_RowControl+1)^0,c
-  1267                           
-  1268                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
+  1158  0001D6  C010  FFD9         	movff	RowControl@currRow,fsr2l
+  1159  0001DA  C011  FFDA         	movff	RowControl@currRow+1,fsr2h
+  1160  0001DE  50DF               	movf	indf2,w,c
+  1161  0001E0  6E14               	movwf	RowControl@row^0,c
+  1162                           
+  1163                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 16:     switch(row)
+  1164  0001E2  EF54  F001         	goto	i2l1237
+  1165  0001E6                     i2l18:
+  1166  0001E6  5081               	movf	129,w,c	;volatile
+  1167  0001E8  0901               	iorlw	1
+  1168  0001EA  6E8A               	movwf	138,c	;volatile
+  1169  0001EC  5081               	movf	129,w,c	;volatile
+  1170  0001EE  0BFD               	andlw	253
+  1171  0001F0  6E8A               	movwf	138,c	;volatile
+  1172  0001F2                     i2l21:
+  1173  0001F2  5081               	movf	129,w,c	;volatile
+  1174  0001F4  0BFB               	andlw	251
+  1175  0001F6  6E8A               	movwf	138,c	;volatile
+  1176  0001F8                     i2l1155:
+  1177                           
+  1178                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 22:             row++;
+  1179  0001F8  2A14               	incf	RowControl@row^0,f,c
+  1180  0001FA                     
+  1181                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 23:             *currRow = row;
+  1182  0001FA  C010  FFD9         	movff	RowControl@currRow,fsr2l
+  1183  0001FE  C011  FFDA         	movff	RowControl@currRow+1,fsr2h
+  1184  000202  C014  FFDF         	movff	RowControl@row,indf2
+  1185                           
+  1186                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 24:             break;
+  1187  000206  EF81  F001         	goto	i2l77
+  1188  00020A                     i2l1159:
+  1189  00020A  5081               	movf	129,w,c	;volatile
+  1190  00020C  0BFE               	andlw	254
+  1191  00020E  6E8A               	movwf	138,c	;volatile
+  1192  000210  5081               	movf	129,w,c	;volatile
+  1193  000212  0902               	iorlw	2
+  1194  000214  6E8A               	movwf	138,c	;volatile
+  1195  000216  EFF9  F000         	goto	i2l21
+  1196  00021A                     i2l33:
+  1197  00021A  5081               	movf	129,w,c	;volatile
+  1198  00021C  0901               	iorlw	1
+  1199  00021E  6E8A               	movwf	138,c	;volatile
+  1200  000220  5081               	movf	129,w,c	;volatile
+  1201  000222  0902               	iorlw	2
+  1202  000224  6E8A               	movwf	138,c	;volatile
+  1203  000226  EFF9  F000         	goto	i2l21
+  1204  00022A                     i2l1181:
+  1205  00022A  5081               	movf	129,w,c	;volatile
+  1206  00022C  0BFE               	andlw	254
+  1207  00022E  6E8A               	movwf	138,c	;volatile
+  1208  000230  5081               	movf	129,w,c	;volatile
+  1209  000232  0BFD               	andlw	253
+  1210  000234  6E8A               	movwf	138,c	;volatile
+  1211  000236  5081               	movf	129,w,c	;volatile
+  1212  000238  0904               	iorlw	4
+  1213  00023A  6E8A               	movwf	138,c	;volatile
+  1214  00023C  EFFC  F000         	goto	i2l1155
+  1215  000240                     i2l47:
+  1216  000240  5081               	movf	129,w,c	;volatile
+  1217  000242  0901               	iorlw	1
+  1218  000244  6E8A               	movwf	138,c	;volatile
+  1219  000246  5081               	movf	129,w,c	;volatile
+  1220  000248  0BFD               	andlw	253
+  1221  00024A  6E8A               	movwf	138,c	;volatile
+  1222  00024C  5081               	movf	129,w,c	;volatile
+  1223  00024E  0904               	iorlw	4
+  1224  000250  6E8A               	movwf	138,c	;volatile
+  1225  000252  EFFC  F000         	goto	i2l1155
+  1226  000256                     i2l1203:
+  1227  000256  5081               	movf	129,w,c	;volatile
+  1228  000258  0BFE               	andlw	254
+  1229  00025A  6E8A               	movwf	138,c	;volatile
+  1230  00025C  5081               	movf	129,w,c	;volatile
+  1231  00025E  0902               	iorlw	2
+  1232  000260  6E8A               	movwf	138,c	;volatile
+  1233  000262  5081               	movf	129,w,c	;volatile
+  1234  000264  0904               	iorlw	4
+  1235  000266  6E8A               	movwf	138,c	;volatile
+  1236  000268  EFFC  F000         	goto	i2l1155
+  1237  00026C                     i2l61:
+  1238  00026C  5081               	movf	129,w,c	;volatile
+  1239  00026E  0901               	iorlw	1
+  1240  000270  6E8A               	movwf	138,c	;volatile
+  1241  000272  5081               	movf	129,w,c	;volatile
+  1242  000274  0902               	iorlw	2
+  1243  000276  6E8A               	movwf	138,c	;volatile
+  1244  000278  5081               	movf	129,w,c	;volatile
+  1245  00027A  0904               	iorlw	4
+  1246  00027C  6E8A               	movwf	138,c	;volatile
+  1247  00027E  EFFC  F000         	goto	i2l1155
+  1248  000282                     i2l1225:
+  1249  000282  5081               	movf	129,w,c	;volatile
+  1250  000284  0BFE               	andlw	254
+  1251  000286  6E8A               	movwf	138,c	;volatile
+  1252  000288  5081               	movf	129,w,c	;volatile
+  1253  00028A  0BFD               	andlw	253
+  1254  00028C  6E8A               	movwf	138,c	;volatile
+  1255  00028E  5081               	movf	129,w,c	;volatile
+  1256  000290  0BFB               	andlw	251
+  1257  000292  6E8A               	movwf	138,c	;volatile
+  1258  000294                     
+  1259                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 72:             *currRow = row;
+  1260  000294  C010  FFD9         	movff	RowControl@currRow,fsr2l
+  1261  000298  C011  FFDA         	movff	RowControl@currRow+1,fsr2h
+  1262  00029C  0E00               	movlw	0
+  1263  00029E  6EDF               	movwf	indf2,c
+  1264                           
+  1265                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 73:             break;
+  1266  0002A0  EF81  F001         	goto	i2l77
+  1267  0002A4                     i2l74:
+  1268  0002A4  EF52  F001         	goto	i2l74
+  1269  0002A8                     i2l1237:
+  1270  0002A8  5014               	movf	RowControl@row^0,w,c
+  1271  0002AA  6E12               	movwf	??_RowControl^0,c
+  1272  0002AC  6A13               	clrf	(??_RowControl+1)^0,c
+  1273                           
+  1274                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
       +                          itches
-  1269                           ; Switch size 1, requested type "simple"
-  1270                           ; Number of cases is 1, Range of values is 0 to 0
-  1271                           ; switch strategies available:
-  1272                           ; Name         Instructions Cycles
-  1273                           ; simple_byte            4     3 (average)
-  1274                           ;	Chosen strategy is simple_byte
-  1275  0002B8  5013               	movf	(??_RowControl+1)^0,w,c
-  1276  0002BA  0A00               	xorlw	0	; case 0
-  1277  0002BC  B4D8               	btfsc	status,2,c
-  1278  0002BE  EF63  F001         	goto	i2l1374
-  1279  0002C2  EF57  F001         	goto	i2l74
-  1280  0002C6                     i2l1374:
-  1281                           
-  1282                           ; Switch size 1, requested type "simple"
-  1283                           ; Number of cases is 8, Range of values is 0 to 7
-  1284                           ; switch strategies available:
-  1285                           ; Name         Instructions Cycles
-  1286                           ; simple_byte           25    13 (average)
-  1287                           ;	Chosen strategy is simple_byte
-  1288  0002C6  5012               	movf	??_RowControl^0,w,c
-  1289  0002C8  0A00               	xorlw	0	; case 0
-  1290  0002CA  B4D8               	btfsc	status,2,c
-  1291  0002CC  EFF3  F000         	goto	i2l18
-  1292  0002D0  0A01               	xorlw	1	; case 1
-  1293  0002D2  B4D8               	btfsc	status,2,c
-  1294  0002D4  EF05  F001         	goto	i2l1152
-  1295  0002D8  0A03               	xorlw	3	; case 2
-  1296  0002DA  B4D8               	btfsc	status,2,c
-  1297  0002DC  EF0D  F001         	goto	i2l33
-  1298  0002E0  0A01               	xorlw	1	; case 3
-  1299  0002E2  B4D8               	btfsc	status,2,c
-  1300  0002E4  EF15  F001         	goto	i2l1174
-  1301  0002E8  0A07               	xorlw	7	; case 4
-  1302  0002EA  B4D8               	btfsc	status,2,c
-  1303  0002EC  EF20  F001         	goto	i2l47
-  1304  0002F0  0A01               	xorlw	1	; case 5
-  1305  0002F2  B4D8               	btfsc	status,2,c
-  1306  0002F4  EF2B  F001         	goto	i2l1196
-  1307  0002F8  0A03               	xorlw	3	; case 6
-  1308  0002FA  B4D8               	btfsc	status,2,c
-  1309  0002FC  EF3B  F001         	goto	i2l61
-  1310  000300  0A01               	xorlw	1	; case 7
-  1311  000302  B4D8               	btfsc	status,2,c
-  1312  000304  EF46  F001         	goto	i2l1218
-  1313  000308  EF57  F001         	goto	i2l74
-  1314  00030C                     i2l77:
-  1315  00030C  0012               	return		;funcret
-  1316  00030E                     __end_of_RowControl:
-  1317                           	opt callstack 0
-  1318  0000                     
-  1319                           	psect	rparam
-  1320  0000                     
-  1321                           	psect	temp
-  1322  000021                     btemp:
+  1275                           ; Switch size 1, requested type "simple"
+  1276                           ; Number of cases is 1, Range of values is 0 to 0
+  1277                           ; switch strategies available:
+  1278                           ; Name         Instructions Cycles
+  1279                           ; simple_byte            4     3 (average)
+  1280                           ;	Chosen strategy is simple_byte
+  1281  0002AE  5013               	movf	(??_RowControl+1)^0,w,c
+  1282  0002B0  0A00               	xorlw	0	; case 0
+  1283  0002B2  B4D8               	btfsc	status,2,c
+  1284  0002B4  EF5E  F001         	goto	i2l1383
+  1285  0002B8  EF52  F001         	goto	i2l74
+  1286  0002BC                     i2l1383:
+  1287                           
+  1288                           ; Switch size 1, requested type "simple"
+  1289                           ; Number of cases is 8, Range of values is 0 to 7
+  1290                           ; switch strategies available:
+  1291                           ; Name         Instructions Cycles
+  1292                           ; simple_byte           25    13 (average)
+  1293                           ;	Chosen strategy is simple_byte
+  1294  0002BC  5012               	movf	??_RowControl^0,w,c
+  1295  0002BE  0A00               	xorlw	0	; case 0
+  1296  0002C0  B4D8               	btfsc	status,2,c
+  1297  0002C2  EFF3  F000         	goto	i2l18
+  1298  0002C6  0A01               	xorlw	1	; case 1
+  1299  0002C8  B4D8               	btfsc	status,2,c
+  1300  0002CA  EF05  F001         	goto	i2l1159
+  1301  0002CE  0A03               	xorlw	3	; case 2
+  1302  0002D0  B4D8               	btfsc	status,2,c
+  1303  0002D2  EF0D  F001         	goto	i2l33
+  1304  0002D6  0A01               	xorlw	1	; case 3
+  1305  0002D8  B4D8               	btfsc	status,2,c
+  1306  0002DA  EF15  F001         	goto	i2l1181
+  1307  0002DE  0A07               	xorlw	7	; case 4
+  1308  0002E0  B4D8               	btfsc	status,2,c
+  1309  0002E2  EF20  F001         	goto	i2l47
+  1310  0002E6  0A01               	xorlw	1	; case 5
+  1311  0002E8  B4D8               	btfsc	status,2,c
+  1312  0002EA  EF2B  F001         	goto	i2l1203
+  1313  0002EE  0A03               	xorlw	3	; case 6
+  1314  0002F0  B4D8               	btfsc	status,2,c
+  1315  0002F2  EF36  F001         	goto	i2l61
+  1316  0002F6  0A01               	xorlw	1	; case 7
+  1317  0002F8  B4D8               	btfsc	status,2,c
+  1318  0002FA  EF41  F001         	goto	i2l1225
+  1319  0002FE  EF52  F001         	goto	i2l74
+  1320  000302                     i2l77:
+  1321  000302  0012               	return		;funcret
+  1322  000304                     __end_of_RowControl:
   1323                           	opt callstack 0
-  1324  000021                     	ds	1
-  1325  0000                     int$flags	set	btemp
-  1326  0000                     wtemp8	set	btemp+1
-  1327  0000                     ttemp5	set	btemp+1
-  1328  0000                     ttemp6	set	btemp+4
-  1329  0000                     ttemp7	set	btemp+8
-  1330                           tosu	equ	0xFFF
-  1331                           tosh	equ	0xFFE
-  1332                           tosl	equ	0xFFD
-  1333                           stkptr	equ	0xFFC
-  1334                           pclatu	equ	0xFFB
-  1335                           pclath	equ	0xFFA
-  1336                           pcl	equ	0xFF9
-  1337                           tblptru	equ	0xFF8
-  1338                           tblptrh	equ	0xFF7
-  1339                           tblptrl	equ	0xFF6
-  1340                           tablat	equ	0xFF5
-  1341                           prodh	equ	0xFF4
-  1342                           prodl	equ	0xFF3
-  1343                           indf0	equ	0xFEF
-  1344                           postinc0	equ	0xFEE
-  1345                           postdec0	equ	0xFED
-  1346                           preinc0	equ	0xFEC
-  1347                           plusw0	equ	0xFEB
-  1348                           fsr0h	equ	0xFEA
-  1349                           fsr0l	equ	0xFE9
-  1350                           wreg	equ	0xFE8
-  1351                           indf1	equ	0xFE7
-  1352                           postinc1	equ	0xFE6
-  1353                           postdec1	equ	0xFE5
-  1354                           preinc1	equ	0xFE4
-  1355                           plusw1	equ	0xFE3
-  1356                           fsr1h	equ	0xFE2
-  1357                           fsr1l	equ	0xFE1
-  1358                           bsr	equ	0xFE0
-  1359                           indf2	equ	0xFDF
-  1360                           postinc2	equ	0xFDE
-  1361                           postdec2	equ	0xFDD
-  1362                           preinc2	equ	0xFDC
-  1363                           plusw2	equ	0xFDB
-  1364                           fsr2h	equ	0xFDA
-  1365                           fsr2l	equ	0xFD9
-  1366                           status	equ	0xFD8
+  1324  0000                     
+  1325                           	psect	rparam
+  1326  0000                     
+  1327                           	psect	temp
+  1328  000029                     btemp:
+  1329                           	opt callstack 0
+  1330  000029                     	ds	1
+  1331  0000                     int$flags	set	btemp
+  1332  0000                     wtemp8	set	btemp+1
+  1333  0000                     ttemp5	set	btemp+1
+  1334  0000                     ttemp6	set	btemp+4
+  1335  0000                     ttemp7	set	btemp+8
+  1336                           tosu	equ	0xFFF
+  1337                           tosh	equ	0xFFE
+  1338                           tosl	equ	0xFFD
+  1339                           stkptr	equ	0xFFC
+  1340                           pclatu	equ	0xFFB
+  1341                           pclath	equ	0xFFA
+  1342                           pcl	equ	0xFF9
+  1343                           tblptru	equ	0xFF8
+  1344                           tblptrh	equ	0xFF7
+  1345                           tblptrl	equ	0xFF6
+  1346                           tablat	equ	0xFF5
+  1347                           prodh	equ	0xFF4
+  1348                           prodl	equ	0xFF3
+  1349                           indf0	equ	0xFEF
+  1350                           postinc0	equ	0xFEE
+  1351                           postdec0	equ	0xFED
+  1352                           preinc0	equ	0xFEC
+  1353                           plusw0	equ	0xFEB
+  1354                           fsr0h	equ	0xFEA
+  1355                           fsr0l	equ	0xFE9
+  1356                           wreg	equ	0xFE8
+  1357                           indf1	equ	0xFE7
+  1358                           postinc1	equ	0xFE6
+  1359                           postdec1	equ	0xFE5
+  1360                           preinc1	equ	0xFE4
+  1361                           plusw1	equ	0xFE3
+  1362                           fsr1h	equ	0xFE2
+  1363                           fsr1l	equ	0xFE1
+  1364                           bsr	equ	0xFE0
+  1365                           indf2	equ	0xFDF
+  1366                           postinc2	equ	0xFDE
+  1367                           postdec2	equ	0xFDD
+  1368                           preinc2	equ	0xFDC
+  1369                           plusw2	equ	0xFDB
+  1370                           fsr2h	equ	0xFDA
+  1371                           fsr2l	equ	0xFD9
+  1372                           status	equ	0xFD8
 
 
 Data Sizes:
     Strings     0
     Constant    0
     Data        15
-    BSS         4
+    BSS         12
     Persistent  0
     Stack       0
 
 Auto Spaces:
     Space          Size  Autos    Used
-    COMRAM          126     14      33
+    COMRAM          126     14      41
     BANK0           128      0       0
     BANK1           256      0       0
     BANK2           256      0       0
@@ -1515,13 +1521,13 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
  ---------------------------------------------------------------------------------
- (2) _TC0INT                                               2     2      0     677
+ (2) _TC0INT                                               2     2      0     678
                                               5 COMRAM     2     2      0
                          _RowControl
                           _SPI_Write
  ---------------------------------------------------------------------------------
- (3) _SPI_Write                                            4     1      3     196
-                                              0 COMRAM     3     0      3
+ (3) _SPI_Write                                            4     1      3     197
+                                              0 COMRAM     4     1      3
  ---------------------------------------------------------------------------------
  (3) _RowControl                                           5     3      2     481
                                               0 COMRAM     5     3      2
@@ -1559,7 +1565,7 @@ BANK5               F4      0       0      13        0.0%
 BITBANK0            80      0       0       3        0.0%
 BANK0               80      0       0       4        0.0%
 BITCOMRAM           7E      0       0       0        0.0%
-COMRAM              7E      E      21       1       26.2%
+COMRAM              7E      E      29       1       32.5%
 BITSFR_5             0      0       0     200        0.0%
 SFR_5                0      0       0     200        0.0%
 BITSFR_4             0      0       0     200        0.0%
@@ -1574,100 +1580,102 @@ BITSFR               0      0       0     200        0.0%
 SFR                  0      0       0     200        0.0%
 STACK                0      0       0       2        0.0%
 NULL                 0      0       0       0        0.0%
-ABS                  0      0      21      14        0.0%
-DATA                 0      0      21      17        0.0%
+ABS                  0      0      29      14        0.0%
+DATA                 0      0      29      17        0.0%
 CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.10 build 88905656 
-Symbol Table                                                                                   Thu Jul 16 11:41:48 2020
+Symbol Table                                                                                   Sun Jul 19 19:00:19 2020
 
-                            l9 0438                              _i 001D                    _SSPSTATbits 000FC7  
+                            l9 0442                              _i 0025                    _SSPSTATbits 000FC7  
                            l94 01D0                             l97 002A                             l98 0030  
-                           u25 0454                             u50 0024                             u26 0456  
-                           u51 0020                    __CFG_BORV$3 000000                   __CFG_CP0$OFF 000000  
+                           u25 045E                             u26 0460                             u60 0024  
+                           u61 0020                    __CFG_BORV$3 000000                   __CFG_CP0$OFF 000000  
                  __CFG_CP1$OFF 000000                   __CFG_CP2$OFF 000000                   __CFG_CP3$OFF 000000  
                   __CFG_OSC$HS 000000                            l100 0036                            l110 0066  
                           l121 0162                            l114 00DE                            l106 0042  
-                          l123 016C                            l124 0176                            l116 00EA  
-                          l108 004E                            l132 0456                            l220 03F0  
-                          l125 0180                            l117 012C                            l109 005A  
-                          l213 03DE                            l222 03F6                            l206 039A  
-                          l215 03E4                            l207 039A                            l144 0428  
-                          l129 01D4                            l217 03EA                            l898 042A  
-                 __CFG_CPB$OFF 000000                   __CFG_CPD$OFF 000000                            _row 001F  
-              ?_configure_pins 0010                   __CFG_LVP$OFF 000000                   __CFG_WDT$OFF 000000  
-                         l1060 03D8                           l1310 0360                           l1048 044C  
-                         l1320 0368                           l1312 0360                           l1058 0416  
-                         l1330 0392                           l1322 036A                           l1314 0362  
-                         l1252 0072                           l1236 0012                           l1332 0396  
-                         l1324 037C                           l1316 0364                           l1262 018A  
-                         l1238 0024                           l1326 0380                           l1318 0366  
-                         l1256 00F6                           l1248 003C                           l1328 038C  
-                         l1370 014C                           l1362 009C                           l1258 0130  
-                         l1372 01AA                           l1364 00D0                           l1366 00AA  
-                         l1368 0116                           _LATA 000F89                           _LATB 000F8A  
-                         i2l21 01F2                           i2l41 0230                           i2l33 021A  
-                         i2l18 01E6                           i2l51 024C                           i2l35 0220  
-                         i2l19 01EC                           i2l44 0236                           i2l28 0210  
-                         i2l61 0276                           i2l71 0298                           i2l63 027C  
-                         i2l47 0240                           i2l56 025C                           i2l48 0246  
-                         i2l65 0282                           i2l74 02AE                           i2l58 0262  
-                         i2l69 0292                           i2l77 030C                           _TMR0 000FD6  
-                         _main 0360                           fsr2h 000FDA                           indf2 000FDF  
-                         fsr1l 000FE1                           fsr2l 000FD9                           btemp 0021  
-                         start 000E                  __CFG_IESO$OFF 000000                  __CFG_MCLRE$ON 000000  
-                 ___param_bank 000000                          ?_main 0010                          _CMCON 000FB4  
-                        i2l201 0354                          i2l137 040E                          i2l139 0414  
-                        _PORTA 000F80                          _PORTB 000F81                          _TRISA 000F92  
-                        _TRISB 000F93                          _TRISC 000F94                  __CFG_PWRT$OFF 000000  
-                __CFG_WRT0$OFF 000000                  __CFG_WRT1$OFF 000000                  __CFG_WRT2$OFF 000000  
-                __CFG_WRT3$OFF 000000                 __CFG_EBTR0$OFF 000000                 __CFG_FCMEN$OFF 000000  
-               __CFG_EBTR1$OFF 000000                 __CFG_EBTR2$OFF 000000                 __CFG_EBTR3$OFF 000000  
-                __CFG_WRTB$OFF 000000                  __CFG_WRTC$OFF 000000                  __CFG_WRTD$OFF 000000  
-            SPI_Init@spiConfig 0017                 __CFG_EBTRB$OFF 000000               __end_of_SPI_Init 01D6  
-                        tablat 000FF5             __size_of_SPI_OnOff 000E                          ttemp5 0022  
-                        ttemp6 0025                          ttemp7 0029                          status 000FD8  
-                        wtemp8 0022             __size_of_SPI_Write 001E                __initialization 03A2  
-                 __end_of_main 03A2   __end_of_Interrupts_Configure 043A                         ??_main 001D  
-                __activetblptr 000002                         _ADCON1 000FC1                         _TC0INT 0008  
-                       i2l1204 0268                         i2l1140 01D6                         i2l1300 032A  
-                       i2l1206 026A                         i2l1150 01FA                         i2l1230 02B2  
-                       i2l1302 0346                         i2l1152 020A                         i2l1304 034E  
-                       i2l1226 029E                         i2l1218 028C                         i2l1306 0350  
-                       i2l1228 029E                         i2l1148 01F8                         i2l1308 0352  
-                       i2l1174 022A                         i2l1196 0256                         i2l1292 03FE  
-                       i2l1374 02C6                         i2l1288 03F8                         i2l1296 0318  
-                       i2l1298 0326                         _INTCON 000FF2               SPI_Write@currCol 0012  
-                       i2u6_40 0326                         i2u6_41 0322                         _SSPBUF 000FC9  
-         SPI_Write@transBuffer 0010                 __CFG_XINST$OFF 000000                 __CFG_STVREN$ON 000000  
-                   _Timer_Init 0416                     _RowControl 01D6              __end_of_SPI_OnOff 0458  
-            __end_of_SPI_Write 0416                   __pdataCOMRAM 0001                         tblptrh 000FF7  
-                       tblptrl 000FF6                         tblptru 000FF8                     __accesstop 0080  
-      __end_of__initialization 03CA                __CFG_PBADEN$OFF 000000                  ___rparam_used 000001  
-               __pcstackCOMRAM 0010               ??_configure_pins 0017                      ?_SPI_Init 0017  
-                      ?_TC0INT 0010           _Interrupts_Configure 042A                    ?_Timer_Init 0010  
-                  ?_RowControl 0010                     ??_SPI_Init 0019                        _INTCON2 000FF1  
-                      _INTCON3 000FF0                __size_of_TC0INT 0358          ?_Interrupts_Configure 0010  
-                      __Hparam 0000                        __Lparam 0000                        __pcinit 03A2  
-                      __ramtop 0600                        __ptext0 0360                        __ptext1 03D8  
-                      __ptext2 0416                        __ptext3 044A                        __ptext4 0012  
-                      __ptext5 042A                        __ptext7 03F8                        __ptext8 01D6  
-                    _T0CONbits 000FD5                        _currRow 0020                 __pintcode_body 030E  
-         end_of_initialization 03CA            __size_of_Timer_Init 0014            __size_of_RowControl 0138  
-                __Lmediumconst 0000                        int_func 030E                        postdec1 000FE5  
-                      postinc0 000FEE                        postinc2 000FDE                 SPI_OnOff@OnOff 0017  
-                    _SPI_OnOff 044A                      _SPI_Write 03F8         ??_Interrupts_Configure 0017  
-               __end_of_TC0INT 0360                  __pidataCOMRAM 043A              __size_of_SPI_Init 01C4  
-          start_initialization 03A2                     ?_SPI_OnOff 0010                     ?_SPI_Write 0010  
-                     ??_TC0INT 0015                   ??_Timer_Init 0017                   ??_RowControl 0012  
-             __CFG_LPT1OSC$OFF 000000              RowControl@currRow 0010                    __pbssCOMRAM 001D  
-           __end_of_Timer_Init 042A             __end_of_RowControl 030E                      _dataTrans 0001  
-                RowControl@row 0014              __CFG_CCP2MX$PORTC 000000                      __pintcode 0008  
-                  ??_SPI_OnOff 0017                    ??_SPI_Write 0013        __size_of_configure_pins 0020  
-                    _spiConfig 0009                       _RCONbits 000FD0               __CFG_WDTPS$32768 000000  
-                     _SPI_Init 0012                    _INTCON2bits 000FF1                      copy_data0 03B6  
-                     __Hrparam 0000                       __Lrparam 0000             __CFG_BOREN$SBORDIS 000000  
-__size_of_Interrupts_Configure 0010                  __size_of_main 0042                       int$flags 0021  
-                   _INTCONbits 000FF2                 _configure_pins 03D8                       intlevel2 0000  
-                   _OSCCONbits 000FD3         __end_of_configure_pins 03F8                    _SSPCON1bits 000FC6  
+                          l123 016C                            l211 0390                            l124 0176  
+                          l116 00EA                            l108 004E                            l132 0460  
+                          l220 040C                            l212 0390                            l125 0180  
+                          l117 012C                            l109 005A                            l222 0412  
+                          l129 01D4                            l225 0418                            l218 0406  
+                          l147 0432                            l227 041E                            l903 0434  
+                 __CFG_CPB$OFF 000000                   __CFG_CPD$OFF 000000                            _row 0027  
+              ?_configure_pins 0010                            wreg 000FE8                   __CFG_LVP$OFF 000000  
+                 __CFG_WDT$OFF 000000                           l1053 0456                           l1065 0420  
+                         l1321 0356                           l1243 0012                           l1067 0400  
+                         l1331 0360                           l1323 0358                           l1245 0024  
+                         l1341 038C                           l1333 0372                           l1325 035A  
+                         l1263 00F6                           l1255 003C                           l1335 0376  
+                         l1327 035C                           l1319 0356                           l1265 0130  
+                         l1337 0382                           l1329 035E                           l1371 009C  
+                         l1259 0072                           l1339 0388                           l1381 01AA  
+                         l1373 00D0                           l1269 018A                           l1375 00AA  
+                         l1377 0116                           l1379 014C                           _LATA 000F89  
+                         _LATB 000F8A                           i2l21 01F2                           i2l41 0230  
+                         i2l33 021A                           i2l18 01E6                           i2l51 024C  
+                         i2l35 0220                           i2l19 01EC                           i2l44 0236  
+                         i2l28 0210                           i2l61 026C                           i2l71 028E  
+                         i2l63 0272                           i2l47 0240                           i2l56 025C  
+                         i2l48 0246                           i2l65 0278                           i2l74 02A4  
+                         i2l58 0262                           i2l69 0288                           i2l77 0302  
+                         _TMR0 000FD6                           _main 0356                           fsr2h 000FDA  
+                         indf2 000FDF                           fsr1l 000FE1                           fsr2l 000FD9  
+                         btemp 0029                           start 000E                  __CFG_IESO$OFF 000000  
+                __CFG_MCLRE$ON 000000                   ___param_bank 000000                          ?_main 0010  
+                        _CMCON 000FB4                          i2l140 03F8                          i2l142 03FE  
+                        i2l206 034A                          i2l137 03EA                          _PORTA 000F80  
+                        _PORTB 000F81                          _TRISA 000F92                          _TRISB 000F93  
+                        _TRISC 000F94                  __CFG_PWRT$OFF 000000                  __CFG_WRT0$OFF 000000  
+                __CFG_WRT1$OFF 000000                  __CFG_WRT2$OFF 000000                  __CFG_WRT3$OFF 000000  
+               __CFG_EBTR0$OFF 000000                 __CFG_FCMEN$OFF 000000                 __CFG_EBTR1$OFF 000000  
+               __CFG_EBTR2$OFF 000000                 __CFG_EBTR3$OFF 000000                  __CFG_WRTB$OFF 000000  
+                __CFG_WRTC$OFF 000000                  __CFG_WRTD$OFF 000000              SPI_Init@spiConfig 0017  
+               __CFG_EBTRB$OFF 000000               __end_of_SPI_Init 01D6                          tablat 000FF5  
+           __size_of_SPI_OnOff 000E                          ttemp5 002A                          ttemp6 002D  
+                        ttemp7 0031                          status 000FD8                          wtemp8 002A  
+           __size_of_SPI_Write 002E                __initialization 0398                   __end_of_main 0398  
+ __end_of_Interrupts_Configure 0444                         ??_main 001D                  __activetblptr 000002  
+              _secondDataTrans 001D                         _ADCON1 000FC1                         _TC0INT 0008  
+                       i2l1203 0256                         i2l1301 03DA                         i2l1311 033C  
+                       i2l1233 0294                         i2l1225 0282                         i2l1313 0344  
+                       i2l1305 030E                         i2l1235 0294                         i2l1155 01F8  
+                       i2l1147 01D6                         i2l1315 0346                         i2l1307 031C  
+                       i2l1181 022A                         i2l1157 01FA                         i2l1237 02A8  
+                       i2l1317 0348                         i2l1309 0320                         i2l1159 020A  
+                       i2l1383 02BC                         i2l1295 03D2                         i2l1299 03D8  
+                       _INTCON 000FF2               SPI_Write@currCol 0012                         i2u7_40 03F8  
+                       i2u7_41 03F4                         i2u8_40 031C                         i2u8_41 0318  
+                       _SSPBUF 000FC9           SPI_Write@transBuffer 0010                 __CFG_XINST$OFF 000000  
+               __CFG_STVREN$ON 000000                     _Timer_Init 0420                     _RowControl 01D6  
+                       clear_0 03BE              __end_of_SPI_OnOff 0462              __end_of_SPI_Write 0400  
+                 __pdataCOMRAM 0001                         tblptrh 000FF7                         tblptrl 000FF6  
+                       tblptru 000FF8                     __accesstop 0080        __end_of__initialization 03C4  
+              __CFG_PBADEN$OFF 000000                  ___rparam_used 000001                 __pcstackCOMRAM 0010  
+             ??_configure_pins 0017                      ?_SPI_Init 0017                        ?_TC0INT 0010  
+         _Interrupts_Configure 0434                    ?_Timer_Init 0010                    ?_RowControl 0010  
+                   ??_SPI_Init 0019                        _INTCON2 000FF1                        _INTCON3 000FF0  
+              __size_of_TC0INT 034E          ?_Interrupts_Configure 0010                        __Hparam 0000  
+                      __Lparam 0000                        __pcinit 0398                        __ramtop 0600  
+                      __ptext0 0356                        __ptext1 0400                        __ptext2 0420  
+                      __ptext3 0454                        __ptext4 0012                        __ptext5 0434  
+                      __ptext7 03D2                        __ptext8 01D6                      _T0CONbits 000FD5  
+                      _currRow 0028                 __pintcode_body 0304           end_of_initialization 03C4  
+          __size_of_Timer_Init 0014            __size_of_RowControl 012E                  __Lmediumconst 0000  
+                      int_func 0304                        postdec1 000FE5                        postinc0 000FEE  
+                      postinc2 000FDE                 SPI_OnOff@OnOff 0017                      _SPI_OnOff 0454  
+                    _SPI_Write 03D2         ??_Interrupts_Configure 0017                 __end_of_TC0INT 0356  
+                __pidataCOMRAM 0444              __size_of_SPI_Init 01C4            start_initialization 0398  
+                   ?_SPI_OnOff 0010                     ?_SPI_Write 0010                       ??_TC0INT 0015  
+                 ??_Timer_Init 0017                   ??_RowControl 0012               __CFG_LPT1OSC$OFF 000000  
+            RowControl@currRow 0010                    __pbssCOMRAM 001D             __end_of_Timer_Init 0434  
+           __end_of_RowControl 0304                      _dataTrans 0001                  RowControl@row 0014  
+            __CFG_CCP2MX$PORTC 000000                      __pintcode 0008                    ??_SPI_OnOff 0017  
+                  ??_SPI_Write 0013        __size_of_configure_pins 0020                      _spiConfig 0009  
+                     _RCONbits 000FD0               __CFG_WDTPS$32768 000000                       _SPI_Init 0012  
+                  _INTCON2bits 000FF1                      copy_data0 03AC                       __Hrparam 0000  
+                     __Lrparam 0000             __CFG_BOREN$SBORDIS 000000  __size_of_Interrupts_Configure 0010  
+                __size_of_main 0042                       int$flags 0029                     _INTCONbits 000FF2  
+               _configure_pins 0400                       intlevel2 0000                     _OSCCONbits 000FD3  
+       __end_of_configure_pins 0420                    _SSPCON1bits 000FC6  

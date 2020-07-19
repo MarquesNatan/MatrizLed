@@ -56,6 +56,7 @@ void RowControl(uint8_t* currRow)
             DIGITAL_PIN_WRITE(PIN_HIGH, _74HC138_C_PORT, _74HC138_C_MASK);
             row++;
             *currRow = row;
+            break;
         case 0x06:
             DIGITAL_PIN_WRITE(PIN_HIGH, _74HC138_A_PORT, _74HC138_A_MASK);
             DIGITAL_PIN_WRITE(PIN_HIGH, _74HC138_B_PORT, _74HC138_B_MASK);

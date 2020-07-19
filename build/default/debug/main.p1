@@ -79,8 +79,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6530
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 6530: extern volatile unsigned char INTCON3 __attribute__((address(0xFF0)));
 [v _INTCON3 `Vuc ~T0 @X0 0 e@4080 ]
-"106 main.c
-[; ;main.c: 106: void configure_pins(void);
+"123 main.c
+[; ;main.c: 123: void configure_pins(void);
 [v _configure_pins `(v ~T0 @X0 0 ef ]
 "36 ./CREATE_FILES/SPI/spi.h
 [; ;./CREATE_FILES/SPI/spi.h: 36: void SPI_Init(spi_config* spiConfig);
@@ -601,23 +601,29 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _i
 -> -> 0 `i `us
 ]
-"94
-[; ;main.c: 94: uint8_t dataTrans[8] =
+"93
+[; ;main.c: 93: uint8_t dataTrans[8] =
 [v _dataTrans `uc ~T0 @X0 -> 8 `i e ]
 [i _dataTrans
 :U ..
--> -> 85 `i `uc
+-> -> 24 `i `uc
+-> -> 2953908480 `ul `uc
+-> -> 230 `i `uc
 -> -> 255 `i `uc
 -> -> 255 `i `uc
--> -> 255 `i `uc
--> -> 255 `i `uc
--> -> 255 `i `uc
--> -> 255 `i `uc
--> -> 255 `i `uc
+-> -> 195 `i `uc
+-> -> 195 `i `uc
 ..
 ]
-"99
-[; ;main.c: 99: spi_config spiConfig =
+"113
+[; ;main.c: 113: uint8_t secondDataTrans[8] =
+[v _secondDataTrans `uc ~T0 @X0 -> 8 `i e ]
+[i _secondDataTrans
+:U ..
+..
+]
+"116
+[; ;main.c: 116: spi_config spiConfig =
 [v _spiConfig `S281 ~T0 @X0 1 e ]
 [i _spiConfig
 :U ..
@@ -630,176 +636,176 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v $root$_TC0INT `(v ~T0 @X0 0 e ]
-"110
-[; ;main.c: 110: void __attribute__((picinterrupt(("")))) TC0INT(void)
+"127
+[; ;main.c: 127: void __attribute__((picinterrupt(("")))) TC0INT(void)
 [v _TC0INT `(v ~T41 @X0 1 ef ]
-"111
-[; ;main.c: 111: {
+"128
+[; ;main.c: 128: {
 {
 [e :U _TC0INT ]
 [f ]
-"112
-[; ;main.c: 112:     if(INTCONbits.TMR0IF == 0x01)
+"129
+[; ;main.c: 129:     if(INTCONbits.TMR0IF == 0x01)
 [e $ ! == -> . . _INTCONbits 0 2 `i -> 1 `i 283  ]
-"113
-[; ;main.c: 113:     {
+"130
+[; ;main.c: 130:     {
 {
-"114
-[; ;main.c: 114:         INTCONbits.GIE = 0x00;
+"131
+[; ;main.c: 131:         INTCONbits.GIE = 0x00;
 [e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
-"115
-[; ;main.c: 115:         T0CONbits.TMR0ON = 0x00;
+"132
+[; ;main.c: 132:         T0CONbits.TMR0ON = 0x00;
 [e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
-"117
-[; ;main.c: 117:         RowControl(&currRow);
+"134
+[; ;main.c: 134:         RowControl(&currRow);
 [e ( _RowControl (1 &U _currRow ]
-"118
-[; ;main.c: 118:         SPI_Write(dataTrans, currRow);
+"135
+[; ;main.c: 135:         SPI_Write(dataTrans, currRow);
 [e ( _SPI_Write (2 , &U _dataTrans _currRow ]
-"121
-[; ;main.c: 121:         TMR0 = 0x6D84;
-[e = _TMR0 -> -> 28036 `i `us ]
-"122
-[; ;main.c: 122:         INTCONbits.T0IF = 0x00;
+"139
+[; ;main.c: 139:         TMR0 = 0xF63C;
+[e = _TMR0 -> -> 63036 `ui `us ]
+"140
+[; ;main.c: 140:         INTCONbits.T0IF = 0x00;
 [e = . . _INTCONbits 1 2 -> -> 0 `i `uc ]
-"123
-[; ;main.c: 123:         INTCONbits.GIE = 0x01;
+"141
+[; ;main.c: 141:         INTCONbits.GIE = 0x01;
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-"124
-[; ;main.c: 124:         T0CONbits.TMR0ON = 0x01;
+"142
+[; ;main.c: 142:         T0CONbits.TMR0ON = 0x01;
 [e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
-"125
-[; ;main.c: 125:     }
+"143
+[; ;main.c: 143:     }
 }
 [e :U 283 ]
-"128
-[; ;main.c: 128: }
+"146
+[; ;main.c: 146: }
 [e :UE 282 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"132
-[; ;main.c: 132: void main(void) {
+"150
+[; ;main.c: 150: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"134
-[; ;main.c: 134:     uint8_t OnOff = 0x00;
+"152
+[; ;main.c: 152:     uint8_t OnOff = 0x00;
 [v _OnOff `uc ~T0 @X0 1 a ]
 [e = _OnOff -> -> 0 `i `uc ]
-"137
-[; ;main.c: 137:     OSCCONbits.IRCF0 = 0x00;
-[e = . . _OSCCONbits 1 4 -> -> 0 `i `uc ]
-"138
-[; ;main.c: 138:     OSCCONbits.IRCF1 = 0x01;
-[e = . . _OSCCONbits 1 5 -> -> 1 `i `uc ]
-"139
-[; ;main.c: 139:     OSCCONbits.IRCF2 = 0x01;
-[e = . . _OSCCONbits 1 6 -> -> 1 `i `uc ]
-"141
-[; ;main.c: 141:     OSCCONbits.SCS0 = 0x00;
-[e = . . _OSCCONbits 1 0 -> -> 0 `i `uc ]
-"142
-[; ;main.c: 142:     OSCCONbits.SCS1 = 0x00;
-[e = . . _OSCCONbits 1 1 -> -> 0 `i `uc ]
-"145
-[; ;main.c: 145:     ADCON1 = 0xFF;
-[e = _ADCON1 -> -> 255 `i `uc ]
-"146
-[; ;main.c: 146:     CMCON = 0x07;
-[e = _CMCON -> -> 7 `i `uc ]
-"148
-[; ;main.c: 148:     INTCON = 0x00;
-[e = _INTCON -> -> 0 `i `uc ]
-"149
-[; ;main.c: 149:     INTCON2 = 0x00;
-[e = _INTCON2 -> -> 0 `i `uc ]
-"150
-[; ;main.c: 150:     INTCON3 = 0x00;
-[e = _INTCON3 -> -> 0 `i `uc ]
-"152
-[; ;main.c: 152:     configure_pins();
-[e ( _configure_pins ..  ]
-"153
-[; ;main.c: 153:     SPI_Init(&spiConfig);
-[e ( _SPI_Init (1 &U _spiConfig ]
-"154
-[; ;main.c: 154:     SPI_OnOff(1);
-[e ( _SPI_OnOff (1 -> -> 1 `i `uc ]
 "155
-[; ;main.c: 155:     Timer_Init();
-[e ( _Timer_Init ..  ]
+[; ;main.c: 155:     OSCCONbits.IRCF0 = 0x00;
+[e = . . _OSCCONbits 1 4 -> -> 0 `i `uc ]
 "156
-[; ;main.c: 156:     Interrupts_Configure();
+[; ;main.c: 156:     OSCCONbits.IRCF1 = 0x01;
+[e = . . _OSCCONbits 1 5 -> -> 1 `i `uc ]
+"157
+[; ;main.c: 157:     OSCCONbits.IRCF2 = 0x01;
+[e = . . _OSCCONbits 1 6 -> -> 1 `i `uc ]
+"159
+[; ;main.c: 159:     OSCCONbits.SCS0 = 0x00;
+[e = . . _OSCCONbits 1 0 -> -> 0 `i `uc ]
+"160
+[; ;main.c: 160:     OSCCONbits.SCS1 = 0x00;
+[e = . . _OSCCONbits 1 1 -> -> 0 `i `uc ]
+"163
+[; ;main.c: 163:     ADCON1 = 0xFF;
+[e = _ADCON1 -> -> 255 `i `uc ]
+"164
+[; ;main.c: 164:     CMCON = 0x07;
+[e = _CMCON -> -> 7 `i `uc ]
+"166
+[; ;main.c: 166:     INTCON = 0x00;
+[e = _INTCON -> -> 0 `i `uc ]
+"167
+[; ;main.c: 167:     INTCON2 = 0x00;
+[e = _INTCON2 -> -> 0 `i `uc ]
+"168
+[; ;main.c: 168:     INTCON3 = 0x00;
+[e = _INTCON3 -> -> 0 `i `uc ]
+"170
+[; ;main.c: 170:     configure_pins();
+[e ( _configure_pins ..  ]
+"171
+[; ;main.c: 171:     SPI_Init(&spiConfig);
+[e ( _SPI_Init (1 &U _spiConfig ]
+"172
+[; ;main.c: 172:     SPI_OnOff(1);
+[e ( _SPI_OnOff (1 -> -> 1 `i `uc ]
+"173
+[; ;main.c: 173:     Timer_Init();
+[e ( _Timer_Init ..  ]
+"174
+[; ;main.c: 174:     Interrupts_Configure();
 [e ( _Interrupts_Configure ..  ]
-"161
-[; ;main.c: 161:     while(1)
+"179
+[; ;main.c: 179:     while(1)
 [e :U 286 ]
-"162
-[; ;main.c: 162:     {
+"180
+[; ;main.c: 180:     {
 {
-"165
-[; ;main.c: 165:     }
+"183
+[; ;main.c: 183:     }
 }
 [e :U 285 ]
 [e $U 286  ]
 [e :U 287 ]
-"166
-[; ;main.c: 166:     return;
+"184
+[; ;main.c: 184:     return;
 [e $UE 284  ]
-"167
-[; ;main.c: 167: }
+"185
+[; ;main.c: 185: }
 [e :UE 284 ]
 }
-"170
-[; ;main.c: 170: void configure_pins(void)
+"188
+[; ;main.c: 188: void configure_pins(void)
 [v _configure_pins `(v ~T0 @X0 1 ef ]
-"171
-[; ;main.c: 171: {
+"189
+[; ;main.c: 189: {
 {
 [e :U _configure_pins ]
 [f ]
-"172
-[; ;main.c: 172:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 0))); if(0x01 == 0x00) TRISB = (TRISB | (1 << 0));;
+"190
+[; ;main.c: 190:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 0))); if(0x01 == 0x00) TRISB = (TRISB | (1 << 0));;
 [e $ ! == -> 0 `i -> 0 `i 289  ]
 [e = _TRISB -> & -> _TRISB `i ~ << -> 1 `i -> 0 `i `uc ]
 [e :U 289 ]
 [e $ ! == -> 1 `i -> 0 `i 290  ]
 [e = _TRISB -> | -> _TRISB `i << -> 1 `i -> 0 `i `uc ]
 [e :U 290 ]
-"173
-[; ;main.c: 173:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 1))); if(0x01 == 0x00) TRISB = (TRISB | (1 << 1));;
+"191
+[; ;main.c: 191:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 1))); if(0x01 == 0x00) TRISB = (TRISB | (1 << 1));;
 [e $ ! == -> 0 `i -> 0 `i 291  ]
 [e = _TRISB -> & -> _TRISB `i ~ << -> 1 `i -> 1 `i `uc ]
 [e :U 291 ]
 [e $ ! == -> 1 `i -> 0 `i 292  ]
 [e = _TRISB -> | -> _TRISB `i << -> 1 `i -> 1 `i `uc ]
 [e :U 292 ]
-"174
-[; ;main.c: 174:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 2))); if(0x01 == 0x00) TRISB = (TRISB | (1 << 2));;
+"192
+[; ;main.c: 192:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 2))); if(0x01 == 0x00) TRISB = (TRISB | (1 << 2));;
 [e $ ! == -> 0 `i -> 0 `i 293  ]
 [e = _TRISB -> & -> _TRISB `i ~ << -> 1 `i -> 2 `i `uc ]
 [e :U 293 ]
 [e $ ! == -> 1 `i -> 0 `i 294  ]
 [e = _TRISB -> | -> _TRISB `i << -> 1 `i -> 2 `i `uc ]
 [e :U 294 ]
-"175
-[; ;main.c: 175:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 3))); if(0x01 == 0x00) TRISB = (TRISB | (1 << 3));;
+"193
+[; ;main.c: 193:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 3))); if(0x01 == 0x00) TRISB = (TRISB | (1 << 3));;
 [e $ ! == -> 0 `i -> 0 `i 295  ]
 [e = _TRISB -> & -> _TRISB `i ~ << -> 1 `i -> 3 `i `uc ]
 [e :U 295 ]
 [e $ ! == -> 1 `i -> 0 `i 296  ]
 [e = _TRISB -> | -> _TRISB `i << -> 1 `i -> 3 `i `uc ]
 [e :U 296 ]
-"177
-[; ;main.c: 177:     if(0x00 == 0x01) LATB = (PORTB & ~((1 << 3))); if(0x01 == 0x01) LATB = (PORTB | (1 << 3));;
+"195
+[; ;main.c: 195:     if(0x00 == 0x01) LATB = (PORTB & ~((1 << 3))); if(0x01 == 0x01) LATB = (PORTB | (1 << 3));;
 [e $ ! == -> 0 `i -> 1 `i 297  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 3 `i `uc ]
 [e :U 297 ]
 [e $ ! == -> 1 `i -> 1 `i 298  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 3 `i `uc ]
 [e :U 298 ]
-"178
-[; ;main.c: 178: }
+"196
+[; ;main.c: 196: }
 [e :UE 288 ]
 }

@@ -4670,6 +4670,7 @@ void RowControl(uint8_t* currRow)
             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 2))); if(0x01 == 0x01) LATB = (PORTB | (1 << 2));;
             row++;
             *currRow = row;
+            break;
         case 0x06:
             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 0))); if(0x01 == 0x01) LATB = (PORTB | (1 << 0));;
             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 1))); if(0x01 == 0x01) LATB = (PORTB | (1 << 1));;

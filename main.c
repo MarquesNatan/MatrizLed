@@ -88,13 +88,30 @@ uint8_t dataTrans[8] =
     0b11100111, 0b10011001, 
     0b10000001, 0b10111101, 
     0b10000001, 0b11111111
-};
-*/
+};*/
 
 uint8_t dataTrans[8] =
 {
+  0b00011000, 0xb0111100, 0b011100110, 0b11111111, 0b11111111, 0b11000011, 0b11000011
     
-    0x55, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
+};
+/*
+uint8_t dataTrans[8] =
+{
+    0xb00011000,
+  0xb00111100,
+  0xb011100110,
+  0xb11000011,
+  0xb11111111,
+  0xb11111111,
+  0xb11000011,
+  0xb1100001
+    0b11110000, 0b00001111, 0b11110000, 0b00001111, 0b11110000, 0b00001111, 0b11110000, 
+    0b00001111
+};*/
+
+uint8_t secondDataTrans[8] = 
+{
 };
 spi_config spiConfig = 
 {
@@ -116,9 +133,10 @@ void __interrupt()  TC0INT(void)
         // Call functions to att lines
         RowControl(&currRow);
         SPI_Write(dataTrans, currRow);
+        //__delay_ms(500);
         // __delay_ms(50);
         /* Clear interrupt flag*/
-        TMR0 = 0x6D84; //  0x3CB0 -> 20 ms 0x6D84 -> 15 ms 0x9E58 -> 10 ms 0xF63C -> 1 ms
+        TMR0 = 0xF63C; //  0x3CB0 -> 20 ms 0x6D84 -> 15 ms 0x9E58 -> 10 ms 0xF63C -> 1 ms
         INTCONbits.T0IF = 0x00;
         INTCONbits.GIE = 0x01;
         T0CONbits.TMR0ON = 0x01;
