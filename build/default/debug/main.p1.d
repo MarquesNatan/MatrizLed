@@ -5,4 +5,5 @@ CREATE_FILES/GPIO/gpio.h  \
 CREATE_FILES/SPI/spi.h  \
 CREATE_FILES/CONTROL_LINES/line_control.h  \
 CREATE_FILES/INTERRUPT/interrupts.h  \
-CREATE_FILES/TIMER/timer.h 
+CREATE_FILES/TIMER/timer.h  \
+CREATE_FILES/SCROLLING_TEXT/scrolling_text.h 

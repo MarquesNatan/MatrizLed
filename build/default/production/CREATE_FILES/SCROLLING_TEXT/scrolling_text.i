@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "CREATE_FILES/SCROLLING_TEXT/scrolling_text.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,61 +6,124 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
-# 14 "main.c"
-#pragma config OSC = HS
-#pragma config FCMEN = OFF
-#pragma config IESO = OFF
+# 1 "CREATE_FILES/SCROLLING_TEXT/scrolling_text.c" 2
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdint.h" 1 3
 
 
-#pragma config PWRT = OFF
-#pragma config BOREN = SBORDIS
-#pragma config BORV = 3
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\musl_xc8.h" 1 3
+# 4 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdint.h" 2 3
+# 22 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdint.h" 3
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 1 3
+# 127 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned long uintptr_t;
+# 142 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long intptr_t;
+# 158 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef signed char int8_t;
 
 
-#pragma config WDT = OFF
-#pragma config WDTPS = 32768
 
 
-#pragma config CCP2MX = PORTC
-#pragma config PBADEN = OFF
-#pragma config LPT1OSC = OFF
-#pragma config MCLRE = ON
+typedef short int16_t;
 
 
-#pragma config STVREN = ON
-#pragma config LVP = OFF
-#pragma config XINST = OFF
 
 
-#pragma config CP0 = OFF
-#pragma config CP1 = OFF
-#pragma config CP2 = OFF
-#pragma config CP3 = OFF
+typedef __int24 int24_t;
 
 
-#pragma config CPB = OFF
-#pragma config CPD = OFF
 
 
-#pragma config WRT0 = OFF
-#pragma config WRT1 = OFF
-#pragma config WRT2 = OFF
-#pragma config WRT3 = OFF
+typedef long int32_t;
 
 
-#pragma config WRTC = OFF
-#pragma config WRTB = OFF
-#pragma config WRTD = OFF
 
 
-#pragma config EBTR0 = OFF
-#pragma config EBTR1 = OFF
-#pragma config EBTR2 = OFF
-#pragma config EBTR3 = OFF
+
+typedef long long int64_t;
+# 188 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long long intmax_t;
 
 
-#pragma config EBTRB = OFF
+
+
+
+typedef unsigned char uint8_t;
+
+
+
+
+typedef unsigned short uint16_t;
+
+
+
+
+typedef __uint24 uint24_t;
+
+
+
+
+typedef unsigned long uint32_t;
+
+
+
+
+
+typedef unsigned long long uint64_t;
+# 229 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned long long uintmax_t;
+# 22 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdint.h" 2 3
+
+
+typedef int8_t int_fast8_t;
+
+typedef int64_t int_fast64_t;
+
+
+typedef int8_t int_least8_t;
+typedef int16_t int_least16_t;
+
+typedef int24_t int_least24_t;
+
+typedef int32_t int_least32_t;
+
+typedef int64_t int_least64_t;
+
+
+typedef uint8_t uint_fast8_t;
+
+typedef uint64_t uint_fast64_t;
+
+
+typedef uint8_t uint_least8_t;
+typedef uint16_t uint_least16_t;
+
+typedef uint24_t uint_least24_t;
+
+typedef uint32_t uint_least32_t;
+
+typedef uint64_t uint_least64_t;
+# 139 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdint.h" 3
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/stdint.h" 1 3
+typedef int32_t int_fast16_t;
+typedef int32_t int_fast32_t;
+typedef uint32_t uint_fast16_t;
+typedef uint32_t uint_fast32_t;
+# 139 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdint.h" 2 3
+# 1 "CREATE_FILES/SCROLLING_TEXT/scrolling_text.c" 2
+
+# 1 "CREATE_FILES/SCROLLING_TEXT/scrolling_text.h" 1
+
+
+
+
+
+void WriteMatrix(uint8_t matrix[][8], uint8_t vectorBytes[8]);
+void ScrollingDisplay(uint8_t matrix[][8], uint8_t* line, uint8_t PosBit);
+# 2 "CREATE_FILES/SCROLLING_TEXT/scrolling_text.c" 2
+
+# 1 "CREATE_FILES/SCROLLING_TEXT/../GPIO/gpio.h" 1
 
 
 
@@ -79,17 +142,7 @@ extern double __fpnormalize(double);
 
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdlib.h" 1 3
-
-
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\musl_xc8.h" 1 3
-# 4 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdlib.h" 2 3
-
-
-
-
-
-
+# 10 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdlib.h" 3
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\features.h" 1 3
 # 10 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdlib.h" 2 3
 # 21 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdlib.h" 3
@@ -98,10 +151,6 @@ extern double __fpnormalize(double);
 typedef long int wchar_t;
 # 122 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
 typedef unsigned size_t;
-# 168 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef __int24 int24_t;
-# 204 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef __uint24 uint24_t;
 # 21 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdlib.h" 2 3
 
 
@@ -4571,260 +4620,64 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 32 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 71 "main.c" 2
+# 6 "CREATE_FILES/SCROLLING_TEXT/../GPIO/gpio.h" 2
+# 3 "CREATE_FILES/SCROLLING_TEXT/scrolling_text.c" 2
 
-# 1 "./CREATE_FILES/BOARD_PINOUT/board_pinout.h" 1
-# 72 "main.c" 2
-
-# 1 "./CREATE_FILES/GPIO/gpio.h" 1
-# 73 "main.c" 2
-
-# 1 "./CREATE_FILES/SPI/spi.h" 1
+# 1 "CREATE_FILES/SCROLLING_TEXT/../BOARD_PINOUT/board_pinout.h" 1
+# 4 "CREATE_FILES/SCROLLING_TEXT/scrolling_text.c" 2
 
 
 
 
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdint.h" 1 3
-# 22 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdint.h" 3
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 1 3
-# 127 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef unsigned long uintptr_t;
-# 142 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long intptr_t;
-# 158 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef signed char int8_t;
-
-
-
-
-typedef short int16_t;
-# 173 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long int32_t;
-
-
-
-
-
-typedef long long int64_t;
-# 188 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long long intmax_t;
-
-
-
-
-
-typedef unsigned char uint8_t;
-
-
-
-
-typedef unsigned short uint16_t;
-# 209 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef unsigned long uint32_t;
-
-
-
-
-
-typedef unsigned long long uint64_t;
-# 229 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef unsigned long long uintmax_t;
-# 22 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdint.h" 2 3
-
-
-typedef int8_t int_fast8_t;
-
-typedef int64_t int_fast64_t;
-
-
-typedef int8_t int_least8_t;
-typedef int16_t int_least16_t;
-
-typedef int24_t int_least24_t;
-
-typedef int32_t int_least32_t;
-
-typedef int64_t int_least64_t;
-
-
-typedef uint8_t uint_fast8_t;
-
-typedef uint64_t uint_fast64_t;
-
-
-typedef uint8_t uint_least8_t;
-typedef uint16_t uint_least16_t;
-
-typedef uint24_t uint_least24_t;
-
-typedef uint32_t uint_least32_t;
-
-typedef uint64_t uint_least64_t;
-# 139 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdint.h" 3
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/stdint.h" 1 3
-typedef int32_t int_fast16_t;
-typedef int32_t int_fast32_t;
-typedef uint32_t uint_fast16_t;
-typedef uint32_t uint_fast32_t;
-# 139 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdint.h" 2 3
-# 5 "./CREATE_FILES/SPI/spi.h" 2
-# 26 "./CREATE_FILES/SPI/spi.h"
-typedef struct
+void WriteMatrix(uint8_t matrix[][8], uint8_t vectorBytes[8])
 {
-    uint8_t masterMode;
-    uint8_t clockMode;
-    uint8_t controlSSPin;
-    uint32_t baudRate;
+    uint8_t byte = 0;
+    uint8_t line = 0;
+    uint8_t col;
+    uint8_t aux = 1;
 
-}spi_config;
-
-
-void SPI_Init(spi_config* spiConfig);
-void SPI_OnOff(uint8_t OnOff);
-
-void SPI_Write(uint8_t* transBuffer, uint8_t currCol);
-# 74 "main.c" 2
-
-# 1 "./CREATE_FILES/CONTROL_LINES/line_control.h" 1
-
-
-
-
-void RowControl(uint8_t* currRow, uint8_t* PosBit);
-# 75 "main.c" 2
-
-# 1 "./CREATE_FILES/INTERRUPT/interrupts.h" 1
-
-
-
-
-
-void Interrupts_Configure(void);
-# 76 "main.c" 2
-
-# 1 "./CREATE_FILES/TIMER/timer.h" 1
-
-
-
-
-
-
-
-
-void Timer_Init(void);
-void Timer_OnOff(uint8_t OnOff);
-# 77 "main.c" 2
-
-# 1 "./CREATE_FILES/SCROLLING_TEXT/scrolling_text.h" 1
-
-
-
-
-
-void WriteMatrix(uint8_t matrix[][8], uint8_t vectorBytes[8]);
-void ScrollingDisplay(uint8_t matrix[][8], uint8_t* line, uint8_t PosBit);
-# 78 "main.c" 2
-
-
-
-
-uint8_t currRow = 0;
-uint8_t PosBit = 0x07;
-uint8_t row = 0x00;
-uint16_t i = 0;
-
-uint8_t matrix[8][8];
-uint8_t dataTrans[8] =
-{
-
-
-    0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
-
-};
-# 108 "main.c"
-spi_config spiConfig =
-{
-    .masterMode = 1,
-    .clockMode = 0,
-    .controlSSPin = 1,
-    .baudRate = 2
-};
-void configure_pins(void);
-
-
-
-void __attribute__((picinterrupt(("")))) TC0INT(void)
-{
-    if(INTCONbits.TMR0IF == 0x01)
+    for(line = 0; line < 8; line++)
     {
-        INTCONbits.GIE = 0x00;
-        T0CONbits.TMR0ON = 0x00;
-
-        RowControl(&currRow, &PosBit);
-
-        ScrollingDisplay(matrix, &currRow, PosBit);
-
-
-
-        TMR0 = 0xF63C;
-        INTCONbits.T0IF = 0x00;
-        INTCONbits.GIE = 0x01;
-        T0CONbits.TMR0ON = 0x01;
+        for(col = 0; col < 8; col++)
+        {
+            aux = (1 << col);
+            if((vectorBytes[line] & aux) >= 0x01)
+            {
+                matrix[line][col] = 0x01;
+            }else
+            {
+                matrix[line][col] = 0x00;
+            }
+        }
     }
-
 
 }
 
 
+void ScrollingDisplay(uint8_t matrix[][8], uint8_t* line, uint8_t PosBit)
+{
 
-void main(void) {
-
-    uint8_t OnOff = 0x00;
-
-
-    OSCCONbits.IRCF0 = 0x00;
-    OSCCONbits.IRCF1 = 0x01;
-    OSCCONbits.IRCF2 = 0x01;
-
-    OSCCONbits.SCS0 = 0x00;
-    OSCCONbits.SCS1 = 0x00;
-
-
-    ADCON1 = 0xFF;
-    CMCON = 0x07;
-
-    INTCON = 0x00;
-    INTCON2 = 0x00;
-    INTCON3 = 0x00;
-
-    WriteMatrix(matrix, dataTrans);
-    configure_pins();
-    Timer_Init();
-    Interrupts_Configure();
-
-
-
-
-    while(1)
+    if(matrix[*line][PosBit])
     {
 
+        if(0x00 == 0x01) LATC = (PORTC & ~((1 << 5))); if(0x01 == 0x01) LATC = (PORTC | (1 << 5));;
+        if(0x00 == 0x01) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x01) LATC = (PORTC | (1 << 3));;
+        _delay((unsigned long)((1)*(10000000/4000000.0)));
+        if(0x00 == 0x00) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x00) LATC = (PORTC | (1 << 3));;
+        if(0x00 == 0x01) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x01) LATA = (PORTA | (1 << 5));;
+        _delay((unsigned long)((1)*(10000000/4000000.0)));
+        if(0x00 == 0x00) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x00) LATA = (PORTA | (1 << 5));;
+    }
+    else
+    {
+
+        if(0x00 == 0x00) LATC = (PORTC & ~((1 << 5))); if(0x01 == 0x00) LATC = (PORTC | (1 << 5));;
+        if(0x00 == 0x01) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x01) LATC = (PORTC | (1 << 3));;
+        _delay((unsigned long)((1)*(10000000/4000000.0)));
+        if(0x00 == 0x00) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x00) LATC = (PORTC | (1 << 3));;
+        if(0x00 == 0x01) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x01) LATA = (PORTA | (1 << 5));;
+        _delay((unsigned long)((1)*(10000000/4000000.0)));
+        if(0x00 == 0x00) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x00) LATA = (PORTA | (1 << 5));;
 
     }
-    return;
-}
-
-
-void configure_pins(void)
-{
-    if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 0))); if(0x01 == 0x00) TRISB = (TRISB | (1 << 0));;
-    if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 1))); if(0x01 == 0x00) TRISB = (TRISB | (1 << 1));;
-    if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 2))); if(0x01 == 0x00) TRISB = (TRISB | (1 << 2));;
-    if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 3))); if(0x01 == 0x00) TRISB = (TRISB | (1 << 3));;
-
-    if(0x00 == 0x01) LATB = (PORTB & ~((1 << 3))); if(0x01 == 0x01) LATB = (PORTB | (1 << 3));;
-
-    if(0x00 == 0x00) TRISC = (TRISC & (~(1 << 5))); if(0x01 == 0x00) TRISC = (TRISC | (1 << 5));;
-    if(0x00 == 0x00) TRISC = (TRISC & (~(1 << 3))); if(0x01 == 0x00) TRISC = (TRISC | (1 << 3));;
-    if(0x00 == 0x00) TRISA = (TRISA & (~(1 << 5))); if(0x01 == 0x00) TRISA = (TRISA | (1 << 5));;
-    if(0x00 == 0x00) TRISA = (TRISA & (~(1 << 4))); if(0x01 == 0x00) TRISA = (TRISA | (1 << 4));;
 }

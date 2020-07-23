@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=CREATE_FILES/BOARD_PINOUT/board_pinout.c CREATE_FILES/GPIO/gpio.c CREATE_FILES/INTERRUPT/interrupts.c CREATE_FILES/CONTROL_LINES/line_control.c CREATE_FILES/SPI/spi.c CREATE_FILES/TIMER/timer.c main.c
+SOURCEFILES_QUOTED_IF_SPACED=CREATE_FILES/BOARD_PINOUT/board_pinout.c CREATE_FILES/GPIO/gpio.c CREATE_FILES/INTERRUPT/interrupts.c CREATE_FILES/CONTROL_LINES/line_control.c CREATE_FILES/SCROLLING_TEXT/scrolling_text.c CREATE_FILES/SPI/spi.c CREATE_FILES/TIMER/timer.c main.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/CREATE_FILES/BOARD_PINOUT/board_pinout.p1 ${OBJECTDIR}/CREATE_FILES/GPIO/gpio.p1 ${OBJECTDIR}/CREATE_FILES/INTERRUPT/interrupts.p1 ${OBJECTDIR}/CREATE_FILES/CONTROL_LINES/line_control.p1 ${OBJECTDIR}/CREATE_FILES/SPI/spi.p1 ${OBJECTDIR}/CREATE_FILES/TIMER/timer.p1 ${OBJECTDIR}/main.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/CREATE_FILES/BOARD_PINOUT/board_pinout.p1.d ${OBJECTDIR}/CREATE_FILES/GPIO/gpio.p1.d ${OBJECTDIR}/CREATE_FILES/INTERRUPT/interrupts.p1.d ${OBJECTDIR}/CREATE_FILES/CONTROL_LINES/line_control.p1.d ${OBJECTDIR}/CREATE_FILES/SPI/spi.p1.d ${OBJECTDIR}/CREATE_FILES/TIMER/timer.p1.d ${OBJECTDIR}/main.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/CREATE_FILES/BOARD_PINOUT/board_pinout.p1 ${OBJECTDIR}/CREATE_FILES/GPIO/gpio.p1 ${OBJECTDIR}/CREATE_FILES/INTERRUPT/interrupts.p1 ${OBJECTDIR}/CREATE_FILES/CONTROL_LINES/line_control.p1 ${OBJECTDIR}/CREATE_FILES/SCROLLING_TEXT/scrolling_text.p1 ${OBJECTDIR}/CREATE_FILES/SPI/spi.p1 ${OBJECTDIR}/CREATE_FILES/TIMER/timer.p1 ${OBJECTDIR}/main.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/CREATE_FILES/BOARD_PINOUT/board_pinout.p1.d ${OBJECTDIR}/CREATE_FILES/GPIO/gpio.p1.d ${OBJECTDIR}/CREATE_FILES/INTERRUPT/interrupts.p1.d ${OBJECTDIR}/CREATE_FILES/CONTROL_LINES/line_control.p1.d ${OBJECTDIR}/CREATE_FILES/SCROLLING_TEXT/scrolling_text.p1.d ${OBJECTDIR}/CREATE_FILES/SPI/spi.p1.d ${OBJECTDIR}/CREATE_FILES/TIMER/timer.p1.d ${OBJECTDIR}/main.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/CREATE_FILES/BOARD_PINOUT/board_pinout.p1 ${OBJECTDIR}/CREATE_FILES/GPIO/gpio.p1 ${OBJECTDIR}/CREATE_FILES/INTERRUPT/interrupts.p1 ${OBJECTDIR}/CREATE_FILES/CONTROL_LINES/line_control.p1 ${OBJECTDIR}/CREATE_FILES/SPI/spi.p1 ${OBJECTDIR}/CREATE_FILES/TIMER/timer.p1 ${OBJECTDIR}/main.p1
+OBJECTFILES=${OBJECTDIR}/CREATE_FILES/BOARD_PINOUT/board_pinout.p1 ${OBJECTDIR}/CREATE_FILES/GPIO/gpio.p1 ${OBJECTDIR}/CREATE_FILES/INTERRUPT/interrupts.p1 ${OBJECTDIR}/CREATE_FILES/CONTROL_LINES/line_control.p1 ${OBJECTDIR}/CREATE_FILES/SCROLLING_TEXT/scrolling_text.p1 ${OBJECTDIR}/CREATE_FILES/SPI/spi.p1 ${OBJECTDIR}/CREATE_FILES/TIMER/timer.p1 ${OBJECTDIR}/main.p1
 
 # Source Files
-SOURCEFILES=CREATE_FILES/BOARD_PINOUT/board_pinout.c CREATE_FILES/GPIO/gpio.c CREATE_FILES/INTERRUPT/interrupts.c CREATE_FILES/CONTROL_LINES/line_control.c CREATE_FILES/SPI/spi.c CREATE_FILES/TIMER/timer.c main.c
+SOURCEFILES=CREATE_FILES/BOARD_PINOUT/board_pinout.c CREATE_FILES/GPIO/gpio.c CREATE_FILES/INTERRUPT/interrupts.c CREATE_FILES/CONTROL_LINES/line_control.c CREATE_FILES/SCROLLING_TEXT/scrolling_text.c CREATE_FILES/SPI/spi.c CREATE_FILES/TIMER/timer.c main.c
 
 
 
@@ -126,6 +126,14 @@ ${OBJECTDIR}/CREATE_FILES/CONTROL_LINES/line_control.p1: CREATE_FILES/CONTROL_LI
 	@-${MV} ${OBJECTDIR}/CREATE_FILES/CONTROL_LINES/line_control.d ${OBJECTDIR}/CREATE_FILES/CONTROL_LINES/line_control.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/CREATE_FILES/CONTROL_LINES/line_control.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/CREATE_FILES/SCROLLING_TEXT/scrolling_text.p1: CREATE_FILES/SCROLLING_TEXT/scrolling_text.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/CREATE_FILES/SCROLLING_TEXT" 
+	@${RM} ${OBJECTDIR}/CREATE_FILES/SCROLLING_TEXT/scrolling_text.p1.d 
+	@${RM} ${OBJECTDIR}/CREATE_FILES/SCROLLING_TEXT/scrolling_text.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1    -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/CREATE_FILES/SCROLLING_TEXT/scrolling_text.p1 CREATE_FILES/SCROLLING_TEXT/scrolling_text.c 
+	@-${MV} ${OBJECTDIR}/CREATE_FILES/SCROLLING_TEXT/scrolling_text.d ${OBJECTDIR}/CREATE_FILES/SCROLLING_TEXT/scrolling_text.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/CREATE_FILES/SCROLLING_TEXT/scrolling_text.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 ${OBJECTDIR}/CREATE_FILES/SPI/spi.p1: CREATE_FILES/SPI/spi.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/CREATE_FILES/SPI" 
 	@${RM} ${OBJECTDIR}/CREATE_FILES/SPI/spi.p1.d 
@@ -182,6 +190,14 @@ ${OBJECTDIR}/CREATE_FILES/CONTROL_LINES/line_control.p1: CREATE_FILES/CONTROL_LI
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/CREATE_FILES/CONTROL_LINES/line_control.p1 CREATE_FILES/CONTROL_LINES/line_control.c 
 	@-${MV} ${OBJECTDIR}/CREATE_FILES/CONTROL_LINES/line_control.d ${OBJECTDIR}/CREATE_FILES/CONTROL_LINES/line_control.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/CREATE_FILES/CONTROL_LINES/line_control.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/CREATE_FILES/SCROLLING_TEXT/scrolling_text.p1: CREATE_FILES/SCROLLING_TEXT/scrolling_text.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/CREATE_FILES/SCROLLING_TEXT" 
+	@${RM} ${OBJECTDIR}/CREATE_FILES/SCROLLING_TEXT/scrolling_text.p1.d 
+	@${RM} ${OBJECTDIR}/CREATE_FILES/SCROLLING_TEXT/scrolling_text.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/CREATE_FILES/SCROLLING_TEXT/scrolling_text.p1 CREATE_FILES/SCROLLING_TEXT/scrolling_text.c 
+	@-${MV} ${OBJECTDIR}/CREATE_FILES/SCROLLING_TEXT/scrolling_text.d ${OBJECTDIR}/CREATE_FILES/SCROLLING_TEXT/scrolling_text.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/CREATE_FILES/SCROLLING_TEXT/scrolling_text.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 ${OBJECTDIR}/CREATE_FILES/SPI/spi.p1: CREATE_FILES/SPI/spi.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/CREATE_FILES/SPI" 

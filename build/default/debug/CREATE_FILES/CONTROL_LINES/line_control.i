@@ -118,7 +118,7 @@ typedef uint32_t uint_fast32_t;
 
 
 
-void RowControl(uint8_t* currRow);
+void RowControl(uint8_t* currRow, uint8_t* PosBit);
 # 2 "CREATE_FILES/CONTROL_LINES/line_control.c" 2
 
 # 1 "CREATE_FILES/CONTROL_LINES/../BOARD_PINOUT/board_pinout.h" 1
@@ -4624,9 +4624,10 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 6 "CREATE_FILES/CONTROL_LINES/../GPIO/gpio.h" 2
 # 4 "CREATE_FILES/CONTROL_LINES/line_control.c" 2
 # 13 "CREATE_FILES/CONTROL_LINES/line_control.c"
-void RowControl(uint8_t* currRow)
+void RowControl(uint8_t* currRow, uint8_t* PosBit)
 {
     uint8_t row = *currRow;
+    uint8_t col = *PosBit;
     switch(row)
     {
         case 0x00:
@@ -4683,7 +4684,15 @@ void RowControl(uint8_t* currRow)
             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 1))); if(0x01 == 0x00) LATB = (PORTB | (1 << 1));;
             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 2))); if(0x01 == 0x00) LATB = (PORTB | (1 << 2));;
             row = 0x00;
+            if((0x07 - col) >= 0x00)
+            {
+                col--;
+            }else
+            {
+                col = 0x07;
+            }
             *currRow = row;
+            *PosBit = col;
             break;
         default:
             for(;;);

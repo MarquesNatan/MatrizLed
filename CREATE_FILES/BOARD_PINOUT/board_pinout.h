@@ -46,4 +46,26 @@
 
 /*============================================================================*/
 
+#define PIN_DS_595_PORT                       C 
+#define PIN_DS_595_BIT                        5
+#define PIN_DS_595_MASK                       (1 << PIN_DS_595_BIT)
+
+
+#define PIN_SHCP_595_PORT                      C 
+#define PIN_SHCP_595_BIT                       3
+#define PIN_SHCP_595_MASK                      (1 << PIN_SHCP_595_BIT)
+
+#define PIN_STCP_595_PORT                      A 
+#define PIN_STCP_595_BIT                       5
+#define PIN_STCP_595_MASK                      (1 << PIN_STCP_595_BIT)
+
+
+#define PIN_MR_595_PORT                        A
+#define PIN_MR_595_BIT                         4
+#define PIN_MR_595_MASK                        (1 << PIN_MR_595_BIT)
+
+/*============================================================================*/
+
+
+
 #endif

@@ -4690,7 +4690,7 @@ void SPI_Write(uint8_t* transBuffer, uint8_t currCol);
 
 
 
-void RowControl(uint8_t* currRow);
+void RowControl(uint8_t* currRow, uint8_t* PosBit);
 # 75 "main.c" 2
 
 # 1 "./CREATE_FILES/INTERRUPT/interrupts.h" 1
@@ -4715,23 +4715,32 @@ void Timer_Init(void);
 void Timer_OnOff(uint8_t OnOff);
 # 77 "main.c" 2
 
+# 1 "./CREATE_FILES/SCROLLING_TEXT/scrolling_text.h" 1
+
+
+
+
+
+void WriteMatrix(uint8_t matrix[][8], uint8_t vectorBytes[8]);
+void ScrollingDisplay(uint8_t matrix[][8], uint8_t* line, uint8_t PosBit);
+# 78 "main.c" 2
+
 
 
 
 uint8_t currRow = 0;
+uint8_t PosBit = 0x07;
 uint8_t row = 0x00;
 uint16_t i = 0;
-# 94 "main.c"
+
+uint8_t matrix[8][8];
 uint8_t dataTrans[8] =
 {
+   0b00000000, 0b01111110, 0b01100000, 0b01100000,
+   0b01111100, 0b01100000, 0b01100000, 0b01111110
 
-    0b11110000, 0b00001111, 0b11110000, 0b00001111, 0b11110000, 0b00001111, 0b11110000,
-    0b00001111
 };
-
-uint8_t secondDataTrans[8] =
-{
-};
+# 107 "main.c"
 spi_config spiConfig =
 {
     .masterMode = 1,
@@ -4750,8 +4759,10 @@ void __attribute__((picinterrupt(("")))) TC0INT(void)
         INTCONbits.GIE = 0x00;
         T0CONbits.TMR0ON = 0x00;
 
-        RowControl(&currRow);
-        SPI_Write(dataTrans, currRow);
+        RowControl(&currRow, &PosBit);
+
+        ScrollingDisplay(matrix, &currRow, PosBit);
+
 
 
         TMR0 = 0xF63C;
@@ -4785,9 +4796,8 @@ void main(void) {
     INTCON2 = 0x00;
     INTCON3 = 0x00;
 
+    WriteMatrix(matrix, dataTrans);
     configure_pins();
-    SPI_Init(&spiConfig);
-    SPI_OnOff(1);
     Timer_Init();
     Interrupts_Configure();
 
@@ -4811,4 +4821,9 @@ void configure_pins(void)
     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 3))); if(0x01 == 0x00) TRISB = (TRISB | (1 << 3));;
 
     if(0x00 == 0x01) LATB = (PORTB & ~((1 << 3))); if(0x01 == 0x01) LATB = (PORTB | (1 << 3));;
+
+    if(0x00 == 0x00) TRISC = (TRISC & (~(1 << 5))); if(0x01 == 0x00) TRISC = (TRISC | (1 << 5));;
+    if(0x00 == 0x00) TRISC = (TRISC & (~(1 << 3))); if(0x01 == 0x00) TRISC = (TRISC | (1 << 3));;
+    if(0x00 == 0x00) TRISA = (TRISA & (~(1 << 5))); if(0x01 == 0x00) TRISA = (TRISA | (1 << 5));;
+    if(0x00 == 0x00) TRISA = (TRISA & (~(1 << 4))); if(0x01 == 0x00) TRISA = (TRISA | (1 << 4));;
 }

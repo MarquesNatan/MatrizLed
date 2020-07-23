@@ -75,44 +75,36 @@
 #include "CREATE_FILES/CONTROL_LINES/line_control.h"
 #include "CREATE_FILES/INTERRUPT/interrupts.h"
 #include "CREATE_FILES/TIMER/timer.h"
+#include "CREATE_FILES/SCROLLING_TEXT/scrolling_text.h"
 
 #define _XTAL_FREQ 10000000
-
+#define linesMatrix             8
 uint8_t currRow = 0;
+uint8_t PosBit = 0x07;
 uint8_t row = 0x00;
 uint16_t i = 0;
-/*
-uint8_t dataTrans[8] =
-{
-    0b11111111, 0b10000001, 
-    0b11100111, 0b10011001, 
-    0b10000001, 0b10111101, 
-    0b10000001, 0b11111111
-};*/
 
+uint8_t matrix[linesMatrix][linesMatrix];
 uint8_t dataTrans[8] =
 {
-  0b00011000, 0xb0111100, 0b011100110, 0b11111111, 0b11111111, 0b11000011, 0b11000011
-    
+   //  0b00000000, 0b01111110, 0b01100000, 0b01100000, 
+   //  0b01111100,   0b01100000, 0b01100000, 0b01111110
+    0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,  0xFF, 0xFF
+     
 };
-/*
-uint8_t dataTrans[8] =
-{
-    0xb00011000,
-  0xb00111100,
-  0xb011100110,
-  0xb11000011,
-  0xb11111111,
-  0xb11111111,
-  0xb11000011,
-  0xb1100001
-    0b11110000, 0b00001111, 0b11110000, 0b00001111, 0b11110000, 0b00001111, 0b11110000, 
-    0b00001111
-};*/
 
-uint8_t secondDataTrans[8] = 
-{
-};
+/*
+ * [0]  [0]  [0]  [0]  [0]  [0]  [0]  [0]                                                           
+ * [0]  [1]  [1]  [1]  [1]  [1]  [1]  [0]                                                           
+ * [0]  [0]  [0]  [0]  [0]  [1]  [1]  [0]                                                           
+ * [0]  [0]  [0]  [0]  [0]  [1]  [1]  [0]                                                           
+ * [0]  [0]  [1]  [1]  [1]  [1]  [1]  [0]                                                           
+ * [0]  [0]  [0]  [0]  [0]  [1]  [1]  [0]                                                           
+ * [0]  [0]  [0]  [0]  [0]  [1]  [1]  [0]                                                           
+ * [0]  [1]  [1]  [1]  [1]  [1]  [1]  [0]
+ */
+
+
 spi_config spiConfig = 
 {
     .masterMode = MASTER_MODE,
@@ -130,11 +122,12 @@ void __interrupt()  TC0INT(void)
     {
         INTCONbits.GIE = 0x00;
         T0CONbits.TMR0ON = 0x00;
-        // Call functions to att lines
-        RowControl(&currRow);
-        SPI_Write(dataTrans, currRow);
-        //__delay_ms(500);
-        // __delay_ms(50);
+        
+        RowControl(&currRow, &PosBit);
+        /*ScrollingDisplay(uint8_t matrix[][8], uint8_t* currRow, uint8_t *posBit)*/
+        ScrollingDisplay(matrix, &currRow, PosBit);
+
+      //   __delay_ms(500);
         /* Clear interrupt flag*/
         TMR0 = 0xF63C; //  0x3CB0 -> 20 ms 0x6D84 -> 15 ms 0x9E58 -> 10 ms 0xF63C -> 1 ms
         INTCONbits.T0IF = 0x00;
@@ -167,9 +160,8 @@ void main(void) {
     INTCON2 = 0x00; // Enable all internal pull ups resistors
     INTCON3 = 0x00; // Disable all external interrupts
     
+    WriteMatrix(matrix, dataTrans);
     configure_pins();
-    SPI_Init(&spiConfig);
-    SPI_OnOff(1);
     Timer_Init();
     Interrupts_Configure();
     
@@ -193,4 +185,9 @@ void configure_pins(void)
     CONFIGURE_PIN_DIGITAL(OUTPUT_PIN, _74HC138_G1_PORT, _74HC138_G1_MASK);
     
     DIGITAL_PIN_WRITE(PIN_HIGH, _74HC138_G1_PORT, _74HC138_G1_MASK);
+    
+    CONFIGURE_PIN_DIGITAL(OUTPUT_PIN, PIN_DS_595_PORT, PIN_DS_595_MASK);
+    CONFIGURE_PIN_DIGITAL(OUTPUT_PIN, PIN_SHCP_595_PORT, PIN_SHCP_595_MASK);
+    CONFIGURE_PIN_DIGITAL(OUTPUT_PIN, PIN_STCP_595_PORT, PIN_STCP_595_MASK);
+    CONFIGURE_PIN_DIGITAL(OUTPUT_PIN, PIN_MR_595_PORT, PIN_MR_595_MASK);
 }

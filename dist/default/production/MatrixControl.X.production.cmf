@@ -11,28 +11,27 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\Natan\AppData\Local\Temp\sdrk.o
+$C:\Users\Natan\AppData\Local\Temp\sbjc.o
 idloc IDLOC 0 200000 200000 8 1
 init CODE 0 E E 4 1
 reset_vec CODE 0 0 0 4 1
 config CONFIG 0 300000 300000 E 1
 $dist/default/production\MatrixControl.X.production.o
-cinit CODE 0 3A2 3A2 3A 1
-intcode_body CODE 0 30E 30E 52 1
-text0 CODE 0 360 360 42 1
-text1 CODE 0 40A 40A 20 1
-text2 CODE 0 42A 42A 14 1
-text3 CODE 0 45E 45E E 1
-text4 CODE 0 12 12 1C4 1
-text5 CODE 0 43E 43E 10 1
-text7 CODE 0 3DC 3DC 2E 1
-text8 CODE 0 1D6 1D6 138 1
-idataCOMRAM CODE 0 44E 44E F 1
-cstackCOMRAM COMRAM 1 10 10 D 1
-temp COMRAM 1 29 29 1 1
+cinit CODE 0 370 370 3A 1
+intcode_body CODE 0 2BA 2BA 72 1
+text0 CODE 0 32C 32C 44 1
+text1 CODE 0 3AA 3AA 38 1
+text2 CODE 0 172 172 C6 1
+text3 CODE 0 3E2 3E2 14 1
+text4 CODE 0 406 406 10 1
+text6 CODE 0 238 238 82 1
+text7 CODE 0 12 12 160 1
+idataCOMRAM CODE 0 3F6 3F6 10 1
+cstackCOMRAM COMRAM 1 45 45 16 1
+temp COMRAM 1 6B 6B 1 1
 intcode CODE 0 8 8 6 1
-dataCOMRAM COMRAM 1 1 1 F 1
-bssCOMRAM COMRAM 1 1D 1D C 1
+dataCOMRAM COMRAM 1 5B 5B 10 1
+bssCOMRAM COMRAM 1 1 1 44 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
 # is described on a single line as follows:
@@ -48,15 +47,13 @@ BANK3 300-3FF 1
 BANK4 400-4FF 1
 BANK5 500-5FF 1
 CONST 4-7 1
-CONST 45D-45D 1
-CONST 46C-7FFF 1
+CONST 416-7FFF 1
 STACK 80-5FF 1
 SMALLCONST 600-7FFF 1
 CODE 4-7 1
-CODE 45D-45D 1
-CODE 46C-7FFF 1
-BIGRAM 2A-5FF 1
-COMRAM 2A-7F 1
+CODE 416-7FFF 1
+BIGRAM 6C-5FF 1
+COMRAM 6C-7F 1
 EEDATA F00000-F000FF 1
 MEDIUMCONST 600-7FFF 1
 # %LINETAB Section
@@ -73,212 +70,165 @@ MEDIUMCONST 600-7FFF 1
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\MatrixControl.X.production.o
-8 intcode CODE >2927:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-8 intcode CODE >115:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-1D6 text8 CODE >13:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-1D6 text8 CODE >15:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-1E2 text8 CODE >16:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-1E6 text8 CODE >19:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-1EC text8 CODE >20:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-1F2 text8 CODE >21:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-1F8 text8 CODE >22:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-1FA text8 CODE >23:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-206 text8 CODE >24:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-20A text8 CODE >26:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-210 text8 CODE >27:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-21A text8 CODE >33:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-220 text8 CODE >34:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-22A text8 CODE >40:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-230 text8 CODE >41:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-236 text8 CODE >42:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-240 text8 CODE >47:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-246 text8 CODE >48:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-24C text8 CODE >49:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-256 text8 CODE >54:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-25C text8 CODE >55:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-262 text8 CODE >56:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-268 text8 CODE >57:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-26A text8 CODE >58:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-276 text8 CODE >60:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-27C text8 CODE >61:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-282 text8 CODE >62:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-28C text8 CODE >67:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-292 text8 CODE >68:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-298 text8 CODE >69:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-29E text8 CODE >70:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-29E text8 CODE >71:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-2AA text8 CODE >72:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-2AE text8 CODE >73:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-2B2 text8 CODE >75:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-30C text8 CODE >77:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
-3DC text7 CODE >178:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-3DC text7 CODE >185:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-3E2 text7 CODE >186:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-3E4 text7 CODE >187:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-3F4 text7 CODE >188:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-402 text7 CODE >189:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-408 text7 CODE >191:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-30E intcode_body CODE >115:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-318 intcode_body CODE >117:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-326 intcode_body CODE >119:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-328 intcode_body CODE >120:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-32A intcode_body CODE >122:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-336 intcode_body CODE >123:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-346 intcode_body CODE >126:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-34E intcode_body CODE >127:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-350 intcode_body CODE >128:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-352 intcode_body CODE >129:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-354 intcode_body CODE >133:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-43E text5 CODE >4:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/INTERRUPT/interrupts.c
-43E text5 CODE >9:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/INTERRUPT/interrupts.c
-440 text5 CODE >10:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/INTERRUPT/interrupts.c
-442 text5 CODE >13:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/INTERRUPT/interrupts.c
-444 text5 CODE >16:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/INTERRUPT/interrupts.c
-446 text5 CODE >17:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/INTERRUPT/interrupts.c
-448 text5 CODE >25:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/INTERRUPT/interrupts.c
-44A text5 CODE >26:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/INTERRUPT/interrupts.c
-44C text5 CODE >27:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/INTERRUPT/interrupts.c
-12 text4 CODE >12:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-12 text4 CODE >14:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-24 text4 CODE >19:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-2A text4 CODE >20:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-30 text4 CODE >21:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-36 text4 CODE >22:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-3C text4 CODE >25:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-3E text4 CODE >28:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-42 text4 CODE >34:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-42 text4 CODE >37:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-44 text4 CODE >38:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-46 text4 CODE >39:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-48 text4 CODE >40:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-4A text4 CODE >41:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-4E text4 CODE >43:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-4E text4 CODE >46:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-50 text4 CODE >47:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-52 text4 CODE >48:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-54 text4 CODE >49:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-56 text4 CODE >50:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-5A text4 CODE >52:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-5A text4 CODE >55:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-5C text4 CODE >56:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-5E text4 CODE >57:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-60 text4 CODE >58:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-62 text4 CODE >59:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-66 text4 CODE >61:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-66 text4 CODE >64:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-68 text4 CODE >65:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-6A text4 CODE >66:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-6C text4 CODE >67:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-6E text4 CODE >68:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-72 text4 CODE >70:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-DE text4 CODE >78:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-DE text4 CODE >81:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-E0 text4 CODE >82:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-E2 text4 CODE >83:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-E4 text4 CODE >84:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-E6 text4 CODE >85:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-EA text4 CODE >87:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-EA text4 CODE >91:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-EC text4 CODE >92:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-EE text4 CODE >93:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-F0 text4 CODE >94:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-F2 text4 CODE >95:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-F6 text4 CODE >98:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-12C text4 CODE >101:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-130 text4 CODE >105:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-162 text4 CODE >115:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-162 text4 CODE >117:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-164 text4 CODE >118:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-166 text4 CODE >119:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-168 text4 CODE >120:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-16C text4 CODE >128:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-16C text4 CODE >130:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-16E text4 CODE >131:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-170 text4 CODE >132:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-172 text4 CODE >134:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-176 text4 CODE >143:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-176 text4 CODE >145:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-178 text4 CODE >146:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-17A text4 CODE >147:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-17C text4 CODE >148:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-180 text4 CODE >157:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-180 text4 CODE >159:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-182 text4 CODE >160:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-184 text4 CODE >161:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-186 text4 CODE >162:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-18A text4 CODE >164:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-1D0 text4 CODE >166:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-1D4 text4 CODE >170:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-45E text3 CODE >172:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-460 text3 CODE >174:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-46A text3 CODE >175:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI/spi.c
-42A text2 CODE >6:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/TIMER/timer.c
-42A text2 CODE >9:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/TIMER/timer.c
-42C text2 CODE >10:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/TIMER/timer.c
-42E text2 CODE >14:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/TIMER/timer.c
-430 text2 CODE >17:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/TIMER/timer.c
-432 text2 CODE >18:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/TIMER/timer.c
-434 text2 CODE >21:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/TIMER/timer.c
-436 text2 CODE >22:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/TIMER/timer.c
-438 text2 CODE >23:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/TIMER/timer.c
-43A text2 CODE >25:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/TIMER/timer.c
-43C text2 CODE >26:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/TIMER/timer.c
-40A text1 CODE >175:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-40A text1 CODE >177:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-410 text1 CODE >178:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-416 text1 CODE >179:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-41C text1 CODE >180:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-422 text1 CODE >182:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-428 text1 CODE >183:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-360 text0 CODE >137:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-360 text0 CODE >139:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-360 text0 CODE >142:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-362 text0 CODE >143:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-364 text0 CODE >144:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-366 text0 CODE >146:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-368 text0 CODE >147:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-36A text0 CODE >150:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-36C text0 CODE >151:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-370 text0 CODE >153:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-374 text0 CODE >154:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-378 text0 CODE >155:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-37C text0 CODE >157:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-380 text0 CODE >158:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-38C text0 CODE >159:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-392 text0 CODE >160:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-396 text0 CODE >161:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-39A text0 CODE >166:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-39A text0 CODE >170:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-3A2 cinit CODE >1638:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3A2 cinit CODE >1640:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3A2 cinit CODE >1643:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3A2 cinit CODE >1682:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3A4 cinit CODE >1683:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3A6 cinit CODE >1684:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3A8 cinit CODE >1685:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3AA cinit CODE >1686:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3AC cinit CODE >1687:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3AE cinit CODE >1688:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3B2 cinit CODE >1689:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3B6 cinit CODE >1690:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3B6 cinit CODE >1691:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3B8 cinit CODE >1692:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3BC cinit CODE >1693:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3BE cinit CODE >1694:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3C0 cinit CODE >1695:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3C2 cinit CODE >1699:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3C6 cinit CODE >1700:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3C8 cinit CODE >1701:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3C8 cinit CODE >1702:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3CA cinit CODE >1703:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3CC cinit CODE >1704:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3CE cinit CODE >1710:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3CE cinit CODE >1712:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3D0 cinit CODE >1713:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3D2 cinit CODE >1715:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3D4 cinit CODE >1716:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3D6 cinit CODE >1717:C:\Users\Natan\AppData\Local\Temp\sdrk.s
-3D8 cinit CODE >1718:C:\Users\Natan\AppData\Local\Temp\sdrk.s
+8 intcode CODE >2885:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+8 intcode CODE >118:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+12 text7 CODE >13:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+12 text7 CODE >15:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+1E text7 CODE >16:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+22 text7 CODE >19:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+28 text7 CODE >20:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+2E text7 CODE >21:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+34 text7 CODE >22:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+36 text7 CODE >23:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+42 text7 CODE >24:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+46 text7 CODE >26:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+4C text7 CODE >27:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+56 text7 CODE >33:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+5C text7 CODE >34:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+66 text7 CODE >40:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+6C text7 CODE >41:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+72 text7 CODE >42:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+7C text7 CODE >47:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+82 text7 CODE >48:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+88 text7 CODE >49:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+92 text7 CODE >54:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+98 text7 CODE >55:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+9E text7 CODE >56:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+A8 text7 CODE >61:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+AE text7 CODE >62:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+B4 text7 CODE >63:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+BE text7 CODE >68:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+C4 text7 CODE >69:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+CA text7 CODE >70:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+D0 text7 CODE >71:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+D0 text7 CODE >72:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+E8 text7 CODE >74:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+F2 text7 CODE >75:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+F6 text7 CODE >77:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+102 text7 CODE >80:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+10E text7 CODE >81:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+112 text7 CODE >82:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+116 text7 CODE >84:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+170 text7 CODE >86:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
+238 text6 CODE >33:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+238 text6 CODE >36:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+274 text6 CODE >39:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+27A text6 CODE >40:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+280 text6 CODE >41:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+282 text6 CODE >42:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+288 text6 CODE >43:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+28E text6 CODE >44:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+290 text6 CODE >45:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+29A text6 CODE >50:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+2A0 text6 CODE >51:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+2A6 text6 CODE >52:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+2A8 text6 CODE >53:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+2AE text6 CODE >54:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+2B8 text6 CODE >59:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+2BA intcode_body CODE >118:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+2CC intcode_body CODE >120:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+2DA intcode_body CODE >122:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+2DC intcode_body CODE >123:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+2DE intcode_body CODE >125:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+2F2 intcode_body CODE >127:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+30A intcode_body CODE >131:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+312 intcode_body CODE >132:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+314 intcode_body CODE >133:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+316 intcode_body CODE >134:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+318 intcode_body CODE >138:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+406 text4 CODE >4:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/INTERRUPT/interrupts.c
+406 text4 CODE >9:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/INTERRUPT/interrupts.c
+408 text4 CODE >10:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/INTERRUPT/interrupts.c
+40A text4 CODE >13:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/INTERRUPT/interrupts.c
+40C text4 CODE >16:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/INTERRUPT/interrupts.c
+40E text4 CODE >17:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/INTERRUPT/interrupts.c
+410 text4 CODE >25:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/INTERRUPT/interrupts.c
+412 text4 CODE >26:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/INTERRUPT/interrupts.c
+414 text4 CODE >27:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/INTERRUPT/interrupts.c
+3E2 text3 CODE >6:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/TIMER/timer.c
+3E2 text3 CODE >9:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/TIMER/timer.c
+3E4 text3 CODE >10:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/TIMER/timer.c
+3E6 text3 CODE >14:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/TIMER/timer.c
+3E8 text3 CODE >17:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/TIMER/timer.c
+3EA text3 CODE >18:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/TIMER/timer.c
+3EC text3 CODE >21:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/TIMER/timer.c
+3EE text3 CODE >22:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/TIMER/timer.c
+3F0 text3 CODE >23:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/TIMER/timer.c
+3F2 text3 CODE >25:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/TIMER/timer.c
+3F4 text3 CODE >26:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/TIMER/timer.c
+172 text2 CODE >8:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+172 text2 CODE >10:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+172 text2 CODE >11:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+176 text2 CODE >13:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+17A text2 CODE >15:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+17E text2 CODE >17:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+196 text2 CODE >19:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+1B2 text2 CODE >20:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+1D2 text2 CODE >22:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+1F6 text2 CODE >23:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+1FA text2 CODE >25:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+21E text2 CODE >27:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+224 text2 CODE >28:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+236 text2 CODE >30:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+3AA text1 CODE >179:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+3AA text1 CODE >181:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+3B0 text1 CODE >182:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+3B6 text1 CODE >183:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+3BC text1 CODE >184:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+3C2 text1 CODE >186:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+3C8 text1 CODE >188:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+3CE text1 CODE >189:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+3D4 text1 CODE >190:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+3DA text1 CODE >191:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+3E0 text1 CODE >192:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+32C text0 CODE >142:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+32C text0 CODE >144:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+32C text0 CODE >147:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+32E text0 CODE >148:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+330 text0 CODE >149:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+332 text0 CODE >151:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+334 text0 CODE >152:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+336 text0 CODE >155:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+338 text0 CODE >156:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+33C text0 CODE >158:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+340 text0 CODE >159:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+344 text0 CODE >160:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+348 text0 CODE >162:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+35C text0 CODE >163:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+360 text0 CODE >164:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+364 text0 CODE >165:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+368 text0 CODE >170:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+368 text0 CODE >174:C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+370 cinit CODE >1922:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+370 cinit CODE >1924:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+370 cinit CODE >1927:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+370 cinit CODE >1972:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+372 cinit CODE >1973:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+374 cinit CODE >1974:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+376 cinit CODE >1975:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+378 cinit CODE >1976:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+37A cinit CODE >1977:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+37C cinit CODE >1978:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+380 cinit CODE >1979:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+384 cinit CODE >1980:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+384 cinit CODE >1981:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+386 cinit CODE >1982:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+38A cinit CODE >1983:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+38C cinit CODE >1984:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+38E cinit CODE >1985:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+390 cinit CODE >1989:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+394 cinit CODE >1990:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+396 cinit CODE >1991:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+396 cinit CODE >1992:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+398 cinit CODE >1993:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+39A cinit CODE >1994:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+39C cinit CODE >2000:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+39C cinit CODE >2002:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+39E cinit CODE >2003:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+3A0 cinit CODE >2005:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+3A2 cinit CODE >2006:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+3A4 cinit CODE >2007:C:\Users\Natan\AppData\Local\Temp\sbjc.s
+3A6 cinit CODE >2008:C:\Users\Natan\AppData\Local\Temp\sbjc.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -291,83 +241,79 @@ F6 text4 CODE >98:C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SPI
 # was defined in a psect then <psect> will be "-". File-name
 # is the name of the object file in which the symbol was defined.
 %SYMTAB
-_i 25 0 COMRAM 1 bssCOMRAM dist/default/production\MatrixControl.X.production.o
+_i 1 0 COMRAM 1 bssCOMRAM dist/default/production\MatrixControl.X.production.o
 __Lmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/default/production\MatrixControl.X.production.o
 __Hspace_0 30000E 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
-__Hspace_1 2A 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
+__Hspace_1 6C 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __Hspace_2 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __CFG_IESO$OFF 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
-_currRow 28 0 COMRAM 1 bssCOMRAM dist/default/production\MatrixControl.X.production.o
+_currRow 44 0 COMRAM 1 bssCOMRAM dist/default/production\MatrixControl.X.production.o
 __Hibigdata 0 0 CODE 0 ibigdata dist/default/production\MatrixControl.X.production.o
-__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\Natan\AppData\Local\Temp\sdrk.o
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\Natan\AppData\Local\Temp\sbjc.o
 __Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production\MatrixControl.X.production.o
 __CFG_MCLRE$ON 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
-SPI_Write@transBuffer 10 0 COMRAM 1 cstackCOMRAM dist/default/production\MatrixControl.X.production.o
-_secondDataTrans 1D 0 COMRAM 1 bssCOMRAM dist/default/production\MatrixControl.X.production.o
 __Lsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production\MatrixControl.X.production.o
 _LATA F89 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 _LATB F8A 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
+_LATC F8B 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 _TMR0 FD6 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\Natan\AppData\Local\Temp\sdrk.o
-_main 360 0 CODE 0 text0 dist/default/production\MatrixControl.X.production.o
-btemp 29 0 COMRAM 1 temp dist/default/production\MatrixControl.X.production.o
-start E 0 CODE 0 init C:\Users\Natan\AppData\Local\Temp\sdrk.o
+___sp 0 0 STACK 2 stack C:\Users\Natan\AppData\Local\Temp\sbjc.o
+_main 32C 0 CODE 0 text0 dist/default/production\MatrixControl.X.production.o
+btemp 6B 0 COMRAM 1 temp dist/default/production\MatrixControl.X.production.o
+start E 0 CODE 0 init C:\Users\Natan\AppData\Local\Temp\sbjc.o
+RowControl@PosBit 47 0 COMRAM 1 cstackCOMRAM dist/default/production\MatrixControl.X.production.o
 __size_of_main 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __HbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production\MatrixControl.X.production.o
-__end_of_SPI_OnOff 46C 0 CODE 0 text3 dist/default/production\MatrixControl.X.production.o
-__end_of_SPI_Write 40A 0 CODE 0 text7 dist/default/production\MatrixControl.X.production.o
-__size_of_SPI_OnOff 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
-SPI_OnOff@OnOff 17 0 COMRAM 1 cstackCOMRAM dist/default/production\MatrixControl.X.production.o
-__size_of_SPI_Write 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __Hpowerup E 0 CODE 0 powerup dist/default/production\MatrixControl.X.production.o
-__end_of_TC0INT 360 0 CODE 0 intcode_body dist/default/production\MatrixControl.X.production.o
+__end_of_TC0INT 32C 0 CODE 0 intcode_body dist/default/production\MatrixControl.X.production.o
 _T0CONbits FD5 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
-ttemp5 2A 0 COMRAM 1 temp dist/default/production\MatrixControl.X.production.o
-ttemp6 2D 0 COMRAM 1 temp dist/default/production\MatrixControl.X.production.o
-ttemp7 31 0 COMRAM 1 temp dist/default/production\MatrixControl.X.production.o
+ttemp5 6C 0 COMRAM 1 temp dist/default/production\MatrixControl.X.production.o
+ttemp6 6F 0 COMRAM 1 temp dist/default/production\MatrixControl.X.production.o
+ttemp7 73 0 COMRAM 1 temp dist/default/production\MatrixControl.X.production.o
 __HdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production\MatrixControl.X.production.o
-__accesstop 80 0 ABS 0 - C:\Users\Natan\AppData\Local\Temp\sdrk.o
-intlevel0 0 0 CODE 0 text C:\Users\Natan\AppData\Local\Temp\sdrk.o
-intlevel1 0 0 CODE 0 text C:\Users\Natan\AppData\Local\Temp\sdrk.o
-intlevel2 0 0 CODE 0 text C:\Users\Natan\AppData\Local\Temp\sdrk.o
-intlevel3 0 0 CODE 0 text C:\Users\Natan\AppData\Local\Temp\sdrk.o
+__accesstop 80 0 ABS 0 - C:\Users\Natan\AppData\Local\Temp\sbjc.o
+intlevel0 0 0 CODE 0 text C:\Users\Natan\AppData\Local\Temp\sbjc.o
+intlevel1 0 0 CODE 0 text C:\Users\Natan\AppData\Local\Temp\sbjc.o
+intlevel2 0 0 CODE 0 text C:\Users\Natan\AppData\Local\Temp\sbjc.o
+intlevel3 0 0 CODE 0 text C:\Users\Natan\AppData\Local\Temp\sbjc.o
 __LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production\MatrixControl.X.production.o
 _OSCCONbits FD3 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
-_SPI_OnOff 45E 0 CODE 0 text3 dist/default/production\MatrixControl.X.production.o
 __LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production\MatrixControl.X.production.o
-_SPI_Write 3DC 0 CODE 0 text7 dist/default/production\MatrixControl.X.production.o
-wtemp8 2A 0 COMRAM 1 temp dist/default/production\MatrixControl.X.production.o
+wtemp8 6C 0 COMRAM 1 temp dist/default/production\MatrixControl.X.production.o
 __CFG_EBTR0$OFF 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __CFG_EBTR1$OFF 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __CFG_EBTR2$OFF 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __CFG_EBTR3$OFF 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __CFG_EBTRB$OFF 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
+__end_of_ScrollingDisplay 2BA 0 CODE 0 text6 dist/default/production\MatrixControl.X.production.o
 __Hifardata 0 0 CODE 0 ifardata dist/default/production\MatrixControl.X.production.o
 __Hclrtext 0 0 ABS 0 clrtext dist/default/production\MatrixControl.X.production.o
-__pidataCOMRAM 44E 0 CODE 0 idataCOMRAM dist/default/production\MatrixControl.X.production.o
+__pidataCOMRAM 3F6 0 CODE 0 idataCOMRAM dist/default/production\MatrixControl.X.production.o
+__size_of_ScrollingDisplay 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 _ADCON1 FC1 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
-___inthi_sp 0 0 STACK 2 stack C:\Users\Natan\AppData\Local\Temp\sdrk.o
-___intlo_sp 0 0 STACK 2 stack C:\Users\Natan\AppData\Local\Temp\sdrk.o
+___inthi_sp 0 0 STACK 2 stack C:\Users\Natan\AppData\Local\Temp\sbjc.o
+___intlo_sp 0 0 STACK 2 stack C:\Users\Natan\AppData\Local\Temp\sbjc.o
 __LdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production\MatrixControl.X.production.o
 __Hintcode_body 0 0 ABS 0 intcode_body dist/default/production\MatrixControl.X.production.o
-_RowControl 1D6 0 CODE 0 text8 dist/default/production\MatrixControl.X.production.o
+_RowControl 12 0 CODE 0 text7 dist/default/production\MatrixControl.X.production.o
 __Lintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production\MatrixControl.X.production.o
+__size_of_WriteMatrix 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __Hmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/default/production\MatrixControl.X.production.o
 __Hintcodelo E 0 CODE 0 intcodelo dist/default/production\MatrixControl.X.production.o
 _INTCON FF2 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
-RowControl@row 14 0 COMRAM 1 cstackCOMRAM dist/default/production\MatrixControl.X.production.o
+RowControl@row 4B 0 COMRAM 1 cstackCOMRAM dist/default/production\MatrixControl.X.production.o
 __LidataCOMRAM 0 0 ABS 0 idataCOMRAM dist/default/production\MatrixControl.X.production.o
 _INTCON2bits FF1 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __Lintcodelo E 0 CODE 0 intcodelo dist/default/production\MatrixControl.X.production.o
 __CFG_FCMEN$OFF 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
-start_initialization 3A2 0 CODE 0 cinit dist/default/production\MatrixControl.X.production.o
+start_initialization 370 0 CODE 0 cinit dist/default/production\MatrixControl.X.production.o
 __HnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production\MatrixControl.X.production.o
+_PosBit 6A 0 COMRAM 1 dataCOMRAM dist/default/production\MatrixControl.X.production.o
 ___rparam_used 1 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __CFG_WDTPS$32768 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
-__end_of_RowControl 30E 0 CODE 0 text8 dist/default/production\MatrixControl.X.production.o
+__end_of_RowControl 172 0 CODE 0 text7 dist/default/production\MatrixControl.X.production.o
 _SSPBUF FC9 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 _TC0INT 8 0 CODE 0 intcode dist/default/production\MatrixControl.X.production.o
-__size_of_SPI_Init 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __Hbank0 0 0 ABS 0 bank0 dist/default/production\MatrixControl.X.production.o
 __Hbank1 0 0 ABS 0 bank1 dist/default/production\MatrixControl.X.production.o
 __Hbank2 0 0 ABS 0 bank2 dist/default/production\MatrixControl.X.production.o
@@ -387,15 +333,15 @@ __Htext1 0 0 ABS 0 text1 dist/default/production\MatrixControl.X.production.o
 __Htext2 0 0 ABS 0 text2 dist/default/production\MatrixControl.X.production.o
 __Htext3 0 0 ABS 0 text3 dist/default/production\MatrixControl.X.production.o
 __Htext4 0 0 ABS 0 text4 dist/default/production\MatrixControl.X.production.o
-__Htext5 0 0 ABS 0 text5 dist/default/production\MatrixControl.X.production.o
+__Htext6 0 0 ABS 0 text6 dist/default/production\MatrixControl.X.production.o
 __Htext7 0 0 ABS 0 text7 dist/default/production\MatrixControl.X.production.o
-__Htext8 0 0 ABS 0 text8 dist/default/production\MatrixControl.X.production.o
-_configure_pins 40A 0 CODE 0 text1 dist/default/production\MatrixControl.X.production.o
+_configure_pins 3AA 0 CODE 0 text1 dist/default/production\MatrixControl.X.production.o
 __Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production\MatrixControl.X.production.o
 __Hbigram 0 0 ABS 0 bigram dist/default/production\MatrixControl.X.production.o
-__smallconst 0 0 SMALLCONST 0 smallconst C:\Users\Natan\AppData\Local\Temp\sdrk.o
+__smallconst 0 0 SMALLCONST 0 smallconst C:\Users\Natan\AppData\Local\Temp\sbjc.o
 __Hcomram 0 0 ABS 0 comram dist/default/production\MatrixControl.X.production.o
 __Hconfig 30000E 0 CONFIG 0 config dist/default/production\MatrixControl.X.production.o
+ScrollingDisplay@PosBit 49 0 COMRAM 1 cstackCOMRAM dist/default/production\MatrixControl.X.production.o
 __CFG_LPT1OSC$OFF 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __Lbank0 0 0 ABS 0 bank0 dist/default/production\MatrixControl.X.production.o
 __Lbank1 0 0 ABS 0 bank1 dist/default/production\MatrixControl.X.production.o
@@ -416,9 +362,8 @@ __Ltext1 0 0 ABS 0 text1 dist/default/production\MatrixControl.X.production.o
 __Ltext2 0 0 ABS 0 text2 dist/default/production\MatrixControl.X.production.o
 __Ltext3 0 0 ABS 0 text3 dist/default/production\MatrixControl.X.production.o
 __Ltext4 0 0 ABS 0 text4 dist/default/production\MatrixControl.X.production.o
-__Ltext5 0 0 ABS 0 text5 dist/default/production\MatrixControl.X.production.o
+__Ltext6 0 0 ABS 0 text6 dist/default/production\MatrixControl.X.production.o
 __Ltext7 0 0 ABS 0 text7 dist/default/production\MatrixControl.X.production.o
-__Ltext8 0 0 ABS 0 text8 dist/default/production\MatrixControl.X.production.o
 __Hfarbss 0 0 FARRAM 0 farbss dist/default/production\MatrixControl.X.production.o
 __Lintcode_body 0 0 ABS 0 intcode_body dist/default/production\MatrixControl.X.production.o
 _INTCONbits FF2 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
@@ -427,67 +372,73 @@ __Hdata 0 0 ABS 0 data dist/default/production\MatrixControl.X.production.o
 __Hinit 12 0 CODE 0 init dist/default/production\MatrixControl.X.production.o
 __Hrbit 0 0 COMRAM 1 rbit dist/default/production\MatrixControl.X.production.o
 __Hrbss 0 0 COMRAM 1 rbss dist/default/production\MatrixControl.X.production.o
-__Htemp 2A 0 COMRAM 1 temp dist/default/production\MatrixControl.X.production.o
+__Htemp 6C 0 COMRAM 1 temp dist/default/production\MatrixControl.X.production.o
 __Htext 0 0 ABS 0 text dist/default/production\MatrixControl.X.production.o
 __Labs1 0 0 ABS 0 abs1 dist/default/production\MatrixControl.X.production.o
 __Ldata 0 0 ABS 0 data dist/default/production\MatrixControl.X.production.o
 __Linit E 0 CODE 0 init dist/default/production\MatrixControl.X.production.o
 __Lrbit 0 0 COMRAM 1 rbit dist/default/production\MatrixControl.X.production.o
 __Lrbss 0 0 COMRAM 1 rbss dist/default/production\MatrixControl.X.production.o
-__Ltemp 29 0 COMRAM 1 temp dist/default/production\MatrixControl.X.production.o
+__Ltemp 6B 0 COMRAM 1 temp dist/default/production\MatrixControl.X.production.o
 __Ltext 0 0 ABS 0 text dist/default/production\MatrixControl.X.production.o
 __CFG_XINST$OFF 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __size_of_TC0INT 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
-int$flags 29 0 COMRAM 1 temp dist/default/production\MatrixControl.X.production.o
+int$flags 6B 0 COMRAM 1 temp dist/default/production\MatrixControl.X.production.o
 __HcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/production\MatrixControl.X.production.o
+WriteMatrix@matrix 51 0 COMRAM 1 cstackCOMRAM dist/default/production\MatrixControl.X.production.o
 __Hintret 0 0 ABS 0 intret dist/default/production\MatrixControl.X.production.o
 __Hirdata 0 0 CODE 0 irdata dist/default/production\MatrixControl.X.production.o
 __S0 30000E 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
-__S1 2A 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
+__S1 6C 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __S2 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
-_row 27 0 COMRAM 1 bssCOMRAM dist/default/production\MatrixControl.X.production.o
+_row 3 0 COMRAM 1 bssCOMRAM dist/default/production\MatrixControl.X.production.o
+ScrollingDisplay@line 47 0 COMRAM 1 cstackCOMRAM dist/default/production\MatrixControl.X.production.o
+WriteMatrix@line 5A 0 COMRAM 1 cstackCOMRAM dist/default/production\MatrixControl.X.production.o
+WriteMatrix@aux 58 0 COMRAM 1 cstackCOMRAM dist/default/production\MatrixControl.X.production.o
+WriteMatrix@col 59 0 COMRAM 1 cstackCOMRAM dist/default/production\MatrixControl.X.production.o
 __size_of_Interrupts_Configure 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __CFG_PBADEN$OFF 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
-_SPI_Init 12 0 CODE 0 text4 dist/default/production\MatrixControl.X.production.o
-_dataTrans 1 0 COMRAM 1 dataCOMRAM dist/default/production\MatrixControl.X.production.o
+_dataTrans 62 0 COMRAM 1 dataCOMRAM dist/default/production\MatrixControl.X.production.o
 __HidataCOMRAM 0 0 ABS 0 idataCOMRAM dist/default/production\MatrixControl.X.production.o
 __Lbigdata 0 0 BIGRAM 1 bigdata dist/default/production\MatrixControl.X.production.o
 __Hnvrram 0 0 COMRAM 1 nvrram dist/default/production\MatrixControl.X.production.o
-__end_of_configure_pins 42A 0 CODE 0 text1 dist/default/production\MatrixControl.X.production.o
-_Timer_Init 42A 0 CODE 0 text2 dist/default/production\MatrixControl.X.production.o
-int_func 30E 0 CODE 0 intcode_body dist/default/production\MatrixControl.X.production.o
-__end_of_SPI_Init 1D6 0 CODE 0 text4 dist/default/production\MatrixControl.X.production.o
+__end_of_configure_pins 3E2 0 CODE 0 text1 dist/default/production\MatrixControl.X.production.o
+_Timer_Init 3E2 0 CODE 0 text3 dist/default/production\MatrixControl.X.production.o
+int_func 2BA 0 CODE 0 intcode_body dist/default/production\MatrixControl.X.production.o
 __CFG_CCP2MX$PORTC 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
-__end_of_Interrupts_Configure 44E 0 CODE 0 text5 dist/default/production\MatrixControl.X.production.o
+__end_of_Interrupts_Configure 416 0 CODE 0 text4 dist/default/production\MatrixControl.X.production.o
 __Lintentry 0 0 ABS 0 intentry dist/default/production\MatrixControl.X.production.o
 __Hramtop 600 0 RAM 0 ramtop dist/default/production\MatrixControl.X.production.o
+_WriteMatrix 172 0 CODE 0 text2 dist/default/production\MatrixControl.X.production.o
 __Hrparam 0 0 COMRAM 1 rparam dist/default/production\MatrixControl.X.production.o
 __activetblptr 2 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __Hstruct 0 0 COMRAM 1 struct dist/default/production\MatrixControl.X.production.o
-_spiConfig 9 0 COMRAM 1 dataCOMRAM dist/default/production\MatrixControl.X.production.o
-__pintcode_body 30E 0 CODE 0 intcode_body dist/default/production\MatrixControl.X.production.o
+_matrix 4 0 COMRAM 1 bssCOMRAM dist/default/production\MatrixControl.X.production.o
+_spiConfig 5B 0 COMRAM 1 dataCOMRAM dist/default/production\MatrixControl.X.production.o
+__pintcode_body 2BA 0 CODE 0 intcode_body dist/default/production\MatrixControl.X.production.o
 __Lbigbss 0 0 BIGRAM 1 bigbss dist/default/production\MatrixControl.X.production.o
 __Lbigram 0 0 ABS 0 bigram dist/default/production\MatrixControl.X.production.o
 __CFG_BORV$3 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
-SPI_Write@currCol 12 0 COMRAM 1 cstackCOMRAM dist/default/production\MatrixControl.X.production.o
 __Lcomram 0 0 ABS 0 comram dist/default/production\MatrixControl.X.production.o
 __Lconfig 300000 0 CONFIG 0 config dist/default/production\MatrixControl.X.production.o
 __Lfarbss 0 0 FARRAM 0 farbss dist/default/production\MatrixControl.X.production.o
 __Lfardata 0 0 FARRAM 0 fardata dist/default/production\MatrixControl.X.production.o
+WriteMatrix@vectorBytes 53 0 COMRAM 1 cstackCOMRAM dist/default/production\MatrixControl.X.production.o
 __size_of_RowControl 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
-__end_of_Timer_Init 43E 0 CODE 0 text2 dist/default/production\MatrixControl.X.production.o
-stackhi 5FF 0 ABS 0 - C:\Users\Natan\AppData\Local\Temp\sdrk.o
-stacklo 80 0 ABS 0 - C:\Users\Natan\AppData\Local\Temp\sdrk.o
+__end_of_Timer_Init 3F6 0 CODE 0 text3 dist/default/production\MatrixControl.X.production.o
+stackhi 5FF 0 ABS 0 - C:\Users\Natan\AppData\Local\Temp\sbjc.o
+stacklo 80 0 ABS 0 - C:\Users\Natan\AppData\Local\Temp\sbjc.o
 __Lintcode 8 0 CODE 0 intcode dist/default/production\MatrixControl.X.production.o
 __Lintret 0 0 ABS 0 intret dist/default/production\MatrixControl.X.production.o
 __Lirdata 0 0 CODE 0 irdata dist/default/production\MatrixControl.X.production.o
+ScrollingDisplay@matrix 45 0 COMRAM 1 cstackCOMRAM dist/default/production\MatrixControl.X.production.o
 __CFG_LVP$OFF 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __Lspace_0 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __Lspace_1 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __Lspace_2 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
-__pbssCOMRAM 1D 0 COMRAM 1 bssCOMRAM dist/default/production\MatrixControl.X.production.o
+__pbssCOMRAM 1 0 COMRAM 1 bssCOMRAM dist/default/production\MatrixControl.X.production.o
 __LcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/production\MatrixControl.X.production.o
-end_of_initialization 3CE 0 CODE 0 cinit dist/default/production\MatrixControl.X.production.o
+end_of_initialization 39C 0 CODE 0 cinit dist/default/production\MatrixControl.X.production.o
 __Lnvrram 0 0 COMRAM 1 nvrram dist/default/production\MatrixControl.X.production.o
 __Hintentry 0 0 ABS 0 intentry dist/default/production\MatrixControl.X.production.o
 __CFG_STVREN$ON 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
@@ -496,25 +447,24 @@ __CFG_OSC$HS 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __Hreset_vec 4 0 CODE 0 reset_vec dist/default/production\MatrixControl.X.production.o
 __Lramtop 600 0 RAM 0 ramtop dist/default/production\MatrixControl.X.production.o
 __Lrparam 0 0 COMRAM 1 rparam dist/default/production\MatrixControl.X.production.o
-__pcinit 3A2 0 CODE 0 cinit dist/default/production\MatrixControl.X.production.o
+__pcinit 370 0 CODE 0 cinit dist/default/production\MatrixControl.X.production.o
 _SSPCON1bits FC6 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
-__ptext0 360 0 CODE 0 text0 dist/default/production\MatrixControl.X.production.o
-__ptext1 40A 0 CODE 0 text1 dist/default/production\MatrixControl.X.production.o
-__ptext2 42A 0 CODE 0 text2 dist/default/production\MatrixControl.X.production.o
-__ptext3 45E 0 CODE 0 text3 dist/default/production\MatrixControl.X.production.o
-__ptext4 12 0 CODE 0 text4 dist/default/production\MatrixControl.X.production.o
-__ptext5 43E 0 CODE 0 text5 dist/default/production\MatrixControl.X.production.o
-__ptext7 3DC 0 CODE 0 text7 dist/default/production\MatrixControl.X.production.o
-__ptext8 1D6 0 CODE 0 text8 dist/default/production\MatrixControl.X.production.o
+__ptext0 32C 0 CODE 0 text0 dist/default/production\MatrixControl.X.production.o
+__ptext1 3AA 0 CODE 0 text1 dist/default/production\MatrixControl.X.production.o
+__ptext2 172 0 CODE 0 text2 dist/default/production\MatrixControl.X.production.o
+__ptext3 3E2 0 CODE 0 text3 dist/default/production\MatrixControl.X.production.o
+__ptext4 406 0 CODE 0 text4 dist/default/production\MatrixControl.X.production.o
+__ptext6 238 0 CODE 0 text6 dist/default/production\MatrixControl.X.production.o
+__ptext7 12 0 CODE 0 text7 dist/default/production\MatrixControl.X.production.o
 __Lstruct 0 0 COMRAM 1 struct dist/default/production\MatrixControl.X.production.o
-__ramtop 600 0 RAM 0 ramtop C:\Users\Natan\AppData\Local\Temp\sdrk.o
+__ramtop 600 0 RAM 0 ramtop C:\Users\Natan\AppData\Local\Temp\sbjc.o
 __Lpowerup E 0 CODE 0 powerup dist/default/production\MatrixControl.X.production.o
 __Leeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production\MatrixControl.X.production.o
 __Lreset_vec 0 0 CODE 0 reset_vec dist/default/production\MatrixControl.X.production.o
 ___param_bank 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __CFG_WDT$OFF 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __Hbigdata 0 0 BIGRAM 1 bigdata dist/default/production\MatrixControl.X.production.o
-__end_of__initialization 3CE 0 CODE 0 cinit dist/default/production\MatrixControl.X.production.o
+__end_of__initialization 39C 0 CODE 0 cinit dist/default/production\MatrixControl.X.production.o
 _INTCON2 FF1 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 _INTCON3 FF0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __CFG_WRT0$OFF 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
@@ -527,14 +477,15 @@ __CFG_WRTC$OFF 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __CFG_WRTD$OFF 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __Lclrtext 0 0 ABS 0 clrtext dist/default/production\MatrixControl.X.production.o
 __CFG_PWRT$OFF 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
-__pcstackCOMRAM 10 0 COMRAM 1 cstackCOMRAM dist/default/production\MatrixControl.X.production.o
+__pcstackCOMRAM 45 0 COMRAM 1 cstackCOMRAM dist/default/production\MatrixControl.X.production.o
 __CFG_BOREN$SBORDIS 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
-RowControl@currRow 10 0 COMRAM 1 cstackCOMRAM dist/default/production\MatrixControl.X.production.o
-__end_of_main 3A2 0 CODE 0 text0 dist/default/production\MatrixControl.X.production.o
+RowControl@currRow 45 0 COMRAM 1 cstackCOMRAM dist/default/production\MatrixControl.X.production.o
+__end_of_main 370 0 CODE 0 text0 dist/default/production\MatrixControl.X.production.o
 __pintcode 8 0 CODE 0 intcode dist/default/production\MatrixControl.X.production.o
 _CMCON FB4 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 _PORTA F80 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 _PORTB F81 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
+_PORTC F82 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 _TRISA F92 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 _TRISB F93 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 _TRISC F94 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
@@ -553,13 +504,14 @@ __CFG_CP3$OFF 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __CFG_CPB$OFF 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __CFG_CPD$OFF 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 _SSPSTATbits FC7 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
-SPI_Init@spiConfig 17 0 COMRAM 1 cstackCOMRAM dist/default/production\MatrixControl.X.production.o
-__initialization 3A2 0 CODE 0 cinit dist/default/production\MatrixControl.X.production.o
-__pdataCOMRAM 1 0 COMRAM 1 dataCOMRAM dist/default/production\MatrixControl.X.production.o
+__initialization 370 0 CODE 0 cinit dist/default/production\MatrixControl.X.production.o
+__pdataCOMRAM 5B 0 COMRAM 1 dataCOMRAM dist/default/production\MatrixControl.X.production.o
+__end_of_WriteMatrix 238 0 CODE 0 text2 dist/default/production\MatrixControl.X.production.o
 __size_of_configure_pins 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __Hfardata 0 0 FARRAM 0 fardata dist/default/production\MatrixControl.X.production.o
 __Hsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production\MatrixControl.X.production.o
-_Interrupts_Configure 43E 0 CODE 0 text5 dist/default/production\MatrixControl.X.production.o
+_ScrollingDisplay 238 0 CODE 0 text6 dist/default/production\MatrixControl.X.production.o
+_Interrupts_Configure 406 0 CODE 0 text4 dist/default/production\MatrixControl.X.production.o
 __Lifardata 0 0 CODE 0 ifardata dist/default/production\MatrixControl.X.production.o
 __size_of_Timer_Init 0 0 ABS 0 - dist/default/production\MatrixControl.X.production.o
 __Hintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production\MatrixControl.X.production.o
@@ -589,10 +541,9 @@ __Hintcode E 0 CODE 0 intcode dist/default/production\MatrixControl.X.production
 # All other numeric quantities are in decimal.
 %SEGMENTS
 idloc 0 200000 200000 8 1
-text3 0 45E 45E E 1
 reset_vec 0 0 0 4 1
-intcode 0 8 8 455 1
-dataCOMRAM 1 1 1 29 1
+intcode 0 8 8 40E 1
+bssCOMRAM 1 1 1 6B 1
 config 0 300000 300000 E 1
 # OTES Section
 # This section contains data of all the note-psects.  The beginning of the section

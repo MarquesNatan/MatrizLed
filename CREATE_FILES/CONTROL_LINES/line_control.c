@@ -10,9 +10,10 @@
 #define _74HC138_A_MASK                  (1 << _74HC138_A_BIT)
  */
 
-void RowControl(uint8_t* currRow)
+void RowControl(uint8_t* currRow, uint8_t* PosBit)
 {
     uint8_t row = *currRow;
+    uint8_t col = *PosBit;
     switch(row)
     {
         case 0x00:
@@ -69,7 +70,12 @@ void RowControl(uint8_t* currRow)
             DIGITAL_PIN_WRITE(PIN_LOW, _74HC138_B_PORT, _74HC138_B_MASK);
             DIGITAL_PIN_WRITE(PIN_LOW, _74HC138_C_PORT, _74HC138_C_MASK);
             row = 0x00;
+            
+            
+           
+                
             *currRow = row;
+            *PosBit = col;
             break;
         default:
             for(;;);

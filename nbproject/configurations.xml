@@ -24,6 +24,12 @@
         <itemPath>CREATE_FILES/CONTROL_LINES/line_control.c</itemPath>
         <itemPath>CREATE_FILES/CONTROL_LINES/line_control.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="SCROLLING_TEXT"
+                     displayName="SCROLLING_TEXT"
+                     projectFiles="true">
+        <itemPath>CREATE_FILES/SCROLLING_TEXT/scrolling_text.h</itemPath>
+        <itemPath>CREATE_FILES/SCROLLING_TEXT/scrolling_text.c</itemPath>
+      </logicalFolder>
       <logicalFolder name="SPI" displayName="SPI" projectFiles="true">
         <itemPath>CREATE_FILES/SPI/spi.c</itemPath>
         <itemPath>CREATE_FILES/SPI/spi.h</itemPath>

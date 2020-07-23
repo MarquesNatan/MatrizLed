@@ -420,15 +420,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 7001: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
 "13 CREATE_FILES/CONTROL_LINES/line_control.c
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 13: void RowControl(uint8_t* currRow)
-[v _RowControl `(v ~T0 @X0 1 ef1`*uc ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 13: void RowControl(uint8_t* currRow, uint8_t* PosBit)
+[v _RowControl `(v ~T0 @X0 1 ef2`*uc`*uc ]
 "14
 [; ;CREATE_FILES/CONTROL_LINES/line_control.c: 14: {
 {
 [e :U _RowControl ]
 "13
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 13: void RowControl(uint8_t* currRow)
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 13: void RowControl(uint8_t* currRow, uint8_t* PosBit)
 [v _currRow `*uc ~T0 @X0 1 r1 ]
+[v _PosBit `*uc ~T0 @X0 1 r2 ]
 "14
 [; ;CREATE_FILES/CONTROL_LINES/line_control.c: 14: {
 [f ]
@@ -437,311 +438,342 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _row `uc ~T0 @X0 1 a ]
 [e = _row *U _currRow ]
 "16
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 16:     switch(row)
-[e $U 283  ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 16:     uint8_t col = *PosBit;
+[v _col `uc ~T0 @X0 1 a ]
+[e = _col *U _PosBit ]
 "17
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 17:     {
-{
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 17:     switch(row)
+[e $U 283  ]
 "18
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 18:         case 0x00:
-[e :U 284 ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 18:     {
+{
 "19
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 19:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 0))); if(0x01 == 0x01) LATB = (PORTB | (1 << 0));;
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 19:         case 0x00:
+[e :U 284 ]
+"20
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 20:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 0))); if(0x01 == 0x01) LATB = (PORTB | (1 << 0));;
 [e $ ! == -> 0 `i -> 1 `i 285  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 0 `i `uc ]
 [e :U 285 ]
 [e $ ! == -> 1 `i -> 1 `i 286  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 0 `i `uc ]
 [e :U 286 ]
-"20
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 20:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 1))); if(0x01 == 0x00) LATB = (PORTB | (1 << 1));;
+"21
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 21:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 1))); if(0x01 == 0x00) LATB = (PORTB | (1 << 1));;
 [e $ ! == -> 0 `i -> 0 `i 287  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 1 `i `uc ]
 [e :U 287 ]
 [e $ ! == -> 1 `i -> 0 `i 288  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 1 `i `uc ]
 [e :U 288 ]
-"21
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 21:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 2))); if(0x01 == 0x00) LATB = (PORTB | (1 << 2));;
+"22
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 22:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 2))); if(0x01 == 0x00) LATB = (PORTB | (1 << 2));;
 [e $ ! == -> 0 `i -> 0 `i 289  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 2 `i `uc ]
 [e :U 289 ]
 [e $ ! == -> 1 `i -> 0 `i 290  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 2 `i `uc ]
 [e :U 290 ]
-"22
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 22:             row++;
-[e ++ _row -> -> 1 `i `uc ]
 "23
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 23:             *currRow = row;
-[e = *U _currRow _row ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 23:             row++;
+[e ++ _row -> -> 1 `i `uc ]
 "24
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 24:             break;
-[e $U 282  ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 24:             *currRow = row;
+[e = *U _currRow _row ]
 "25
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 25:         case 0x01:
-[e :U 291 ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 25:             break;
+[e $U 282  ]
 "26
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 26:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 0))); if(0x01 == 0x00) LATB = (PORTB | (1 << 0));;
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 26:         case 0x01:
+[e :U 291 ]
+"27
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 27:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 0))); if(0x01 == 0x00) LATB = (PORTB | (1 << 0));;
 [e $ ! == -> 0 `i -> 0 `i 292  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 0 `i `uc ]
 [e :U 292 ]
 [e $ ! == -> 1 `i -> 0 `i 293  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 0 `i `uc ]
 [e :U 293 ]
-"27
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 27:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 1))); if(0x01 == 0x01) LATB = (PORTB | (1 << 1));;
+"28
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 28:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 1))); if(0x01 == 0x01) LATB = (PORTB | (1 << 1));;
 [e $ ! == -> 0 `i -> 1 `i 294  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 1 `i `uc ]
 [e :U 294 ]
 [e $ ! == -> 1 `i -> 1 `i 295  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 1 `i `uc ]
 [e :U 295 ]
-"28
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 28:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 2))); if(0x01 == 0x00) LATB = (PORTB | (1 << 2));;
+"29
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 29:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 2))); if(0x01 == 0x00) LATB = (PORTB | (1 << 2));;
 [e $ ! == -> 0 `i -> 0 `i 296  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 2 `i `uc ]
 [e :U 296 ]
 [e $ ! == -> 1 `i -> 0 `i 297  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 2 `i `uc ]
 [e :U 297 ]
-"29
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 29:             row++;
-[e ++ _row -> -> 1 `i `uc ]
 "30
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 30:             *currRow = row;
-[e = *U _currRow _row ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 30:             row++;
+[e ++ _row -> -> 1 `i `uc ]
 "31
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 31:             break;
-[e $U 282  ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 31:             *currRow = row;
+[e = *U _currRow _row ]
 "32
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 32:         case 0x02:
-[e :U 298 ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 32:             break;
+[e $U 282  ]
 "33
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 33:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 0))); if(0x01 == 0x01) LATB = (PORTB | (1 << 0));;
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 33:         case 0x02:
+[e :U 298 ]
+"34
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 34:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 0))); if(0x01 == 0x01) LATB = (PORTB | (1 << 0));;
 [e $ ! == -> 0 `i -> 1 `i 299  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 0 `i `uc ]
 [e :U 299 ]
 [e $ ! == -> 1 `i -> 1 `i 300  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 0 `i `uc ]
 [e :U 300 ]
-"34
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 34:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 1))); if(0x01 == 0x01) LATB = (PORTB | (1 << 1));;
+"35
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 35:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 1))); if(0x01 == 0x01) LATB = (PORTB | (1 << 1));;
 [e $ ! == -> 0 `i -> 1 `i 301  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 1 `i `uc ]
 [e :U 301 ]
 [e $ ! == -> 1 `i -> 1 `i 302  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 1 `i `uc ]
 [e :U 302 ]
-"35
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 35:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 2))); if(0x01 == 0x00) LATB = (PORTB | (1 << 2));;
+"36
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 36:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 2))); if(0x01 == 0x00) LATB = (PORTB | (1 << 2));;
 [e $ ! == -> 0 `i -> 0 `i 303  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 2 `i `uc ]
 [e :U 303 ]
 [e $ ! == -> 1 `i -> 0 `i 304  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 2 `i `uc ]
 [e :U 304 ]
-"36
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 36:             row++;
-[e ++ _row -> -> 1 `i `uc ]
 "37
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 37:             *currRow = row;
-[e = *U _currRow _row ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 37:             row++;
+[e ++ _row -> -> 1 `i `uc ]
 "38
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 38:             break;
-[e $U 282  ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 38:             *currRow = row;
+[e = *U _currRow _row ]
 "39
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 39:         case 0x03:
-[e :U 305 ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 39:             break;
+[e $U 282  ]
 "40
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 40:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 0))); if(0x01 == 0x00) LATB = (PORTB | (1 << 0));;
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 40:         case 0x03:
+[e :U 305 ]
+"41
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 41:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 0))); if(0x01 == 0x00) LATB = (PORTB | (1 << 0));;
 [e $ ! == -> 0 `i -> 0 `i 306  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 0 `i `uc ]
 [e :U 306 ]
 [e $ ! == -> 1 `i -> 0 `i 307  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 0 `i `uc ]
 [e :U 307 ]
-"41
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 41:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 1))); if(0x01 == 0x00) LATB = (PORTB | (1 << 1));;
+"42
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 42:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 1))); if(0x01 == 0x00) LATB = (PORTB | (1 << 1));;
 [e $ ! == -> 0 `i -> 0 `i 308  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 1 `i `uc ]
 [e :U 308 ]
 [e $ ! == -> 1 `i -> 0 `i 309  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 1 `i `uc ]
 [e :U 309 ]
-"42
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 42:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 2))); if(0x01 == 0x01) LATB = (PORTB | (1 << 2));;
+"43
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 43:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 2))); if(0x01 == 0x01) LATB = (PORTB | (1 << 2));;
 [e $ ! == -> 0 `i -> 1 `i 310  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 2 `i `uc ]
 [e :U 310 ]
 [e $ ! == -> 1 `i -> 1 `i 311  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 2 `i `uc ]
 [e :U 311 ]
-"43
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 43:             row++;
-[e ++ _row -> -> 1 `i `uc ]
 "44
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 44:             *currRow = row;
-[e = *U _currRow _row ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 44:             row++;
+[e ++ _row -> -> 1 `i `uc ]
 "45
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 45:             break;
-[e $U 282  ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 45:             *currRow = row;
+[e = *U _currRow _row ]
 "46
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 46:         case 0x04:
-[e :U 312 ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 46:             break;
+[e $U 282  ]
 "47
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 47:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 0))); if(0x01 == 0x01) LATB = (PORTB | (1 << 0));;
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 47:         case 0x04:
+[e :U 312 ]
+"48
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 48:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 0))); if(0x01 == 0x01) LATB = (PORTB | (1 << 0));;
 [e $ ! == -> 0 `i -> 1 `i 313  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 0 `i `uc ]
 [e :U 313 ]
 [e $ ! == -> 1 `i -> 1 `i 314  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 0 `i `uc ]
 [e :U 314 ]
-"48
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 48:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 1))); if(0x01 == 0x00) LATB = (PORTB | (1 << 1));;
+"49
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 49:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 1))); if(0x01 == 0x00) LATB = (PORTB | (1 << 1));;
 [e $ ! == -> 0 `i -> 0 `i 315  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 1 `i `uc ]
 [e :U 315 ]
 [e $ ! == -> 1 `i -> 0 `i 316  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 1 `i `uc ]
 [e :U 316 ]
-"49
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 49:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 2))); if(0x01 == 0x01) LATB = (PORTB | (1 << 2));;
+"50
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 50:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 2))); if(0x01 == 0x01) LATB = (PORTB | (1 << 2));;
 [e $ ! == -> 0 `i -> 1 `i 317  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 2 `i `uc ]
 [e :U 317 ]
 [e $ ! == -> 1 `i -> 1 `i 318  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 2 `i `uc ]
 [e :U 318 ]
-"50
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 50:             row++;
-[e ++ _row -> -> 1 `i `uc ]
 "51
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 51:             *currRow = row;
-[e = *U _currRow _row ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 51:             row++;
+[e ++ _row -> -> 1 `i `uc ]
 "52
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 52:             break;
-[e $U 282  ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 52:             *currRow = row;
+[e = *U _currRow _row ]
 "53
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 53:         case 0x05:
-[e :U 319 ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 53:             break;
+[e $U 282  ]
 "54
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 54:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 0))); if(0x01 == 0x00) LATB = (PORTB | (1 << 0));;
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 54:         case 0x05:
+[e :U 319 ]
+"55
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 55:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 0))); if(0x01 == 0x00) LATB = (PORTB | (1 << 0));;
 [e $ ! == -> 0 `i -> 0 `i 320  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 0 `i `uc ]
 [e :U 320 ]
 [e $ ! == -> 1 `i -> 0 `i 321  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 0 `i `uc ]
 [e :U 321 ]
-"55
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 55:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 1))); if(0x01 == 0x01) LATB = (PORTB | (1 << 1));;
+"56
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 56:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 1))); if(0x01 == 0x01) LATB = (PORTB | (1 << 1));;
 [e $ ! == -> 0 `i -> 1 `i 322  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 1 `i `uc ]
 [e :U 322 ]
 [e $ ! == -> 1 `i -> 1 `i 323  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 1 `i `uc ]
 [e :U 323 ]
-"56
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 56:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 2))); if(0x01 == 0x01) LATB = (PORTB | (1 << 2));;
+"57
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 57:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 2))); if(0x01 == 0x01) LATB = (PORTB | (1 << 2));;
 [e $ ! == -> 0 `i -> 1 `i 324  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 2 `i `uc ]
 [e :U 324 ]
 [e $ ! == -> 1 `i -> 1 `i 325  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 2 `i `uc ]
 [e :U 325 ]
-"57
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 57:             row++;
-[e ++ _row -> -> 1 `i `uc ]
 "58
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 58:             *currRow = row;
-[e = *U _currRow _row ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 58:             row++;
+[e ++ _row -> -> 1 `i `uc ]
 "59
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 59:             break;
-[e $U 282  ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 59:             *currRow = row;
+[e = *U _currRow _row ]
 "60
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 60:         case 0x06:
-[e :U 326 ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 60:             break;
+[e $U 282  ]
 "61
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 61:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 0))); if(0x01 == 0x01) LATB = (PORTB | (1 << 0));;
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 61:         case 0x06:
+[e :U 326 ]
+"62
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 62:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 0))); if(0x01 == 0x01) LATB = (PORTB | (1 << 0));;
 [e $ ! == -> 0 `i -> 1 `i 327  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 0 `i `uc ]
 [e :U 327 ]
 [e $ ! == -> 1 `i -> 1 `i 328  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 0 `i `uc ]
 [e :U 328 ]
-"62
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 62:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 1))); if(0x01 == 0x01) LATB = (PORTB | (1 << 1));;
+"63
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 63:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 1))); if(0x01 == 0x01) LATB = (PORTB | (1 << 1));;
 [e $ ! == -> 0 `i -> 1 `i 329  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 1 `i `uc ]
 [e :U 329 ]
 [e $ ! == -> 1 `i -> 1 `i 330  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 1 `i `uc ]
 [e :U 330 ]
-"63
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 63:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 2))); if(0x01 == 0x01) LATB = (PORTB | (1 << 2));;
+"64
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 64:             if(0x00 == 0x01) LATB = (PORTB & ~((1 << 2))); if(0x01 == 0x01) LATB = (PORTB | (1 << 2));;
 [e $ ! == -> 0 `i -> 1 `i 331  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 2 `i `uc ]
 [e :U 331 ]
 [e $ ! == -> 1 `i -> 1 `i 332  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 2 `i `uc ]
 [e :U 332 ]
-"64
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 64:             row++;
-[e ++ _row -> -> 1 `i `uc ]
 "65
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 65:             *currRow = row;
-[e = *U _currRow _row ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 65:             row++;
+[e ++ _row -> -> 1 `i `uc ]
 "66
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 66:             break;
-[e $U 282  ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 66:             *currRow = row;
+[e = *U _currRow _row ]
 "67
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 67:         case 0x07:
-[e :U 333 ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 67:             break;
+[e $U 282  ]
 "68
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 68:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 0))); if(0x01 == 0x00) LATB = (PORTB | (1 << 0));;
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 68:         case 0x07:
+[e :U 333 ]
+"69
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 69:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 0))); if(0x01 == 0x00) LATB = (PORTB | (1 << 0));;
 [e $ ! == -> 0 `i -> 0 `i 334  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 0 `i `uc ]
 [e :U 334 ]
 [e $ ! == -> 1 `i -> 0 `i 335  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 0 `i `uc ]
 [e :U 335 ]
-"69
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 69:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 1))); if(0x01 == 0x00) LATB = (PORTB | (1 << 1));;
+"70
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 70:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 1))); if(0x01 == 0x00) LATB = (PORTB | (1 << 1));;
 [e $ ! == -> 0 `i -> 0 `i 336  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 1 `i `uc ]
 [e :U 336 ]
 [e $ ! == -> 1 `i -> 0 `i 337  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 1 `i `uc ]
 [e :U 337 ]
-"70
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 70:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 2))); if(0x01 == 0x00) LATB = (PORTB | (1 << 2));;
+"71
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 71:             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 2))); if(0x01 == 0x00) LATB = (PORTB | (1 << 2));;
 [e $ ! == -> 0 `i -> 0 `i 338  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 2 `i `uc ]
 [e :U 338 ]
 [e $ ! == -> 1 `i -> 0 `i 339  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 2 `i `uc ]
 [e :U 339 ]
-"71
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 71:             row = 0x00;
-[e = _row -> -> 0 `i `uc ]
 "72
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 72:             *currRow = row;
-[e = *U _currRow _row ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 72:             row = 0x00;
+[e = _row -> -> 0 `i `uc ]
 "73
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 73:             break;
-[e $U 282  ]
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 73:             if((0x07 - col) >= 0x00)
+[e $ ! >= - -> 7 `i -> _col `i -> 0 `i 340  ]
 "74
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 74:         default:
-[e :U 340 ]
-"75
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 75:             for(;;);
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 74:             {
 {
-[e :U 341 ]
-[e $U 341  ]
-[e :U 342 ]
-}
+"75
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 75:                 col--;
+[e -- _col -> -> 1 `i `uc ]
 "76
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 76:     }
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 76:             }else
+}
+[e $U 341  ]
+[e :U 340 ]
+"77
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 77:             {
+{
+"78
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 78:                 col = 0x07;
+[e = _col -> -> 7 `i `uc ]
+"79
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 79:             }
+}
+[e :U 341 ]
+"80
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 80:             *currRow = row;
+[e = *U _currRow _row ]
+"81
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 81:             *PosBit = col;
+[e = *U _PosBit _col ]
+"82
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 82:             break;
+[e $U 282  ]
+"83
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 83:         default:
+[e :U 342 ]
+"84
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 84:             for(;;);
+{
+[e :U 343 ]
+[e $U 343  ]
+[e :U 344 ]
+}
+"85
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 85:     }
 }
 [e $U 282  ]
 [e :U 283 ]
@@ -753,9 +785,9 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> 5 `i 319
  , $ -> 6 `i 326
  , $ -> 7 `i 333
- 340 ]
+ 342 ]
 [e :U 282 ]
-"78
-[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 78: }
+"87
+[; ;CREATE_FILES/CONTROL_LINES/line_control.c: 87: }
 [e :UE 281 ]
 }
