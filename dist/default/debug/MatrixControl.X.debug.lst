@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.10 build 88905656 
-                                                                                               Tue Jul 21 23:09:29 2020
+                                                                                               Sun Aug 09 23:10:55 2020
 
 Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1 
      1                           	processor	18F4520
@@ -12,1347 +12,1478 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
      6                           	psect	cinit,global,reloc=2,class=CODE,delta=1
      7                           	psect	bssCOMRAM,global,class=COMRAM,space=1,delta=1,noexec
      8                           	psect	dataCOMRAM,global,class=COMRAM,space=1,delta=1,noexec
-     9                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1,noexec
-    10                           	psect	text0,global,reloc=2,class=CODE,delta=1
-    11                           	psect	text1,global,reloc=2,class=CODE,delta=1
-    12                           	psect	text2,global,reloc=2,class=CODE,delta=1
-    13                           	psect	text3,global,reloc=2,class=CODE,delta=1
-    14                           	psect	text4,global,reloc=2,class=CODE,delta=1
-    15                           	psect	intcode,global,reloc=2,class=CODE,delta=1
-    16                           	psect	intcode_body,global,reloc=2,class=CODE,delta=1
-    17                           	psect	text6,global,reloc=2,class=CODE,delta=1
-    18                           	psect	text7,global,reloc=2,class=CODE,delta=1
-    19                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
-    20                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
-    21                           	psect	temp,global,ovrld,common,class=COMRAM,space=1,delta=1
-    22  0000                     
-    23                           ; Version 2.10
-    24                           ; Generated 31/07/2019 GMT
-    25                           ; 
-    26                           ; Copyright © 2019, Microchip Technology Inc. and its subsidiaries ("Microchip")
-    27                           ; All rights reserved.
+     9                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1,noexec
+    10                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1,noexec
+    11                           	psect	text0,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    13                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    14                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    15                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    16                           	psect	text5,global,reloc=2,class=CODE,delta=1
+    17                           	psect	intcode,global,reloc=2,class=CODE,delta=1
+    18                           	psect	intcode_body,global,reloc=2,class=CODE,delta=1
+    19                           	psect	text7,global,reloc=2,class=CODE,delta=1
+    20                           	psect	text8,global,reloc=2,class=CODE,delta=1,group=1
+    21                           	psect	text9,global,reloc=2,class=CODE,delta=1
+    22                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    23                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    24                           	psect	temp,global,ovrld,common,class=COMRAM,space=1,delta=1
+    25  0000                     
+    26                           ; Version 2.10
+    27                           ; Generated 31/07/2019 GMT
     28                           ; 
-    29                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+    29                           ; Copyright © 2019, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    30                           ; All rights reserved.
+    31                           ; 
+    32                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
       +                          ip").
-    30                           ; 
-    31                           ; Redistribution and use in source and binary forms, with or without modification, are
-    32                           ; permitted provided that the following conditions are met:
     33                           ; 
-    34                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
-      +                          t of
-    35                           ;        conditions and the following disclaimer.
+    34                           ; Redistribution and use in source and binary forms, with or without modification, are
+    35                           ; permitted provided that the following conditions are met:
     36                           ; 
-    37                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+    37                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    38                           ;        conditions and the following disclaimer.
+    39                           ; 
+    40                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
       +                          list
-    38                           ;        of conditions and the following disclaimer in the documentation and/or other
-    39                           ;        materials provided with the distribution.
-    40                           ; 
-    41                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
-      +                          is
-    42                           ;        software without specific prior written permission.
+    41                           ;        of conditions and the following disclaimer in the documentation and/or other
+    42                           ;        materials provided with the distribution.
     43                           ; 
-    44                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-    45                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+    44                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    45                           ;        software without specific prior written permission.
+    46                           ; 
+    47                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    48                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
       +                          OR
-    46                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+    49                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
       +                          T,
-    47                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
-    48                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
-    49                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+    50                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    51                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    52                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
       +                          RICT
-    50                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+    53                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
       +                          SE OF
-    51                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    52                           ; 
-    53                           ; 
-    54                           ; Code-generator required, PIC18F4520 Definitions
+    54                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     55                           ; 
-    56                           ; SFR Addresses
-    57  0000                     
-    58                           	psect	idataCOMRAM
-    59  00049E                     __pidataCOMRAM:
-    60                           	opt callstack 0
-    61                           
-    62                           ;initializer for _spiConfig
-    63  00049E  01                 	db	1
-    64  00049F  00                 	db	0
-    65  0004A0  01                 	db	1
-    66  0004A1  0002               	dw	2
-    67  0004A3  0000               	dw	0
-    68                           
-    69                           ;initializer for _dataTrans
-    70  0004A5  FF                 	db	255
-    71  0004A6  FF                 	db	255
-    72  0004A7  FF                 	db	255
-    73  0004A8  FF                 	db	255
-    74  0004A9  FF                 	db	255
-    75  0004AA  FF                 	db	255
-    76  0004AB  FF                 	db	255
-    77  0004AC  FF                 	db	255
-    78                           
-    79                           ;initializer for _PosBit
-    80  0004AD  07                 	db	7
-    81  0000                     _TRISB	set	3987
-    82  0000                     _TRISA	set	3986
-    83  0000                     _TRISC	set	3988
-    84  0000                     _PORTC	set	3970
-    85  0000                     _LATC	set	3979
-    86  0000                     _PORTA	set	3968
-    87  0000                     _LATA	set	3977
-    88  0000                     _PORTB	set	3969
-    89  0000                     _LATB	set	3978
-    90  0000                     _CMCON	set	4020
-    91  0000                     _ADCON1	set	4033
-    92  0000                     _OSCCONbits	set	4051
-    93  0000                     _SSPBUF	set	4041
-    94  0000                     _SSPSTATbits	set	4039
-    95  0000                     _SSPCON1bits	set	4038
-    96  0000                     _RCONbits	set	4048
-    97  0000                     _TMR0	set	4054
-    98  0000                     _T0CONbits	set	4053
-    99  0000                     _INTCON3	set	4080
-   100  0000                     _INTCON2	set	4081
-   101  0000                     _INTCON	set	4082
-   102  0000                     _INTCON2bits	set	4081
-   103  0000                     _INTCONbits	set	4082
-   104                           
-   105                           ; #config settings
-   106  0000                     
-   107                           	psect	cinit
-   108  000418                     __pcinit:
-   109                           	opt callstack 0
-   110  000418                     start_initialization:
-   111                           	opt callstack 0
-   112  000418                     __initialization:
-   113                           	opt callstack 0
-   114                           
-   115                           ; Initialize objects allocated to COMRAM (16 bytes)
-   116                           ; load TBLPTR registers with __pidataCOMRAM
-   117  000418  0E9E               	movlw	low __pidataCOMRAM
-   118  00041A  6EF6               	movwf	tblptrl,c
-   119  00041C  0E04               	movlw	high __pidataCOMRAM
-   120  00041E  6EF7               	movwf	tblptrh,c
-   121  000420  0E00               	movlw	low (__pidataCOMRAM shr (0+16))
-   122  000422  6EF8               	movwf	tblptru,c
-   123  000424  EE00  F05C         	lfsr	0,__pdataCOMRAM
-   124  000428  EE10 F010          	lfsr	1,16
-   125  00042C                     copy_data0:
-   126  00042C  0009               	tblrd		*+
-   127  00042E  CFF5 FFEE          	movff	tablat,postinc0
-   128  000432  50E5               	movf	postdec1,w,c
-   129  000434  50E1               	movf	fsr1l,w,c
-   130  000436  E1FA               	bnz	copy_data0
-   131                           
-   132                           ; Clear objects allocated to COMRAM (68 bytes)
-   133  000438  EE00  F001         	lfsr	0,__pbssCOMRAM
-   134  00043C  0E44               	movlw	68
-   135  00043E                     clear_0:
-   136  00043E  6AEE               	clrf	postinc0,c
-   137  000440  06E8               	decf	wreg,f,c
-   138  000442  E1FD               	bnz	clear_0
-   139  000444                     end_of_initialization:
-   140                           	opt callstack 0
-   141  000444                     __end_of__initialization:
-   142                           	opt callstack 0
-   143  000444  906C               	bcf	int$flags,0,c	;clear compiler interrupt flag (level 1)
-   144  000446  926C               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
-   145  000448  0E00               	movlw	low (__Lmediumconst shr (0+16))
-   146  00044A  6EF8               	movwf	tblptru,c
-   147  00044C  0100               	movlb	0
-   148  00044E  EFEA  F001         	goto	_main	;jump to C main() function
-   149                           
-   150                           	psect	bssCOMRAM
-   151  000001                     __pbssCOMRAM:
-   152                           	opt callstack 0
-   153  000001                     _i:
-   154                           	opt callstack 0
-   155  000001                     	ds	2
-   156  000003                     _row:
-   157                           	opt callstack 0
-   158  000003                     	ds	1
-   159  000004                     _matrix:
-   160                           	opt callstack 0
-   161  000004                     	ds	64
-   162  000044                     _currRow:
+    56                           ; 
+    57                           ; Code-generator required, PIC18F4520 Definitions
+    58                           ; 
+    59                           ; SFR Addresses
+    60  0000                     
+    61                           	psect	idataCOMRAM
+    62  00051C                     __pidataCOMRAM:
+    63                           	opt callstack 0
+    64                           
+    65                           ;initializer for _dataTrans
+    66  00051C  00                 	db	0
+    67  00051D  7E                 	db	126
+    68  00051E  60                 	db	96
+    69  00051F  60                 	db	96
+    70  000520  7C                 	db	124
+    71  000521  60                 	db	96
+    72  000522  60                 	db	96
+    73  000523  7E                 	db	126
+    74  0000                     _TRISB	set	3987
+    75  0000                     _TRISA	set	3986
+    76  0000                     _TRISC	set	3988
+    77  0000                     _PORTC	set	3970
+    78  0000                     _LATC	set	3979
+    79  0000                     _PORTA	set	3968
+    80  0000                     _LATA	set	3977
+    81  0000                     _PORTB	set	3969
+    82  0000                     _LATB	set	3978
+    83  0000                     _CMCON	set	4020
+    84  0000                     _ADCON1	set	4033
+    85  0000                     _OSCCONbits	set	4051
+    86  0000                     _SSPBUF	set	4041
+    87  0000                     _SSPSTATbits	set	4039
+    88  0000                     _SSPCON1bits	set	4038
+    89  0000                     _RCONbits	set	4048
+    90  0000                     _TMR0	set	4054
+    91  0000                     _T0CONbits	set	4053
+    92  0000                     _INTCON3	set	4080
+    93  0000                     _INTCON2	set	4081
+    94  0000                     _INTCON	set	4082
+    95  0000                     _INTCON2bits	set	4081
+    96  0000                     _INTCONbits	set	4082
+    97                           
+    98                           ; #config settings
+    99  0000                     
+   100                           	psect	cinit
+   101  000452                     __pcinit:
+   102                           	opt callstack 0
+   103  000452                     start_initialization:
+   104                           	opt callstack 0
+   105  000452                     __initialization:
+   106                           	opt callstack 0
+   107                           
+   108                           ; Initialize objects allocated to COMRAM (8 bytes)
+   109                           ; load TBLPTR registers with __pidataCOMRAM
+   110  000452  0E1C               	movlw	low __pidataCOMRAM
+   111  000454  6EF6               	movwf	tblptrl,c
+   112  000456  0E05               	movlw	high __pidataCOMRAM
+   113  000458  6EF7               	movwf	tblptrh,c
+   114  00045A  0E00               	movlw	low (__pidataCOMRAM shr (0+16))
+   115  00045C  6EF8               	movwf	tblptru,c
+   116  00045E  EE00  F060         	lfsr	0,__pdataCOMRAM
+   117  000462  EE10 F008          	lfsr	1,8
+   118  000466                     copy_data0:
+   119  000466  0009               	tblrd		*+
+   120  000468  CFF5 FFEE          	movff	tablat,postinc0
+   121  00046C  50E5               	movf	postdec1,w,c
+   122  00046E  50E1               	movf	fsr1l,w,c
+   123  000470  E1FA               	bnz	copy_data0
+   124                           
+   125                           ; Clear objects allocated to COMRAM (68 bytes)
+   126  000472  EE00  F001         	lfsr	0,__pbssCOMRAM
+   127  000476  0E44               	movlw	68
+   128  000478                     clear_0:
+   129  000478  6AEE               	clrf	postinc0,c
+   130  00047A  06E8               	decf	wreg,f,c
+   131  00047C  E1FD               	bnz	clear_0
+   132  00047E                     end_of_initialization:
+   133                           	opt callstack 0
+   134  00047E                     __end_of__initialization:
+   135                           	opt callstack 0
+   136  00047E  9068               	bcf	int$flags,0,c	;clear compiler interrupt flag (level 1)
+   137  000480  9268               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
+   138  000482  0E00               	movlw	low (__Lmediumconst shr (0+16))
+   139  000484  6EF8               	movwf	tblptru,c
+   140  000486  0100               	movlb	0
+   141  000488  EF04  F002         	goto	_main	;jump to C main() function
+   142                           
+   143                           	psect	bssCOMRAM
+   144  000001                     __pbssCOMRAM:
+   145                           	opt callstack 0
+   146  000001                     _i:
+   147                           	opt callstack 0
+   148  000001                     	ds	2
+   149  000003                     _matrix:
+   150                           	opt callstack 0
+   151  000003                     	ds	64
+   152  000043                     _posBit:
+   153                           	opt callstack 0
+   154  000043                     	ds	1
+   155  000044                     _currRow:
+   156                           	opt callstack 0
+   157  000044                     	ds	1
+   158                           
+   159                           	psect	dataCOMRAM
+   160  000060                     __pdataCOMRAM:
+   161                           	opt callstack 0
+   162  000060                     _dataTrans:
    163                           	opt callstack 0
-   164  000044                     	ds	1
+   164  000060                     	ds	8
    165                           
-   166                           	psect	dataCOMRAM
-   167  00005C                     __pdataCOMRAM:
+   166                           	psect	cstackBANK0
+   167  000080                     __pcstackBANK0:
    168                           	opt callstack 0
-   169  00005C                     _spiConfig:
-   170                           	opt callstack 0
-   171  00005C                     	ds	7
-   172  000063                     _dataTrans:
-   173                           	opt callstack 0
-   174  000063                     	ds	8
-   175  00006B                     _PosBit:
+   169  000080                     	ds	1
+   170  000081                     WriteMatrix@aux:
+   171                           	opt callstack 0
+   172                           
+   173                           ; 1 bytes @ 0x1
+   174  000081                     	ds	1
+   175  000082                     WriteMatrix@col:
    176                           	opt callstack 0
-   177  00006B                     	ds	1
-   178                           
-   179                           	psect	cstackCOMRAM
-   180  000045                     __pcstackCOMRAM:
+   177                           
+   178                           ; 1 bytes @ 0x2
+   179  000082                     	ds	1
+   180  000083                     WriteMatrix@line:
    181                           	opt callstack 0
-   182  000045                     RowControl@currRow:
-   183                           	opt callstack 0
-   184  000045                     ScrollingDisplay@matrix:
-   185                           	opt callstack 0
-   186                           
-   187                           ; 2 bytes @ 0x0
-   188  000045                     	ds	2
-   189  000047                     RowControl@PosBit:
+   182                           
+   183                           ; 1 bytes @ 0x3
+   184  000083                     	ds	1
+   185                           
+   186                           	psect	cstackCOMRAM
+   187  000045                     __pcstackCOMRAM:
+   188                           	opt callstack 0
+   189  000045                     ?___wmul:
    190                           	opt callstack 0
-   191  000047                     ScrollingDisplay@line:
+   191  000045                     RowControl@currRow:
    192                           	opt callstack 0
-   193                           
-   194                           ; 2 bytes @ 0x2
-   195  000047                     	ds	2
-   196  000049                     ??_RowControl:
-   197  000049                     ScrollingDisplay@PosBit:
-   198                           	opt callstack 0
-   199                           
-   200                           ; 1 bytes @ 0x4
-   201  000049                     	ds	1
-   202  00004A                     ??_ScrollingDisplay:
-   203                           
-   204                           ; 1 bytes @ 0x5
-   205  00004A                     	ds	1
-   206  00004B                     RowControl@col:
+   193  000045                     ___wmul@multiplier:
+   194                           	opt callstack 0
+   195                           
+   196                           ; 2 bytes @ 0x0
+   197  000045                     	ds	2
+   198  000047                     RowControl@PosBit:
+   199                           	opt callstack 0
+   200  000047                     ___wmul@multiplicand:
+   201                           	opt callstack 0
+   202                           
+   203                           ; 2 bytes @ 0x2
+   204  000047                     	ds	2
+   205  000049                     ??_RowControl:
+   206  000049                     ___wmul@product:
    207                           	opt callstack 0
    208                           
-   209                           ; 1 bytes @ 0x6
-   210  00004B                     	ds	1
-   211  00004C                     RowControl@row:
+   209                           ; 2 bytes @ 0x4
+   210  000049                     	ds	2
+   211  00004B                     ScrollingDisplay@matrix:
    212                           	opt callstack 0
    213                           
-   214                           ; 1 bytes @ 0x7
-   215  00004C                     	ds	1
-   216  00004D                     ScrollingDisplay@varAux:
+   214                           ; 2 bytes @ 0x6
+   215  00004B                     	ds	1
+   216  00004C                     RowControl@row:
    217                           	opt callstack 0
    218                           
-   219                           ; 1 bytes @ 0x8
-   220  00004D                     	ds	1
-   221  00004E                     ??_TC0INT:
-   222                           
-   223                           ; 1 bytes @ 0x9
-   224  00004E                     	ds	4
-   225  000052                     WriteMatrix@matrix:
-   226                           	opt callstack 0
-   227                           
-   228                           ; 2 bytes @ 0xD
-   229  000052                     	ds	2
-   230  000054                     WriteMatrix@vectorBytes:
-   231                           	opt callstack 0
+   219                           ; 1 bytes @ 0x7
+   220  00004C                     	ds	1
+   221  00004D                     ScrollingDisplay@line:
+   222                           	opt callstack 0
+   223                           
+   224                           ; 2 bytes @ 0x8
+   225  00004D                     	ds	2
+   226  00004F                     ScrollingDisplay@posBit:
+   227                           	opt callstack 0
+   228                           
+   229                           ; 2 bytes @ 0xA
+   230  00004F                     	ds	2
+   231  000051                     ??_ScrollingDisplay:
    232                           
-   233                           ; 2 bytes @ 0xF
-   234  000054                     	ds	2
-   235  000056                     ??_WriteMatrix:
-   236                           
-   237                           ; 1 bytes @ 0x11
-   238  000056                     	ds	3
-   239  000059                     WriteMatrix@aux:
-   240                           	opt callstack 0
+   233                           ; 1 bytes @ 0xC
+   234  000051                     	ds	4
+   235  000055                     ScrollingDisplay@lastBit:
+   236                           	opt callstack 0
+   237                           
+   238                           ; 1 bytes @ 0x10
+   239  000055                     	ds	1
+   240  000056                     ??_TC0INT:
    241                           
-   242                           ; 1 bytes @ 0x14
-   243  000059                     	ds	1
-   244  00005A                     WriteMatrix@col:
+   242                           ; 1 bytes @ 0x11
+   243  000056                     	ds	4
+   244  00005A                     Timer_OnOff@OnOff:
    245                           	opt callstack 0
-   246                           
-   247                           ; 1 bytes @ 0x15
-   248  00005A                     	ds	1
-   249  00005B                     WriteMatrix@line:
-   250                           	opt callstack 0
-   251                           
-   252                           ; 1 bytes @ 0x16
-   253  00005B                     	ds	1
-   254  00005C                     
-   255                           ; 1 bytes @ 0x17
-   256 ;;
-   257 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
-   258 ;;
-   259 ;; *************** function _main *****************
-   260 ;; Defined at:
-   261 ;;		line 143 in file "main.c"
-   262 ;; Parameters:    Size  Location     Type
-   263 ;;		None
-   264 ;; Auto vars:     Size  Location     Type
-   265 ;;  OnOff           1    0        unsigned char 
-   266 ;; Return value:  Size  Location     Type
-   267 ;;                  1    wreg      void 
-   268 ;; Registers used:
-   269 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
-   270 ;; Tracked objects:
-   271 ;;		On entry : 0/0
-   272 ;;		On exit  : 0/0
-   273 ;;		Unchanged: 0/0
-   274 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-   275 ;;      Params:         0       0       0       0       0       0       0
-   276 ;;      Locals:         1       0       0       0       0       0       0
-   277 ;;      Temps:          0       0       0       0       0       0       0
-   278 ;;      Totals:         1       0       0       0       0       0       0
-   279 ;;Total ram usage:        1 bytes
-   280 ;; Hardware stack levels required when called:    3
-   281 ;; This function calls:
-   282 ;;		_Interrupts_Configure
-   283 ;;		_Timer_Init
-   284 ;;		_WriteMatrix
-   285 ;;		_configure_pins
-   286 ;; This function is called by:
-   287 ;;		Startup code after reset
-   288 ;; This function uses a non-reentrant model
-   289 ;;
-   290                           
-   291                           	psect	text0
-   292  0003D4                     __ptext0:
-   293                           	opt callstack 0
-   294  0003D4                     _main:
-   295                           	opt callstack 28
-   296  0003D4                     
-   297                           ;main.c: 148:     OSCCONbits.IRCF0 = 0x00;
-   298  0003D4  98D3               	bcf	211,4,c	;volatile
-   299  0003D6                     
-   300                           ;main.c: 149:     OSCCONbits.IRCF1 = 0x01;
-   301  0003D6  8AD3               	bsf	211,5,c	;volatile
-   302  0003D8                     
-   303                           ;main.c: 150:     OSCCONbits.IRCF2 = 0x01;
-   304  0003D8  8CD3               	bsf	211,6,c	;volatile
-   305  0003DA                     
-   306                           ;main.c: 152:     OSCCONbits.SCS0 = 0x00;
-   307  0003DA  90D3               	bcf	211,0,c	;volatile
-   308  0003DC                     
-   309                           ;main.c: 153:     OSCCONbits.SCS1 = 0x00;
-   310  0003DC  92D3               	bcf	211,1,c	;volatile
-   311  0003DE                     
-   312                           ;main.c: 156:     ADCON1 = 0xFF;
-   313  0003DE  68C1               	setf	193,c	;volatile
-   314                           
-   315                           ;main.c: 157:     CMCON = 0x07;
-   316  0003E0  0E07               	movlw	7
-   317  0003E2  6EB4               	movwf	180,c	;volatile
-   318                           
-   319                           ;main.c: 159:     INTCON = 0x00;
-   320  0003E4  0E00               	movlw	0
-   321  0003E6  6EF2               	movwf	242,c	;volatile
-   322                           
-   323                           ;main.c: 160:     INTCON2 = 0x00;
-   324  0003E8  0E00               	movlw	0
-   325  0003EA  6EF1               	movwf	241,c	;volatile
-   326                           
-   327                           ;main.c: 161:     INTCON3 = 0x00;
-   328  0003EC  0E00               	movlw	0
-   329  0003EE  6EF0               	movwf	240,c	;volatile
-   330  0003F0                     
-   331                           ;main.c: 163:     WriteMatrix(matrix, dataTrans);
-   332  0003F0  0E04               	movlw	low _matrix
-   333  0003F2  6E52               	movwf	WriteMatrix@matrix^0,c
-   334  0003F4  0E00               	movlw	high _matrix
-   335  0003F6  6E53               	movwf	(WriteMatrix@matrix+1)^0,c
-   336  0003F8  0E63               	movlw	low _dataTrans
-   337  0003FA  6E54               	movwf	WriteMatrix@vectorBytes^0,c
-   338  0003FC  0E00               	movlw	high _dataTrans
-   339  0003FE  6E55               	movwf	(WriteMatrix@vectorBytes+1)^0,c
-   340  000400  EC4E  F001         	call	_WriteMatrix	;wreg free
-   341  000404                     
-   342                           ;main.c: 164:     configure_pins();
-   343  000404  EC29  F002         	call	_configure_pins	;wreg free
-   344  000408                     
-   345                           ;main.c: 165:     Timer_Init();
-   346  000408  EC45  F002         	call	_Timer_Init	;wreg free
-   347  00040C                     
-   348                           ;main.c: 166:     Interrupts_Configure();
-   349  00040C  EC57  F002         	call	_Interrupts_Configure	;wreg free
-   350  000410                     l295:
-   351  000410  EF08  F002         	goto	l295
-   352  000414  EF07  F000         	goto	start
-   353  000418                     __end_of_main:
-   354                           	opt callstack 0
-   355                           
-   356 ;; *************** function _configure_pins *****************
-   357 ;; Defined at:
-   358 ;;		line 180 in file "main.c"
-   359 ;; Parameters:    Size  Location     Type
-   360 ;;		None
-   361 ;; Auto vars:     Size  Location     Type
-   362 ;;		None
-   363 ;; Return value:  Size  Location     Type
-   364 ;;                  1    wreg      void 
-   365 ;; Registers used:
-   366 ;;		wreg, status,2, status,0
-   367 ;; Tracked objects:
-   368 ;;		On entry : 0/0
-   369 ;;		On exit  : 0/0
-   370 ;;		Unchanged: 0/0
-   371 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-   372 ;;      Params:         0       0       0       0       0       0       0
-   373 ;;      Locals:         0       0       0       0       0       0       0
-   374 ;;      Temps:          0       0       0       0       0       0       0
-   375 ;;      Totals:         0       0       0       0       0       0       0
-   376 ;;Total ram usage:        0 bytes
-   377 ;; Hardware stack levels used:    1
-   378 ;; Hardware stack levels required when called:    2
-   379 ;; This function calls:
-   380 ;;		Nothing
-   381 ;; This function is called by:
-   382 ;;		_main
-   383 ;; This function uses a non-reentrant model
-   384 ;;
-   385                           
-   386                           	psect	text1
-   387  000452                     __ptext1:
-   388                           	opt callstack 0
-   389  000452                     _configure_pins:
-   390                           	opt callstack 28
-   391  000452  5093               	movf	147,w,c	;volatile
-   392  000454  0BFE               	andlw	254
-   393  000456  6E93               	movwf	147,c	;volatile
-   394  000458  5093               	movf	147,w,c	;volatile
-   395  00045A  0BFD               	andlw	253
-   396  00045C  6E93               	movwf	147,c	;volatile
-   397  00045E  5093               	movf	147,w,c	;volatile
-   398  000460  0BFB               	andlw	251
-   399  000462  6E93               	movwf	147,c	;volatile
-   400  000464  5093               	movf	147,w,c	;volatile
-   401  000466  0BF7               	andlw	247
-   402  000468  6E93               	movwf	147,c	;volatile
-   403  00046A  5081               	movf	129,w,c	;volatile
-   404  00046C  0908               	iorlw	8
-   405  00046E  6E8A               	movwf	138,c	;volatile
-   406  000470  5094               	movf	148,w,c	;volatile
-   407  000472  0BDF               	andlw	223
-   408  000474  6E94               	movwf	148,c	;volatile
-   409  000476  5094               	movf	148,w,c	;volatile
-   410  000478  0BF7               	andlw	247
-   411  00047A  6E94               	movwf	148,c	;volatile
-   412  00047C  5092               	movf	146,w,c	;volatile
-   413  00047E  0BDF               	andlw	223
-   414  000480  6E92               	movwf	146,c	;volatile
-   415  000482  5092               	movf	146,w,c	;volatile
-   416  000484  0BEF               	andlw	239
-   417  000486  6E92               	movwf	146,c	;volatile
-   418  000488  0012               	return		;funcret
-   419  00048A                     __end_of_configure_pins:
-   420                           	opt callstack 0
-   421                           
-   422 ;; *************** function _WriteMatrix *****************
-   423 ;; Defined at:
-   424 ;;		line 8 in file "CREATE_FILES/SCROLLING_TEXT/scrolling_text.c"
-   425 ;; Parameters:    Size  Location     Type
-   426 ;;  matrix          2   13[COMRAM] PTR unsigned char [8]
-   427 ;;		 -> matrix(64), 
-   428 ;;  vectorBytes     2   15[COMRAM] PTR unsigned char 
-   429 ;;		 -> dataTrans(8), 
-   430 ;; Auto vars:     Size  Location     Type
-   431 ;;  line            1   22[COMRAM] unsigned char 
-   432 ;;  col             1   21[COMRAM] unsigned char 
-   433 ;;  aux             1   20[COMRAM] unsigned char 
-   434 ;;  byte            1    0        unsigned char 
-   435 ;; Return value:  Size  Location     Type
-   436 ;;                  1    wreg      void 
-   437 ;; Registers used:
-   438 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh
-   439 ;; Tracked objects:
-   440 ;;		On entry : 0/0
-   441 ;;		On exit  : 0/0
-   442 ;;		Unchanged: 0/0
-   443 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-   444 ;;      Params:         4       0       0       0       0       0       0
-   445 ;;      Locals:         4       0       0       0       0       0       0
-   446 ;;      Temps:          2       0       0       0       0       0       0
-   447 ;;      Totals:        10       0       0       0       0       0       0
-   448 ;;Total ram usage:       10 bytes
-   449 ;; Hardware stack levels used:    1
-   450 ;; Hardware stack levels required when called:    2
-   451 ;; This function calls:
-   452 ;;		Nothing
-   453 ;; This function is called by:
-   454 ;;		_main
-   455 ;; This function uses a non-reentrant model
-   456 ;;
-   457                           
-   458                           	psect	text2
-   459  00029C                     __ptext2:
-   460                           	opt callstack 0
-   461  00029C                     _WriteMatrix:
-   462                           	opt callstack 28
-   463  00029C                     
-   464                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 11:     uint8_t line = 0;
-   465  00029C  0E00               	movlw	0
-   466  00029E  6E5B               	movwf	WriteMatrix@line^0,c
-   467                           
-   468                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 12:     uint8_t col;;CREATE_FILES/SCROLLI
-      +                          NG_TEXT/scrolling_text.c: 13:     uint8_t aux = 1;
-   469  0002A0  0E01               	movlw	1
-   470  0002A2  6E59               	movwf	WriteMatrix@aux^0,c
-   471                           
-   472                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 15:     for(line = 0; line < 8; line++)
-   473  0002A4  0E00               	movlw	0
-   474  0002A6  6E5B               	movwf	WriteMatrix@line^0,c
-   475  0002A8                     l1451:
-   476                           
-   477                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 16:     {;CREATE_FILES/SCROLLING_TEXT/scr
-      +                          olling_text.c: 17:         for(col = 0; col < 8; col++)
-   478  0002A8  0E00               	movlw	0
-   479  0002AA  6E5A               	movwf	WriteMatrix@col^0,c
-   480  0002AC                     l1453:
-   481  0002AC  0E07               	movlw	7
-   482  0002AE  645A               	cpfsgt	WriteMatrix@col^0,c
-   483  0002B0  EF5C  F001         	goto	u161
-   484  0002B4  EF5E  F001         	goto	u160
-   485  0002B8                     u161:
-   486  0002B8  EF60  F001         	goto	l1457
-   487  0002BC                     u160:
-   488  0002BC  EFA7  F001         	goto	l1469
-   489  0002C0                     l1457:
-   490                           
-   491                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 18:         {;CREATE_FILES/SCROLLING_TEXT
-      +                          /scrolling_text.c: 19:             aux = (1 << col);
-   492  0002C0  C05A  F056         	movff	WriteMatrix@col,??_WriteMatrix
-   493  0002C4  0E01               	movlw	1
-   494  0002C6  6E57               	movwf	(??_WriteMatrix+1)^0,c
-   495  0002C8  2A56               	incf	??_WriteMatrix^0,f,c
-   496  0002CA  EF69  F001         	goto	u174
-   497  0002CE                     u175:
-   498  0002CE  90D8               	bcf	status,0,c
-   499  0002D0  3657               	rlcf	(??_WriteMatrix+1)^0,f,c
-   500  0002D2                     u174:
-   501  0002D2  2E56               	decfsz	??_WriteMatrix^0,f,c
-   502  0002D4  EF67  F001         	goto	u175
-   503  0002D8  5057               	movf	(??_WriteMatrix+1)^0,w,c
-   504  0002DA  6E59               	movwf	WriteMatrix@aux^0,c
-   505  0002DC                     
-   506                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 20:             if((vectorBytes[line] & a
+   246  00005A                     WriteMatrix@matrix:
+   247                           	opt callstack 0
+   248                           
+   249                           ; 2 bytes @ 0x15
+   250  00005A                     	ds	2
+   251  00005C                     WriteMatrix@vectorBytes:
+   252                           	opt callstack 0
+   253                           
+   254                           ; 2 bytes @ 0x17
+   255  00005C                     	ds	2
+   256  00005E                     ??_WriteMatrix:
+   257                           
+   258                           ; 1 bytes @ 0x19
+   259  00005E                     	ds	2
+   260  000060                     
+   261                           ; 1 bytes @ 0x1B
+   262 ;;
+   263 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   264 ;;
+   265 ;; *************** function _main *****************
+   266 ;; Defined at:
+   267 ;;		line 134 in file "main.c"
+   268 ;; Parameters:    Size  Location     Type
+   269 ;;		None
+   270 ;; Auto vars:     Size  Location     Type
+   271 ;;  OnOff           1    0        unsigned char 
+   272 ;; Return value:  Size  Location     Type
+   273 ;;                  1    wreg      void 
+   274 ;; Registers used:
+   275 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+   276 ;; Tracked objects:
+   277 ;;		On entry : 0/0
+   278 ;;		On exit  : 0/0
+   279 ;;		Unchanged: 0/0
+   280 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   281 ;;      Params:         0       0       0       0       0       0       0
+   282 ;;      Locals:         1       0       0       0       0       0       0
+   283 ;;      Temps:          0       0       0       0       0       0       0
+   284 ;;      Totals:         1       0       0       0       0       0       0
+   285 ;;Total ram usage:        1 bytes
+   286 ;; Hardware stack levels required when called:    4
+   287 ;; This function calls:
+   288 ;;		_Interrupts_Configure
+   289 ;;		_Timer_Init
+   290 ;;		_Timer_OnOff
+   291 ;;		_WriteMatrix
+   292 ;;		_configure_pins
+   293 ;; This function is called by:
+   294 ;;		Startup code after reset
+   295 ;; This function uses a non-reentrant model
+   296 ;;
+   297                           
+   298                           	psect	text0
+   299  000408                     __ptext0:
+   300                           	opt callstack 0
+   301  000408                     _main:
+   302                           	opt callstack 27
+   303  000408                     
+   304                           ;main.c: 139:     OSCCONbits.IRCF0 = 0x00;
+   305  000408  98D3               	bcf	211,4,c	;volatile
+   306  00040A                     
+   307                           ;main.c: 140:     OSCCONbits.IRCF1 = 0x01;
+   308  00040A  8AD3               	bsf	211,5,c	;volatile
+   309  00040C                     
+   310                           ;main.c: 141:     OSCCONbits.IRCF2 = 0x01;
+   311  00040C  8CD3               	bsf	211,6,c	;volatile
+   312  00040E                     
+   313                           ;main.c: 143:     OSCCONbits.SCS0 = 0x00;
+   314  00040E  90D3               	bcf	211,0,c	;volatile
+   315  000410                     
+   316                           ;main.c: 144:     OSCCONbits.SCS1 = 0x00;
+   317  000410  92D3               	bcf	211,1,c	;volatile
+   318  000412                     
+   319                           ;main.c: 147:     ADCON1 = 0xFF;
+   320  000412  68C1               	setf	193,c	;volatile
+   321                           
+   322                           ;main.c: 148:     CMCON = 0x07;
+   323  000414  0E07               	movlw	7
+   324  000416  6EB4               	movwf	180,c	;volatile
+   325                           
+   326                           ;main.c: 150:     INTCON = 0x00;
+   327  000418  0E00               	movlw	0
+   328  00041A  6EF2               	movwf	242,c	;volatile
+   329                           
+   330                           ;main.c: 151:     INTCON2 = 0x00;
+   331  00041C  0E00               	movlw	0
+   332  00041E  6EF1               	movwf	241,c	;volatile
+   333                           
+   334                           ;main.c: 152:     INTCON3 = 0x00;
+   335  000420  0E00               	movlw	0
+   336  000422  6EF0               	movwf	240,c	;volatile
+   337  000424                     
+   338                           ;main.c: 154:     WriteMatrix(matrix, dataTrans);
+   339  000424  0E03               	movlw	low _matrix
+   340  000426  6E5A               	movwf	WriteMatrix@matrix^0,c
+   341  000428  0E00               	movlw	high _matrix
+   342  00042A  6E5B               	movwf	(WriteMatrix@matrix+1)^0,c
+   343  00042C  0E60               	movlw	low _dataTrans
+   344  00042E  6E5C               	movwf	WriteMatrix@vectorBytes^0,c
+   345  000430  0E00               	movlw	high _dataTrans
+   346  000432  6E5D               	movwf	(WriteMatrix@vectorBytes+1)^0,c
+   347  000434  EC64  F001         	call	_WriteMatrix	;wreg free
+   348  000438                     
+   349                           ;main.c: 155:     configure_pins();
+   350  000438  EC46  F002         	call	_configure_pins	;wreg free
+   351  00043C                     
+   352                           ;main.c: 156:     Timer_Init();
+   353  00043C  EC75  F002         	call	_Timer_Init	;wreg free
+   354  000440                     
+   355                           ;main.c: 157:     Timer_OnOff(1);
+   356  000440  0E01               	movlw	1
+   357  000442  EC87  F002         	call	_Timer_OnOff
+   358  000446                     
+   359                           ;main.c: 158:     Interrupts_Configure();
+   360  000446  EC7F  F002         	call	_Interrupts_Configure	;wreg free
+   361  00044A                     l295:
+   362  00044A  EF25  F002         	goto	l295
+   363  00044E  EF07  F000         	goto	start
+   364  000452                     __end_of_main:
+   365                           	opt callstack 0
+   366                           
+   367 ;; *************** function _configure_pins *****************
+   368 ;; Defined at:
+   369 ;;		line 172 in file "main.c"
+   370 ;; Parameters:    Size  Location     Type
+   371 ;;		None
+   372 ;; Auto vars:     Size  Location     Type
+   373 ;;		None
+   374 ;; Return value:  Size  Location     Type
+   375 ;;                  1    wreg      void 
+   376 ;; Registers used:
+   377 ;;		wreg, status,2, status,0
+   378 ;; Tracked objects:
+   379 ;;		On entry : 0/0
+   380 ;;		On exit  : 0/0
+   381 ;;		Unchanged: 0/0
+   382 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   383 ;;      Params:         0       0       0       0       0       0       0
+   384 ;;      Locals:         0       0       0       0       0       0       0
+   385 ;;      Temps:          0       0       0       0       0       0       0
+   386 ;;      Totals:         0       0       0       0       0       0       0
+   387 ;;Total ram usage:        0 bytes
+   388 ;; Hardware stack levels used:    1
+   389 ;; Hardware stack levels required when called:    3
+   390 ;; This function calls:
+   391 ;;		Nothing
+   392 ;; This function is called by:
+   393 ;;		_main
+   394 ;; This function uses a non-reentrant model
+   395 ;;
+   396                           
+   397                           	psect	text1
+   398  00048C                     __ptext1:
+   399                           	opt callstack 0
+   400  00048C                     _configure_pins:
+   401                           	opt callstack 27
+   402  00048C  5093               	movf	147,w,c	;volatile
+   403  00048E  0BFE               	andlw	254
+   404  000490  6E93               	movwf	147,c	;volatile
+   405  000492  5093               	movf	147,w,c	;volatile
+   406  000494  0BFD               	andlw	253
+   407  000496  6E93               	movwf	147,c	;volatile
+   408  000498  5093               	movf	147,w,c	;volatile
+   409  00049A  0BFB               	andlw	251
+   410  00049C  6E93               	movwf	147,c	;volatile
+   411  00049E  5093               	movf	147,w,c	;volatile
+   412  0004A0  0BF7               	andlw	247
+   413  0004A2  6E93               	movwf	147,c	;volatile
+   414  0004A4  5081               	movf	129,w,c	;volatile
+   415  0004A6  0908               	iorlw	8
+   416  0004A8  6E8A               	movwf	138,c	;volatile
+   417  0004AA  5094               	movf	148,w,c	;volatile
+   418  0004AC  0BDF               	andlw	223
+   419  0004AE  6E94               	movwf	148,c	;volatile
+   420  0004B0  5094               	movf	148,w,c	;volatile
+   421  0004B2  0BF7               	andlw	247
+   422  0004B4  6E94               	movwf	148,c	;volatile
+   423  0004B6  5092               	movf	146,w,c	;volatile
+   424  0004B8  0BDF               	andlw	223
+   425  0004BA  6E92               	movwf	146,c	;volatile
+   426  0004BC  5092               	movf	146,w,c	;volatile
+   427  0004BE  0BEF               	andlw	239
+   428  0004C0  6E92               	movwf	146,c	;volatile
+   429  0004C2  0012               	return		;funcret
+   430  0004C4                     __end_of_configure_pins:
+   431                           	opt callstack 0
+   432                           
+   433 ;; *************** function _WriteMatrix *****************
+   434 ;; Defined at:
+   435 ;;		line 9 in file "CREATE_FILES/SCROLLING_TEXT/scrolling_text.c"
+   436 ;; Parameters:    Size  Location     Type
+   437 ;;  matrix          2   21[COMRAM] PTR unsigned char [8]
+   438 ;;		 -> matrix(64), 
+   439 ;;  vectorBytes     2   23[COMRAM] PTR unsigned char 
+   440 ;;		 -> dataTrans(8), 
+   441 ;; Auto vars:     Size  Location     Type
+   442 ;;  line            1    3[BANK0 ] unsigned char 
+   443 ;;  col             1    2[BANK0 ] unsigned char 
+   444 ;;  aux             1    1[BANK0 ] unsigned char 
+   445 ;;  byte            1    0        unsigned char 
+   446 ;; Return value:  Size  Location     Type
+   447 ;;                  1    wreg      void 
+   448 ;; Registers used:
+   449 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh
+   450 ;; Tracked objects:
+   451 ;;		On entry : 0/0
+   452 ;;		On exit  : 0/0
+   453 ;;		Unchanged: 0/0
+   454 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   455 ;;      Params:         4       0       0       0       0       0       0
+   456 ;;      Locals:         0       4       0       0       0       0       0
+   457 ;;      Temps:          2       0       0       0       0       0       0
+   458 ;;      Totals:         6       4       0       0       0       0       0
+   459 ;;Total ram usage:       10 bytes
+   460 ;; Hardware stack levels used:    1
+   461 ;; Hardware stack levels required when called:    3
+   462 ;; This function calls:
+   463 ;;		Nothing
+   464 ;; This function is called by:
+   465 ;;		_main
+   466 ;; This function uses a non-reentrant model
+   467 ;;
+   468                           
+   469                           	psect	text2
+   470  0002C8                     __ptext2:
+   471                           	opt callstack 0
+   472  0002C8                     _WriteMatrix:
+   473                           	opt callstack 27
+   474  0002C8                     
+   475                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 12:     uint8_t line = 0;
+   476  0002C8  0E00               	movlw	0
+   477  0002CA  0100               	movlb	0	; () banked
+   478  0002CC  6F83               	movwf	WriteMatrix@line& (0+255),b
+   479                           
+   480                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 13:     uint8_t col;;CREATE_FILES/SCROLLI
+      +                          NG_TEXT/scrolling_text.c: 14:     uint8_t aux = 1;
+   481  0002CE  0E01               	movlw	1
+   482  0002D0  6F81               	movwf	WriteMatrix@aux& (0+255),b
+   483                           
+   484                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 16:     for(line = 0; line < 8; line++)
+   485  0002D2  0E00               	movlw	0
+   486  0002D4  6F83               	movwf	WriteMatrix@line& (0+255),b
+   487  0002D6                     l1539:
+   488                           
+   489                           ; BSR set to: 0
+   490                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 17:     {;CREATE_FILES/SCROLLING_TEXT/scr
+      +                          olling_text.c: 18:         for(col = 0; col < 8; col++)
+   491  0002D6  0E00               	movlw	0
+   492  0002D8  6F82               	movwf	WriteMatrix@col& (0+255),b
+   493  0002DA                     l1541:
+   494                           
+   495                           ; BSR set to: 0
+   496  0002DA  0E07               	movlw	7
+   497  0002DC  6582               	cpfsgt	WriteMatrix@col& (0+255),b
+   498  0002DE  EF73  F001         	goto	u251
+   499  0002E2  EF75  F001         	goto	u250
+   500  0002E6                     u251:
+   501  0002E6  EF77  F001         	goto	l1545
+   502  0002EA                     u250:
+   503  0002EA  EFBF  F001         	goto	l1557
+   504  0002EE                     l1545:
+   505                           
+   506                           ; BSR set to: 0
+   507                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 19:         {;CREATE_FILES/SCROLLING_TEXT
+      +                          /scrolling_text.c: 20:             aux = (1 << col);
+   508  0002EE  C082  F05E         	movff	WriteMatrix@col,??_WriteMatrix
+   509  0002F2  0E01               	movlw	1
+   510  0002F4  6E5F               	movwf	(??_WriteMatrix+1)^0,c
+   511  0002F6  2A5E               	incf	??_WriteMatrix^0,f,c
+   512  0002F8  EF80  F001         	goto	u264
+   513  0002FC                     u265:
+   514  0002FC  90D8               	bcf	status,0,c
+   515  0002FE  365F               	rlcf	(??_WriteMatrix+1)^0,f,c
+   516  000300                     u264:
+   517  000300  2E5E               	decfsz	??_WriteMatrix^0,f,c
+   518  000302  EF7E  F001         	goto	u265
+   519  000306  505F               	movf	(??_WriteMatrix+1)^0,w,c
+   520  000308  0100               	movlb	0	; () banked
+   521  00030A  6F81               	movwf	WriteMatrix@aux& (0+255),b
+   522  00030C                     
+   523                           ; BSR set to: 0
+   524                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 21:             if((vectorBytes[line] & a
       +                          ux) >= 0x01)
-   507  0002DC  505B               	movf	WriteMatrix@line^0,w,c
-   508  0002DE  2454               	addwf	WriteMatrix@vectorBytes^0,w,c
-   509  0002E0  6ED9               	movwf	fsr2l,c
-   510  0002E2  0E00               	movlw	0
-   511  0002E4  2055               	addwfc	(WriteMatrix@vectorBytes+1)^0,w,c
-   512  0002E6  6EDA               	movwf	fsr2h,c
-   513  0002E8  50DF               	movf	indf2,w,c
-   514  0002EA  1459               	andwf	WriteMatrix@aux^0,w,c
-   515  0002EC  0900               	iorlw	0
-   516  0002EE  B4D8               	btfsc	status,2,c
-   517  0002F0  EF7C  F001         	goto	u181
-   518  0002F4  EF7E  F001         	goto	u180
-   519  0002F8                     u181:
-   520  0002F8  EF92  F001         	goto	l1463
-   521  0002FC                     u180:
-   522  0002FC                     
-   523                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 21:             {;CREATE_FILES/SCROLLING_
-      +                          TEXT/scrolling_text.c: 22:                 matrix[line][col] = 0x01;
-   524  0002FC  505B               	movf	WriteMatrix@line^0,w,c
-   525  0002FE  0D08               	mullw	8
-   526  000300  C052  F056         	movff	WriteMatrix@matrix,??_WriteMatrix
-   527  000304  C053  F057         	movff	WriteMatrix@matrix+1,??_WriteMatrix+1
-   528  000308  50F3               	movf	243,w,c
-   529  00030A  2656               	addwf	??_WriteMatrix^0,f,c
-   530  00030C  50F4               	movf	244,w,c
-   531  00030E  2257               	addwfc	(??_WriteMatrix+1)^0,f,c
-   532  000310  505A               	movf	WriteMatrix@col^0,w,c
-   533  000312  2456               	addwf	??_WriteMatrix^0,w,c
-   534  000314  6ED9               	movwf	fsr2l,c
-   535  000316  0E00               	movlw	0
-   536  000318  2057               	addwfc	(??_WriteMatrix+1)^0,w,c
-   537  00031A  6EDA               	movwf	fsr2h,c
-   538  00031C  0E01               	movlw	1
-   539  00031E  6EDF               	movwf	indf2,c
-   540                           
-   541                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 23:             }else
-   542  000320  EFA4  F001         	goto	l1465
-   543  000324                     l1463:
-   544                           
-   545                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 24:             {;CREATE_FILES/SCROLLING_
-      +                          TEXT/scrolling_text.c: 25:                 matrix[line][col] = 0x00;
-   546  000324  505B               	movf	WriteMatrix@line^0,w,c
-   547  000326  0D08               	mullw	8
-   548  000328  C052  F056         	movff	WriteMatrix@matrix,??_WriteMatrix
-   549  00032C  C053  F057         	movff	WriteMatrix@matrix+1,??_WriteMatrix+1
-   550  000330  50F3               	movf	243,w,c
-   551  000332  2656               	addwf	??_WriteMatrix^0,f,c
-   552  000334  50F4               	movf	244,w,c
-   553  000336  2257               	addwfc	(??_WriteMatrix+1)^0,f,c
-   554  000338  505A               	movf	WriteMatrix@col^0,w,c
-   555  00033A  2456               	addwf	??_WriteMatrix^0,w,c
-   556  00033C  6ED9               	movwf	fsr2l,c
-   557  00033E  0E00               	movlw	0
-   558  000340  2057               	addwfc	(??_WriteMatrix+1)^0,w,c
-   559  000342  6EDA               	movwf	fsr2h,c
-   560  000344  0E00               	movlw	0
-   561  000346  6EDF               	movwf	indf2,c
-   562  000348                     l1465:
+   525  00030C  5183               	movf	WriteMatrix@line& (0+255),w,b
+   526  00030E  245C               	addwf	WriteMatrix@vectorBytes^0,w,c
+   527  000310  6ED9               	movwf	fsr2l,c
+   528  000312  0E00               	movlw	0
+   529  000314  205D               	addwfc	(WriteMatrix@vectorBytes+1)^0,w,c
+   530  000316  6EDA               	movwf	fsr2h,c
+   531  000318  50DF               	movf	indf2,w,c
+   532  00031A  1581               	andwf	WriteMatrix@aux& (0+255),w,b
+   533  00031C  0900               	iorlw	0
+   534  00031E  B4D8               	btfsc	status,2,c
+   535  000320  EF94  F001         	goto	u271
+   536  000324  EF96  F001         	goto	u270
+   537  000328                     u271:
+   538  000328  EFAA  F001         	goto	l1551
+   539  00032C                     u270:
+   540  00032C                     
+   541                           ; BSR set to: 0
+   542                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 22:             {;CREATE_FILES/SCROLLING_
+      +                          TEXT/scrolling_text.c: 23:                 matrix[line][col] = 0x01;
+   543  00032C  5183               	movf	WriteMatrix@line& (0+255),w,b
+   544  00032E  0D08               	mullw	8
+   545  000330  C05A  F05E         	movff	WriteMatrix@matrix,??_WriteMatrix
+   546  000334  C05B  F05F         	movff	WriteMatrix@matrix+1,??_WriteMatrix+1
+   547  000338  50F3               	movf	243,w,c
+   548  00033A  265E               	addwf	??_WriteMatrix^0,f,c
+   549  00033C  50F4               	movf	244,w,c
+   550  00033E  225F               	addwfc	(??_WriteMatrix+1)^0,f,c
+   551  000340  5182               	movf	WriteMatrix@col& (0+255),w,b
+   552  000342  245E               	addwf	??_WriteMatrix^0,w,c
+   553  000344  6ED9               	movwf	fsr2l,c
+   554  000346  0E00               	movlw	0
+   555  000348  205F               	addwfc	(??_WriteMatrix+1)^0,w,c
+   556  00034A  6EDA               	movwf	fsr2h,c
+   557  00034C  0E01               	movlw	1
+   558  00034E  6EDF               	movwf	indf2,c
+   559                           
+   560                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 24:             }else
+   561  000350  EFBC  F001         	goto	l1553
+   562  000354                     l1551:
    563                           
-   564                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 27:         }
-   565  000348  2A5A               	incf	WriteMatrix@col^0,f,c
-   566  00034A  EF56  F001         	goto	l1453
-   567  00034E                     l1469:
-   568                           
-   569                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 28:     }
-   570  00034E  2A5B               	incf	WriteMatrix@line^0,f,c
-   571  000350  0E07               	movlw	7
-   572  000352  645B               	cpfsgt	WriteMatrix@line^0,c
-   573  000354  EFAE  F001         	goto	u191
-   574  000358  EFB0  F001         	goto	u190
-   575  00035C                     u191:
-   576  00035C  EF54  F001         	goto	l1451
-   577  000360                     u190:
-   578  000360  0012               	return		;funcret
-   579  000362                     __end_of_WriteMatrix:
-   580                           	opt callstack 0
-   581                           
-   582 ;; *************** function _Timer_Init *****************
-   583 ;; Defined at:
-   584 ;;		line 6 in file "CREATE_FILES/TIMER/timer.c"
-   585 ;; Parameters:    Size  Location     Type
-   586 ;;		None
-   587 ;; Auto vars:     Size  Location     Type
-   588 ;;		None
-   589 ;; Return value:  Size  Location     Type
-   590 ;;                  1    wreg      void 
-   591 ;; Registers used:
-   592 ;;		None
-   593 ;; Tracked objects:
-   594 ;;		On entry : 0/0
-   595 ;;		On exit  : 0/0
-   596 ;;		Unchanged: 0/0
-   597 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-   598 ;;      Params:         0       0       0       0       0       0       0
-   599 ;;      Locals:         0       0       0       0       0       0       0
-   600 ;;      Temps:          0       0       0       0       0       0       0
-   601 ;;      Totals:         0       0       0       0       0       0       0
-   602 ;;Total ram usage:        0 bytes
-   603 ;; Hardware stack levels used:    1
-   604 ;; Hardware stack levels required when called:    2
-   605 ;; This function calls:
-   606 ;;		Nothing
-   607 ;; This function is called by:
-   608 ;;		_main
-   609 ;; This function uses a non-reentrant model
-   610 ;;
-   611                           
-   612                           	psect	text3
-   613  00048A                     __ptext3:
-   614                           	opt callstack 0
-   615  00048A                     _Timer_Init:
-   616                           	opt callstack 28
-   617  00048A                     
-   618                           ;CREATE_FILES/TIMER/timer.c: 9:     T0CONbits.T08BIT = 0x00;
-   619  00048A  9CD5               	bcf	213,6,c	;volatile
-   620                           
-   621                           ;CREATE_FILES/TIMER/timer.c: 10:     T0CONbits.T016BIT = 0x00;
-   622  00048C  9CD5               	bcf	213,6,c	;volatile
-   623                           
-   624                           ;CREATE_FILES/TIMER/timer.c: 14:     T0CONbits.T0CS = 0x00;
-   625  00048E  9AD5               	bcf	213,5,c	;volatile
-   626                           
-   627                           ;CREATE_FILES/TIMER/timer.c: 17:     T0CONbits.T0SE = 0x00;
-   628  000490  98D5               	bcf	213,4,c	;volatile
-   629                           
-   630                           ;CREATE_FILES/TIMER/timer.c: 18:     T0CONbits.PSA = 0x01;
-   631  000492  86D5               	bsf	213,3,c	;volatile
-   632                           
-   633                           ;CREATE_FILES/TIMER/timer.c: 21:     T0CONbits.T0PS0 = 0x01;
-   634  000494  80D5               	bsf	213,0,c	;volatile
-   635                           
-   636                           ;CREATE_FILES/TIMER/timer.c: 22:     T0CONbits.T0PS1 = 0x01;
-   637  000496  82D5               	bsf	213,1,c	;volatile
-   638                           
-   639                           ;CREATE_FILES/TIMER/timer.c: 23:     T0CONbits.T0PS2 = 0x01;
-   640  000498  84D5               	bsf	213,2,c	;volatile
-   641                           
-   642                           ;CREATE_FILES/TIMER/timer.c: 25:     T0CONbits.TMR0ON = 0x01;
-   643  00049A  8ED5               	bsf	213,7,c	;volatile
-   644  00049C  0012               	return		;funcret
-   645  00049E                     __end_of_Timer_Init:
-   646                           	opt callstack 0
-   647                           
-   648 ;; *************** function _Interrupts_Configure *****************
-   649 ;; Defined at:
-   650 ;;		line 4 in file "CREATE_FILES/INTERRUPT/interrupts.c"
-   651 ;; Parameters:    Size  Location     Type
-   652 ;;		None
-   653 ;; Auto vars:     Size  Location     Type
-   654 ;;		None
-   655 ;; Return value:  Size  Location     Type
-   656 ;;                  1    wreg      void 
-   657 ;; Registers used:
-   658 ;;		None
-   659 ;; Tracked objects:
-   660 ;;		On entry : 0/0
-   661 ;;		On exit  : 0/0
-   662 ;;		Unchanged: 0/0
-   663 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-   664 ;;      Params:         0       0       0       0       0       0       0
-   665 ;;      Locals:         0       0       0       0       0       0       0
-   666 ;;      Temps:          0       0       0       0       0       0       0
-   667 ;;      Totals:         0       0       0       0       0       0       0
-   668 ;;Total ram usage:        0 bytes
-   669 ;; Hardware stack levels used:    1
-   670 ;; Hardware stack levels required when called:    2
-   671 ;; This function calls:
-   672 ;;		Nothing
-   673 ;; This function is called by:
-   674 ;;		_main
-   675 ;; This function uses a non-reentrant model
-   676 ;;
-   677                           
-   678                           	psect	text4
-   679  0004AE                     __ptext4:
-   680                           	opt callstack 0
-   681  0004AE                     _Interrupts_Configure:
-   682                           	opt callstack 28
-   683  0004AE                     
-   684                           ;CREATE_FILES/INTERRUPT/interrupts.c: 9:     INTCONbits.GIE = 0x01;
-   685  0004AE  8EF2               	bsf	242,7,c	;volatile
-   686                           
-   687                           ;CREATE_FILES/INTERRUPT/interrupts.c: 10:     INTCONbits.GIEH = 0x01;
-   688  0004B0  8EF2               	bsf	242,7,c	;volatile
-   689                           
-   690                           ;CREATE_FILES/INTERRUPT/interrupts.c: 13:     RCONbits.IPEN = 0x01;
-   691  0004B2  8ED0               	bsf	208,7,c	;volatile
-   692                           
-   693                           ;CREATE_FILES/INTERRUPT/interrupts.c: 16:     INTCONbits.PEIE = 0x01;
-   694  0004B4  8CF2               	bsf	242,6,c	;volatile
-   695                           
-   696                           ;CREATE_FILES/INTERRUPT/interrupts.c: 17:     INTCONbits.GIEL = 0x01;
-   697  0004B6  8CF2               	bsf	242,6,c	;volatile
-   698                           
-   699                           ;CREATE_FILES/INTERRUPT/interrupts.c: 25:     INTCONbits.TMR0IE = 0x01;
-   700  0004B8  8AF2               	bsf	242,5,c	;volatile
-   701                           
-   702                           ;CREATE_FILES/INTERRUPT/interrupts.c: 26:     INTCON2bits.TMR0IP = 0x01;
-   703  0004BA  84F1               	bsf	241,2,c	;volatile
-   704  0004BC  0012               	return		;funcret
-   705  0004BE                     __end_of_Interrupts_Configure:
-   706                           	opt callstack 0
-   707                           
-   708 ;; *************** function _TC0INT *****************
-   709 ;; Defined at:
-   710 ;;		line 119 in file "main.c"
-   711 ;; Parameters:    Size  Location     Type
-   712 ;;		None
-   713 ;; Auto vars:     Size  Location     Type
-   714 ;;		None
-   715 ;; Return value:  Size  Location     Type
-   716 ;;                  1    wreg      void 
-   717 ;; Registers used:
-   718 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
-   719 ;; Tracked objects:
-   720 ;;		On entry : 0/0
-   721 ;;		On exit  : 0/0
-   722 ;;		Unchanged: 0/0
-   723 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-   724 ;;      Params:         0       0       0       0       0       0       0
-   725 ;;      Locals:         0       0       0       0       0       0       0
-   726 ;;      Temps:          4       0       0       0       0       0       0
-   727 ;;      Totals:         4       0       0       0       0       0       0
-   728 ;;Total ram usage:        4 bytes
-   729 ;; Hardware stack levels used:    1
-   730 ;; Hardware stack levels required when called:    1
-   731 ;; This function calls:
-   732 ;;		_RowControl
-   733 ;;		_ScrollingDisplay
-   734 ;; This function is called by:
-   735 ;;		Interrupt level 2
-   736 ;; This function uses a non-reentrant model
-   737 ;;
-   738                           
-   739                           	psect	intcode
-   740  000008                     __pintcode:
-   741                           	opt callstack 0
-   742  000008                     _TC0INT:
-   743                           	opt callstack 28
-   744                           
-   745                           ;incstack = 0
-   746  000008  826C               	bsf	int$flags,1,c	;set compiler interrupt flag (level 2)
-   747  00000A  EDB1  F001         	call	int_func,f	;refresh shadow registers
-   748                           
-   749                           	psect	intcode_body
-   750  000362                     __pintcode_body:
-   751                           	opt callstack 28
-   752  000362                     int_func:
-   753                           	opt callstack 28
-   754  000362  0006               	pop		; remove dummy address from shadow register refresh
-   755  000364  CFD9 F04E          	movff	fsr2l,??_TC0INT
-   756  000368  CFDA F04F          	movff	fsr2h,??_TC0INT+1
-   757  00036C  CFF3 F050          	movff	prodl,??_TC0INT+2
-   758  000370  CFF4 F051          	movff	prodh,??_TC0INT+3
-   759  000374                     
-   760                           ;main.c: 121:     if(INTCONbits.TMR0IF == 0x01)
-   761  000374  A4F2               	btfss	242,2,c	;volatile
-   762  000376  EFBF  F001         	goto	i2u24_41
-   763  00037A  EFC1  F001         	goto	i2u24_40
-   764  00037E                     i2u24_41:
-   765  00037E  EFE0  F001         	goto	i2l290
-   766  000382                     i2u24_40:
-   767  000382                     
-   768                           ;main.c: 122:     {;main.c: 123:         INTCONbits.GIE = 0x00;
-   769  000382  9EF2               	bcf	242,7,c	;volatile
-   770                           
-   771                           ;main.c: 124:         T0CONbits.TMR0ON = 0x00;
-   772  000384  9ED5               	bcf	213,7,c	;volatile
-   773  000386                     
-   774                           ;main.c: 126:         RowControl(&currRow, &PosBit);
-   775  000386  0E44               	movlw	low _currRow
-   776  000388  6E45               	movwf	RowControl@currRow^0,c
-   777  00038A  0E00               	movlw	high _currRow
-   778  00038C  6E46               	movwf	(RowControl@currRow+1)^0,c
-   779  00038E  0E6B               	movlw	low _PosBit
-   780  000390  6E47               	movwf	RowControl@PosBit^0,c
-   781  000392  0E00               	movlw	high _PosBit
-   782  000394  6E48               	movwf	(RowControl@PosBit+1)^0,c
-   783  000396  EC09  F000         	call	_RowControl	;wreg free
-   784  00039A                     
-   785                           ;main.c: 128:         ScrollingDisplay(matrix, &currRow, PosBit);
-   786  00039A  0E04               	movlw	low _matrix
-   787  00039C  6E45               	movwf	ScrollingDisplay@matrix^0,c
-   788  00039E  0E00               	movlw	high _matrix
-   789  0003A0  6E46               	movwf	(ScrollingDisplay@matrix+1)^0,c
-   790  0003A2  0E44               	movlw	low _currRow
-   791  0003A4  6E47               	movwf	ScrollingDisplay@line^0,c
-   792  0003A6  0E00               	movlw	high _currRow
-   793  0003A8  6E48               	movwf	(ScrollingDisplay@line+1)^0,c
-   794  0003AA  C06B  F049         	movff	_PosBit,ScrollingDisplay@PosBit
-   795  0003AE  ECC0  F000         	call	_ScrollingDisplay	;wreg free
-   796  0003B2                     
-   797                           ;main.c: 132:         TMR0 = 0xF63C;
-   798  0003B2  0EF6               	movlw	246
-   799  0003B4  6ED7               	movwf	215,c	;volatile
-   800  0003B6  0E3C               	movlw	60
-   801  0003B8  6ED6               	movwf	214,c	;volatile
-   802  0003BA                     
-   803                           ;main.c: 133:         INTCONbits.T0IF = 0x00;
-   804  0003BA  94F2               	bcf	242,2,c	;volatile
-   805  0003BC                     
-   806                           ;main.c: 134:         INTCONbits.GIE = 0x01;
-   807  0003BC  8EF2               	bsf	242,7,c	;volatile
-   808  0003BE                     
-   809                           ;main.c: 135:         T0CONbits.TMR0ON = 0x01;
-   810  0003BE  8ED5               	bsf	213,7,c	;volatile
-   811  0003C0                     i2l290:
-   812  0003C0  C051  FFF4         	movff	??_TC0INT+3,prodh
-   813  0003C4  C050  FFF3         	movff	??_TC0INT+2,prodl
-   814  0003C8  C04F  FFDA         	movff	??_TC0INT+1,fsr2h
-   815  0003CC  C04E  FFD9         	movff	??_TC0INT,fsr2l
-   816  0003D0  926C               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
-   817  0003D2  0011               	retfie		f
-   818  0003D4                     __end_of_TC0INT:
-   819                           	opt callstack 0
-   820                           
-   821 ;; *************** function _ScrollingDisplay *****************
-   822 ;; Defined at:
-   823 ;;		line 33 in file "CREATE_FILES/SCROLLING_TEXT/scrolling_text.c"
-   824 ;; Parameters:    Size  Location     Type
-   825 ;;  matrix          2    0[COMRAM] PTR unsigned char [8]
-   826 ;;		 -> matrix(64), 
-   827 ;;  line            2    2[COMRAM] PTR unsigned char 
-   828 ;;		 -> currRow(1), 
-   829 ;;  PosBit          1    4[COMRAM] unsigned char 
-   830 ;; Auto vars:     Size  Location     Type
-   831 ;;  varAux          1    8[COMRAM] unsigned char 
-   832 ;; Return value:  Size  Location     Type
-   833 ;;                  1    wreg      void 
-   834 ;; Registers used:
-   835 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh
-   836 ;; Tracked objects:
-   837 ;;		On entry : 0/0
-   838 ;;		On exit  : 0/0
-   839 ;;		Unchanged: 0/0
-   840 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-   841 ;;      Params:         5       0       0       0       0       0       0
-   842 ;;      Locals:         1       0       0       0       0       0       0
-   843 ;;      Temps:          3       0       0       0       0       0       0
-   844 ;;      Totals:         9       0       0       0       0       0       0
-   845 ;;Total ram usage:        9 bytes
-   846 ;; Hardware stack levels used:    1
-   847 ;; This function calls:
-   848 ;;		Nothing
-   849 ;; This function is called by:
-   850 ;;		_TC0INT
-   851 ;; This function uses a non-reentrant model
-   852 ;;
-   853                           
-   854                           	psect	text6
-   855  000180                     __ptext6:
-   856                           	opt callstack 0
-   857  000180                     _ScrollingDisplay:
-   858                           	opt callstack 28
-   859  000180                     
-   860                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 37:         if(0x00 == 0x00) LATA = (PORT
-      +                          A & ~((1 << 4))); if(0x01 == 0x00) LATA = (PORTA | (1 << 4));;
-   861  000180  0E07               	movlw	7
-   862  000182  6E4D               	movwf	ScrollingDisplay@varAux^0,c
-   863  000184  5080               	movf	128,w,c	;volatile
-   864  000186  0BEF               	andlw	239
-   865  000188  6E89               	movwf	137,c	;volatile
-   866  00018A  5080               	movf	128,w,c	;volatile
-   867  00018C  0920               	iorlw	32
-   868  00018E  6E89               	movwf	137,c	;volatile
-   869  000190                     
-   870                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 40:         if(0x00 == 0x00) LATA = (PORT
-      +                          A & ~((1 << 5))); if(0x01 == 0x00) LATA = (PORTA | (1 << 5));;
-   871  000190  D000               	nop2		;2 cycle nop
-   872  000192  5080               	movf	128,w,c	;volatile
-   873  000194  0BDF               	andlw	223
-   874  000196  6E89               	movwf	137,c	;volatile
-   875  000198  5080               	movf	128,w,c	;volatile
-   876  00019A  0910               	iorlw	16
-   877  00019C  6E89               	movwf	137,c	;volatile
-   878  00019E                     
-   879                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 42:     if(varAux > PosBit)
-   880  00019E  0E07               	movlw	7
-   881  0001A0  6049               	cpfslt	ScrollingDisplay@PosBit^0,c
-   882  0001A2  EFD5  F000         	goto	i2u20_41
-   883  0001A6  EFD7  F000         	goto	i2u20_40
-   884  0001AA                     i2u20_41:
-   885  0001AA  EF14  F001         	goto	i2l1515
-   886  0001AE                     i2u20_40:
-   887  0001AE                     i2l1489:
-   888  0001AE  0E07               	movlw	7
-   889  0001B0  6449               	cpfsgt	ScrollingDisplay@PosBit^0,c
-   890  0001B2  EFDD  F000         	goto	i2u21_41
-   891  0001B6  EFDF  F000         	goto	i2u21_40
-   892  0001BA                     i2u21_41:
-   893  0001BA  EFD7  F000         	goto	i2l1489
-   894  0001BE                     i2u21_40:
-   895  0001BE                     
-   896                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 46:         {;CREATE_FILES/SCROLLING_TEXT
-      +                          /scrolling_text.c: 47:             if(matrix[*line][varAux])
-   897  0001BE  C047  FFD9         	movff	ScrollingDisplay@line,fsr2l
-   898  0001C2  C048  FFDA         	movff	ScrollingDisplay@line+1,fsr2h
-   899  0001C6  50DF               	movf	indf2,w,c
-   900  0001C8  6E4A               	movwf	??_ScrollingDisplay^0,c
-   901  0001CA  504A               	movf	??_ScrollingDisplay^0,w,c
-   902  0001CC  0D08               	mullw	8
-   903  0001CE  C045  F04B         	movff	ScrollingDisplay@matrix,??_ScrollingDisplay+1
-   904  0001D2  C046  F04C         	movff	ScrollingDisplay@matrix+1,??_ScrollingDisplay+2
-   905  0001D6  50F3               	movf	243,w,c
-   906  0001D8  264B               	addwf	(??_ScrollingDisplay+1)^0,f,c
-   907  0001DA  50F4               	movf	244,w,c
-   908  0001DC  224C               	addwfc	(??_ScrollingDisplay+2)^0,f,c
-   909  0001DE  0E07               	movlw	7
-   910  0001E0  244B               	addwf	(??_ScrollingDisplay+1)^0,w,c
-   911  0001E2  6ED9               	movwf	fsr2l,c
-   912  0001E4  0E00               	movlw	0
-   913  0001E6  204C               	addwfc	(??_ScrollingDisplay+2)^0,w,c
-   914  0001E8  6EDA               	movwf	fsr2h,c
-   915  0001EA  50DF               	movf	indf2,w,c
-   916  0001EC  B4D8               	btfsc	status,2,c
-   917  0001EE  EFFB  F000         	goto	i2u22_41
-   918  0001F2  EFFD  F000         	goto	i2u22_40
-   919  0001F6                     i2u22_41:
-   920  0001F6  EF09  F001         	goto	i2l1503
-   921  0001FA                     i2u22_40:
-   922  0001FA  5082               	movf	130,w,c	;volatile
-   923  0001FC  0920               	iorlw	32
-   924  0001FE  6E8B               	movwf	139,c	;volatile
-   925  000200  5082               	movf	130,w,c	;volatile
-   926  000202  0908               	iorlw	8
-   927  000204  6E8B               	movwf	139,c	;volatile
-   928  000206                     i2l1499:
-   929                           
-   930                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 54:                 if(0x00 == 0x00) LATC
+   564                           ; BSR set to: 0
+   565                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 25:             {;CREATE_FILES/SCROLLING_
+      +                          TEXT/scrolling_text.c: 26:                 matrix[line][col] = 0x00;
+   566  000354  5183               	movf	WriteMatrix@line& (0+255),w,b
+   567  000356  0D08               	mullw	8
+   568  000358  C05A  F05E         	movff	WriteMatrix@matrix,??_WriteMatrix
+   569  00035C  C05B  F05F         	movff	WriteMatrix@matrix+1,??_WriteMatrix+1
+   570  000360  50F3               	movf	243,w,c
+   571  000362  265E               	addwf	??_WriteMatrix^0,f,c
+   572  000364  50F4               	movf	244,w,c
+   573  000366  225F               	addwfc	(??_WriteMatrix+1)^0,f,c
+   574  000368  5182               	movf	WriteMatrix@col& (0+255),w,b
+   575  00036A  245E               	addwf	??_WriteMatrix^0,w,c
+   576  00036C  6ED9               	movwf	fsr2l,c
+   577  00036E  0E00               	movlw	0
+   578  000370  205F               	addwfc	(??_WriteMatrix+1)^0,w,c
+   579  000372  6EDA               	movwf	fsr2h,c
+   580  000374  0E00               	movlw	0
+   581  000376  6EDF               	movwf	indf2,c
+   582  000378                     l1553:
+   583                           
+   584                           ; BSR set to: 0
+   585                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 28:         }
+   586  000378  2B82               	incf	WriteMatrix@col& (0+255),f,b
+   587  00037A  EF6D  F001         	goto	l1541
+   588  00037E                     l1557:
+   589                           
+   590                           ; BSR set to: 0
+   591                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 29:     }
+   592  00037E  2B83               	incf	WriteMatrix@line& (0+255),f,b
+   593  000380                     
+   594                           ; BSR set to: 0
+   595  000380  0E07               	movlw	7
+   596  000382  6583               	cpfsgt	WriteMatrix@line& (0+255),b
+   597  000384  EFC6  F001         	goto	u281
+   598  000388  EFC8  F001         	goto	u280
+   599  00038C                     u281:
+   600  00038C  EF6B  F001         	goto	l1539
+   601  000390                     u280:
+   602  000390                     
+   603                           ; BSR set to: 0
+   604  000390  0012               	return		;funcret
+   605  000392                     __end_of_WriteMatrix:
+   606                           	opt callstack 0
+   607                           
+   608 ;; *************** function _Timer_OnOff *****************
+   609 ;; Defined at:
+   610 ;;		line 28 in file "CREATE_FILES/TIMER/timer.c"
+   611 ;; Parameters:    Size  Location     Type
+   612 ;;  OnOff           1    wreg     unsigned char 
+   613 ;; Auto vars:     Size  Location     Type
+   614 ;;  OnOff           1   21[COMRAM] unsigned char 
+   615 ;; Return value:  Size  Location     Type
+   616 ;;                  1    wreg      void 
+   617 ;; Registers used:
+   618 ;;		wreg
+   619 ;; Tracked objects:
+   620 ;;		On entry : 0/0
+   621 ;;		On exit  : 0/0
+   622 ;;		Unchanged: 0/0
+   623 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   624 ;;      Params:         0       0       0       0       0       0       0
+   625 ;;      Locals:         1       0       0       0       0       0       0
+   626 ;;      Temps:          0       0       0       0       0       0       0
+   627 ;;      Totals:         1       0       0       0       0       0       0
+   628 ;;Total ram usage:        1 bytes
+   629 ;; Hardware stack levels used:    1
+   630 ;; Hardware stack levels required when called:    3
+   631 ;; This function calls:
+   632 ;;		Nothing
+   633 ;; This function is called by:
+   634 ;;		_main
+   635 ;; This function uses a non-reentrant model
+   636 ;;
+   637                           
+   638                           	psect	text3
+   639  00050E                     __ptext3:
+   640                           	opt callstack 0
+   641  00050E                     _Timer_OnOff:
+   642                           	opt callstack 27
+   643                           
+   644                           ; BSR set to: 0
+   645                           ;incstack = 0
+   646                           ;Timer_OnOff@OnOff stored from wreg
+   647  00050E  6E5A               	movwf	Timer_OnOff@OnOff^0,c
+   648  000510                     
+   649                           ;CREATE_FILES/TIMER/timer.c: 28: void Timer_OnOff(uint8_t OnOff);CREATE_FILES/TIMER/time
+      +                          r.c: 29: {;CREATE_FILES/TIMER/timer.c: 30:     T0CONbits.TMR0ON = OnOff;
+   650  000510  B05A               	btfsc	Timer_OnOff@OnOff^0,0,c
+   651  000512  D002               	bra	u105
+   652  000514  9ED5               	bcf	213,7,c	;volatile
+   653  000516  D001               	bra	u106
+   654  000518                     u105:
+   655  000518  8ED5               	bsf	213,7,c	;volatile
+   656  00051A                     u106:
+   657  00051A  0012               	return		;funcret
+   658  00051C                     __end_of_Timer_OnOff:
+   659                           	opt callstack 0
+   660                           
+   661 ;; *************** function _Timer_Init *****************
+   662 ;; Defined at:
+   663 ;;		line 6 in file "CREATE_FILES/TIMER/timer.c"
+   664 ;; Parameters:    Size  Location     Type
+   665 ;;		None
+   666 ;; Auto vars:     Size  Location     Type
+   667 ;;		None
+   668 ;; Return value:  Size  Location     Type
+   669 ;;                  1    wreg      void 
+   670 ;; Registers used:
+   671 ;;		None
+   672 ;; Tracked objects:
+   673 ;;		On entry : 0/0
+   674 ;;		On exit  : 0/0
+   675 ;;		Unchanged: 0/0
+   676 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   677 ;;      Params:         0       0       0       0       0       0       0
+   678 ;;      Locals:         0       0       0       0       0       0       0
+   679 ;;      Temps:          0       0       0       0       0       0       0
+   680 ;;      Totals:         0       0       0       0       0       0       0
+   681 ;;Total ram usage:        0 bytes
+   682 ;; Hardware stack levels used:    1
+   683 ;; Hardware stack levels required when called:    3
+   684 ;; This function calls:
+   685 ;;		Nothing
+   686 ;; This function is called by:
+   687 ;;		_main
+   688 ;; This function uses a non-reentrant model
+   689 ;;
+   690                           
+   691                           	psect	text4
+   692  0004EA                     __ptext4:
+   693                           	opt callstack 0
+   694  0004EA                     _Timer_Init:
+   695                           	opt callstack 27
+   696  0004EA                     
+   697                           ;CREATE_FILES/TIMER/timer.c: 9:     T0CONbits.T08BIT = 0x00;
+   698  0004EA  9CD5               	bcf	213,6,c	;volatile
+   699                           
+   700                           ;CREATE_FILES/TIMER/timer.c: 10:     T0CONbits.T016BIT = 0x00;
+   701  0004EC  9CD5               	bcf	213,6,c	;volatile
+   702                           
+   703                           ;CREATE_FILES/TIMER/timer.c: 14:     T0CONbits.T0CS = 0x00;
+   704  0004EE  9AD5               	bcf	213,5,c	;volatile
+   705                           
+   706                           ;CREATE_FILES/TIMER/timer.c: 17:     T0CONbits.T0SE = 0x00;
+   707  0004F0  98D5               	bcf	213,4,c	;volatile
+   708                           
+   709                           ;CREATE_FILES/TIMER/timer.c: 18:     T0CONbits.PSA = 0x01;
+   710  0004F2  86D5               	bsf	213,3,c	;volatile
+   711                           
+   712                           ;CREATE_FILES/TIMER/timer.c: 21:     T0CONbits.T0PS0 = 0x01;
+   713  0004F4  80D5               	bsf	213,0,c	;volatile
+   714                           
+   715                           ;CREATE_FILES/TIMER/timer.c: 22:     T0CONbits.T0PS1 = 0x01;
+   716  0004F6  82D5               	bsf	213,1,c	;volatile
+   717                           
+   718                           ;CREATE_FILES/TIMER/timer.c: 23:     T0CONbits.T0PS2 = 0x01;
+   719  0004F8  84D5               	bsf	213,2,c	;volatile
+   720                           
+   721                           ;CREATE_FILES/TIMER/timer.c: 25:     T0CONbits.TMR0ON = 0x01;
+   722  0004FA  8ED5               	bsf	213,7,c	;volatile
+   723  0004FC  0012               	return		;funcret
+   724  0004FE                     __end_of_Timer_Init:
+   725                           	opt callstack 0
+   726                           
+   727 ;; *************** function _Interrupts_Configure *****************
+   728 ;; Defined at:
+   729 ;;		line 4 in file "CREATE_FILES/INTERRUPT/interrupts.c"
+   730 ;; Parameters:    Size  Location     Type
+   731 ;;		None
+   732 ;; Auto vars:     Size  Location     Type
+   733 ;;		None
+   734 ;; Return value:  Size  Location     Type
+   735 ;;                  1    wreg      void 
+   736 ;; Registers used:
+   737 ;;		None
+   738 ;; Tracked objects:
+   739 ;;		On entry : 0/0
+   740 ;;		On exit  : 0/0
+   741 ;;		Unchanged: 0/0
+   742 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   743 ;;      Params:         0       0       0       0       0       0       0
+   744 ;;      Locals:         0       0       0       0       0       0       0
+   745 ;;      Temps:          0       0       0       0       0       0       0
+   746 ;;      Totals:         0       0       0       0       0       0       0
+   747 ;;Total ram usage:        0 bytes
+   748 ;; Hardware stack levels used:    1
+   749 ;; Hardware stack levels required when called:    3
+   750 ;; This function calls:
+   751 ;;		Nothing
+   752 ;; This function is called by:
+   753 ;;		_main
+   754 ;; This function uses a non-reentrant model
+   755 ;;
+   756                           
+   757                           	psect	text5
+   758  0004FE                     __ptext5:
+   759                           	opt callstack 0
+   760  0004FE                     _Interrupts_Configure:
+   761                           	opt callstack 27
+   762  0004FE                     
+   763                           ;CREATE_FILES/INTERRUPT/interrupts.c: 9:     INTCONbits.GIE = 0x01;
+   764  0004FE  8EF2               	bsf	242,7,c	;volatile
+   765                           
+   766                           ;CREATE_FILES/INTERRUPT/interrupts.c: 10:     INTCONbits.GIEH = 0x01;
+   767  000500  8EF2               	bsf	242,7,c	;volatile
+   768                           
+   769                           ;CREATE_FILES/INTERRUPT/interrupts.c: 13:     RCONbits.IPEN = 0x01;
+   770  000502  8ED0               	bsf	208,7,c	;volatile
+   771                           
+   772                           ;CREATE_FILES/INTERRUPT/interrupts.c: 16:     INTCONbits.PEIE = 0x01;
+   773  000504  8CF2               	bsf	242,6,c	;volatile
+   774                           
+   775                           ;CREATE_FILES/INTERRUPT/interrupts.c: 17:     INTCONbits.GIEL = 0x01;
+   776  000506  8CF2               	bsf	242,6,c	;volatile
+   777                           
+   778                           ;CREATE_FILES/INTERRUPT/interrupts.c: 25:     INTCONbits.TMR0IE = 0x01;
+   779  000508  8AF2               	bsf	242,5,c	;volatile
+   780                           
+   781                           ;CREATE_FILES/INTERRUPT/interrupts.c: 26:     INTCON2bits.TMR0IP = 0x01;
+   782  00050A  84F1               	bsf	241,2,c	;volatile
+   783  00050C  0012               	return		;funcret
+   784  00050E                     __end_of_Interrupts_Configure:
+   785                           	opt callstack 0
+   786                           
+   787 ;; *************** function _TC0INT *****************
+   788 ;; Defined at:
+   789 ;;		line 115 in file "main.c"
+   790 ;; Parameters:    Size  Location     Type
+   791 ;;		None
+   792 ;; Auto vars:     Size  Location     Type
+   793 ;;		None
+   794 ;; Return value:  Size  Location     Type
+   795 ;;                  1    wreg      void 
+   796 ;; Registers used:
+   797 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+   798 ;; Tracked objects:
+   799 ;;		On entry : 0/0
+   800 ;;		On exit  : 0/0
+   801 ;;		Unchanged: 0/0
+   802 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   803 ;;      Params:         0       0       0       0       0       0       0
+   804 ;;      Locals:         0       0       0       0       0       0       0
+   805 ;;      Temps:          4       0       0       0       0       0       0
+   806 ;;      Totals:         4       0       0       0       0       0       0
+   807 ;;Total ram usage:        4 bytes
+   808 ;; Hardware stack levels used:    1
+   809 ;; Hardware stack levels required when called:    2
+   810 ;; This function calls:
+   811 ;;		_RowControl
+   812 ;;		_ScrollingDisplay
+   813 ;; This function is called by:
+   814 ;;		Interrupt level 2
+   815 ;; This function uses a non-reentrant model
+   816 ;;
+   817                           
+   818                           	psect	intcode
+   819  000008                     __pintcode:
+   820                           	opt callstack 0
+   821  000008                     _TC0INT:
+   822                           	opt callstack 27
+   823                           
+   824                           ;incstack = 0
+   825  000008  8268               	bsf	int$flags,1,c	;set compiler interrupt flag (level 2)
+   826  00000A  EDC9  F001         	call	int_func,f	;refresh shadow registers
+   827                           
+   828                           	psect	intcode_body
+   829  000392                     __pintcode_body:
+   830                           	opt callstack 27
+   831  000392                     int_func:
+   832                           	opt callstack 27
+   833  000392  0006               	pop		; remove dummy address from shadow register refresh
+   834  000394  CFD9 F056          	movff	fsr2l,??_TC0INT
+   835  000398  CFDA F057          	movff	fsr2h,??_TC0INT+1
+   836  00039C  CFF3 F058          	movff	prodl,??_TC0INT+2
+   837  0003A0  CFF4 F059          	movff	prodh,??_TC0INT+3
+   838  0003A4                     
+   839                           ;main.c: 117:     if(INTCONbits.TMR0IF == 0x01)
+   840  0003A4  A4F2               	btfss	242,2,c	;volatile
+   841  0003A6  EFD7  F001         	goto	i2u24_41
+   842  0003AA  EFD9  F001         	goto	i2u24_40
+   843  0003AE                     i2u24_41:
+   844  0003AE  EFFA  F001         	goto	i2l290
+   845  0003B2                     i2u24_40:
+   846  0003B2                     
+   847                           ;main.c: 118:     {;main.c: 119:         INTCONbits.GIE = 0x00;
+   848  0003B2  9EF2               	bcf	242,7,c	;volatile
+   849                           
+   850                           ;main.c: 120:         T0CONbits.TMR0ON = 0x00;
+   851  0003B4  9ED5               	bcf	213,7,c	;volatile
+   852  0003B6                     
+   853                           ;main.c: 122:         RowControl(&currRow, &posBit);
+   854  0003B6  0E44               	movlw	low _currRow
+   855  0003B8  6E45               	movwf	RowControl@currRow^0,c
+   856  0003BA  0E00               	movlw	high _currRow
+   857  0003BC  6E46               	movwf	(RowControl@currRow+1)^0,c
+   858  0003BE  0E43               	movlw	low _posBit
+   859  0003C0  6E47               	movwf	RowControl@PosBit^0,c
+   860  0003C2  0E00               	movlw	high _posBit
+   861  0003C4  6E48               	movwf	(RowControl@PosBit+1)^0,c
+   862  0003C6  ECDE  F000         	call	_RowControl	;wreg free
+   863  0003CA                     
+   864                           ;main.c: 123:         ScrollingDisplay(matrix, &currRow, &posBit);
+   865  0003CA  0E03               	movlw	low _matrix
+   866  0003CC  6E4B               	movwf	ScrollingDisplay@matrix^0,c
+   867  0003CE  0E00               	movlw	high _matrix
+   868  0003D0  6E4C               	movwf	(ScrollingDisplay@matrix+1)^0,c
+   869  0003D2  0E44               	movlw	low _currRow
+   870  0003D4  6E4D               	movwf	ScrollingDisplay@line^0,c
+   871  0003D6  0E00               	movlw	high _currRow
+   872  0003D8  6E4E               	movwf	(ScrollingDisplay@line+1)^0,c
+   873  0003DA  0E43               	movlw	low _posBit
+   874  0003DC  6E4F               	movwf	ScrollingDisplay@posBit^0,c
+   875  0003DE  0E00               	movlw	high _posBit
+   876  0003E0  6E50               	movwf	(ScrollingDisplay@posBit+1)^0,c
+   877  0003E2  EC09  F000         	call	_ScrollingDisplay	;wreg free
+   878  0003E6                     
+   879                           ;main.c: 125:         TMR0 = 0xF63C;
+   880  0003E6  0EF6               	movlw	246
+   881  0003E8  6ED7               	movwf	215,c	;volatile
+   882  0003EA  0E3C               	movlw	60
+   883  0003EC  6ED6               	movwf	214,c	;volatile
+   884  0003EE                     
+   885                           ;main.c: 126:         INTCONbits.T0IF = 0x00;
+   886  0003EE  94F2               	bcf	242,2,c	;volatile
+   887  0003F0                     
+   888                           ;main.c: 127:         INTCONbits.GIE = 0x01;
+   889  0003F0  8EF2               	bsf	242,7,c	;volatile
+   890  0003F2                     
+   891                           ;main.c: 128:         T0CONbits.TMR0ON = 0x01;
+   892  0003F2  8ED5               	bsf	213,7,c	;volatile
+   893  0003F4                     i2l290:
+   894  0003F4  C059  FFF4         	movff	??_TC0INT+3,prodh
+   895  0003F8  C058  FFF3         	movff	??_TC0INT+2,prodl
+   896  0003FC  C057  FFDA         	movff	??_TC0INT+1,fsr2h
+   897  000400  C056  FFD9         	movff	??_TC0INT,fsr2l
+   898  000404  9268               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
+   899  000406  0011               	retfie		f
+   900  000408                     __end_of_TC0INT:
+   901                           	opt callstack 0
+   902                           
+   903 ;; *************** function _ScrollingDisplay *****************
+   904 ;; Defined at:
+   905 ;;		line 44 in file "CREATE_FILES/SCROLLING_TEXT/scrolling_text.c"
+   906 ;; Parameters:    Size  Location     Type
+   907 ;;  matrix          2    6[COMRAM] PTR unsigned char [8]
+   908 ;;		 -> matrix(64), 
+   909 ;;  line            2    8[COMRAM] PTR char 
+   910 ;;		 -> currRow(1), 
+   911 ;;  posBit          2   10[COMRAM] PTR char 
+   912 ;;		 -> posBit(1), 
+   913 ;; Auto vars:     Size  Location     Type
+   914 ;;  lastBit         1   16[COMRAM] char 
+   915 ;; Return value:  Size  Location     Type
+   916 ;;                  1    wreg      void 
+   917 ;; Registers used:
+   918 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+   919 ;; Tracked objects:
+   920 ;;		On entry : 0/0
+   921 ;;		On exit  : 0/0
+   922 ;;		Unchanged: 0/0
+   923 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   924 ;;      Params:         6       0       0       0       0       0       0
+   925 ;;      Locals:         1       0       0       0       0       0       0
+   926 ;;      Temps:          4       0       0       0       0       0       0
+   927 ;;      Totals:        11       0       0       0       0       0       0
+   928 ;;Total ram usage:       11 bytes
+   929 ;; Hardware stack levels used:    1
+   930 ;; Hardware stack levels required when called:    1
+   931 ;; This function calls:
+   932 ;;		___wmul
+   933 ;; This function is called by:
+   934 ;;		_TC0INT
+   935 ;; This function uses a non-reentrant model
+   936 ;;
+   937                           
+   938                           	psect	text7
+   939  000012                     __ptext7:
+   940                           	opt callstack 0
+   941  000012                     _ScrollingDisplay:
+   942                           	opt callstack 27
+   943  000012  5080               	movf	128,w,c	;volatile
+   944  000014  0BEF               	andlw	239
+   945  000016  6E89               	movwf	137,c	;volatile
+   946  000018  5080               	movf	128,w,c	;volatile
+   947  00001A  0920               	iorlw	32
+   948  00001C  6E89               	movwf	137,c	;volatile
+   949  00001E                     
+   950                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 49:     if(0x00 == 0x00) LATA = (PORTA & 
+      +                          ~((1 << 5))); if(0x01 == 0x00) LATA = (PORTA | (1 << 5));;
+   951  00001E  D000               	nop2		;2 cycle nop
+   952  000020  5080               	movf	128,w,c	;volatile
+   953  000022  0BDF               	andlw	223
+   954  000024  6E89               	movwf	137,c	;volatile
+   955  000026  5080               	movf	128,w,c	;volatile
+   956  000028  0910               	iorlw	16
+   957  00002A  6E89               	movwf	137,c	;volatile
+   958  00002C                     
+   959                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 54:     if(*posBit != 0x07)
+   960  00002C  C04F  FFD9         	movff	ScrollingDisplay@posBit,fsr2l
+   961  000030  C050  FFDA         	movff	ScrollingDisplay@posBit+1,fsr2h
+   962  000034  0E07               	movlw	7
+   963  000036  18DE               	xorwf	postinc2,w,c
+   964  000038  B4D8               	btfsc	status,2,c
+   965  00003A  EF21  F000         	goto	i2u19_41
+   966  00003E  EF23  F000         	goto	i2u19_40
+   967  000042                     i2u19_41:
+   968  000042  EF79  F000         	goto	i2l1455
+   969  000046                     i2u19_40:
+   970  000046                     
+   971                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 55:     {;CREATE_FILES/SCROLLING_TEXT/scr
+      +                          olling_text.c: 57:         int8_t lastBit;;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c:
+      +                           58:         for(lastBit = 7; lastBit >= *posBit; lastBit--)
+   972  000046  0E07               	movlw	7
+   973  000048  6E55               	movwf	ScrollingDisplay@lastBit^0,c
+   974  00004A  EF66  F000         	goto	i2l1453
+   975  00004E                     i2l1429:
+   976                           
+   977                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 59:         {;CREATE_FILES/SCROLLING_TEXT
+      +                          /scrolling_text.c: 60:             if(matrix[*line][lastBit])
+   978  00004E  C055  F051         	movff	ScrollingDisplay@lastBit,??_ScrollingDisplay
+   979  000052  6A52               	clrf	(??_ScrollingDisplay+1)^0,c
+   980  000054  BE51               	btfsc	??_ScrollingDisplay^0,7,c
+   981  000056  0652               	decf	(??_ScrollingDisplay+1)^0,f,c
+   982  000058  C04D  FFD9         	movff	ScrollingDisplay@line,fsr2l
+   983  00005C  C04E  FFDA         	movff	ScrollingDisplay@line+1,fsr2h
+   984  000060  50DF               	movf	indf2,w,c
+   985  000062  6E45               	movwf	___wmul@multiplier^0,c
+   986  000064  6A46               	clrf	(___wmul@multiplier+1)^0,c
+   987  000066  BE45               	btfsc	___wmul@multiplier^0,7,c
+   988  000068  0646               	decf	(___wmul@multiplier+1)^0,f,c
+   989  00006A  0E00               	movlw	0
+   990  00006C  6E48               	movwf	(___wmul@multiplicand+1)^0,c
+   991  00006E  0E08               	movlw	8
+   992  000070  6E47               	movwf	___wmul@multiplicand^0,c
+   993  000072  EC62  F002         	call	___wmul	;wreg free
+   994  000076  C04B  F053         	movff	ScrollingDisplay@matrix,??_ScrollingDisplay+2
+   995  00007A  C04C  F054         	movff	ScrollingDisplay@matrix+1,??_ScrollingDisplay+3
+   996  00007E  5045               	movf	?___wmul^0,w,c
+   997  000080  2653               	addwf	(??_ScrollingDisplay+2)^0,f,c
+   998  000082  5046               	movf	(?___wmul+1)^0,w,c
+   999  000084  2254               	addwfc	(??_ScrollingDisplay+3)^0,f,c
+  1000  000086  5051               	movf	??_ScrollingDisplay^0,w,c
+  1001  000088  2453               	addwf	(??_ScrollingDisplay+2)^0,w,c
+  1002  00008A  6ED9               	movwf	fsr2l,c
+  1003  00008C  5052               	movf	(??_ScrollingDisplay+1)^0,w,c
+  1004  00008E  2054               	addwfc	(??_ScrollingDisplay+3)^0,w,c
+  1005  000090  6EDA               	movwf	fsr2h,c
+  1006  000092  50DF               	movf	indf2,w,c
+  1007  000094  B4D8               	btfsc	status,2,c
+  1008  000096  EF4F  F000         	goto	i2u20_41
+  1009  00009A  EF51  F000         	goto	i2u20_40
+  1010  00009E                     i2u20_41:
+  1011  00009E  EF5D  F000         	goto	i2l1441
+  1012  0000A2                     i2u20_40:
+  1013  0000A2  5082               	movf	130,w,c	;volatile
+  1014  0000A4  0920               	iorlw	32
+  1015  0000A6  6E8B               	movwf	139,c	;volatile
+  1016  0000A8  5082               	movf	130,w,c	;volatile
+  1017  0000AA  0908               	iorlw	8
+  1018  0000AC  6E8B               	movwf	139,c	;volatile
+  1019  0000AE                     i2l1437:
+  1020                           
+  1021                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 65:                 if(0x00 == 0x00) LATC
       +                           = (PORTC & ~((1 << 3))); if(0x01 == 0x00) LATC = (PORTC | (1 << 3));;
-   931  000206  D000               	nop2		;2 cycle nop
-   932  000208  5082               	movf	130,w,c	;volatile
-   933  00020A  0BF7               	andlw	247
-   934  00020C  6E8B               	movwf	139,c	;volatile
-   935  00020E  EF11  F001         	goto	i2l1513
-   936  000212                     i2l1503:
-   937  000212  5082               	movf	130,w,c	;volatile
-   938  000214  0BDF               	andlw	223
-   939  000216  6E8B               	movwf	139,c	;volatile
-   940  000218  5082               	movf	130,w,c	;volatile
-   941  00021A  0908               	iorlw	8
-   942  00021C  6E8B               	movwf	139,c	;volatile
-   943  00021E  EF03  F001         	goto	i2l1499
-   944  000222                     i2l1513:
-   945                           
-   946                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 72:             varAux--;
-   947  000222  064D               	decf	ScrollingDisplay@varAux^0,f,c
-   948                           
-   949                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 73:         };CREATE_FILES/SCROLLING_TEXT
-      +                          /scrolling_text.c: 77:     }else
-   950  000224  EF46  F001         	goto	i2l142
-   951  000228                     i2l1515:
-   952                           
-   953                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 78:     {;CREATE_FILES/SCROLLING_TEXT/scr
-      +                          olling_text.c: 80:         if(matrix[*line][PosBit])
-   954  000228  C047  FFD9         	movff	ScrollingDisplay@line,fsr2l
-   955  00022C  C048  FFDA         	movff	ScrollingDisplay@line+1,fsr2h
-   956  000230  50DF               	movf	indf2,w,c
-   957  000232  6E4A               	movwf	??_ScrollingDisplay^0,c
-   958  000234  504A               	movf	??_ScrollingDisplay^0,w,c
-   959  000236  0D08               	mullw	8
-   960  000238  C045  F04B         	movff	ScrollingDisplay@matrix,??_ScrollingDisplay+1
-   961  00023C  C046  F04C         	movff	ScrollingDisplay@matrix+1,??_ScrollingDisplay+2
-   962  000240  50F3               	movf	243,w,c
-   963  000242  264B               	addwf	(??_ScrollingDisplay+1)^0,f,c
-   964  000244  50F4               	movf	244,w,c
-   965  000246  224C               	addwfc	(??_ScrollingDisplay+2)^0,f,c
-   966  000248  5049               	movf	ScrollingDisplay@PosBit^0,w,c
-   967  00024A  244B               	addwf	(??_ScrollingDisplay+1)^0,w,c
-   968  00024C  6ED9               	movwf	fsr2l,c
-   969  00024E  0E00               	movlw	0
-   970  000250  204C               	addwfc	(??_ScrollingDisplay+2)^0,w,c
-   971  000252  6EDA               	movwf	fsr2h,c
-   972  000254  50DF               	movf	indf2,w,c
-   973  000256  B4D8               	btfsc	status,2,c
-   974  000258  EF30  F001         	goto	i2u23_41
-   975  00025C  EF32  F001         	goto	i2u23_40
-   976  000260                     i2u23_41:
-   977  000260  EF3E  F001         	goto	i2l1527
-   978  000264                     i2u23_40:
-   979  000264  5082               	movf	130,w,c	;volatile
-   980  000266  0920               	iorlw	32
-   981  000268  6E8B               	movwf	139,c	;volatile
-   982  00026A  5082               	movf	130,w,c	;volatile
-   983  00026C  0908               	iorlw	8
-   984  00026E  6E8B               	movwf	139,c	;volatile
-   985  000270                     i2l1523:
-   986                           
-   987                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 87:             if(0x00 == 0x00) LATC = (
+  1022  0000AE  D000               	nop2		;2 cycle nop
+  1023  0000B0  5082               	movf	130,w,c	;volatile
+  1024  0000B2  0BF7               	andlw	247
+  1025  0000B4  6E8B               	movwf	139,c	;volatile
+  1026  0000B6  EF65  F000         	goto	i2l1451
+  1027  0000BA                     i2l1441:
+  1028  0000BA  5082               	movf	130,w,c	;volatile
+  1029  0000BC  0BDF               	andlw	223
+  1030  0000BE  6E8B               	movwf	139,c	;volatile
+  1031  0000C0  5082               	movf	130,w,c	;volatile
+  1032  0000C2  0908               	iorlw	8
+  1033  0000C4  6E8B               	movwf	139,c	;volatile
+  1034  0000C6  EF57  F000         	goto	i2l1437
+  1035  0000CA                     i2l1451:
+  1036                           
+  1037                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 74:         }
+  1038  0000CA  0655               	decf	ScrollingDisplay@lastBit^0,f,c
+  1039  0000CC                     i2l1453:
+  1040  0000CC  C04F  FFD9         	movff	ScrollingDisplay@posBit,fsr2l
+  1041  0000D0  C050  FFDA         	movff	ScrollingDisplay@posBit+1,fsr2h
+  1042  0000D4  5055               	movf	ScrollingDisplay@lastBit^0,w,c
+  1043  0000D6  0A80               	xorlw	128
+  1044  0000D8  6E52               	movwf	(??_ScrollingDisplay+1)^0,c
+  1045  0000DA  50DE               	movf	postinc2,w,c
+  1046  0000DC  0A80               	xorlw	128
+  1047  0000DE  5C52               	subwf	(??_ScrollingDisplay+1)^0,w,c
+  1048  0000E0  B0D8               	btfsc	status,0,c
+  1049  0000E2  EF75  F000         	goto	i2u21_41
+  1050  0000E6  EF77  F000         	goto	i2u21_40
+  1051  0000EA                     i2u21_41:
+  1052  0000EA  EF27  F000         	goto	i2l1429
+  1053  0000EE                     i2u21_40:
+  1054  0000EE  EFBB  F000         	goto	i2l151
+  1055  0000F2                     i2l1455:
+  1056                           
+  1057                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 78:     {;CREATE_FILES/SCROLLING_TEXT/scr
+      +                          olling_text.c: 79:         if(matrix[*line][*posBit])
+  1058  0000F2  C04F  FFD9         	movff	ScrollingDisplay@posBit,fsr2l
+  1059  0000F6  C050  FFDA         	movff	ScrollingDisplay@posBit+1,fsr2h
+  1060  0000FA  50DF               	movf	indf2,w,c
+  1061  0000FC  6E51               	movwf	??_ScrollingDisplay^0,c
+  1062  0000FE  6A52               	clrf	(??_ScrollingDisplay+1)^0,c
+  1063  000100  BE51               	btfsc	??_ScrollingDisplay^0,7,c
+  1064  000102  0652               	decf	(??_ScrollingDisplay+1)^0,f,c
+  1065  000104  C04D  FFD9         	movff	ScrollingDisplay@line,fsr2l
+  1066  000108  C04E  FFDA         	movff	ScrollingDisplay@line+1,fsr2h
+  1067  00010C  50DF               	movf	indf2,w,c
+  1068  00010E  6E45               	movwf	___wmul@multiplier^0,c
+  1069  000110  6A46               	clrf	(___wmul@multiplier+1)^0,c
+  1070  000112  BE45               	btfsc	___wmul@multiplier^0,7,c
+  1071  000114  0646               	decf	(___wmul@multiplier+1)^0,f,c
+  1072  000116  0E00               	movlw	0
+  1073  000118  6E48               	movwf	(___wmul@multiplicand+1)^0,c
+  1074  00011A  0E08               	movlw	8
+  1075  00011C  6E47               	movwf	___wmul@multiplicand^0,c
+  1076  00011E  EC62  F002         	call	___wmul	;wreg free
+  1077  000122  C04B  F053         	movff	ScrollingDisplay@matrix,??_ScrollingDisplay+2
+  1078  000126  C04C  F054         	movff	ScrollingDisplay@matrix+1,??_ScrollingDisplay+3
+  1079  00012A  5045               	movf	?___wmul^0,w,c
+  1080  00012C  2653               	addwf	(??_ScrollingDisplay+2)^0,f,c
+  1081  00012E  5046               	movf	(?___wmul+1)^0,w,c
+  1082  000130  2254               	addwfc	(??_ScrollingDisplay+3)^0,f,c
+  1083  000132  5051               	movf	??_ScrollingDisplay^0,w,c
+  1084  000134  2453               	addwf	(??_ScrollingDisplay+2)^0,w,c
+  1085  000136  6ED9               	movwf	fsr2l,c
+  1086  000138  5052               	movf	(??_ScrollingDisplay+1)^0,w,c
+  1087  00013A  2054               	addwfc	(??_ScrollingDisplay+3)^0,w,c
+  1088  00013C  6EDA               	movwf	fsr2h,c
+  1089  00013E  50DF               	movf	indf2,w,c
+  1090  000140  B4D8               	btfsc	status,2,c
+  1091  000142  EFA5  F000         	goto	i2u22_41
+  1092  000146  EFA7  F000         	goto	i2u22_40
+  1093  00014A                     i2u22_41:
+  1094  00014A  EFB3  F000         	goto	i2l1467
+  1095  00014E                     i2u22_40:
+  1096  00014E  5082               	movf	130,w,c	;volatile
+  1097  000150  0920               	iorlw	32
+  1098  000152  6E8B               	movwf	139,c	;volatile
+  1099  000154  5082               	movf	130,w,c	;volatile
+  1100  000156  0908               	iorlw	8
+  1101  000158  6E8B               	movwf	139,c	;volatile
+  1102  00015A                     i2l1463:
+  1103                           
+  1104                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 84:             if(0x00 == 0x00) LATC = (
       +                          PORTC & ~((1 << 3))); if(0x01 == 0x00) LATC = (PORTC | (1 << 3));;
-   988  000270  D000               	nop2		;2 cycle nop
-   989  000272  5082               	movf	130,w,c	;volatile
-   990  000274  0BF7               	andlw	247
-   991  000276  6E8B               	movwf	139,c	;volatile
-   992  000278  EF46  F001         	goto	i2l142
-   993  00027C                     i2l1527:
-   994  00027C  5082               	movf	130,w,c	;volatile
-   995  00027E  0BDF               	andlw	223
-   996  000280  6E8B               	movwf	139,c	;volatile
-   997  000282  5082               	movf	130,w,c	;volatile
-   998  000284  0908               	iorlw	8
-   999  000286  6E8B               	movwf	139,c	;volatile
-  1000  000288  EF38  F001         	goto	i2l1523
-  1001  00028C                     i2l142:
-  1002  00028C  5080               	movf	128,w,c	;volatile
-  1003  00028E  0920               	iorlw	32
-  1004  000290  6E89               	movwf	137,c	;volatile
-  1005  000292                     
-  1006                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 144:     if(0x00 == 0x00) LATA = (PORTA &
-      +                           ~((1 << 5))); if(0x01 == 0x00) LATA = (PORTA | (1 << 5));;
-  1007  000292  D000               	nop2		;2 cycle nop
-  1008  000294  5080               	movf	128,w,c	;volatile
-  1009  000296  0BDF               	andlw	223
-  1010  000298  6E89               	movwf	137,c	;volatile
-  1011  00029A  0012               	return		;funcret
-  1012  00029C                     __end_of_ScrollingDisplay:
-  1013                           	opt callstack 0
-  1014                           
-  1015 ;; *************** function _RowControl *****************
-  1016 ;; Defined at:
-  1017 ;;		line 13 in file "CREATE_FILES/CONTROL_LINES/line_control.c"
-  1018 ;; Parameters:    Size  Location     Type
-  1019 ;;  currRow         2    0[COMRAM] PTR unsigned char 
-  1020 ;;		 -> currRow(1), 
-  1021 ;;  PosBit          2    2[COMRAM] PTR unsigned char 
-  1022 ;;		 -> PosBit(1), 
-  1023 ;; Auto vars:     Size  Location     Type
-  1024 ;;  row             1    7[COMRAM] unsigned char 
-  1025 ;;  col             1    6[COMRAM] unsigned char 
-  1026 ;; Return value:  Size  Location     Type
-  1027 ;;                  1    wreg      void 
-  1028 ;; Registers used:
-  1029 ;;		wreg, fsr2l, fsr2h, status,2, status,0
-  1030 ;; Tracked objects:
-  1031 ;;		On entry : 0/0
-  1032 ;;		On exit  : 0/0
-  1033 ;;		Unchanged: 0/0
-  1034 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-  1035 ;;      Params:         4       0       0       0       0       0       0
-  1036 ;;      Locals:         2       0       0       0       0       0       0
-  1037 ;;      Temps:          2       0       0       0       0       0       0
-  1038 ;;      Totals:         8       0       0       0       0       0       0
-  1039 ;;Total ram usage:        8 bytes
-  1040 ;; Hardware stack levels used:    1
-  1041 ;; This function calls:
-  1042 ;;		Nothing
-  1043 ;; This function is called by:
-  1044 ;;		_TC0INT
-  1045 ;; This function uses a non-reentrant model
-  1046 ;;
-  1047                           
-  1048                           	psect	text7
-  1049  000012                     __ptext7:
-  1050                           	opt callstack 0
-  1051  000012                     _RowControl:
-  1052                           	opt callstack 28
-  1053  000012                     
-  1054                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 13: void RowControl(uint8_t* currRow, uint8_
-      +                          t* PosBit);CREATE_FILES/CONTROL_LINES/line_control.c: 14: {;CREATE_FILES/CONTROL_LINES/l
-      +                          ine_control.c: 15:     uint8_t row = *currRow;
-  1055  000012  C045  FFD9         	movff	RowControl@currRow,fsr2l
-  1056  000016  C046  FFDA         	movff	RowControl@currRow+1,fsr2h
-  1057  00001A  50DF               	movf	indf2,w,c
-  1058  00001C  6E4C               	movwf	RowControl@row^0,c
-  1059                           
-  1060                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 16:     uint8_t col = *PosBit;
-  1061  00001E  C047  FFD9         	movff	RowControl@PosBit,fsr2l
-  1062  000022  C048  FFDA         	movff	RowControl@PosBit+1,fsr2h
-  1063  000026  50DF               	movf	indf2,w,c
-  1064  000028  6E4B               	movwf	RowControl@col^0,c
-  1065                           
-  1066                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 17:     switch(row)
-  1067  00002A  EF92  F000         	goto	i2l1439
-  1068  00002E                     i2l18:
-  1069  00002E  5081               	movf	129,w,c	;volatile
-  1070  000030  0901               	iorlw	1
-  1071  000032  6E8A               	movwf	138,c	;volatile
-  1072  000034  5081               	movf	129,w,c	;volatile
-  1073  000036  0BFD               	andlw	253
-  1074  000038  6E8A               	movwf	138,c	;volatile
-  1075  00003A                     i2l21:
-  1076  00003A  5081               	movf	129,w,c	;volatile
-  1077  00003C  0BFB               	andlw	251
-  1078  00003E  6E8A               	movwf	138,c	;volatile
-  1079  000040                     i2l1349:
-  1080                           
-  1081                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 23:             row++;
-  1082  000040  2A4C               	incf	RowControl@row^0,f,c
-  1083  000042                     
-  1084                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 24:             *currRow = row;
-  1085  000042  C045  FFD9         	movff	RowControl@currRow,fsr2l
-  1086  000046  C046  FFDA         	movff	RowControl@currRow+1,fsr2h
-  1087  00004A  C04C  FFDF         	movff	RowControl@row,indf2
-  1088                           
-  1089                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 25:             break;
-  1090  00004E  EFBF  F000         	goto	i2l79
-  1091  000052                     i2l1353:
-  1092  000052  5081               	movf	129,w,c	;volatile
-  1093  000054  0BFE               	andlw	254
-  1094  000056  6E8A               	movwf	138,c	;volatile
-  1095  000058  5081               	movf	129,w,c	;volatile
-  1096  00005A  0902               	iorlw	2
-  1097  00005C  6E8A               	movwf	138,c	;volatile
-  1098  00005E  EF1D  F000         	goto	i2l21
-  1099  000062                     i2l33:
-  1100  000062  5081               	movf	129,w,c	;volatile
-  1101  000064  0901               	iorlw	1
-  1102  000066  6E8A               	movwf	138,c	;volatile
-  1103  000068  5081               	movf	129,w,c	;volatile
-  1104  00006A  0902               	iorlw	2
-  1105  00006C  6E8A               	movwf	138,c	;volatile
-  1106  00006E  EF1D  F000         	goto	i2l21
-  1107  000072                     i2l1375:
-  1108  000072  5081               	movf	129,w,c	;volatile
-  1109  000074  0BFE               	andlw	254
-  1110  000076  6E8A               	movwf	138,c	;volatile
-  1111  000078  5081               	movf	129,w,c	;volatile
-  1112  00007A  0BFD               	andlw	253
-  1113  00007C  6E8A               	movwf	138,c	;volatile
-  1114  00007E  5081               	movf	129,w,c	;volatile
-  1115  000080  0904               	iorlw	4
-  1116  000082  6E8A               	movwf	138,c	;volatile
-  1117  000084  EF20  F000         	goto	i2l1349
-  1118  000088                     i2l47:
-  1119  000088  5081               	movf	129,w,c	;volatile
-  1120  00008A  0901               	iorlw	1
-  1121  00008C  6E8A               	movwf	138,c	;volatile
-  1122  00008E  5081               	movf	129,w,c	;volatile
-  1123  000090  0BFD               	andlw	253
-  1124  000092  6E8A               	movwf	138,c	;volatile
-  1125  000094  5081               	movf	129,w,c	;volatile
-  1126  000096  0904               	iorlw	4
-  1127  000098  6E8A               	movwf	138,c	;volatile
-  1128  00009A  EF20  F000         	goto	i2l1349
-  1129  00009E                     i2l1397:
-  1130  00009E  5081               	movf	129,w,c	;volatile
-  1131  0000A0  0BFE               	andlw	254
-  1132  0000A2  6E8A               	movwf	138,c	;volatile
-  1133  0000A4  5081               	movf	129,w,c	;volatile
-  1134  0000A6  0902               	iorlw	2
-  1135  0000A8  6E8A               	movwf	138,c	;volatile
-  1136  0000AA  5081               	movf	129,w,c	;volatile
-  1137  0000AC  0904               	iorlw	4
-  1138  0000AE  6E8A               	movwf	138,c	;volatile
-  1139  0000B0  EF20  F000         	goto	i2l1349
-  1140  0000B4                     i2l61:
-  1141  0000B4  5081               	movf	129,w,c	;volatile
-  1142  0000B6  0901               	iorlw	1
-  1143  0000B8  6E8A               	movwf	138,c	;volatile
-  1144  0000BA  5081               	movf	129,w,c	;volatile
-  1145  0000BC  0902               	iorlw	2
-  1146  0000BE  6E8A               	movwf	138,c	;volatile
-  1147  0000C0  5081               	movf	129,w,c	;volatile
-  1148  0000C2  0904               	iorlw	4
-  1149  0000C4  6E8A               	movwf	138,c	;volatile
-  1150  0000C6  EF20  F000         	goto	i2l1349
-  1151  0000CA                     i2l1419:
-  1152  0000CA  5081               	movf	129,w,c	;volatile
-  1153  0000CC  0BFE               	andlw	254
-  1154  0000CE  6E8A               	movwf	138,c	;volatile
-  1155  0000D0  5081               	movf	129,w,c	;volatile
-  1156  0000D2  0BFD               	andlw	253
-  1157  0000D4  6E8A               	movwf	138,c	;volatile
-  1158  0000D6  5081               	movf	129,w,c	;volatile
-  1159  0000D8  0BFB               	andlw	251
-  1160  0000DA  6E8A               	movwf	138,c	;volatile
-  1161  0000DC                     
-  1162                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 73:             if((0x07 - col) >= 0x00)
-  1163  0000DC  0E07               	movlw	7
-  1164  0000DE  6E49               	movwf	??_RowControl^0,c
-  1165  0000E0  0E00               	movlw	0
-  1166  0000E2  6E4A               	movwf	(??_RowControl+1)^0,c
-  1167  0000E4  504B               	movf	RowControl@col^0,w,c
-  1168  0000E6  5E49               	subwf	??_RowControl^0,f,c
-  1169  0000E8  0E00               	movlw	0
-  1170  0000EA  5A4A               	subwfb	(??_RowControl+1)^0,f,c
-  1171  0000EC  BE4A               	btfsc	(??_RowControl+1)^0,7,c
-  1172  0000EE  EF7B  F000         	goto	i2u15_41
-  1173  0000F2  EF7D  F000         	goto	i2u15_40
-  1174  0000F6                     i2u15_41:
-  1175  0000F6  EF80  F000         	goto	i2l1433
-  1176  0000FA                     i2u15_40:
-  1177  0000FA                     
-  1178                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 74:             {;CREATE_FILES/CONTROL_LINES
-      +                          /line_control.c: 75:                 col--;
-  1179  0000FA  064B               	decf	RowControl@col^0,f,c
-  1180                           
-  1181                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 76:             }else
-  1182  0000FC  EF82  F000         	goto	i2l1435
-  1183  000100                     i2l1433:
+  1105  00015A  D000               	nop2		;2 cycle nop
+  1106  00015C  5082               	movf	130,w,c	;volatile
+  1107  00015E  0BF7               	andlw	247
+  1108  000160  6E8B               	movwf	139,c	;volatile
+  1109  000162  EFBB  F000         	goto	i2l151
+  1110  000166                     i2l1467:
+  1111  000166  5082               	movf	130,w,c	;volatile
+  1112  000168  0BDF               	andlw	223
+  1113  00016A  6E8B               	movwf	139,c	;volatile
+  1114  00016C  5082               	movf	130,w,c	;volatile
+  1115  00016E  0908               	iorlw	8
+  1116  000170  6E8B               	movwf	139,c	;volatile
+  1117  000172  EFAD  F000         	goto	i2l1463
+  1118  000176                     i2l151:
+  1119  000176  5080               	movf	128,w,c	;volatile
+  1120  000178  0920               	iorlw	32
+  1121  00017A  6E89               	movwf	137,c	;volatile
+  1122  00017C                     
+  1123                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 97:     if(0x00 == 0x00) LATA = (PORTA & 
+      +                          ~((1 << 5))); if(0x01 == 0x00) LATA = (PORTA | (1 << 5));;
+  1124  00017C  D000               	nop2		;2 cycle nop
+  1125  00017E  5080               	movf	128,w,c	;volatile
+  1126  000180  0BDF               	andlw	223
+  1127  000182  6E89               	movwf	137,c	;volatile
+  1128  000184                     
+  1129                           ;CREATE_FILES/SCROLLING_TEXT/scrolling_text.c: 98:     (*line < 0x07)?((*line)++):((*lin
+      +                          e) = 0x00);
+  1130  000184  C04D  FFD9         	movff	ScrollingDisplay@line,fsr2l
+  1131  000188  C04E  FFDA         	movff	ScrollingDisplay@line+1,fsr2h
+  1132  00018C  50DF               	movf	indf2,w,c
+  1133  00018E  0A80               	xorlw	128
+  1134  000190  0F79               	addlw	-135
+  1135  000192  B0D8               	btfsc	status,0,c
+  1136  000194  EFCE  F000         	goto	i2u23_41
+  1137  000198  EFD0  F000         	goto	i2u23_40
+  1138  00019C                     i2u23_41:
+  1139  00019C  EFD7  F000         	goto	i2l1487
+  1140  0001A0                     i2u23_40:
+  1141  0001A0  C04D  FFD9         	movff	ScrollingDisplay@line,fsr2l
+  1142  0001A4  C04E  FFDA         	movff	ScrollingDisplay@line+1,fsr2h
+  1143  0001A8  2ADF               	incf	indf2,f,c
+  1144  0001AA  EFDD  F000         	goto	i2l159
+  1145  0001AE                     i2l1487:
+  1146  0001AE  C04D  FFD9         	movff	ScrollingDisplay@line,fsr2l
+  1147  0001B2  C04E  FFDA         	movff	ScrollingDisplay@line+1,fsr2h
+  1148  0001B6  0E00               	movlw	0
+  1149  0001B8  6EDF               	movwf	indf2,c
+  1150  0001BA                     i2l159:
+  1151  0001BA  0012               	return		;funcret
+  1152  0001BC                     __end_of_ScrollingDisplay:
+  1153                           	opt callstack 0
+  1154                           
+  1155 ;; *************** function ___wmul *****************
+  1156 ;; Defined at:
+  1157 ;;		line 15 in file "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\Umul16.c"
+  1158 ;; Parameters:    Size  Location     Type
+  1159 ;;  multiplier      2    0[COMRAM] unsigned int 
+  1160 ;;  multiplicand    2    2[COMRAM] unsigned int 
+  1161 ;; Auto vars:     Size  Location     Type
+  1162 ;;  product         2    4[COMRAM] unsigned int 
+  1163 ;; Return value:  Size  Location     Type
+  1164 ;;                  2    0[COMRAM] unsigned int 
+  1165 ;; Registers used:
+  1166 ;;		wreg, status,2, status,0, prodl, prodh
+  1167 ;; Tracked objects:
+  1168 ;;		On entry : 0/0
+  1169 ;;		On exit  : 0/0
+  1170 ;;		Unchanged: 0/0
+  1171 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1172 ;;      Params:         4       0       0       0       0       0       0
+  1173 ;;      Locals:         2       0       0       0       0       0       0
+  1174 ;;      Temps:          0       0       0       0       0       0       0
+  1175 ;;      Totals:         6       0       0       0       0       0       0
+  1176 ;;Total ram usage:        6 bytes
+  1177 ;; Hardware stack levels used:    1
+  1178 ;; This function calls:
+  1179 ;;		Nothing
+  1180 ;; This function is called by:
+  1181 ;;		_ScrollingDisplay
+  1182 ;; This function uses a non-reentrant model
+  1183 ;;
   1184                           
-  1185                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 77:             {;CREATE_FILES/CONTROL_LINES
-      +                          /line_control.c: 78:                 col = 0x07;
-  1186  000100  0E07               	movlw	7
-  1187  000102  6E4B               	movwf	RowControl@col^0,c
-  1188  000104                     i2l1435:
-  1189                           
-  1190                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 80:             *currRow = row;
-  1191  000104  C045  FFD9         	movff	RowControl@currRow,fsr2l
-  1192  000108  C046  FFDA         	movff	RowControl@currRow+1,fsr2h
-  1193  00010C  0E00               	movlw	0
-  1194  00010E  6EDF               	movwf	indf2,c
-  1195  000110                     
-  1196                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 81:             *PosBit = col;
-  1197  000110  C047  FFD9         	movff	RowControl@PosBit,fsr2l
-  1198  000114  C048  FFDA         	movff	RowControl@PosBit+1,fsr2h
-  1199  000118  C04B  FFDF         	movff	RowControl@col,indf2
-  1200                           
-  1201                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 82:             break;
-  1202  00011C  EFBF  F000         	goto	i2l79
-  1203  000120                     i2l76:
-  1204  000120  EF90  F000         	goto	i2l76
-  1205  000124                     i2l1439:
-  1206  000124  504C               	movf	RowControl@row^0,w,c
-  1207  000126  6E49               	movwf	??_RowControl^0,c
-  1208  000128  6A4A               	clrf	(??_RowControl+1)^0,c
-  1209                           
-  1210                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
+  1185                           	psect	text8
+  1186  0004C4                     __ptext8:
+  1187                           	opt callstack 0
+  1188  0004C4                     ___wmul:
+  1189                           	opt callstack 27
+  1190  0004C4  5045               	movf	___wmul@multiplier^0,w,c
+  1191  0004C6  0247               	mulwf	___wmul@multiplicand^0,c
+  1192  0004C8  CFF3 F049          	movff	prodl,___wmul@product
+  1193  0004CC  CFF4 F04A          	movff	prodh,___wmul@product+1
+  1194  0004D0  5045               	movf	___wmul@multiplier^0,w,c
+  1195  0004D2  0248               	mulwf	(___wmul@multiplicand+1)^0,c
+  1196  0004D4  50F3               	movf	243,w,c
+  1197  0004D6  264A               	addwf	(___wmul@product+1)^0,f,c
+  1198  0004D8  5046               	movf	(___wmul@multiplier+1)^0,w,c
+  1199  0004DA  0247               	mulwf	___wmul@multiplicand^0,c
+  1200  0004DC  50F3               	movf	243,w,c
+  1201  0004DE  264A               	addwf	(___wmul@product+1)^0,f,c
+  1202  0004E0  C049  F045         	movff	___wmul@product,?___wmul
+  1203  0004E4  C04A  F046         	movff	___wmul@product+1,?___wmul+1
+  1204  0004E8  0012               	return		;funcret
+  1205  0004EA                     __end_of___wmul:
+  1206                           	opt callstack 0
+  1207                           
+  1208 ;; *************** function _RowControl *****************
+  1209 ;; Defined at:
+  1210 ;;		line 13 in file "CREATE_FILES/CONTROL_LINES/line_control.c"
+  1211 ;; Parameters:    Size  Location     Type
+  1212 ;;  currRow         2    0[COMRAM] PTR char 
+  1213 ;;		 -> currRow(1), 
+  1214 ;;  PosBit          2    2[COMRAM] PTR char 
+  1215 ;;		 -> posBit(1), 
+  1216 ;; Auto vars:     Size  Location     Type
+  1217 ;;  row             1    7[COMRAM] char 
+  1218 ;;  col             1    0        char 
+  1219 ;; Return value:  Size  Location     Type
+  1220 ;;                  1    wreg      void 
+  1221 ;; Registers used:
+  1222 ;;		wreg, fsr2l, fsr2h, status,2, status,0
+  1223 ;; Tracked objects:
+  1224 ;;		On entry : 0/0
+  1225 ;;		On exit  : 0/0
+  1226 ;;		Unchanged: 0/0
+  1227 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1228 ;;      Params:         4       0       0       0       0       0       0
+  1229 ;;      Locals:         2       0       0       0       0       0       0
+  1230 ;;      Temps:          2       0       0       0       0       0       0
+  1231 ;;      Totals:         8       0       0       0       0       0       0
+  1232 ;;Total ram usage:        8 bytes
+  1233 ;; Hardware stack levels used:    1
+  1234 ;; This function calls:
+  1235 ;;		Nothing
+  1236 ;; This function is called by:
+  1237 ;;		_TC0INT
+  1238 ;; This function uses a non-reentrant model
+  1239 ;;
+  1240                           
+  1241                           	psect	text9
+  1242  0001BC                     __ptext9:
+  1243                           	opt callstack 0
+  1244  0001BC                     _RowControl:
+  1245                           	opt callstack 28
+  1246  0001BC                     
+  1247                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 13: void RowControl(int8_t* currRow, int8_t*
+      +                           PosBit);CREATE_FILES/CONTROL_LINES/line_control.c: 14: {;CREATE_FILES/CONTROL_LINES/lin
+      +                          e_control.c: 15:     int8_t row = *currRow;
+  1248  0001BC  C045  FFD9         	movff	RowControl@currRow,fsr2l
+  1249  0001C0  C046  FFDA         	movff	RowControl@currRow+1,fsr2h
+  1250  0001C4  50DF               	movf	indf2,w,c
+  1251  0001C6  6E4C               	movwf	RowControl@row^0,c
+  1252                           
+  1253                           ;CREATE_FILES/CONTROL_LINES/line_control.c: 17:     switch(row)
+  1254  0001C8  EF34  F001         	goto	i2l1379
+  1255  0001CC                     i2l1323:
+  1256  0001CC  5081               	movf	129,w,c	;volatile
+  1257  0001CE  0BFE               	andlw	254
+  1258  0001D0  6E8A               	movwf	138,c	;volatile
+  1259  0001D2                     i2l19:
+  1260  0001D2  5081               	movf	129,w,c	;volatile
+  1261  0001D4  0BFD               	andlw	253
+  1262  0001D6  6E8A               	movwf	138,c	;volatile
+  1263  0001D8                     i2l21:
+  1264  0001D8  5081               	movf	129,w,c	;volatile
+  1265  0001DA  0BFB               	andlw	251
+  1266  0001DC  6E8A               	movwf	138,c	;volatile
+  1267  0001DE  EF63  F001         	goto	i2l77
+  1268  0001E2                     i2l26:
+  1269  0001E2  5081               	movf	129,w,c	;volatile
+  1270  0001E4  0901               	iorlw	1
+  1271  0001E6  6E8A               	movwf	138,c	;volatile
+  1272  0001E8  EFE9  F000         	goto	i2l19
+  1273  0001EC                     i2l1337:
+  1274  0001EC  5081               	movf	129,w,c	;volatile
+  1275  0001EE  0BFE               	andlw	254
+  1276  0001F0  6E8A               	movwf	138,c	;volatile
+  1277  0001F2  5081               	movf	129,w,c	;volatile
+  1278  0001F4  0902               	iorlw	2
+  1279  0001F6  6E8A               	movwf	138,c	;volatile
+  1280  0001F8  EFEC  F000         	goto	i2l21
+  1281  0001FC                     i2l40:
+  1282  0001FC  5081               	movf	129,w,c	;volatile
+  1283  0001FE  0901               	iorlw	1
+  1284  000200  6E8A               	movwf	138,c	;volatile
+  1285  000202  5081               	movf	129,w,c	;volatile
+  1286  000204  0902               	iorlw	2
+  1287  000206  6E8A               	movwf	138,c	;volatile
+  1288  000208  EFEC  F000         	goto	i2l21
+  1289  00020C                     i2l1351:
+  1290  00020C  5081               	movf	129,w,c	;volatile
+  1291  00020E  0BFE               	andlw	254
+  1292  000210  6E8A               	movwf	138,c	;volatile
+  1293  000212  5081               	movf	129,w,c	;volatile
+  1294  000214  0BFD               	andlw	253
+  1295  000216  6E8A               	movwf	138,c	;volatile
+  1296  000218  5081               	movf	129,w,c	;volatile
+  1297  00021A  0904               	iorlw	4
+  1298  00021C  6E8A               	movwf	138,c	;volatile
+  1299  00021E  EF63  F001         	goto	i2l77
+  1300  000222                     i2l54:
+  1301  000222  5081               	movf	129,w,c	;volatile
+  1302  000224  0901               	iorlw	1
+  1303  000226  6E8A               	movwf	138,c	;volatile
+  1304  000228  5081               	movf	129,w,c	;volatile
+  1305  00022A  0BFD               	andlw	253
+  1306  00022C  6E8A               	movwf	138,c	;volatile
+  1307  00022E  5081               	movf	129,w,c	;volatile
+  1308  000230  0904               	iorlw	4
+  1309  000232  6E8A               	movwf	138,c	;volatile
+  1310  000234  EF63  F001         	goto	i2l77
+  1311  000238                     i2l1365:
+  1312  000238  5081               	movf	129,w,c	;volatile
+  1313  00023A  0BFE               	andlw	254
+  1314  00023C  6E8A               	movwf	138,c	;volatile
+  1315  00023E  5081               	movf	129,w,c	;volatile
+  1316  000240  0902               	iorlw	2
+  1317  000242  6E8A               	movwf	138,c	;volatile
+  1318  000244  5081               	movf	129,w,c	;volatile
+  1319  000246  0904               	iorlw	4
+  1320  000248  6E8A               	movwf	138,c	;volatile
+  1321  00024A  EF63  F001         	goto	i2l77
+  1322  00024E                     i2l68:
+  1323  00024E  5081               	movf	129,w,c	;volatile
+  1324  000250  0901               	iorlw	1
+  1325  000252  6E8A               	movwf	138,c	;volatile
+  1326  000254  5081               	movf	129,w,c	;volatile
+  1327  000256  0902               	iorlw	2
+  1328  000258  6E8A               	movwf	138,c	;volatile
+  1329  00025A  5081               	movf	129,w,c	;volatile
+  1330  00025C  0904               	iorlw	4
+  1331  00025E  6E8A               	movwf	138,c	;volatile
+  1332  000260  EF63  F001         	goto	i2l77
+  1333  000264                     i2l74:
+  1334  000264  EF32  F001         	goto	i2l74
+  1335  000268                     i2l1379:
+  1336  000268  C04C  F049         	movff	RowControl@row,??_RowControl
+  1337  00026C  6A4A               	clrf	(??_RowControl+1)^0,c
+  1338  00026E  BE49               	btfsc	??_RowControl^0,7,c
+  1339  000270  064A               	decf	(??_RowControl+1)^0,f,c
+  1340                           
+  1341                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
       +                          itches
-  1211                           ; Switch size 1, requested type "simple"
-  1212                           ; Number of cases is 1, Range of values is 0 to 0
-  1213                           ; switch strategies available:
-  1214                           ; Name         Instructions Cycles
-  1215                           ; simple_byte            4     3 (average)
-  1216                           ;	Chosen strategy is simple_byte
-  1217  00012A  504A               	movf	(??_RowControl+1)^0,w,c
-  1218  00012C  0A00               	xorlw	0	; case 0
-  1219  00012E  B4D8               	btfsc	status,2,c
-  1220  000130  EF9C  F000         	goto	i2l1585
-  1221  000134  EF90  F000         	goto	i2l76
-  1222  000138                     i2l1585:
-  1223                           
-  1224                           ; Switch size 1, requested type "simple"
-  1225                           ; Number of cases is 8, Range of values is 0 to 7
-  1226                           ; switch strategies available:
-  1227                           ; Name         Instructions Cycles
-  1228                           ; simple_byte           25    13 (average)
-  1229                           ;	Chosen strategy is simple_byte
-  1230  000138  5049               	movf	??_RowControl^0,w,c
-  1231  00013A  0A00               	xorlw	0	; case 0
-  1232  00013C  B4D8               	btfsc	status,2,c
-  1233  00013E  EF17  F000         	goto	i2l18
-  1234  000142  0A01               	xorlw	1	; case 1
-  1235  000144  B4D8               	btfsc	status,2,c
-  1236  000146  EF29  F000         	goto	i2l1353
-  1237  00014A  0A03               	xorlw	3	; case 2
-  1238  00014C  B4D8               	btfsc	status,2,c
-  1239  00014E  EF31  F000         	goto	i2l33
-  1240  000152  0A01               	xorlw	1	; case 3
-  1241  000154  B4D8               	btfsc	status,2,c
-  1242  000156  EF39  F000         	goto	i2l1375
-  1243  00015A  0A07               	xorlw	7	; case 4
-  1244  00015C  B4D8               	btfsc	status,2,c
-  1245  00015E  EF44  F000         	goto	i2l47
-  1246  000162  0A01               	xorlw	1	; case 5
-  1247  000164  B4D8               	btfsc	status,2,c
-  1248  000166  EF4F  F000         	goto	i2l1397
-  1249  00016A  0A03               	xorlw	3	; case 6
-  1250  00016C  B4D8               	btfsc	status,2,c
-  1251  00016E  EF5A  F000         	goto	i2l61
-  1252  000172  0A01               	xorlw	1	; case 7
-  1253  000174  B4D8               	btfsc	status,2,c
-  1254  000176  EF65  F000         	goto	i2l1419
-  1255  00017A  EF90  F000         	goto	i2l76
-  1256  00017E                     i2l79:
-  1257  00017E  0012               	return		;funcret
-  1258  000180                     __end_of_RowControl:
-  1259                           	opt callstack 0
-  1260  0000                     
-  1261                           	psect	rparam
-  1262  0000                     
-  1263                           	psect	temp
-  1264  00006C                     btemp:
-  1265                           	opt callstack 0
-  1266  00006C                     	ds	1
-  1267  0000                     int$flags	set	btemp
-  1268  0000                     wtemp8	set	btemp+1
-  1269  0000                     ttemp5	set	btemp+1
-  1270  0000                     ttemp6	set	btemp+4
-  1271  0000                     ttemp7	set	btemp+8
-  1272                           tosu	equ	0xFFF
-  1273                           tosh	equ	0xFFE
-  1274                           tosl	equ	0xFFD
-  1275                           stkptr	equ	0xFFC
-  1276                           pclatu	equ	0xFFB
-  1277                           pclath	equ	0xFFA
-  1278                           pcl	equ	0xFF9
-  1279                           tblptru	equ	0xFF8
-  1280                           tblptrh	equ	0xFF7
-  1281                           tblptrl	equ	0xFF6
-  1282                           tablat	equ	0xFF5
-  1283                           prodh	equ	0xFF4
-  1284                           prodl	equ	0xFF3
-  1285                           indf0	equ	0xFEF
-  1286                           postinc0	equ	0xFEE
-  1287                           postdec0	equ	0xFED
-  1288                           preinc0	equ	0xFEC
-  1289                           plusw0	equ	0xFEB
-  1290                           fsr0h	equ	0xFEA
-  1291                           fsr0l	equ	0xFE9
-  1292                           wreg	equ	0xFE8
-  1293                           indf1	equ	0xFE7
-  1294                           postinc1	equ	0xFE6
-  1295                           postdec1	equ	0xFE5
-  1296                           preinc1	equ	0xFE4
-  1297                           plusw1	equ	0xFE3
-  1298                           fsr1h	equ	0xFE2
-  1299                           fsr1l	equ	0xFE1
-  1300                           bsr	equ	0xFE0
-  1301                           indf2	equ	0xFDF
-  1302                           postinc2	equ	0xFDE
-  1303                           postdec2	equ	0xFDD
-  1304                           preinc2	equ	0xFDC
-  1305                           plusw2	equ	0xFDB
-  1306                           fsr2h	equ	0xFDA
-  1307                           fsr2l	equ	0xFD9
-  1308                           status	equ	0xFD8
+  1342                           ; Switch size 1, requested type "simple"
+  1343                           ; Number of cases is 1, Range of values is 0 to 0
+  1344                           ; switch strategies available:
+  1345                           ; Name         Instructions Cycles
+  1346                           ; simple_byte            4     3 (average)
+  1347                           ;	Chosen strategy is simple_byte
+  1348  000272  504A               	movf	(??_RowControl+1)^0,w,c
+  1349  000274  0A00               	xorlw	0	; case 0
+  1350  000276  B4D8               	btfsc	status,2,c
+  1351  000278  EF40  F001         	goto	i2l1605
+  1352  00027C  EF32  F001         	goto	i2l74
+  1353  000280                     i2l1605:
+  1354                           
+  1355                           ; Switch size 1, requested type "simple"
+  1356                           ; Number of cases is 8, Range of values is 0 to 7
+  1357                           ; switch strategies available:
+  1358                           ; Name         Instructions Cycles
+  1359                           ; simple_byte           25    13 (average)
+  1360                           ;	Chosen strategy is simple_byte
+  1361  000280  5049               	movf	??_RowControl^0,w,c
+  1362  000282  0A00               	xorlw	0	; case 0
+  1363  000284  B4D8               	btfsc	status,2,c
+  1364  000286  EFE6  F000         	goto	i2l1323
+  1365  00028A  0A01               	xorlw	1	; case 1
+  1366  00028C  B4D8               	btfsc	status,2,c
+  1367  00028E  EFF1  F000         	goto	i2l26
+  1368  000292  0A03               	xorlw	3	; case 2
+  1369  000294  B4D8               	btfsc	status,2,c
+  1370  000296  EFF6  F000         	goto	i2l1337
+  1371  00029A  0A01               	xorlw	1	; case 3
+  1372  00029C  B4D8               	btfsc	status,2,c
+  1373  00029E  EFFE  F000         	goto	i2l40
+  1374  0002A2  0A07               	xorlw	7	; case 4
+  1375  0002A4  B4D8               	btfsc	status,2,c
+  1376  0002A6  EF06  F001         	goto	i2l1351
+  1377  0002AA  0A01               	xorlw	1	; case 5
+  1378  0002AC  B4D8               	btfsc	status,2,c
+  1379  0002AE  EF11  F001         	goto	i2l54
+  1380  0002B2  0A03               	xorlw	3	; case 6
+  1381  0002B4  B4D8               	btfsc	status,2,c
+  1382  0002B6  EF1C  F001         	goto	i2l1365
+  1383  0002BA  0A01               	xorlw	1	; case 7
+  1384  0002BC  B4D8               	btfsc	status,2,c
+  1385  0002BE  EF27  F001         	goto	i2l68
+  1386  0002C2  EF32  F001         	goto	i2l74
+  1387  0002C6                     i2l77:
+  1388  0002C6  0012               	return		;funcret
+  1389  0002C8                     __end_of_RowControl:
+  1390                           	opt callstack 0
+  1391  0000                     
+  1392                           	psect	rparam
+  1393  0000                     
+  1394                           	psect	temp
+  1395  000068                     btemp:
+  1396                           	opt callstack 0
+  1397  000068                     	ds	1
+  1398  0000                     int$flags	set	btemp
+  1399  0000                     wtemp8	set	btemp+1
+  1400  0000                     ttemp5	set	btemp+1
+  1401  0000                     ttemp6	set	btemp+4
+  1402  0000                     ttemp7	set	btemp+8
+  1403                           tosu	equ	0xFFF
+  1404                           tosh	equ	0xFFE
+  1405                           tosl	equ	0xFFD
+  1406                           stkptr	equ	0xFFC
+  1407                           pclatu	equ	0xFFB
+  1408                           pclath	equ	0xFFA
+  1409                           pcl	equ	0xFF9
+  1410                           tblptru	equ	0xFF8
+  1411                           tblptrh	equ	0xFF7
+  1412                           tblptrl	equ	0xFF6
+  1413                           tablat	equ	0xFF5
+  1414                           prodh	equ	0xFF4
+  1415                           prodl	equ	0xFF3
+  1416                           indf0	equ	0xFEF
+  1417                           postinc0	equ	0xFEE
+  1418                           postdec0	equ	0xFED
+  1419                           preinc0	equ	0xFEC
+  1420                           plusw0	equ	0xFEB
+  1421                           fsr0h	equ	0xFEA
+  1422                           fsr0l	equ	0xFE9
+  1423                           wreg	equ	0xFE8
+  1424                           indf1	equ	0xFE7
+  1425                           postinc1	equ	0xFE6
+  1426                           postdec1	equ	0xFE5
+  1427                           preinc1	equ	0xFE4
+  1428                           plusw1	equ	0xFE3
+  1429                           fsr1h	equ	0xFE2
+  1430                           fsr1l	equ	0xFE1
+  1431                           bsr	equ	0xFE0
+  1432                           indf2	equ	0xFDF
+  1433                           postinc2	equ	0xFDE
+  1434                           postdec2	equ	0xFDD
+  1435                           preinc2	equ	0xFDC
+  1436                           plusw2	equ	0xFDB
+  1437                           fsr2h	equ	0xFDA
+  1438                           fsr2l	equ	0xFD9
+  1439                           status	equ	0xFD8
 
 
 Data Sizes:
     Strings     0
     Constant    0
-    Data        16
+    Data        8
     BSS         68
     Persistent  0
     Stack       0
 
 Auto Spaces:
     Space          Size  Autos    Used
-    COMRAM          126     24     108
-    BANK0           128      0       0
+    COMRAM          126     28     104
+    BANK0           128      4       4
     BANK1           256      0       0
     BANK2           256      0       0
     BANK3           256      0       0
@@ -1361,11 +1492,14 @@ Auto Spaces:
 
 Pointer List with Targets:
 
-    ScrollingDisplay@line	PTR unsigned char  size(2) Largest target is 1
+    ScrollingDisplay@line	PTR char  size(2) Largest target is 1
 		 -> currRow(COMRAM[1]), 
 
     ScrollingDisplay@matrix	PTR unsigned char [8] size(2) Largest target is 64
 		 -> matrix(COMRAM[64]), 
+
+    ScrollingDisplay@posBit	PTR char  size(2) Largest target is 1
+		 -> posBit(COMRAM[1]), 
 
     WriteMatrix@matrix	PTR unsigned char [8] size(2) Largest target is 64
 		 -> matrix(COMRAM[64]), 
@@ -1373,10 +1507,10 @@ Pointer List with Targets:
     WriteMatrix@vectorBytes	PTR unsigned char  size(2) Largest target is 8
 		 -> dataTrans(COMRAM[8]), 
 
-    RowControl@PosBit	PTR unsigned char  size(2) Largest target is 1
-		 -> PosBit(COMRAM[1]), 
+    RowControl@PosBit	PTR char  size(2) Largest target is 1
+		 -> posBit(COMRAM[1]), 
 
-    RowControl@currRow	PTR unsigned char  size(2) Largest target is 1
+    RowControl@currRow	PTR char  size(2) Largest target is 1
 		 -> currRow(COMRAM[1]), 
 
 
@@ -1387,10 +1521,11 @@ Critical Paths under _main in COMRAM
 Critical Paths under _TC0INT in COMRAM
 
     _TC0INT->_ScrollingDisplay
+    _ScrollingDisplay->___wmul
 
 Critical Paths under _main in BANK0
 
-    None.
+    _main->_WriteMatrix
 
 Critical Paths under _TC0INT in BANK0
 
@@ -1441,17 +1576,22 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
  ---------------------------------------------------------------------------------
- (0) _main                                                 1     1      0     469
-                                             23 COMRAM     1     1      0
+ (0) _main                                                 1     1      0     656
+                                             27 COMRAM     1     1      0
                _Interrupts_Configure
                          _Timer_Init
+                        _Timer_OnOff
                         _WriteMatrix
                      _configure_pins
  ---------------------------------------------------------------------------------
  (1) _configure_pins                                       0     0      0       0
  ---------------------------------------------------------------------------------
- (1) _WriteMatrix                                         10     6      4     468
-                                             13 COMRAM    10     6      4
+ (1) _WriteMatrix                                         10     6      4     638
+                                             21 COMRAM     6     2      4
+                                              0 BANK0      4     4      0
+ ---------------------------------------------------------------------------------
+ (1) _Timer_OnOff                                          1     1      0      15
+                                             21 COMRAM     1     1      0
  ---------------------------------------------------------------------------------
  (1) _Timer_Init                                           0     0      0       0
  ---------------------------------------------------------------------------------
@@ -1461,18 +1601,22 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
  ---------------------------------------------------------------------------------
- (2) _TC0INT                                               4     4      0    1098
-                                              9 COMRAM     4     4      0
+ (2) _TC0INT                                               4     4      0    1377
+                                             17 COMRAM     4     4      0
                          _RowControl
                    _ScrollingDisplay
  ---------------------------------------------------------------------------------
- (3) _ScrollingDisplay                                     9     4      5     450
-                                              0 COMRAM     9     4      5
+ (3) _ScrollingDisplay                                    11     5      6    1157
+                                              6 COMRAM    11     5      6
+                             ___wmul
  ---------------------------------------------------------------------------------
- (3) _RowControl                                           8     4      4     648
+ (4) ___wmul                                               6     2      4     663
+                                              0 COMRAM     6     2      4
+ ---------------------------------------------------------------------------------
+ (3) _RowControl                                           8     4      4     220
                                               0 COMRAM     8     4      4
  ---------------------------------------------------------------------------------
- Estimated maximum stack depth 3
+ Estimated maximum stack depth 4
  ---------------------------------------------------------------------------------
 
  Call Graph Graphs:
@@ -1480,12 +1624,14 @@ Call Graph Tables:
  _main (ROOT)
    _Interrupts_Configure
    _Timer_Init
+   _Timer_OnOff
    _WriteMatrix
    _configure_pins
 
  _TC0INT (ROOT)
    _RowControl
    _ScrollingDisplay
+     ___wmul
 
  Address spaces:
 Name               Size   Autos  Total    Cost      Usage
@@ -1502,9 +1648,9 @@ BANK1              100      0       0       6        0.0%
 BITBANK5            F4      0       0      15        0.0%
 BANK5               F4      0       0      13        0.0%
 BITBANK0            80      0       0       3        0.0%
-BANK0               80      0       0       4        0.0%
+BANK0               80      4       4       4        3.1%
 BITCOMRAM           7E      0       0       0        0.0%
-COMRAM              7E     18      6C       1       85.7%
+COMRAM              7E     1C      68       1       82.5%
 BITSFR_5             0      0       0     200        0.0%
 SFR_5                0      0       0     200        0.0%
 BITSFR_4             0      0       0     200        0.0%
@@ -1525,103 +1671,109 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.10 build 88905656 
-Symbol Table                                                                                   Tue Jul 21 23:09:29 2020
+Symbol Table                                                                                   Sun Aug 09 23:10:55 2020
 
-                            l9 04BC                              _i 0001                    _SSPSTATbits 000FC7  
-                           l98 0360                    __CFG_BORV$3 000000                   __CFG_CP0$OFF 000000  
-                 __CFG_CP1$OFF 000000                   __CFG_CP2$OFF 000000                   __CFG_CP3$OFF 000000  
-                  __CFG_OSC$HS 000000                            l310 0470                            l302 0458  
-                          l312 0476                            l304 045E                            l314 047C  
-                          l306 0464                            l227 049C                            l316 0482  
-                          l309 046A                            l319 0488                            l295 0410  
-                          l296 0410           __size_of_WriteMatrix 00C6                            l995 04AE  
-                 __CFG_CPB$OFF 000000                            u160 02BC                            u161 02B8  
-                          u180 02FC                            u181 02F8                            u190 0360  
-                          u174 02D2                            u191 035C                            u175 02CE  
-                 __CFG_CPD$OFF 000000                            _row 0003                ?_configure_pins 0045  
-                          wreg 000FE8           ScrollingDisplay@line 0047                   __CFG_LVP$OFF 000000  
-                 __CFG_WDT$OFF 000000                           l1201 0452                           l1451 02A8  
-                         l1461 02FC                           l1453 02AC                           l1445 029C  
-                         l1199 048A                           l1471 0350                           l1463 0324  
-                         l1465 0348                           l1457 02C0                           l1561 03D4  
-                         l1459 02DC                           l1571 03DE                           l1563 03D6  
-                         l1469 034E                           l1573 03F0                           l1565 03D8  
-                         l1575 0404                           l1567 03DA                           l1559 03D4  
-                         l1577 0408                           l1569 03DC                           l1579 040C  
+                            l9 050C                              _i 0001                    _SSPSTATbits 000FC7  
+                           l96 0390            ___wmul@multiplicand 0047                    __CFG_BORV$3 000000  
+                 __CFG_CP0$OFF 000000                   __CFG_CP1$OFF 000000                   __CFG_CP2$OFF 000000  
+                 __CFG_CP3$OFF 000000                    __CFG_OSC$HS 000000               Timer_OnOff@OnOff 005A  
+                          l310 04AA                            l302 0492                            l232 051A  
+                          l312 04B0                            l304 0498                            l314 04B6  
+                          l306 049E                            l316 04BC                            l229 04FC  
+                          l309 04A4                            l319 04C2                            l295 044A  
+                          l296 044A           __size_of_WriteMatrix 00CA                   __CFG_CPB$OFF 000000  
+                          u105 0518                            u106 051A                            u250 02EA  
+                          u251 02E6                            u270 032C                            u271 0328  
+                          u280 0390                            u264 0300                            u281 038C  
+                          u265 02FC                   __CFG_CPD$OFF 000000                ?_configure_pins 0045  
+                          wreg 000FE8           ScrollingDisplay@line 004D                   __CFG_LVP$OFF 000000  
+                 __CFG_WDT$OFF 000000                           l1001 04FE                           l1171 04EA  
+                         l1173 0510                           l1175 048C                           l1541 02DA  
+                         l1533 02C8                           l1551 0354                           l1553 0378  
+                         l1545 02EE                           l1561 0408                           l1547 030C  
+                         l1539 02D6                           l1571 0410                           l1563 0408  
+                         l1549 032C                           l1557 037E                           l1581 0440  
+                         l1573 0412                           l1565 040A                           l1559 0380  
+                         l1583 0446                           l1575 0424                           l1567 040C  
+                         l1577 0438                           l1569 040E                           l1579 043C  
                          _LATA 000F89                           _LATB 000F8A                           _LATC 000F8B  
-                         i2l21 003A                           i2l41 0078                           i2l33 0062  
-                         i2l18 002E                           i2l51 0094                           i2l35 0068  
-                         i2l19 0034                           i2l44 007E                           i2l28 0058  
-                         i2l61 00B4                           i2l71 00D6                           i2l63 00BA  
-                         i2l47 0088                           i2l56 00A4                           i2l48 008E  
-                         i2l65 00C0                           i2l58 00AA                           i2l76 0120  
-                         i2l69 00D0                           i2l79 017E                           _TMR0 000FD6  
-                         _main 03D4                           fsr2h 000FDA                           indf2 000FDF  
-                         fsr1l 000FE1                           fsr2l 000FD9                           btemp 006C  
-                         prodh 000FF4                           prodl 000FF3                           start 000E  
-                __CFG_IESO$OFF 000000                  __CFG_MCLRE$ON 000000                   ___param_bank 000000  
-                        ?_main 0045                          _CMCON 000FB4                          i2l103 018A  
-                        i2l114 01FA                          i2l131 026A                          i2l123 0218  
-                        i2l107 0198                          i2l116 0200                          i2l108 019E  
-                        i2l142 028C                          i2l129 0264                          i2l146 029A  
-                        i2l138 0282                          i2l290 03C0                          _PORTA 000F80  
-                        _PORTB 000F81                          _PORTC 000F82                          _TRISA 000F92  
-                        _TRISB 000F93                          _TRISC 000F94                  __CFG_PWRT$OFF 000000  
-                __CFG_WRT0$OFF 000000                  __CFG_WRT1$OFF 000000                  __CFG_WRT2$OFF 000000  
-                __CFG_WRT3$OFF 000000                 __CFG_EBTR0$OFF 000000                 __CFG_FCMEN$OFF 000000  
-               __CFG_EBTR1$OFF 000000                 __CFG_EBTR2$OFF 000000                 __CFG_EBTR3$OFF 000000  
-                __CFG_WRTB$OFF 000000                  __CFG_WRTC$OFF 000000                  __CFG_WRTD$OFF 000000  
-               __CFG_EBTRB$OFF 000000                          tablat 000FF5                          ttemp5 006D  
-                        ttemp6 0070                          ttemp7 0074                          status 000FD8  
-                        wtemp8 006D       __end_of_ScrollingDisplay 029C         ScrollingDisplay@PosBit 0049  
-              __initialization 0418                   __end_of_main 0418         ScrollingDisplay@matrix 0045  
-       ScrollingDisplay@varAux 004D   __end_of_Interrupts_Configure 04BE                         ??_main 005C  
+                         i2l21 01D8                           i2l40 01FC                           i2l42 0202  
+                         i2l26 01E2                           i2l51 0218                           i2l35 01F2  
+                         i2l19 01D2                           i2l70 0254                           i2l54 0222  
+                         i2l63 023E                           i2l55 0228                           i2l72 025A  
+                         i2l48 0212                           i2l65 0244                           i2l74 0264  
+                         i2l58 022E                           i2l68 024E                           i2l77 02C6  
+                         _TMR0 000FD6                           _main 0408                           fsr2h 000FDA  
+                         indf2 000FDF                           fsr1l 000FE1                           fsr2l 000FD9  
+                         btemp 0068                           prodh 000FF4                           prodl 000FF3  
+                         start 000E                  __CFG_IESO$OFF 000000                  __CFG_MCLRE$ON 000000  
+                 ___param_bank 000000                          ?_main 0045                          _CMCON 000FB4  
+                        i2l112 0018                          i2l122 00A2                          i2l131 00C0  
+                        i2l140 0154                          i2l124 00A8                          i2l116 0026  
+                        i2l151 0176                          i2l322 04E8                          i2l138 014E  
+                        i2l147 016C                          i2l159 01BA                          i2l290 03F4  
+                        _PORTA 000F80                          _PORTB 000F81                          _PORTC 000F82  
+                        _TRISA 000F92                          _TRISB 000F93                          _TRISC 000F94  
+                __CFG_PWRT$OFF 000000                  __CFG_WRT0$OFF 000000                  __CFG_WRT1$OFF 000000  
+                __CFG_WRT2$OFF 000000                  __CFG_WRT3$OFF 000000                 __CFG_EBTR0$OFF 000000  
+               __CFG_FCMEN$OFF 000000                 __CFG_EBTR1$OFF 000000                 __CFG_EBTR2$OFF 000000  
+               __CFG_EBTR3$OFF 000000                  __CFG_WRTB$OFF 000000                  __CFG_WRTC$OFF 000000  
+                __CFG_WRTD$OFF 000000                 __CFG_EBTRB$OFF 000000                          tablat 000FF5  
+                        ttemp5 0069                          ttemp6 006C                          ttemp7 0070  
+                        status 000FD8                          wtemp8 0069       __end_of_ScrollingDisplay 01BC  
+              __initialization 0452                   __end_of_main 0452         ScrollingDisplay@matrix 004B  
+       ScrollingDisplay@posBit 004F   __end_of_Interrupts_Configure 050E                         ??_main 0060  
                 __activetblptr 000002                         _ADCON1 000FC1                         _TC0INT 0008  
-                       i2l1341 0012                         i2l1431 00FA                         i2l1351 0042  
-                       i2l1503 0212                         i2l1433 0100                         i2l1353 0052  
-                       i2l1513 0222                         i2l1435 0104                         i2l1427 00DC  
-                       i2l1419 00CA                         i2l1523 0270                         i2l1515 0228  
-                       i2l1437 0110                         i2l1429 00DC                         i2l1349 0040  
-                       i2l1375 0072                         i2l1439 0124                         i2l1527 027C  
-                       i2l1551 03B2                         i2l1543 0374                         i2l1481 0190  
-                       i2l1473 0180                         i2l1553 03BA                         i2l1545 0382  
-                       i2l1539 0292                         i2l1491 01BE                         i2l1475 0184  
-                       i2l1555 03BC                         i2l1547 0386                         i2l1397 009E  
-                       i2l1557 03BE                         i2l1549 039A                         i2l1585 0138  
-                       i2l1489 01AE                         i2l1499 0206                         _INTCON 000FF2  
-                       _SSPBUF 000FC9                 __CFG_XINST$OFF 000000                         _PosBit 006B  
-               __CFG_STVREN$ON 000000                     _Timer_Init 048A                     _RowControl 0012  
-                       _matrix 0004                         clear_0 043E                   __pdataCOMRAM 005C  
+                       i2l1321 01BC                         i2l1323 01CC                         i2l1315 04C4  
+                       i2l1317 04E0                         i2l1413 0012                         i2l1501 03F0  
+                       i2l1351 020C                         i2l1503 03F2                         i2l1337 01EC  
+                       i2l1441 00BA                         i2l1425 002C                         i2l1451 00CA  
+                       i2l1427 0046                         i2l1419 001E                         i2l1605 0280  
+                       i2l1365 0238                         i2l1437 00AE                         i2l1429 004E  
+                       i2l1453 00CC                         i2l1463 015A                         i2l1455 00F2  
+                       i2l1379 0268                         i2l1483 0184                         i2l1467 0166  
+                       i2l1491 03B2                         i2l1485 01A0                         i2l1493 03B6  
+                       i2l1487 01AE                         i2l1479 017C                         i2l1495 03CA  
+                       i2l1497 03E6                         i2l1489 03A4                         i2l1499 03EE  
+                       _INTCON 000FF2                         _SSPBUF 000FC9                 __CFG_XINST$OFF 000000  
+                       ___wmul 04C4                 __CFG_STVREN$ON 000000                     _Timer_Init 04EA  
+                   _RowControl 01BC                         _matrix 0003                         clear_0 0478  
+                       _posBit 0043                  ??_Timer_OnOff 005A                   __pdataCOMRAM 0060  
                        tblptrh 000FF7                         tblptrl 000FF6                         tblptru 000FF8  
-                   __accesstop 0080        __end_of__initialization 0444                __CFG_PBADEN$OFF 000000  
-                ___rparam_used 000001                 __pcstackCOMRAM 0045         WriteMatrix@vectorBytes 0054  
-             ??_configure_pins 0052                 WriteMatrix@col 005A                 WriteMatrix@aux 0059  
-            WriteMatrix@matrix 0052               RowControl@PosBit 0047                        ?_TC0INT 0045  
-         _Interrupts_Configure 04AE                    ?_Timer_Init 0045                  ??_WriteMatrix 0056  
+                   __accesstop 0080        __end_of__initialization 047E                __CFG_PBADEN$OFF 000000  
+                ___rparam_used 000001                 __pcstackCOMRAM 0045         WriteMatrix@vectorBytes 005C  
+             ??_configure_pins 005A                 WriteMatrix@col 0082                 WriteMatrix@aux 0081  
+            WriteMatrix@matrix 005A        ScrollingDisplay@lastBit 0055               RowControl@PosBit 0047  
+          __end_of_Timer_OnOff 051C                        ?_TC0INT 0045           _Interrupts_Configure 04FE  
+                      ?___wmul 0045                    ?_Timer_Init 0045                  ??_WriteMatrix 005E  
                   ?_RowControl 0045                        _INTCON2 000FF1                        _INTCON3 000FF0  
-                      i2u20_40 01AE                        i2u20_41 01AA                        i2u21_40 01BE  
-                      i2u21_41 01BA                        i2u22_40 01FA                        i2u22_41 01F6  
-                      i2u15_40 00FA                        i2u23_40 0264                        i2u15_41 00F6  
-                      i2u23_41 0260                        i2u24_40 0382                        i2u24_41 037E  
-              __size_of_TC0INT 03CC          ?_Interrupts_Configure 0045              ?_ScrollingDisplay 0045  
-                      __Hparam 0000                        __Lparam 0000             ??_ScrollingDisplay 004A  
-                      __pcinit 0418                        __ramtop 0600                        __ptext0 03D4  
-                      __ptext1 0452                        __ptext2 029C                        __ptext3 048A  
-                      __ptext4 04AE                        __ptext6 0180                        __ptext7 0012  
-                    _T0CONbits 000FD5                        _currRow 0044            __end_of_WriteMatrix 0362  
-               __pintcode_body 0362           end_of_initialization 0444            __size_of_Timer_Init 0014  
-          __size_of_RowControl 016E                  __Lmediumconst 0000                        int_func 0362  
-                      postdec1 000FE5                        postinc0 000FEE         ??_Interrupts_Configure 0052  
-               __end_of_TC0INT 03D4                    _WriteMatrix 029C                  __pidataCOMRAM 049E  
-          start_initialization 0418                WriteMatrix@line 005B                       ??_TC0INT 004E  
-                 ??_Timer_Init 0052                   ??_RowControl 0049               __CFG_LPT1OSC$OFF 000000  
-            RowControl@currRow 0045                    __pbssCOMRAM 0001             __end_of_Timer_Init 049E  
-           __end_of_RowControl 0180                      _dataTrans 0063                  RowControl@col 004B  
-                RowControl@row 004C              __CFG_CCP2MX$PORTC 000000                      __pintcode 0008  
-    __size_of_ScrollingDisplay 011C        __size_of_configure_pins 0038                      _spiConfig 005C  
-                     _RCONbits 000FD0               __CFG_WDTPS$32768 000000                    _INTCON2bits 000FF1  
-                    copy_data0 042C                       __Hrparam 0000                       __Lrparam 0000  
-           __CFG_BOREN$SBORDIS 000000                   ?_WriteMatrix 0052  __size_of_Interrupts_Configure 0010  
-                __size_of_main 0044                       int$flags 006C               _ScrollingDisplay 0180  
-                   _INTCONbits 000FF2                 _configure_pins 0452                       intlevel2 0000  
-                   _OSCCONbits 000FD3         __end_of_configure_pins 048A                    _SSPCON1bits 000FC6  
+                      i2u20_40 00A2                        i2u20_41 009E                        i2u21_40 00EE  
+                      i2u21_41 00EA                        i2u22_40 014E                        i2u22_41 014A  
+                      i2u23_40 01A0                        i2u23_41 019C                        i2u24_40 03B2  
+                      i2u24_41 03AE                        i2u19_40 0046                        i2u19_41 0042  
+              __size_of_TC0INT 0400          ?_Interrupts_Configure 0045              ?_ScrollingDisplay 004B  
+                      __Hparam 0000                        __Lparam 0000             ??_ScrollingDisplay 0051  
+              __size_of___wmul 0026                        __pcinit 0452                        __ramtop 0600  
+                      __ptext0 0408                        __ptext1 048C                        __ptext2 02C8  
+                      __ptext3 050E                        __ptext4 04EA                        __ptext5 04FE  
+                      __ptext7 0012                        __ptext8 04C4                        __ptext9 01BC  
+                  _Timer_OnOff 050E                      _T0CONbits 000FD5                        _currRow 0044  
+          __end_of_WriteMatrix 0392                 __pintcode_body 0392           end_of_initialization 047E  
+          __size_of_Timer_Init 0014            __size_of_RowControl 010C                  __Lmediumconst 0000  
+                      int_func 0392                        postdec1 000FE5                        postinc0 000FEE  
+                      postinc2 000FDE         ??_Interrupts_Configure 005A                 __end_of_TC0INT 0408  
+               __end_of___wmul 04EA                    _WriteMatrix 02C8                  __pidataCOMRAM 051C  
+          start_initialization 0452                WriteMatrix@line 0083                       ??_TC0INT 0056  
+                     ??___wmul 0049                   ??_Timer_Init 005A                   ??_RowControl 0049  
+             __CFG_LPT1OSC$OFF 000000              RowControl@currRow 0045                    __pbssCOMRAM 0001  
+                __pcstackBANK0 0080             __end_of_Timer_Init 04FE             __end_of_RowControl 02C8  
+                    _dataTrans 0060                  RowControl@row 004C              __CFG_CCP2MX$PORTC 000000  
+                    __pintcode 0008                   ?_Timer_OnOff 0045      __size_of_ScrollingDisplay 01AA  
+      __size_of_configure_pins 0038                 ___wmul@product 0049                       _RCONbits 000FD0  
+             __CFG_WDTPS$32768 000000              ___wmul@multiplier 0045                    _INTCON2bits 000FF1  
+                    copy_data0 0466                       __Hrparam 0000                       __Lrparam 0000  
+           __CFG_BOREN$SBORDIS 000000                   ?_WriteMatrix 005A  __size_of_Interrupts_Configure 0010  
+                __size_of_main 004A                       int$flags 0068               _ScrollingDisplay 0012  
+                   _INTCONbits 000FF2           __size_of_Timer_OnOff 000E                 _configure_pins 048C  
+                     intlevel2 0000                     _OSCCONbits 000FD3         __end_of_configure_pins 04C4  
+                  _SSPCON1bits 000FC6  

@@ -4627,6 +4627,7 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 void RowControl(uint8_t* currRow, uint8_t* PosBit)
 {
     uint8_t row = *currRow;
+    uint8_t col = *PosBit;
     switch(row)
     {
         case 0x00:
@@ -4683,15 +4684,8 @@ void RowControl(uint8_t* currRow, uint8_t* PosBit)
             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 1))); if(0x01 == 0x00) LATB = (PORTB | (1 << 1));;
             if(0x00 == 0x00) LATB = (PORTB & ~((1 << 2))); if(0x01 == 0x00) LATB = (PORTB | (1 << 2));;
             row = 0x00;
-            if(*PosBit > 0)
-            {
-                (*PosBit)--;
-            }else
-            {
-                *PosBit = 0x07;
-            }
-
             *currRow = row;
+            *PosBit = col--;
             break;
         default:
             for(;;);

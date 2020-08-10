@@ -84,12 +84,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6 ./CREATE_FILES/SCROLLING_TEXT/scrolling_text.h
 [; ;./CREATE_FILES/SCROLLING_TEXT/scrolling_text.h: 6: void WriteMatrix(uint8_t matrix[][8], uint8_t vectorBytes[8]);
 [v _WriteMatrix `(v ~T0 @X0 0 ef2`*F2577`*uc ]
-"114 main.c
-[; ;main.c: 114: void configure_pins(void);
+"115 main.c
+[; ;main.c: 115: void configure_pins(void);
 [v _configure_pins `(v ~T0 @X0 0 ef ]
 "9 ./CREATE_FILES/TIMER/timer.h
 [; ;./CREATE_FILES/TIMER/timer.h: 9: void Timer_Init(void);
 [v _Timer_Init `(v ~T0 @X0 0 ef ]
+"10
+[; ;./CREATE_FILES/TIMER/timer.h: 10: void Timer_OnOff(uint8_t OnOff);
+[v _Timer_OnOff `(v ~T0 @X0 0 ef1`uc ]
 "6 ./CREATE_FILES/INTERRUPT/interrupts.h
 [; ;./CREATE_FILES/INTERRUPT/interrupts.h: 6: void Interrupts_Configure(void);
 [v _Interrupts_Configure `(v ~T0 @X0 0 ef ]
@@ -621,18 +624,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _dataTrans `uc ~T0 @X0 -> 8 `i e ]
 [i _dataTrans
 :U ..
--> -> 0 `i `uc
--> -> 126 `i `uc
--> -> 96 `i `uc
--> -> 96 `i `uc
--> -> 124 `i `uc
--> -> 96 `i `uc
--> -> 96 `i `uc
--> -> 126 `i `uc
+-> -> 255 `i `uc
+-> -> 255 `i `uc
+-> -> 255 `i `uc
+-> -> 255 `i `uc
+-> -> 255 `i `uc
+-> -> 255 `i `uc
+-> -> 255 `i `uc
+-> -> 255 `i `uc
 ..
 ]
-"107
-[; ;main.c: 107: spi_config spiConfig =
+"108
+[; ;main.c: 108: spi_config spiConfig =
 [v _spiConfig `S281 ~T0 @X0 1 e ]
 [i _spiConfig
 :U ..
@@ -645,31 +648,31 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v $root$_TC0INT `(v ~T0 @X0 0 e ]
-"118
-[; ;main.c: 118: void __attribute__((picinterrupt(("")))) TC0INT(void)
-[v _TC0INT `(v ~T41 @X0 1 ef ]
 "119
-[; ;main.c: 119: {
+[; ;main.c: 119: void __attribute__((picinterrupt(("")))) TC0INT(void)
+[v _TC0INT `(v ~T41 @X0 1 ef ]
+"120
+[; ;main.c: 120: {
 {
 [e :U _TC0INT ]
 [f ]
-"120
-[; ;main.c: 120:     if(INTCONbits.TMR0IF == 0x01)
-[e $ ! == -> . . _INTCONbits 0 2 `i -> 1 `i 283  ]
 "121
-[; ;main.c: 121:     {
-{
+[; ;main.c: 121:     if(INTCONbits.TMR0IF == 0x01)
+[e $ ! == -> . . _INTCONbits 0 2 `i -> 1 `i 283  ]
 "122
-[; ;main.c: 122:         INTCONbits.GIE = 0x00;
-[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
+[; ;main.c: 122:     {
+{
 "123
-[; ;main.c: 123:         T0CONbits.TMR0ON = 0x00;
+[; ;main.c: 123:         INTCONbits.GIE = 0x00;
+[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
+"124
+[; ;main.c: 124:         T0CONbits.TMR0ON = 0x00;
 [e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
-"125
-[; ;main.c: 125:         RowControl(&currRow, &PosBit);
+"126
+[; ;main.c: 126:         RowControl(&currRow, &PosBit);
 [e ( _RowControl (2 , &U _currRow &U _PosBit ]
-"127
-[; ;main.c: 127:         ScrollingDisplay(matrix, &currRow, PosBit);
+"128
+[; ;main.c: 128:         ScrollingDisplay(matrix, &currRow, PosBit);
 [e ( _ScrollingDisplay (3 , , &U _matrix &U _currRow _PosBit ]
 "131
 [; ;main.c: 131:         TMR0 = 0xF63C;
@@ -742,108 +745,111 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 164:     Timer_Init();
 [e ( _Timer_Init ..  ]
 "165
-[; ;main.c: 165:     Interrupts_Configure();
+[; ;main.c: 165:     Timer_OnOff(1);
+[e ( _Timer_OnOff (1 -> -> 1 `i `uc ]
+"166
+[; ;main.c: 166:     Interrupts_Configure();
 [e ( _Interrupts_Configure ..  ]
-"170
-[; ;main.c: 170:     while(1)
-[e :U 286 ]
 "171
-[; ;main.c: 171:     {
+[; ;main.c: 171:     while(1)
+[e :U 286 ]
+"172
+[; ;main.c: 172:     {
 {
-"174
-[; ;main.c: 174:     }
+"175
+[; ;main.c: 175:     }
 }
 [e :U 285 ]
 [e $U 286  ]
 [e :U 287 ]
-"175
-[; ;main.c: 175:     return;
-[e $UE 284  ]
 "176
-[; ;main.c: 176: }
+[; ;main.c: 176:     return;
+[e $UE 284  ]
+"177
+[; ;main.c: 177: }
 [e :UE 284 ]
 }
-"179
-[; ;main.c: 179: void configure_pins(void)
-[v _configure_pins `(v ~T0 @X0 1 ef ]
 "180
-[; ;main.c: 180: {
+[; ;main.c: 180: void configure_pins(void)
+[v _configure_pins `(v ~T0 @X0 1 ef ]
+"181
+[; ;main.c: 181: {
 {
 [e :U _configure_pins ]
 [f ]
-"181
-[; ;main.c: 181:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 0))); if(0x01 == 0x00) TRISB = (TRISB | (1 << 0));;
+"182
+[; ;main.c: 182:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 0))); if(0x01 == 0x00) TRISB = (TRISB | (1 << 0));;
 [e $ ! == -> 0 `i -> 0 `i 289  ]
 [e = _TRISB -> & -> _TRISB `i ~ << -> 1 `i -> 0 `i `uc ]
 [e :U 289 ]
 [e $ ! == -> 1 `i -> 0 `i 290  ]
 [e = _TRISB -> | -> _TRISB `i << -> 1 `i -> 0 `i `uc ]
 [e :U 290 ]
-"182
-[; ;main.c: 182:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 1))); if(0x01 == 0x00) TRISB = (TRISB | (1 << 1));;
+"183
+[; ;main.c: 183:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 1))); if(0x01 == 0x00) TRISB = (TRISB | (1 << 1));;
 [e $ ! == -> 0 `i -> 0 `i 291  ]
 [e = _TRISB -> & -> _TRISB `i ~ << -> 1 `i -> 1 `i `uc ]
 [e :U 291 ]
 [e $ ! == -> 1 `i -> 0 `i 292  ]
 [e = _TRISB -> | -> _TRISB `i << -> 1 `i -> 1 `i `uc ]
 [e :U 292 ]
-"183
-[; ;main.c: 183:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 2))); if(0x01 == 0x00) TRISB = (TRISB | (1 << 2));;
+"184
+[; ;main.c: 184:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 2))); if(0x01 == 0x00) TRISB = (TRISB | (1 << 2));;
 [e $ ! == -> 0 `i -> 0 `i 293  ]
 [e = _TRISB -> & -> _TRISB `i ~ << -> 1 `i -> 2 `i `uc ]
 [e :U 293 ]
 [e $ ! == -> 1 `i -> 0 `i 294  ]
 [e = _TRISB -> | -> _TRISB `i << -> 1 `i -> 2 `i `uc ]
 [e :U 294 ]
-"184
-[; ;main.c: 184:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 3))); if(0x01 == 0x00) TRISB = (TRISB | (1 << 3));;
+"185
+[; ;main.c: 185:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 3))); if(0x01 == 0x00) TRISB = (TRISB | (1 << 3));;
 [e $ ! == -> 0 `i -> 0 `i 295  ]
 [e = _TRISB -> & -> _TRISB `i ~ << -> 1 `i -> 3 `i `uc ]
 [e :U 295 ]
 [e $ ! == -> 1 `i -> 0 `i 296  ]
 [e = _TRISB -> | -> _TRISB `i << -> 1 `i -> 3 `i `uc ]
 [e :U 296 ]
-"186
-[; ;main.c: 186:     if(0x00 == 0x01) LATB = (PORTB & ~((1 << 3))); if(0x01 == 0x01) LATB = (PORTB | (1 << 3));;
+"187
+[; ;main.c: 187:     if(0x00 == 0x01) LATB = (PORTB & ~((1 << 3))); if(0x01 == 0x01) LATB = (PORTB | (1 << 3));;
 [e $ ! == -> 0 `i -> 1 `i 297  ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 3 `i `uc ]
 [e :U 297 ]
 [e $ ! == -> 1 `i -> 1 `i 298  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 3 `i `uc ]
 [e :U 298 ]
-"188
-[; ;main.c: 188:     if(0x00 == 0x00) TRISC = (TRISC & (~(1 << 5))); if(0x01 == 0x00) TRISC = (TRISC | (1 << 5));;
+"189
+[; ;main.c: 189:     if(0x00 == 0x00) TRISC = (TRISC & (~(1 << 5))); if(0x01 == 0x00) TRISC = (TRISC | (1 << 5));;
 [e $ ! == -> 0 `i -> 0 `i 299  ]
 [e = _TRISC -> & -> _TRISC `i ~ << -> 1 `i -> 5 `i `uc ]
 [e :U 299 ]
 [e $ ! == -> 1 `i -> 0 `i 300  ]
 [e = _TRISC -> | -> _TRISC `i << -> 1 `i -> 5 `i `uc ]
 [e :U 300 ]
-"189
-[; ;main.c: 189:     if(0x00 == 0x00) TRISC = (TRISC & (~(1 << 3))); if(0x01 == 0x00) TRISC = (TRISC | (1 << 3));;
+"190
+[; ;main.c: 190:     if(0x00 == 0x00) TRISC = (TRISC & (~(1 << 3))); if(0x01 == 0x00) TRISC = (TRISC | (1 << 3));;
 [e $ ! == -> 0 `i -> 0 `i 301  ]
 [e = _TRISC -> & -> _TRISC `i ~ << -> 1 `i -> 3 `i `uc ]
 [e :U 301 ]
 [e $ ! == -> 1 `i -> 0 `i 302  ]
 [e = _TRISC -> | -> _TRISC `i << -> 1 `i -> 3 `i `uc ]
 [e :U 302 ]
-"190
-[; ;main.c: 190:     if(0x00 == 0x00) TRISA = (TRISA & (~(1 << 5))); if(0x01 == 0x00) TRISA = (TRISA | (1 << 5));;
+"191
+[; ;main.c: 191:     if(0x00 == 0x00) TRISA = (TRISA & (~(1 << 5))); if(0x01 == 0x00) TRISA = (TRISA | (1 << 5));;
 [e $ ! == -> 0 `i -> 0 `i 303  ]
 [e = _TRISA -> & -> _TRISA `i ~ << -> 1 `i -> 5 `i `uc ]
 [e :U 303 ]
 [e $ ! == -> 1 `i -> 0 `i 304  ]
 [e = _TRISA -> | -> _TRISA `i << -> 1 `i -> 5 `i `uc ]
 [e :U 304 ]
-"191
-[; ;main.c: 191:     if(0x00 == 0x00) TRISA = (TRISA & (~(1 << 4))); if(0x01 == 0x00) TRISA = (TRISA | (1 << 4));;
+"192
+[; ;main.c: 192:     if(0x00 == 0x00) TRISA = (TRISA & (~(1 << 4))); if(0x01 == 0x00) TRISA = (TRISA | (1 << 4));;
 [e $ ! == -> 0 `i -> 0 `i 305  ]
 [e = _TRISA -> & -> _TRISA `i ~ << -> 1 `i -> 4 `i `uc ]
 [e :U 305 ]
 [e $ ! == -> 1 `i -> 0 `i 306  ]
 [e = _TRISA -> | -> _TRISA `i << -> 1 `i -> 4 `i `uc ]
 [e :U 306 ]
-"192
-[; ;main.c: 192: }
+"193
+[; ;main.c: 193: }
 [e :UE 288 ]
 }

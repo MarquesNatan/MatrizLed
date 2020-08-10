@@ -4690,7 +4690,7 @@ void SPI_Write(uint8_t* transBuffer, uint8_t currCol);
 
 
 
-void RowControl(uint8_t* currRow, uint8_t* PosBit);
+void RowControl(int8_t* currRow, int8_t* PosBit);
 # 75 "main.c" 2
 
 # 1 "./CREATE_FILES/INTERRUPT/interrupts.h" 1
@@ -4722,33 +4722,30 @@ void Timer_OnOff(uint8_t OnOff);
 
 
 void WriteMatrix(uint8_t matrix[][8], uint8_t vectorBytes[8]);
-void ScrollingDisplay(uint8_t matrix[][8], uint8_t* line, uint8_t PosBit);
+void ScrollingDisplay(uint8_t matrix[][8], int8_t* line, int8_t* posBit);
 # 78 "main.c" 2
 
 
 
 
-uint8_t currRow = 0;
-uint8_t PosBit = 0x07;
-uint8_t row = 0x00;
+int8_t currRow = 0;
+int8_t posBit = 0x00;
 uint16_t i = 0;
+
+
+
+
 
 uint8_t matrix[8][8];
 uint8_t dataTrans[8] =
 {
 
 
-    0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
+    0b00000000, 0b01111110, 0b01100000, 0b01100000,
+    0b01111100, 0b01100000, 0b01100000, 0b01111110
 
 };
-# 108 "main.c"
-spi_config spiConfig =
-{
-    .masterMode = 1,
-    .clockMode = 0,
-    .controlSSPin = 1,
-    .baudRate = 2
-};
+# 111 "main.c"
 void configure_pins(void);
 
 
@@ -4760,19 +4757,14 @@ void __attribute__((picinterrupt(("")))) TC0INT(void)
         INTCONbits.GIE = 0x00;
         T0CONbits.TMR0ON = 0x00;
 
-        RowControl(&currRow, &PosBit);
-
-        ScrollingDisplay(matrix, &currRow, PosBit);
-
-
+        RowControl(&currRow, &posBit);
+        ScrollingDisplay(matrix, &currRow, &posBit);
 
         TMR0 = 0xF63C;
         INTCONbits.T0IF = 0x00;
         INTCONbits.GIE = 0x01;
         T0CONbits.TMR0ON = 0x01;
     }
-
-
 }
 
 
@@ -4800,6 +4792,7 @@ void main(void) {
     WriteMatrix(matrix, dataTrans);
     configure_pins();
     Timer_Init();
+    Timer_OnOff(1);
     Interrupts_Configure();
 
 

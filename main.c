@@ -79,18 +79,22 @@
 
 #define _XTAL_FREQ 10000000
 #define linesMatrix             8
-uint8_t currRow = 0;
-uint8_t PosBit = 0x07;
-uint8_t row = 0x00;
+int8_t currRow = 0;
+int8_t posBit  = 0x00;
 uint16_t i = 0;
+    //  0b00000000, 0b01111110, 0b01100000, 0b01100000, 
+    // 0b01111100,   0b01100000, 0b01100000, 0b01111110
+    // 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
+    // 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55
 
 uint8_t matrix[linesMatrix][linesMatrix];
 uint8_t dataTrans[8] =
 {
-   //  0b00000000, 0b01111110, 0b01100000, 0b01100000, 
-   //  0b01111100,   0b01100000, 0b01100000, 0b01111110
-    0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,  0xFF, 0xFF
-     
+    //0x0FF, 0x0FF, 0x0FF, 0x0FF, 0x0FF, 0x0FF, 0x0FF, 0xFF 
+    // 0x00, 0x01, 0x03, 0x07, 0x0F, 0x1F, 0x07F, 0x0FF
+    0b00000000, 0b01111110, 0b01100000, 0b01100000, 
+    0b01111100,   0b01100000, 0b01100000, 0b01111110
+    // 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 };
 
 /*
@@ -104,14 +108,6 @@ uint8_t dataTrans[8] =
  * [0]  [1]  [1]  [1]  [1]  [1]  [1]  [0]
  */
 
-
-spi_config spiConfig = 
-{
-    .masterMode = MASTER_MODE,
-    .clockMode = CLOCK_MODE_0,
-    .controlSSPin = SS_PIN_SOFTWARE,
-    .baudRate = CLOCK_SPEED_16
-};
 void configure_pins(void);    
 
 /* Interrupts Services Routines*/
@@ -123,19 +119,14 @@ void __interrupt()  TC0INT(void)
         INTCONbits.GIE = 0x00;
         T0CONbits.TMR0ON = 0x00;
         
-        RowControl(&currRow, &PosBit);
-        /*ScrollingDisplay(uint8_t matrix[][8], uint8_t* currRow, uint8_t *posBit)*/
-        ScrollingDisplay(matrix, &currRow, PosBit);
-
-      //   __delay_ms(500);
-        /* Clear interrupt flag*/
+        RowControl(&currRow, &posBit);
+        ScrollingDisplay(matrix, &currRow, &posBit);
+        
         TMR0 = 0xF63C; //  0x3CB0 -> 20 ms 0x6D84 -> 15 ms 0x9E58 -> 10 ms 0xF63C -> 1 ms
         INTCONbits.T0IF = 0x00;
         INTCONbits.GIE = 0x01;
         T0CONbits.TMR0ON = 0x01;
     }
-    
-   
 }
 
 
@@ -163,6 +154,7 @@ void main(void) {
     WriteMatrix(matrix, dataTrans);
     configure_pins();
     Timer_Init();
+    Timer_OnOff(1);
     Interrupts_Configure();
     
     

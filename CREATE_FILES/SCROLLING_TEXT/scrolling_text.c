@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include <xc.h>
 #include "scrolling_text.h"
 #include "../GPIO/gpio.h"
 #include "../BOARD_PINOUT/board_pinout.h"
@@ -30,124 +31,6 @@ void WriteMatrix(uint8_t matrix[][8], uint8_t vectorBytes[8])
 }
 
 /*============================================================================*/
-void ScrollingDisplay(uint8_t matrix[][8], uint8_t* line, uint8_t PosBit)
-{
-    uint8_t varAux = 0x07;
-     // Reset antes de enviar os outros bits
-        DIGITAL_PIN_WRITE(PIN_LOW, PIN_MR_595_PORT, PIN_MR_595_MASK);
-        DIGITAL_PIN_WRITE(PIN_HIGH, PIN_STCP_595_PORT, PIN_STCP_595_MASK);
-        __delay_us(1);
-        DIGITAL_PIN_WRITE(PIN_LOW, PIN_STCP_595_PORT, PIN_STCP_595_MASK);
-        DIGITAL_PIN_WRITE(PIN_HIGH, PIN_MR_595_PORT, PIN_MR_595_MASK);
-    if(varAux > PosBit)
-    {
-        
-        while(varAux >= PosBit);
-        {
-            if(matrix[*line][varAux])
-            {
-                // DIGITAL_PIN_WRITE(value, port, mask) 
-                DIGITAL_PIN_WRITE(PIN_HIGH, PIN_DS_595_PORT, PIN_DS_595_MASK);
-            
-                DIGITAL_PIN_WRITE(PIN_HIGH, PIN_SHCP_595_PORT, PIN_SHCP_595_MASK);
-                __delay_us(1);
-                DIGITAL_PIN_WRITE(PIN_LOW, PIN_SHCP_595_PORT, PIN_SHCP_595_MASK);
-            
-                // DIGITAL_PIN_WRITE(PIN_HIGH, PIN_STCP_595_PORT, PIN_STCP_595_MASK);
-                // __delay_us(1);
-                // DIGITAL_PIN_WRITE(PIN_LOW, PIN_STCP_595_PORT, PIN_STCP_595_MASK); 
-                
-            }else
-            {
-                  // DIGITAL_PIN_WRITE(value, port, mask) 
-                 DIGITAL_PIN_WRITE(PIN_LOW, PIN_DS_595_PORT, PIN_DS_595_MASK);
-                DIGITAL_PIN_WRITE(PIN_HIGH, PIN_SHCP_595_PORT, PIN_SHCP_595_MASK);
-                __delay_us(1);
-                DIGITAL_PIN_WRITE(PIN_LOW, PIN_SHCP_595_PORT, PIN_SHCP_595_MASK);
-                // DIGITAL_PIN_WRITE(PIN_HIGH, PIN_STCP_595_PORT, PIN_STCP_595_MASK);
-               //  __delay_us(1);
-               //  DIGITAL_PIN_WRITE(PIN_LOW, PIN_STCP_595_PORT, PIN_STCP_595_MASK);
-            }
-            
-            varAux--;
-        }
-        
-        
-        
-    }else
-    {
-            
-        if(matrix[*line][PosBit])
-        {
-            // DIGITAL_PIN_WRITE(value, port, mask) 
-            DIGITAL_PIN_WRITE(PIN_HIGH, PIN_DS_595_PORT, PIN_DS_595_MASK);
-            
-            DIGITAL_PIN_WRITE(PIN_HIGH, PIN_SHCP_595_PORT, PIN_SHCP_595_MASK);
-            __delay_us(1);
-            DIGITAL_PIN_WRITE(PIN_LOW, PIN_SHCP_595_PORT, PIN_SHCP_595_MASK);
-            
-           // DIGITAL_PIN_WRITE(PIN_HIGH, PIN_STCP_595_PORT, PIN_STCP_595_MASK);
-           // __delay_us(1);
-           // DIGITAL_PIN_WRITE(PIN_LOW, PIN_STCP_595_PORT, PIN_STCP_595_MASK); 
-        }
-        else
-        {
-            // DIGITAL_PIN_WRITE(value, port, mask) 
-            DIGITAL_PIN_WRITE(PIN_LOW, PIN_DS_595_PORT, PIN_DS_595_MASK);
-            DIGITAL_PIN_WRITE(PIN_HIGH, PIN_SHCP_595_PORT, PIN_SHCP_595_MASK);
-            __delay_us(1);
-            DIGITAL_PIN_WRITE(PIN_LOW, PIN_SHCP_595_PORT, PIN_SHCP_595_MASK);
-           // DIGITAL_PIN_WRITE(PIN_HIGH, PIN_STCP_595_PORT, PIN_STCP_595_MASK);
-            // __delay_us(1);
-          //  DIGITAL_PIN_WRITE(PIN_LOW, PIN_STCP_595_PORT, PIN_STCP_595_MASK);
-        
-    }
-        
-        
-    }
-    /*
-    // Enviar apenas o primeiro bit de cada linha
-    if(matrix[*line][PosBit])
-    {
-         // Reset antes de enviar os outros bits
-        DIGITAL_PIN_WRITE(PIN_LOW, PIN_MR_595_PORT, PIN_MR_595_MASK);
-        DIGITAL_PIN_WRITE(PIN_HIGH, PIN_STCP_595_PORT, PIN_STCP_595_MASK);
-        __delay_us(1);
-        DIGITAL_PIN_WRITE(PIN_LOW, PIN_STCP_595_PORT, PIN_STCP_595_MASK);
-        DIGITAL_PIN_WRITE(PIN_HIGH, PIN_MR_595_PORT, PIN_MR_595_MASK);
-        
-        
-        // DIGITAL_PIN_WRITE(value, port, mask) 
-        DIGITAL_PIN_WRITE(PIN_HIGH, PIN_DS_595_PORT, PIN_DS_595_MASK);
-        DIGITAL_PIN_WRITE(PIN_HIGH, PIN_SHCP_595_PORT, PIN_SHCP_595_MASK);
-        __delay_us(1);
-        DIGITAL_PIN_WRITE(PIN_LOW, PIN_SHCP_595_PORT, PIN_SHCP_595_MASK);
-        DIGITAL_PIN_WRITE(PIN_HIGH, PIN_STCP_595_PORT, PIN_STCP_595_MASK);
-        __delay_us(1);
-        DIGITAL_PIN_WRITE(PIN_LOW, PIN_STCP_595_PORT, PIN_STCP_595_MASK); 
-    }
-    else
-    {
-         // DIGITAL_PIN_WRITE(value, port, mask) 
-        DIGITAL_PIN_WRITE(PIN_LOW, PIN_DS_595_PORT, PIN_DS_595_MASK);
-        DIGITAL_PIN_WRITE(PIN_HIGH, PIN_SHCP_595_PORT, PIN_SHCP_595_MASK);
-        __delay_us(1);
-        DIGITAL_PIN_WRITE(PIN_LOW, PIN_SHCP_595_PORT, PIN_SHCP_595_MASK);
-        DIGITAL_PIN_WRITE(PIN_HIGH, PIN_STCP_595_PORT, PIN_STCP_595_MASK);
-        __delay_us(1);
-        DIGITAL_PIN_WRITE(PIN_LOW, PIN_STCP_595_PORT, PIN_STCP_595_MASK);
-        
-    }
-    */
-     DIGITAL_PIN_WRITE(PIN_HIGH, PIN_STCP_595_PORT, PIN_STCP_595_MASK);
-    __delay_us(1);
-    DIGITAL_PIN_WRITE(PIN_LOW, PIN_STCP_595_PORT, PIN_STCP_595_MASK);
-    
-    
-}
-
-
-/*Funçaõ de Reset do shift Register*/
 void ResetShift(void)
 {
      // Reset antes de enviar os outros bits
@@ -157,3 +40,62 @@ void ResetShift(void)
         DIGITAL_PIN_WRITE(PIN_LOW, PIN_STCP_595_PORT, PIN_STCP_595_MASK);
         DIGITAL_PIN_WRITE(PIN_HIGH, PIN_MR_595_PORT, PIN_MR_595_MASK);
 }
+
+void ScrollingDisplay(uint8_t matrix[][8], int8_t* line, int8_t* posBit)
+{
+    DIGITAL_PIN_WRITE(PIN_LOW, PIN_MR_595_PORT, PIN_MR_595_MASK);
+    DIGITAL_PIN_WRITE(PIN_HIGH, PIN_STCP_595_PORT, PIN_STCP_595_MASK);
+    __delay_us(1);
+    DIGITAL_PIN_WRITE(PIN_LOW, PIN_STCP_595_PORT, PIN_STCP_595_MASK);
+    DIGITAL_PIN_WRITE(PIN_HIGH, PIN_MR_595_PORT, PIN_MR_595_MASK);
+    
+    /*================================================================*/
+    
+    if(*posBit != 0x07)
+    {
+        // Enviar do ultimo até o bit atual
+        int8_t lastBit;
+        for(lastBit = 7; lastBit >= *posBit; lastBit--)
+        {
+            if(matrix[*line][lastBit])
+            {
+                DIGITAL_PIN_WRITE(PIN_HIGH, PIN_DS_595_PORT, PIN_DS_595_MASK);
+                DIGITAL_PIN_WRITE(PIN_HIGH, PIN_SHCP_595_PORT, PIN_SHCP_595_MASK);
+                __delay_us(1);
+                DIGITAL_PIN_WRITE(PIN_LOW, PIN_SHCP_595_PORT, PIN_SHCP_595_MASK);
+            }
+            else
+            {
+                DIGITAL_PIN_WRITE(PIN_LOW, PIN_DS_595_PORT, PIN_DS_595_MASK);
+                DIGITAL_PIN_WRITE(PIN_HIGH, PIN_SHCP_595_PORT, PIN_SHCP_595_MASK);
+                __delay_us(1);
+                DIGITAL_PIN_WRITE(PIN_LOW, PIN_SHCP_595_PORT, PIN_SHCP_595_MASK);
+            }
+        }
+        
+    }
+    else
+    {
+        if(matrix[*line][*posBit])
+        {
+            DIGITAL_PIN_WRITE(PIN_HIGH, PIN_DS_595_PORT, PIN_DS_595_MASK);   
+            DIGITAL_PIN_WRITE(PIN_HIGH, PIN_SHCP_595_PORT, PIN_SHCP_595_MASK);
+            __delay_us(1);
+            DIGITAL_PIN_WRITE(PIN_LOW, PIN_SHCP_595_PORT, PIN_SHCP_595_MASK);
+        }
+        else
+        {
+            DIGITAL_PIN_WRITE(PIN_LOW, PIN_DS_595_PORT, PIN_DS_595_MASK);
+            DIGITAL_PIN_WRITE(PIN_HIGH, PIN_SHCP_595_PORT, PIN_SHCP_595_MASK);
+            __delay_us(1);
+            DIGITAL_PIN_WRITE(PIN_LOW, PIN_SHCP_595_PORT, PIN_SHCP_595_MASK);
+        }
+    }
+    
+    DIGITAL_PIN_WRITE(PIN_HIGH, PIN_STCP_595_PORT, PIN_STCP_595_MASK);
+    __delay_us(1);
+    DIGITAL_PIN_WRITE(PIN_LOW, PIN_STCP_595_PORT, PIN_STCP_595_MASK);
+    (*line < 0x07)?((*line)++):((*line) = 0x00);
+}
+
+

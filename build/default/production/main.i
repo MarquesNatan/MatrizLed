@@ -4736,11 +4736,12 @@ uint16_t i = 0;
 uint8_t matrix[8][8];
 uint8_t dataTrans[8] =
 {
-   0b00000000, 0b01111110, 0b01100000, 0b01100000,
-   0b01111100, 0b01100000, 0b01100000, 0b01111110
+
+
+    0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 
 };
-# 107 "main.c"
+# 108 "main.c"
 spi_config spiConfig =
 {
     .masterMode = 1,
@@ -4762,7 +4763,6 @@ void __attribute__((picinterrupt(("")))) TC0INT(void)
         RowControl(&currRow, &PosBit);
 
         ScrollingDisplay(matrix, &currRow, PosBit);
-
 
 
         TMR0 = 0xF63C;
@@ -4799,6 +4799,7 @@ void main(void) {
     WriteMatrix(matrix, dataTrans);
     configure_pins();
     Timer_Init();
+    Timer_OnOff(1);
     Interrupts_Configure();
 
 

@@ -113,22 +113,6 @@ typedef uint32_t uint_fast32_t;
 # 139 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdint.h" 2 3
 # 1 "CREATE_FILES/SCROLLING_TEXT/scrolling_text.c" 2
 
-# 1 "CREATE_FILES/SCROLLING_TEXT/scrolling_text.h" 1
-
-
-
-
-
-void WriteMatrix(uint8_t matrix[][8], uint8_t vectorBytes[8]);
-void ScrollingDisplay(uint8_t matrix[][8], uint8_t* line, uint8_t PosBit);
-# 2 "CREATE_FILES/SCROLLING_TEXT/scrolling_text.c" 2
-
-# 1 "CREATE_FILES/SCROLLING_TEXT/../GPIO/gpio.h" 1
-
-
-
-
-
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4620,11 +4604,23 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 32 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 6 "CREATE_FILES/SCROLLING_TEXT/../GPIO/gpio.h" 2
+# 2 "CREATE_FILES/SCROLLING_TEXT/scrolling_text.c" 2
+
+# 1 "CREATE_FILES/SCROLLING_TEXT/scrolling_text.h" 1
+
+
+
+
+
+void WriteMatrix(uint8_t matrix[][8], uint8_t vectorBytes[8]);
+void ScrollingDisplay(uint8_t matrix[][8], int8_t* line, int8_t* posBit);
 # 3 "CREATE_FILES/SCROLLING_TEXT/scrolling_text.c" 2
 
-# 1 "CREATE_FILES/SCROLLING_TEXT/../BOARD_PINOUT/board_pinout.h" 1
+# 1 "CREATE_FILES/SCROLLING_TEXT/../GPIO/gpio.h" 1
 # 4 "CREATE_FILES/SCROLLING_TEXT/scrolling_text.c" 2
+
+# 1 "CREATE_FILES/SCROLLING_TEXT/../BOARD_PINOUT/board_pinout.h" 1
+# 5 "CREATE_FILES/SCROLLING_TEXT/scrolling_text.c" 2
 
 
 
@@ -4654,91 +4650,6 @@ void WriteMatrix(uint8_t matrix[][8], uint8_t vectorBytes[8])
 }
 
 
-void ScrollingDisplay(uint8_t matrix[][8], uint8_t* line, uint8_t PosBit)
-{
-    uint8_t varAux = 0x07;
-
-        if(0x00 == 0x00) LATA = (PORTA & ~((1 << 4))); if(0x01 == 0x00) LATA = (PORTA | (1 << 4));;
-        if(0x00 == 0x01) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x01) LATA = (PORTA | (1 << 5));;
-        _delay((unsigned long)((1)*(10000000/4000000.0)));
-        if(0x00 == 0x00) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x00) LATA = (PORTA | (1 << 5));;
-        if(0x00 == 0x01) LATA = (PORTA & ~((1 << 4))); if(0x01 == 0x01) LATA = (PORTA | (1 << 4));;
-    if(varAux > PosBit)
-    {
-
-        while(varAux >= PosBit);
-        {
-            if(matrix[*line][varAux])
-            {
-
-                if(0x00 == 0x01) LATC = (PORTC & ~((1 << 5))); if(0x01 == 0x01) LATC = (PORTC | (1 << 5));;
-
-                if(0x00 == 0x01) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x01) LATC = (PORTC | (1 << 3));;
-                _delay((unsigned long)((1)*(10000000/4000000.0)));
-                if(0x00 == 0x00) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x00) LATC = (PORTC | (1 << 3));;
-
-
-
-
-
-            }else
-            {
-
-                 if(0x00 == 0x00) LATC = (PORTC & ~((1 << 5))); if(0x01 == 0x00) LATC = (PORTC | (1 << 5));;
-                if(0x00 == 0x01) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x01) LATC = (PORTC | (1 << 3));;
-                _delay((unsigned long)((1)*(10000000/4000000.0)));
-                if(0x00 == 0x00) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x00) LATC = (PORTC | (1 << 3));;
-
-
-
-            }
-
-            varAux--;
-        }
-
-
-
-    }else
-    {
-
-        if(matrix[*line][PosBit])
-        {
-
-            if(0x00 == 0x01) LATC = (PORTC & ~((1 << 5))); if(0x01 == 0x01) LATC = (PORTC | (1 << 5));;
-
-            if(0x00 == 0x01) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x01) LATC = (PORTC | (1 << 3));;
-            _delay((unsigned long)((1)*(10000000/4000000.0)));
-            if(0x00 == 0x00) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x00) LATC = (PORTC | (1 << 3));;
-
-
-
-
-        }
-        else
-        {
-
-            if(0x00 == 0x00) LATC = (PORTC & ~((1 << 5))); if(0x01 == 0x00) LATC = (PORTC | (1 << 5));;
-            if(0x00 == 0x01) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x01) LATC = (PORTC | (1 << 3));;
-            _delay((unsigned long)((1)*(10000000/4000000.0)));
-            if(0x00 == 0x00) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x00) LATC = (PORTC | (1 << 3));;
-
-
-
-
-    }
-
-
-    }
-# 142 "CREATE_FILES/SCROLLING_TEXT/scrolling_text.c"
-     if(0x00 == 0x01) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x01) LATA = (PORTA | (1 << 5));;
-    _delay((unsigned long)((1)*(10000000/4000000.0)));
-    if(0x00 == 0x00) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x00) LATA = (PORTA | (1 << 5));;
-
-
-}
-
-
-
 void ResetShift(void)
 {
 
@@ -4747,4 +4658,61 @@ void ResetShift(void)
         _delay((unsigned long)((1)*(10000000/4000000.0)));
         if(0x00 == 0x00) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x00) LATA = (PORTA | (1 << 5));;
         if(0x00 == 0x01) LATA = (PORTA & ~((1 << 4))); if(0x01 == 0x01) LATA = (PORTA | (1 << 4));;
+}
+
+void ScrollingDisplay(uint8_t matrix[][8], int8_t* line, int8_t* posBit)
+{
+    if(0x00 == 0x00) LATA = (PORTA & ~((1 << 4))); if(0x01 == 0x00) LATA = (PORTA | (1 << 4));;
+    if(0x00 == 0x01) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x01) LATA = (PORTA | (1 << 5));;
+    _delay((unsigned long)((1)*(10000000/4000000.0)));
+    if(0x00 == 0x00) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x00) LATA = (PORTA | (1 << 5));;
+    if(0x00 == 0x01) LATA = (PORTA & ~((1 << 4))); if(0x01 == 0x01) LATA = (PORTA | (1 << 4));;
+
+
+
+    if(*posBit != 0x07)
+    {
+
+        int8_t lastBit;
+        for(lastBit = 7; lastBit >= *posBit; lastBit--)
+        {
+            if(matrix[*line][lastBit])
+            {
+                if(0x00 == 0x01) LATC = (PORTC & ~((1 << 5))); if(0x01 == 0x01) LATC = (PORTC | (1 << 5));;
+                if(0x00 == 0x01) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x01) LATC = (PORTC | (1 << 3));;
+                _delay((unsigned long)((1)*(10000000/4000000.0)));
+                if(0x00 == 0x00) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x00) LATC = (PORTC | (1 << 3));;
+            }
+            else
+            {
+                if(0x00 == 0x00) LATC = (PORTC & ~((1 << 5))); if(0x01 == 0x00) LATC = (PORTC | (1 << 5));;
+                if(0x00 == 0x01) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x01) LATC = (PORTC | (1 << 3));;
+                _delay((unsigned long)((1)*(10000000/4000000.0)));
+                if(0x00 == 0x00) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x00) LATC = (PORTC | (1 << 3));;
+            }
+        }
+
+    }
+    else
+    {
+        if(matrix[*line][*posBit])
+        {
+            if(0x00 == 0x01) LATC = (PORTC & ~((1 << 5))); if(0x01 == 0x01) LATC = (PORTC | (1 << 5));;
+            if(0x00 == 0x01) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x01) LATC = (PORTC | (1 << 3));;
+            _delay((unsigned long)((1)*(10000000/4000000.0)));
+            if(0x00 == 0x00) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x00) LATC = (PORTC | (1 << 3));;
+        }
+        else
+        {
+            if(0x00 == 0x00) LATC = (PORTC & ~((1 << 5))); if(0x01 == 0x00) LATC = (PORTC | (1 << 5));;
+            if(0x00 == 0x01) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x01) LATC = (PORTC | (1 << 3));;
+            _delay((unsigned long)((1)*(10000000/4000000.0)));
+            if(0x00 == 0x00) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x00) LATC = (PORTC | (1 << 3));;
+        }
+    }
+
+    if(0x00 == 0x01) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x01) LATA = (PORTA | (1 << 5));;
+    _delay((unsigned long)((1)*(10000000/4000000.0)));
+    if(0x00 == 0x00) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x00) LATA = (PORTA | (1 << 5));;
+    (*line < 0x07)?((*line)++):((*line) = 0x00);
 }

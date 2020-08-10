@@ -23,6 +23,8 @@
 [v ___fldiv __fldiv `(d  1 e 4 0 ]
 "8 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
 "15 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\Umul64.c
@@ -31,17 +33,19 @@
 [v _RowControl RowControl `(v  1 e 1 0 ]
 "4 C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/INTERRUPT/interrupts.c
 [v _Interrupts_Configure Interrupts_Configure `(v  1 e 1 0 ]
-"8 C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+"9 C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
 [v _WriteMatrix WriteMatrix `(v  1 e 1 0 ]
-"33
+"44
 [v _ScrollingDisplay ScrollingDisplay `(v  1 e 1 0 ]
 "6 C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/TIMER/timer.c
 [v _Timer_Init Timer_Init `(v  1 e 1 0 ]
-"119 C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+"28
+[v _Timer_OnOff Timer_OnOff `(v  1 e 1 0 ]
+"115 C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
 [v _TC0INT TC0INT `IIH(v  1 e 1 0 ]
-"143
+"134
 [v _main main `(v  1 e 1 0 ]
-"180
+"172
 [v _configure_pins configure_pins `(v  1 e 1 0 ]
 "52 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h
 [v _PORTA PORTA `VEuc  1 e 1 @3968 ]
@@ -173,14 +177,14 @@
 ]
 [u S102 . 1 `S73 1 . 1 0 `S75 1 . 1 0 `S78 1 . 1 0 `S81 1 . 1 0 `S84 1 . 1 0 `S87 1 . 1 0 `S96 1 . 1 0 ]
 [v _RCONbits RCONbits `VES102  1 e 1 @4048 ]
-[s S540 . 1 `uc 1 SCS 1 0 :2:0 
+[s S535 . 1 `uc 1 SCS 1 0 :2:0 
 `uc 1 IOFS 1 0 :1:2 
 `uc 1 OSTS 1 0 :1:3 
 `uc 1 IRCF 1 0 :3:4 
 `uc 1 IDLEN 1 0 :1:7 
 ]
 "6108
-[s S546 . 1 `uc 1 SCS0 1 0 :1:0 
+[s S541 . 1 `uc 1 SCS0 1 0 :1:0 
 `uc 1 SCS1 1 0 :1:1 
 `uc 1 FLTS 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -188,8 +192,8 @@
 `uc 1 IRCF1 1 0 :1:5 
 `uc 1 IRCF2 1 0 :1:6 
 ]
-[u S554 . 1 `S540 1 . 1 0 `S546 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES554  1 e 1 @4051 ]
+[u S549 . 1 `S535 1 . 1 0 `S541 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES549  1 e 1 @4051 ]
 [s S439 . 1 `uc 1 T0PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
@@ -259,38 +263,47 @@
 [u S46 . 1 `S24 1 . 1 0 `S33 1 . 1 0 `S42 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES46  1 e 1 @4082 ]
 "82 C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
-[v _currRow currRow `uc  1 e 1 0 ]
+[v _currRow currRow `c  1 e 1 0 ]
 "83
-[v _PosBit PosBit `uc  1 e 1 0 ]
-"87
+[v _posBit posBit `c  1 e 1 0 ]
+"90
 [v _matrix matrix `[8][8]uc  1 e 64 0 ]
-"88
+"91
 [v _dataTrans dataTrans `[8]uc  1 e 8 0 ]
-"143
+"134
 [v _main main `(v  1 e 1 0 ]
 {
-"177
+"169
 } 0
-"180
+"172
 [v _configure_pins configure_pins `(v  1 e 1 0 ]
 {
-"193
+"185
 } 0
-"8 C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+"9 C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
 [v _WriteMatrix WriteMatrix `(v  1 e 1 0 ]
 {
-"11
-[v WriteMatrix@line line `uc  1 a 1 22 ]
 "12
-[v WriteMatrix@col col `uc  1 a 1 21 ]
+[v WriteMatrix@line line `uc  1 a 1 3 ]
 "13
-[v WriteMatrix@aux aux `uc  1 a 1 20 ]
-"8
-[v WriteMatrix@matrix matrix `*.39[8]uc  1 p 2 13 ]
-[v WriteMatrix@vectorBytes vectorBytes `*.39uc  1 p 2 15 ]
-"30
+[v WriteMatrix@col col `uc  1 a 1 2 ]
+"14
+[v WriteMatrix@aux aux `uc  1 a 1 1 ]
+"9
+[v WriteMatrix@matrix matrix `*.39[8]uc  1 p 2 21 ]
+[v WriteMatrix@vectorBytes vectorBytes `*.39uc  1 p 2 23 ]
+"31
 } 0
-"6 C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/TIMER/timer.c
+"28 C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/TIMER/timer.c
+[v _Timer_OnOff Timer_OnOff `(v  1 e 1 0 ]
+{
+[v Timer_OnOff@OnOff OnOff `uc  1 a 1 wreg ]
+[v Timer_OnOff@OnOff OnOff `uc  1 a 1 wreg ]
+"30
+[v Timer_OnOff@OnOff OnOff `uc  1 a 1 21 ]
+"31
+} 0
+"6
 [v _Timer_Init Timer_Init `(v  1 e 1 0 ]
 {
 "26
@@ -300,31 +313,39 @@
 {
 "27
 } 0
-"119 C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
+"115 C:\Users\Natan\MPLABXProjects\MatrixControl.X\main.c
 [v _TC0INT TC0INT `IIH(v  1 e 1 0 ]
 {
-"139
+"130
 } 0
-"33 C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
+"44 C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/SCROLLING_TEXT/scrolling_text.c
 [v _ScrollingDisplay ScrollingDisplay `(v  1 e 1 0 ]
 {
-"35
-[v ScrollingDisplay@varAux varAux `uc  1 a 1 8 ]
-"33
-[v ScrollingDisplay@matrix matrix `*.39[8]uc  1 p 2 0 ]
-[v ScrollingDisplay@line line `*.39uc  1 p 2 2 ]
-[v ScrollingDisplay@PosBit PosBit `uc  1 p 1 4 ]
-"147
+"57
+[v ScrollingDisplay@lastBit lastBit `c  1 a 1 16 ]
+"44
+[v ScrollingDisplay@matrix matrix `*.39[8]uc  1 p 2 6 ]
+[v ScrollingDisplay@line line `*.39c  1 p 2 8 ]
+[v ScrollingDisplay@posBit posBit `*.39c  1 p 2 10 ]
+"99
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 4 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
 } 0
 "13 C:\Users\Natan\MPLABXProjects\MatrixControl.X\CREATE_FILES/CONTROL_LINES/line_control.c
 [v _RowControl RowControl `(v  1 e 1 0 ]
 {
 "15
-[v RowControl@row row `uc  1 a 1 7 ]
-"16
-[v RowControl@col col `uc  1 a 1 6 ]
+[v RowControl@row row `c  1 a 1 7 ]
 "13
-[v RowControl@currRow currRow `*.39uc  1 p 2 0 ]
-[v RowControl@PosBit PosBit `*.39uc  1 p 2 2 ]
-"87
+[v RowControl@currRow currRow `*.39c  1 p 2 0 ]
+[v RowControl@PosBit PosBit `*.39c  1 p 2 2 ]
+"66
 } 0

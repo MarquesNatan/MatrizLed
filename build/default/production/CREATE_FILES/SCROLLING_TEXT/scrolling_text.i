@@ -4656,28 +4656,96 @@ void WriteMatrix(uint8_t matrix[][8], uint8_t vectorBytes[8])
 
 void ScrollingDisplay(uint8_t matrix[][8], uint8_t* line, uint8_t PosBit)
 {
+    uint8_t varAux = 0x07;
 
-    if(matrix[*line][PosBit])
-    {
-
-        if(0x00 == 0x01) LATC = (PORTC & ~((1 << 5))); if(0x01 == 0x01) LATC = (PORTC | (1 << 5));;
-        if(0x00 == 0x01) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x01) LATC = (PORTC | (1 << 3));;
-        _delay((unsigned long)((1)*(10000000/4000000.0)));
-        if(0x00 == 0x00) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x00) LATC = (PORTC | (1 << 3));;
+        if(0x00 == 0x00) LATA = (PORTA & ~((1 << 4))); if(0x01 == 0x00) LATA = (PORTA | (1 << 4));;
         if(0x00 == 0x01) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x01) LATA = (PORTA | (1 << 5));;
         _delay((unsigned long)((1)*(10000000/4000000.0)));
         if(0x00 == 0x00) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x00) LATA = (PORTA | (1 << 5));;
+        if(0x00 == 0x01) LATA = (PORTA & ~((1 << 4))); if(0x01 == 0x01) LATA = (PORTA | (1 << 4));;
+    if(varAux > PosBit)
+    {
+
+        while(varAux >= PosBit)
+        {
+            if(matrix[*line][varAux])
+            {
+
+                if(0x00 == 0x01) LATC = (PORTC & ~((1 << 5))); if(0x01 == 0x01) LATC = (PORTC | (1 << 5));;
+
+                if(0x00 == 0x01) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x01) LATC = (PORTC | (1 << 3));;
+                _delay((unsigned long)((1)*(10000000/4000000.0)));
+                if(0x00 == 0x00) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x00) LATC = (PORTC | (1 << 3));;
+
+
+
+
+
+            }else
+            {
+
+                 if(0x00 == 0x00) LATC = (PORTC & ~((1 << 5))); if(0x01 == 0x00) LATC = (PORTC | (1 << 5));;
+                if(0x00 == 0x01) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x01) LATC = (PORTC | (1 << 3));;
+                _delay((unsigned long)((1)*(10000000/4000000.0)));
+                if(0x00 == 0x00) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x00) LATC = (PORTC | (1 << 3));;
+
+
+
+            }
+
+            varAux--;
+        }
+
+
+
     }
     else
     {
 
-        if(0x00 == 0x00) LATC = (PORTC & ~((1 << 5))); if(0x01 == 0x00) LATC = (PORTC | (1 << 5));;
-        if(0x00 == 0x01) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x01) LATC = (PORTC | (1 << 3));;
-        _delay((unsigned long)((1)*(10000000/4000000.0)));
-        if(0x00 == 0x00) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x00) LATC = (PORTC | (1 << 3));;
+        if(matrix[*line][PosBit])
+        {
+
+            if(0x00 == 0x01) LATC = (PORTC & ~((1 << 5))); if(0x01 == 0x01) LATC = (PORTC | (1 << 5));;
+
+            if(0x00 == 0x01) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x01) LATC = (PORTC | (1 << 3));;
+            _delay((unsigned long)((1)*(10000000/4000000.0)));
+            if(0x00 == 0x00) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x00) LATC = (PORTC | (1 << 3));;
+
+
+
+
+        }
+        else
+        {
+
+            if(0x00 == 0x00) LATC = (PORTC & ~((1 << 5))); if(0x01 == 0x00) LATC = (PORTC | (1 << 5));;
+            if(0x00 == 0x01) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x01) LATC = (PORTC | (1 << 3));;
+            _delay((unsigned long)((1)*(10000000/4000000.0)));
+            if(0x00 == 0x00) LATC = (PORTC & ~((1 << 3))); if(0x01 == 0x00) LATC = (PORTC | (1 << 3));;
+
+
+
+
+    }
+
+
+    }
+# 143 "CREATE_FILES/SCROLLING_TEXT/scrolling_text.c"
+     if(0x00 == 0x01) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x01) LATA = (PORTA | (1 << 5));;
+    _delay((unsigned long)((1)*(10000000/4000000.0)));
+    if(0x00 == 0x00) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x00) LATA = (PORTA | (1 << 5));;
+
+
+}
+
+
+
+void ResetShift(void)
+{
+
+        if(0x00 == 0x00) LATA = (PORTA & ~((1 << 4))); if(0x01 == 0x00) LATA = (PORTA | (1 << 4));;
         if(0x00 == 0x01) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x01) LATA = (PORTA | (1 << 5));;
         _delay((unsigned long)((1)*(10000000/4000000.0)));
         if(0x00 == 0x00) LATA = (PORTA & ~((1 << 5))); if(0x01 == 0x00) LATA = (PORTA | (1 << 5));;
-
-    }
+        if(0x00 == 0x01) LATA = (PORTA & ~((1 << 4))); if(0x01 == 0x01) LATA = (PORTA | (1 << 4));;
 }

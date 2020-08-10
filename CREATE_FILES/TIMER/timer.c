@@ -23,10 +23,16 @@ void Timer_Init(void)
     T0CONbits.T0PS2 = 0x01;
     
     T0CONbits.TMR0ON = 0x01;
-}
-
-void Timer_OnOff(uint8_t OnOff)
-{
-    T0CONbits.TMR0ON = OnOff;
+    
+    /*== TIMER 1 CONFIGURATION */
+    T1CONbits.T1RUN = 0x01;
+    
+    // Prescaler 
+    T1CONbits.T1CKPS0 = 0x00;
+    T1CONbits.T1CKPS1 = 0x00;
+    
+    // Clock Source 
+    T1CONbits.TMR1CS = 0x00;
+    
 }
 
